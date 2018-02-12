@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="Window Styles" value="0x800025">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Icirc;&aacute;&ugrave;&egrave;&aring; &ntilde;&acirc;&aring;&auml;&aring;&iacute;&egrave;&yuml;">
+		<param name="Local" value="MainPage.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Ccedil;&agrave;&iuml;&oacute;&ntilde;&ecirc; &iuml;&eth;&icirc;&atilde;&eth;&agrave;&igrave;&igrave;&ucirc;">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Acirc;&otilde;&icirc;&auml; &acirc; &iuml;&eth;&icirc;&atilde;&eth;&agrave;&igrave;&igrave;&oacute;">
+			<param name="Local" value="RunProgram.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Iuml;&aring;&eth;&acirc;&ucirc;&eacute; &ccedil;&agrave;&iuml;&oacute;&ntilde;&ecirc; &iuml;&eth;&icirc;&atilde;&eth;&agrave;&igrave;&igrave;&ucirc;">
+			<param name="Local" value="FirstRun.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Dstrok;&agrave;&aacute;&icirc;&ograve;&agrave; &acirc; &iuml;&eth;&icirc;&atilde;&eth;&agrave;&igrave;&igrave;&aring;">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Icirc;&iuml;&egrave;&ntilde;&agrave;&iacute;&egrave;&aring; &atilde;&euml;&agrave;&acirc;&iacute;&icirc;&atilde;&icirc; &icirc;&ecirc;&iacute;&agrave;">
+			<param name="Local" value="MainFormDescription.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Atilde;&euml;&agrave;&acirc;&iacute;&icirc;&aring; &igrave;&aring;&iacute;&thorn;">
+			<param name="Local" value="MainMenu.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Iuml;&icirc;&egrave;&ntilde;&ecirc; &ecirc;&icirc;&igrave;&iuml;&uuml;&thorn;&ograve;&aring;&eth;&agrave; &iuml;&icirc; IP">
+			<param name="Local" value="SearchForIPAdress.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Dstrok;&agrave;&aacute;&icirc;&ograve;&agrave; &ntilde; &icirc;&aacute;&uacute;&aring;&ecirc;&ograve;&agrave;&igrave;&egrave; &ntilde;&iuml;&eth;&agrave;&acirc;&icirc;&divide;&iacute;&egrave;&ecirc;&agrave;">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Auml;&icirc;&aacute;&agrave;&acirc;&euml;&aring;&iacute;&egrave;&aring; &icirc;&aacute;&uacute;&aring;&ecirc;&ograve;&icirc;&acirc;">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="&Auml;&icirc;&aacute;&agrave;&acirc;&euml;&aring;&iacute;&egrave;&aring; &iacute;&icirc;&acirc;&icirc;&atilde;&icirc; &ecirc;&icirc;&igrave;&iuml;&uuml;&thorn;&ograve;&aring;&eth;&agrave;">
+				<param name="Local" value="NewComputer.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="&Auml;&icirc;&aacute;&agrave;&acirc;&euml;&aring;&iacute;&egrave;&aring; &iacute;&icirc;&acirc;&icirc;&eacute; &atilde;&eth;&oacute;&iuml;&iuml;&ucirc;">
+				<param name="Local" value="NewGroup.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Egrave;&ccedil;&igrave;&aring;&iacute;&aring;&iacute;&egrave;&aring; &ntilde;&acirc;&icirc;&eacute;&ntilde;&ograve;&acirc; &icirc;&aacute;&uacute;&aring;&ecirc;&ograve;&icirc;&acirc;">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="&Egrave;&ccedil;&igrave;&aring;&iacute;&aring;&iacute;&egrave;&aring; &ntilde;&acirc;&icirc;&eacute;&ntilde;&ograve;&acirc; &ecirc;&icirc;&igrave;&iuml;&uuml;&thorn;&ograve;&aring;&eth;&agrave;">
+				<param name="Local" value="EditComputer.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="&Egrave;&ccedil;&igrave;&aring;&iacute;&aring;&iacute;&egrave;&aring; &ntilde;&acirc;&icirc;&eacute;&ntilde;&ograve;&acirc; &atilde;&eth;&oacute;&iuml;&iuml;&ucirc;">
+				<param name="Local" value="EditGroup.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Oacute;&auml;&agrave;&euml;&aring;&iacute;&egrave;&aring; &icirc;&aacute;&uacute;&aring;&ecirc;&ograve;&icirc;&acirc;">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="&Oacute;&auml;&agrave;&euml;&aring;&iacute;&egrave;&aring; &ecirc;&icirc;&igrave;&iuml;&uuml;&thorn;&ograve;&aring;&eth;&agrave;">
+				<param name="Local" value="DeleteComputer.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="&Oacute;&auml;&agrave;&euml;&aring;&iacute;&egrave;&aring; &atilde;&eth;&oacute;&iuml;&iuml;&ucirc;">
+				<param name="Local" value="DeleteGroup.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Yacute;&ecirc;&ntilde;&iuml;&icirc;&eth;&ograve; &egrave; &egrave;&igrave;&iuml;&icirc;&eth;&ograve; &icirc;&aacute;&uacute;&aring;&ecirc;&ograve;&icirc;&acirc;">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="&Yacute;&ecirc;&ntilde;&iuml;&icirc;&eth;&ograve;">
+				<param name="Local" value="Export.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="&Egrave;&igrave;&iuml;&icirc;&eth;&ograve;">
+				<param name="Local" value="Import.html">
+				</OBJECT>
+		</UL>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Iacute;&agrave;&ntilde;&ograve;&eth;&icirc;&eacute;&ecirc;&agrave; &iuml;&eth;&icirc;&atilde;&eth;&agrave;&igrave;&igrave;&ucirc;">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Iacute;&agrave;&ntilde;&ograve;&eth;&icirc;&eacute;&ecirc;&agrave; &iuml;&agrave;&eth;&agrave;&igrave;&aring;&ograve;&eth;&icirc;&acirc;">
+			<param name="Local" value="Settings.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Iacute;&agrave;&ntilde;&ograve;&eth;&icirc;&eacute;&ecirc;&agrave; &ecirc;&icirc;&igrave;&igrave;&agrave;&iacute;&auml;&iacute;&ucirc;&otilde; &ecirc;&iacute;&icirc;&iuml;&icirc;&ecirc;">
+			<param name="Local" value="CommandButtons.html">
+			</OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>

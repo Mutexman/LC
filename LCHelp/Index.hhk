@@ -1,0 +1,76 @@
+<HTML>
+ <HEAD>
+  <META name="GENERATOR" content="htm2chm 3.0.9.3">
+  <!-- Sitemap 1.0 -->
+ </HEAD>
+<BODY>
+ <OBJECT type="text/site properties">
+ </OBJECT>
+<UL>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="CommandButtons.md">
+  <PARAM name="Local" value="CommandButtons.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="DeleteComputer.md">
+  <PARAM name="Local" value="DeleteComputer.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="DeleteGroup.md">
+  <PARAM name="Local" value="DeleteGroup.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="EditComputer.md">
+  <PARAM name="Local" value="EditComputer.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="EditGroup.md">
+  <PARAM name="Local" value="EditGroup.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="FirstRun.md">
+  <PARAM name="Local" value="FirstRun.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="FromTheAuthor.md">
+  <PARAM name="Local" value="FromTheAuthor.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="index.md">
+  <PARAM name="Local" value="index.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="MainFormDescription.md">
+  <PARAM name="Local" value="MainFormDescription.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="MainMenu.md">
+  <PARAM name="Local" value="MainMenu.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="MainPage.md">
+  <PARAM name="Local" value="MainPage.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="NewComputer.md">
+  <PARAM name="Local" value="NewComputer.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="NewGroup.md">
+  <PARAM name="Local" value="NewGroup.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="RunProgram.md">
+  <PARAM name="Local" value="RunProgram.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="SearchForIPAdress.md">
+  <PARAM name="Local" value="SearchForIPAdress.html">
+ </OBJECT>
+ <LI><OBJECT type="text/sitemap">
+  <PARAM name="Name" value="Settings.md">
+  <PARAM name="Local" value="Settings.html">
+ </OBJECT>
+</UL>
+</BODY>
+</HTML>
