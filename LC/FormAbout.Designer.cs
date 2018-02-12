@@ -100,7 +100,7 @@
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(137, 34);
             this.buttonOk.TabIndex = 5;
-            this.buttonOk.Text = "Я все понял.";
+            this.buttonOk.Text = "Мне все ясно";
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
