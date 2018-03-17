@@ -113,6 +113,7 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSubnetRoot = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -621,10 +622,11 @@
             this.toolStripSeparator13,
             this.toolStripMenuItemNewComputerRoot,
             this.toolStripMenuItemNewGroupRoot,
+            this.toolStripMenuItemSubnetRoot,
             this.toolStripSeparator8,
             this.toolStripMenuItemPasteRoot});
             this.contextMenuStripLCRoot.Name = "contextMenuStripLCRoot";
-            this.contextMenuStripLCRoot.Size = new System.Drawing.Size(199, 132);
+            this.contextMenuStripLCRoot.Size = new System.Drawing.Size(199, 176);
             // 
             // toolStripMenuItemOpenNodesRoot
             // 
@@ -809,6 +811,14 @@
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
+            // toolStripMenuItemSubnetRoot
+            // 
+            this.toolStripMenuItemSubnetRoot.Image = global::LC.Properties.Resources.AddNewContextMenu;
+            this.toolStripMenuItemSubnetRoot.Name = "toolStripMenuItemSubnetRoot";
+            this.toolStripMenuItemSubnetRoot.Size = new System.Drawing.Size(198, 22);
+            this.toolStripMenuItemSubnetRoot.Text = "Новая сеть";
+            this.toolStripMenuItemSubnetRoot.Click += new System.EventHandler(this.createNewSubnet);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -933,6 +943,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPaste;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCut;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelete;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSubnetRoot;
     }
 }
 
