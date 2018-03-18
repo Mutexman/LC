@@ -301,6 +301,7 @@ namespace LC
         private void openLCTreeNode(object sender, EventArgs e)
         {
             LCTreeNode lcTreeNode = (LCTreeNode)this.treeViewObject.SelectedNode;
+
             // проверяем открыто ли 
             if (lcTreeNode.TabPage == null)
             {

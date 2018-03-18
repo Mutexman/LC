@@ -67,7 +67,6 @@
             this.toolStripMenuItemCutComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDeleteComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
-            this.tabControlObject = new System.Windows.Forms.TabControl();
             this.listBoxOperation = new System.Windows.Forms.ListBox();
             this.contextMenuStripLCGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemOpenGroup = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,6 +92,7 @@
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemNewComputerRoot = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemNewGroupRoot = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSubnetRoot = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemPasteRoot = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialogImport = new System.Windows.Forms.OpenFileDialog();
@@ -113,7 +113,7 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSubnetRoot = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControlObject = new System.Windows.Forms.TabControl();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -138,7 +138,7 @@
             this.помощьToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(1028, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(1295, 24);
             this.menuStripMain.TabIndex = 0;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -259,7 +259,7 @@
             this.toolStripButtonMutexCMD});
             this.toolStripMain.Location = new System.Drawing.Point(0, 24);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(1028, 55);
+            this.toolStripMain.Size = new System.Drawing.Size(1295, 55);
             this.toolStripMain.TabIndex = 1;
             this.toolStripMain.Text = "toolStrip1";
             // 
@@ -322,9 +322,9 @@
             // 
             this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelMain});
-            this.statusStripMain.Location = new System.Drawing.Point(0, 521);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 600);
             this.statusStripMain.Name = "statusStripMain";
-            this.statusStripMain.Size = new System.Drawing.Size(1028, 22);
+            this.statusStripMain.Size = new System.Drawing.Size(1295, 22);
             this.statusStripMain.TabIndex = 2;
             this.statusStripMain.Text = "statusStrip1";
             // 
@@ -348,8 +348,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listBoxOperation);
-            this.splitContainer1.Size = new System.Drawing.Size(1028, 442);
-            this.splitContainer1.SplitterDistance = 327;
+            this.splitContainer1.Size = new System.Drawing.Size(1295, 521);
+            this.splitContainer1.SplitterDistance = 385;
             this.splitContainer1.TabIndex = 3;
             // 
             // splitContainer2
@@ -365,8 +365,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControlObject);
-            this.splitContainer2.Size = new System.Drawing.Size(1028, 327);
-            this.splitContainer2.SplitterDistance = 342;
+            this.splitContainer2.Size = new System.Drawing.Size(1295, 385);
+            this.splitContainer2.SplitterDistance = 375;
             this.splitContainer2.TabIndex = 0;
             // 
             // treeViewObject
@@ -380,7 +380,7 @@
             this.treeViewObject.Name = "treeViewObject";
             this.treeViewObject.SelectedImageIndex = 0;
             this.treeViewObject.ShowNodeToolTips = true;
-            this.treeViewObject.Size = new System.Drawing.Size(342, 327);
+            this.treeViewObject.Size = new System.Drawing.Size(375, 385);
             this.treeViewObject.TabIndex = 0;
             this.treeViewObject.DoubleClick += new System.EventHandler(this.openLCTreeNode);
             // 
@@ -461,26 +461,13 @@
             this.imageListMain.Images.SetKeyName(4, "Close.png");
             this.imageListMain.Images.SetKeyName(5, "group.ico");
             // 
-            // tabControlObject
-            // 
-            this.tabControlObject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlObject.Location = new System.Drawing.Point(0, 0);
-            this.tabControlObject.Name = "tabControlObject";
-            this.tabControlObject.SelectedIndex = 0;
-            this.tabControlObject.ShowToolTips = true;
-            this.tabControlObject.Size = new System.Drawing.Size(682, 327);
-            this.tabControlObject.TabIndex = 1;
-            this.tabControlObject.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControlObject_Selecting);
-            this.tabControlObject.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControlObject_ControlRemoved);
-            this.tabControlObject.DoubleClick += new System.EventHandler(this.tabControlObject_DoubleClick);
-            // 
             // listBoxOperation
             // 
             this.listBoxOperation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxOperation.FormattingEnabled = true;
             this.listBoxOperation.Location = new System.Drawing.Point(0, 0);
             this.listBoxOperation.Name = "listBoxOperation";
-            this.listBoxOperation.Size = new System.Drawing.Size(1028, 111);
+            this.listBoxOperation.Size = new System.Drawing.Size(1295, 132);
             this.listBoxOperation.TabIndex = 0;
             // 
             // contextMenuStripLCGroup
@@ -626,7 +613,7 @@
             this.toolStripSeparator8,
             this.toolStripMenuItemPasteRoot});
             this.contextMenuStripLCRoot.Name = "contextMenuStripLCRoot";
-            this.contextMenuStripLCRoot.Size = new System.Drawing.Size(199, 176);
+            this.contextMenuStripLCRoot.Size = new System.Drawing.Size(199, 154);
             // 
             // toolStripMenuItemOpenNodesRoot
             // 
@@ -667,6 +654,14 @@
             this.toolStripMenuItemNewGroupRoot.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemNewGroupRoot.Text = "Новая группа";
             this.toolStripMenuItemNewGroupRoot.Click += new System.EventHandler(this.createNewGroup);
+            // 
+            // toolStripMenuItemSubnetRoot
+            // 
+            this.toolStripMenuItemSubnetRoot.Image = global::LC.Properties.Resources.AddNewContextMenu;
+            this.toolStripMenuItemSubnetRoot.Name = "toolStripMenuItemSubnetRoot";
+            this.toolStripMenuItemSubnetRoot.Size = new System.Drawing.Size(198, 22);
+            this.toolStripMenuItemSubnetRoot.Text = "Новая сеть";
+            this.toolStripMenuItemSubnetRoot.Click += new System.EventHandler(this.createNewSubnet);
             // 
             // toolStripSeparator8
             // 
@@ -811,20 +806,25 @@
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
-            // toolStripMenuItemSubnetRoot
+            // tabControlObject
             // 
-            this.toolStripMenuItemSubnetRoot.Image = global::LC.Properties.Resources.AddNewContextMenu;
-            this.toolStripMenuItemSubnetRoot.Name = "toolStripMenuItemSubnetRoot";
-            this.toolStripMenuItemSubnetRoot.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemSubnetRoot.Text = "Новая сеть";
-            this.toolStripMenuItemSubnetRoot.Click += new System.EventHandler(this.createNewSubnet);
+            this.tabControlObject.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlObject.Location = new System.Drawing.Point(0, 0);
+            this.tabControlObject.Name = "tabControlObject";
+            this.tabControlObject.SelectedIndex = 0;
+            this.tabControlObject.ShowToolTips = true;
+            this.tabControlObject.Size = new System.Drawing.Size(916, 385);
+            this.tabControlObject.TabIndex = 1;
+            this.tabControlObject.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControlObject_Selecting);
+            this.tabControlObject.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControlObject_ControlRemoved);
+            this.tabControlObject.DoubleClick += new System.EventHandler(this.tabControlObject_DoubleClick);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1028, 543);
+            this.ClientSize = new System.Drawing.Size(1295, 622);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.toolStripMain);
@@ -866,7 +866,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.TreeView treeViewObject;
-        private System.Windows.Forms.TabControl tabControlObject;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripLCComputer;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem закрытьВсеВкладкиToolStripMenuItem;
@@ -944,6 +943,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCut;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelete;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSubnetRoot;
+        private System.Windows.Forms.TabControl tabControlObject;
     }
 }
 
