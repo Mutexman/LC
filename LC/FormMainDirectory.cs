@@ -302,6 +302,11 @@ namespace LC
         {
             LCTreeNode lcTreeNode = (LCTreeNode)this.treeViewObject.SelectedNode;
 
+            if (lcTreeNode.LCObjectType == LCObjectType.Computer)
+            {
+                MessageBox.Show("Работает!");
+            }
+
             // проверяем открыто ли 
             if (lcTreeNode.TabPage == null)
             {
@@ -759,6 +764,8 @@ namespace LC
         /// </summary>
         private void SaveOpenedPages()
         {
+            this.tabControlObject.TabPages.Remove(this.tabPageComputers);
+
             Properties.Settings.Default.OpenPages = "";
             foreach (LCTabPage lcTabPage in this.tabControlObject.TabPages)
             {

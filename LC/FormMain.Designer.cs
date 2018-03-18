@@ -67,6 +67,7 @@
             this.toolStripMenuItemCutComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDeleteComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
+            this.tabControlObject = new System.Windows.Forms.TabControl();
             this.listBoxOperation = new System.Windows.Forms.ListBox();
             this.contextMenuStripLCGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemOpenGroup = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +114,13 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControlObject = new System.Windows.Forms.TabControl();
+            this.tabPageComputers = new System.Windows.Forms.TabPage();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.listViewComputers = new System.Windows.Forms.ListView();
+            this.columnHeaderIP_PC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderNamePC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSubNetOrGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDescriptionPC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -124,9 +131,11 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.contextMenuStripLCComputer.SuspendLayout();
+            this.tabControlObject.SuspendLayout();
             this.contextMenuStripLCGroup.SuspendLayout();
             this.contextMenuStripLCRoot.SuspendLayout();
             this.contextMenuStripLCSubnet.SuspendLayout();
+            this.tabPageComputers.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -460,6 +469,20 @@
             this.imageListMain.Images.SetKeyName(3, "K013.ico");
             this.imageListMain.Images.SetKeyName(4, "Close.png");
             this.imageListMain.Images.SetKeyName(5, "group.ico");
+            // 
+            // tabControlObject
+            // 
+            this.tabControlObject.Controls.Add(this.tabPageComputers);
+            this.tabControlObject.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlObject.Location = new System.Drawing.Point(0, 0);
+            this.tabControlObject.Name = "tabControlObject";
+            this.tabControlObject.SelectedIndex = 0;
+            this.tabControlObject.ShowToolTips = true;
+            this.tabControlObject.Size = new System.Drawing.Size(916, 385);
+            this.tabControlObject.TabIndex = 1;
+            this.tabControlObject.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControlObject_Selecting);
+            this.tabControlObject.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControlObject_ControlRemoved);
+            this.tabControlObject.DoubleClick += new System.EventHandler(this.tabControlObject_DoubleClick);
             // 
             // listBoxOperation
             // 
@@ -806,18 +829,57 @@
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
-            // tabControlObject
+            // tabPageComputers
             // 
-            this.tabControlObject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlObject.Location = new System.Drawing.Point(0, 0);
-            this.tabControlObject.Name = "tabControlObject";
-            this.tabControlObject.SelectedIndex = 0;
-            this.tabControlObject.ShowToolTips = true;
-            this.tabControlObject.Size = new System.Drawing.Size(916, 385);
-            this.tabControlObject.TabIndex = 1;
-            this.tabControlObject.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControlObject_Selecting);
-            this.tabControlObject.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControlObject_ControlRemoved);
-            this.tabControlObject.DoubleClick += new System.EventHandler(this.tabControlObject_DoubleClick);
+            this.tabPageComputers.Controls.Add(this.listViewComputers);
+            this.tabPageComputers.Controls.Add(this.toolStrip1);
+            this.tabPageComputers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageComputers.Name = "tabPageComputers";
+            this.tabPageComputers.Size = new System.Drawing.Size(908, 359);
+            this.tabPageComputers.TabIndex = 0;
+            this.tabPageComputers.Text = "Компьютеры";
+            this.tabPageComputers.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(908, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // listViewComputers
+            // 
+            this.listViewComputers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderIP_PC,
+            this.columnHeaderNamePC,
+            this.columnHeaderSubNetOrGroup,
+            this.columnHeaderDescriptionPC});
+            this.listViewComputers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewComputers.FullRowSelect = true;
+            this.listViewComputers.GridLines = true;
+            this.listViewComputers.Location = new System.Drawing.Point(0, 25);
+            this.listViewComputers.MultiSelect = false;
+            this.listViewComputers.Name = "listViewComputers";
+            this.listViewComputers.Size = new System.Drawing.Size(908, 334);
+            this.listViewComputers.TabIndex = 1;
+            this.listViewComputers.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeaderIP_PC
+            // 
+            this.columnHeaderIP_PC.Text = "IP";
+            // 
+            // columnHeaderNamePC
+            // 
+            this.columnHeaderNamePC.Text = "Имя ПК";
+            // 
+            // columnHeaderSubNetOrGroup
+            // 
+            this.columnHeaderSubNetOrGroup.Text = "Сеть/Группа";
+            // 
+            // columnHeaderDescriptionPC
+            // 
+            this.columnHeaderDescriptionPC.Text = "Описание ПК";
             // 
             // FormMain
             // 
@@ -850,9 +912,12 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
             this.contextMenuStripLCComputer.ResumeLayout(false);
+            this.tabControlObject.ResumeLayout(false);
             this.contextMenuStripLCGroup.ResumeLayout(false);
             this.contextMenuStripLCRoot.ResumeLayout(false);
             this.contextMenuStripLCSubnet.ResumeLayout(false);
+            this.tabPageComputers.ResumeLayout(false);
+            this.tabPageComputers.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -944,6 +1009,13 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelete;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSubnetRoot;
         private System.Windows.Forms.TabControl tabControlObject;
+        private System.Windows.Forms.TabPage tabPageComputers;
+        private System.Windows.Forms.ListView listViewComputers;
+        private System.Windows.Forms.ColumnHeader columnHeaderIP_PC;
+        private System.Windows.Forms.ColumnHeader columnHeaderNamePC;
+        private System.Windows.Forms.ColumnHeader columnHeaderSubNetOrGroup;
+        private System.Windows.Forms.ColumnHeader columnHeaderDescriptionPC;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }
 

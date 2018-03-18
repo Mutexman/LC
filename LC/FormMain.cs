@@ -360,6 +360,10 @@ namespace LC
         }
         private void tabControlObject_ControlRemoved(object sender, ControlEventArgs e)
         {
+            // Времено сделано так
+            if (e.Control == tabPageComputers)
+                return;
+
             LCTabPage lcTP = (LCTabPage)e.Control;
             lcTP.LCTreeNode.TabPage = null;
         }
