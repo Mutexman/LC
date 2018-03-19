@@ -68,6 +68,13 @@
             this.toolStripMenuItemDeleteComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
             this.tabControlObject = new System.Windows.Forms.TabControl();
+            this.tabPageComputers = new System.Windows.Forms.TabPage();
+            this.listViewComputers = new System.Windows.Forms.ListView();
+            this.columnHeaderIP_PC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderNamePC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSubNetOrGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDescriptionPC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.listBoxOperation = new System.Windows.Forms.ListBox();
             this.contextMenuStripLCGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemOpenGroup = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,13 +121,6 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPageComputers = new System.Windows.Forms.TabPage();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.listViewComputers = new System.Windows.Forms.ListView();
-            this.columnHeaderIP_PC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderNamePC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderSubNetOrGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderDescriptionPC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -132,10 +132,10 @@
             this.splitContainer2.SuspendLayout();
             this.contextMenuStripLCComputer.SuspendLayout();
             this.tabControlObject.SuspendLayout();
+            this.tabPageComputers.SuspendLayout();
             this.contextMenuStripLCGroup.SuspendLayout();
             this.contextMenuStripLCRoot.SuspendLayout();
             this.contextMenuStripLCSubnet.SuspendLayout();
-            this.tabPageComputers.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -147,7 +147,7 @@
             this.помощьToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(1295, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(1177, 24);
             this.menuStripMain.TabIndex = 0;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -268,7 +268,7 @@
             this.toolStripButtonMutexCMD});
             this.toolStripMain.Location = new System.Drawing.Point(0, 24);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(1295, 55);
+            this.toolStripMain.Size = new System.Drawing.Size(1177, 55);
             this.toolStripMain.TabIndex = 1;
             this.toolStripMain.Text = "toolStrip1";
             // 
@@ -333,7 +333,7 @@
             this.toolStripStatusLabelMain});
             this.statusStripMain.Location = new System.Drawing.Point(0, 600);
             this.statusStripMain.Name = "statusStripMain";
-            this.statusStripMain.Size = new System.Drawing.Size(1295, 22);
+            this.statusStripMain.Size = new System.Drawing.Size(1177, 22);
             this.statusStripMain.TabIndex = 2;
             this.statusStripMain.Text = "statusStrip1";
             // 
@@ -357,7 +357,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listBoxOperation);
-            this.splitContainer1.Size = new System.Drawing.Size(1295, 521);
+            this.splitContainer1.Size = new System.Drawing.Size(1177, 521);
             this.splitContainer1.SplitterDistance = 385;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -374,8 +374,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControlObject);
-            this.splitContainer2.Size = new System.Drawing.Size(1295, 385);
-            this.splitContainer2.SplitterDistance = 375;
+            this.splitContainer2.Size = new System.Drawing.Size(1177, 385);
+            this.splitContainer2.SplitterDistance = 340;
             this.splitContainer2.TabIndex = 0;
             // 
             // treeViewObject
@@ -389,7 +389,7 @@
             this.treeViewObject.Name = "treeViewObject";
             this.treeViewObject.SelectedImageIndex = 0;
             this.treeViewObject.ShowNodeToolTips = true;
-            this.treeViewObject.Size = new System.Drawing.Size(375, 385);
+            this.treeViewObject.Size = new System.Drawing.Size(340, 385);
             this.treeViewObject.TabIndex = 0;
             this.treeViewObject.DoubleClick += new System.EventHandler(this.openLCTreeNode);
             // 
@@ -478,11 +478,64 @@
             this.tabControlObject.Name = "tabControlObject";
             this.tabControlObject.SelectedIndex = 0;
             this.tabControlObject.ShowToolTips = true;
-            this.tabControlObject.Size = new System.Drawing.Size(916, 385);
+            this.tabControlObject.Size = new System.Drawing.Size(833, 385);
             this.tabControlObject.TabIndex = 1;
             this.tabControlObject.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControlObject_Selecting);
             this.tabControlObject.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControlObject_ControlRemoved);
             this.tabControlObject.DoubleClick += new System.EventHandler(this.tabControlObject_DoubleClick);
+            // 
+            // tabPageComputers
+            // 
+            this.tabPageComputers.Controls.Add(this.listViewComputers);
+            this.tabPageComputers.Controls.Add(this.toolStrip1);
+            this.tabPageComputers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageComputers.Name = "tabPageComputers";
+            this.tabPageComputers.Size = new System.Drawing.Size(825, 359);
+            this.tabPageComputers.TabIndex = 0;
+            this.tabPageComputers.Text = "Компьютеры";
+            this.tabPageComputers.UseVisualStyleBackColor = true;
+            // 
+            // listViewComputers
+            // 
+            this.listViewComputers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderIP_PC,
+            this.columnHeaderNamePC,
+            this.columnHeaderSubNetOrGroup,
+            this.columnHeaderDescriptionPC});
+            this.listViewComputers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewComputers.FullRowSelect = true;
+            this.listViewComputers.GridLines = true;
+            this.listViewComputers.Location = new System.Drawing.Point(0, 25);
+            this.listViewComputers.MultiSelect = false;
+            this.listViewComputers.Name = "listViewComputers";
+            this.listViewComputers.Size = new System.Drawing.Size(825, 334);
+            this.listViewComputers.TabIndex = 1;
+            this.listViewComputers.UseCompatibleStateImageBehavior = false;
+            this.listViewComputers.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderIP_PC
+            // 
+            this.columnHeaderIP_PC.Text = "IP";
+            // 
+            // columnHeaderNamePC
+            // 
+            this.columnHeaderNamePC.Text = "Имя ПК";
+            // 
+            // columnHeaderSubNetOrGroup
+            // 
+            this.columnHeaderSubNetOrGroup.Text = "Сеть/Группа";
+            // 
+            // columnHeaderDescriptionPC
+            // 
+            this.columnHeaderDescriptionPC.Text = "Описание ПК";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(825, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // listBoxOperation
             // 
@@ -490,7 +543,7 @@
             this.listBoxOperation.FormattingEnabled = true;
             this.listBoxOperation.Location = new System.Drawing.Point(0, 0);
             this.listBoxOperation.Name = "listBoxOperation";
-            this.listBoxOperation.Size = new System.Drawing.Size(1295, 132);
+            this.listBoxOperation.Size = new System.Drawing.Size(1177, 132);
             this.listBoxOperation.TabIndex = 0;
             // 
             // contextMenuStripLCGroup
@@ -829,64 +882,12 @@
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
-            // tabPageComputers
-            // 
-            this.tabPageComputers.Controls.Add(this.listViewComputers);
-            this.tabPageComputers.Controls.Add(this.toolStrip1);
-            this.tabPageComputers.Location = new System.Drawing.Point(4, 22);
-            this.tabPageComputers.Name = "tabPageComputers";
-            this.tabPageComputers.Size = new System.Drawing.Size(908, 359);
-            this.tabPageComputers.TabIndex = 0;
-            this.tabPageComputers.Text = "Компьютеры";
-            this.tabPageComputers.UseVisualStyleBackColor = true;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(908, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // listViewComputers
-            // 
-            this.listViewComputers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderIP_PC,
-            this.columnHeaderNamePC,
-            this.columnHeaderSubNetOrGroup,
-            this.columnHeaderDescriptionPC});
-            this.listViewComputers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewComputers.FullRowSelect = true;
-            this.listViewComputers.GridLines = true;
-            this.listViewComputers.Location = new System.Drawing.Point(0, 25);
-            this.listViewComputers.MultiSelect = false;
-            this.listViewComputers.Name = "listViewComputers";
-            this.listViewComputers.Size = new System.Drawing.Size(908, 334);
-            this.listViewComputers.TabIndex = 1;
-            this.listViewComputers.UseCompatibleStateImageBehavior = false;
-            // 
-            // columnHeaderIP_PC
-            // 
-            this.columnHeaderIP_PC.Text = "IP";
-            // 
-            // columnHeaderNamePC
-            // 
-            this.columnHeaderNamePC.Text = "Имя ПК";
-            // 
-            // columnHeaderSubNetOrGroup
-            // 
-            this.columnHeaderSubNetOrGroup.Text = "Сеть/Группа";
-            // 
-            // columnHeaderDescriptionPC
-            // 
-            this.columnHeaderDescriptionPC.Text = "Описание ПК";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1295, 622);
+            this.ClientSize = new System.Drawing.Size(1177, 622);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.toolStripMain);
@@ -913,11 +914,11 @@
             this.splitContainer2.ResumeLayout(false);
             this.contextMenuStripLCComputer.ResumeLayout(false);
             this.tabControlObject.ResumeLayout(false);
+            this.tabPageComputers.ResumeLayout(false);
+            this.tabPageComputers.PerformLayout();
             this.contextMenuStripLCGroup.ResumeLayout(false);
             this.contextMenuStripLCRoot.ResumeLayout(false);
             this.contextMenuStripLCSubnet.ResumeLayout(false);
-            this.tabPageComputers.ResumeLayout(false);
-            this.tabPageComputers.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
