@@ -304,21 +304,25 @@ namespace LC
 
             if (lcTreeNode.LCObjectType == LCObjectType.Computer)
             {
-                MessageBox.Show("Работает!");
-            }
-
-            // проверяем открыто ли 
-            if (lcTreeNode.TabPage == null)
-            {
-                // Открываем
-                lcTreeNode.CreateTabPage(this.tabControlObject);
-                // Как сделать по другому я не знаю ????
-                this.tabControlObject.SelectedIndex = this.tabControlObject.Controls.Count - 1;
+                LCTreeNodeComputer lcPC = (LCTreeNodeComputer)lcTreeNode;
+                ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description });
+                this.listViewComputers.Items.Add(lvi);
             }
             else
             {
-                // выделяем открытый ранее
-                this.tabControlObject.SelectedTab = lcTreeNode.TabPage;
+                // проверяем открыто ли 
+                if (lcTreeNode.TabPage == null)
+                {
+                    // Открываем
+                    lcTreeNode.CreateTabPage(this.tabControlObject);
+                    // Как сделать по другому я не знаю ????
+                    this.tabControlObject.SelectedIndex = this.tabControlObject.Controls.Count - 1;
+                }
+                else
+                {
+                    // выделяем открытый ранее
+                    this.tabControlObject.SelectedTab = lcTreeNode.TabPage;
+                }
             }
         }
         /// <summary>
@@ -765,6 +769,8 @@ namespace LC
         private void SaveOpenedPages()
         {
             this.tabControlObject.TabPages.Remove(this.tabPageComputers);
+            this.tabControlObject.TabPages.Remove(this.tabPageSubnets);
+            this.tabControlObject.TabPages.Remove(this.tabPageGroups);
 
             Properties.Settings.Default.OpenPages = "";
             foreach (LCTabPage lcTabPage in this.tabControlObject.TabPages)

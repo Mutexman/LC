@@ -121,6 +121,12 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPageSubnets = new System.Windows.Forms.TabPage();
+            this.tabPageGroups = new System.Windows.Forms.TabPage();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.listViewSubnets = new System.Windows.Forms.ListView();
+            this.listViewGroups = new System.Windows.Forms.ListView();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -136,6 +142,8 @@
             this.contextMenuStripLCGroup.SuspendLayout();
             this.contextMenuStripLCRoot.SuspendLayout();
             this.contextMenuStripLCSubnet.SuspendLayout();
+            this.tabPageSubnets.SuspendLayout();
+            this.tabPageGroups.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -473,6 +481,8 @@
             // tabControlObject
             // 
             this.tabControlObject.Controls.Add(this.tabPageComputers);
+            this.tabControlObject.Controls.Add(this.tabPageSubnets);
+            this.tabControlObject.Controls.Add(this.tabPageGroups);
             this.tabControlObject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlObject.Location = new System.Drawing.Point(0, 0);
             this.tabControlObject.Name = "tabControlObject";
@@ -516,18 +526,22 @@
             // columnHeaderIP_PC
             // 
             this.columnHeaderIP_PC.Text = "IP";
+            this.columnHeaderIP_PC.Width = 138;
             // 
             // columnHeaderNamePC
             // 
             this.columnHeaderNamePC.Text = "Имя ПК";
+            this.columnHeaderNamePC.Width = 114;
             // 
             // columnHeaderSubNetOrGroup
             // 
             this.columnHeaderSubNetOrGroup.Text = "Сеть/Группа";
+            this.columnHeaderSubNetOrGroup.Width = 173;
             // 
             // columnHeaderDescriptionPC
             // 
             this.columnHeaderDescriptionPC.Text = "Описание ПК";
+            this.columnHeaderDescriptionPC.Width = 386;
             // 
             // toolStrip1
             // 
@@ -882,6 +896,68 @@
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
+            // tabPageSubnets
+            // 
+            this.tabPageSubnets.Controls.Add(this.listViewSubnets);
+            this.tabPageSubnets.Controls.Add(this.toolStrip2);
+            this.tabPageSubnets.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSubnets.Name = "tabPageSubnets";
+            this.tabPageSubnets.Size = new System.Drawing.Size(825, 359);
+            this.tabPageSubnets.TabIndex = 1;
+            this.tabPageSubnets.Text = "Сети";
+            this.tabPageSubnets.UseVisualStyleBackColor = true;
+            // 
+            // tabPageGroups
+            // 
+            this.tabPageGroups.Controls.Add(this.listViewGroups);
+            this.tabPageGroups.Controls.Add(this.toolStrip3);
+            this.tabPageGroups.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGroups.Name = "tabPageGroups";
+            this.tabPageGroups.Size = new System.Drawing.Size(825, 359);
+            this.tabPageGroups.TabIndex = 2;
+            this.tabPageGroups.Text = "Группы";
+            this.tabPageGroups.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(825, 25);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(825, 25);
+            this.toolStrip3.TabIndex = 0;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // listViewSubnets
+            // 
+            this.listViewSubnets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewSubnets.FullRowSelect = true;
+            this.listViewSubnets.GridLines = true;
+            this.listViewSubnets.Location = new System.Drawing.Point(0, 25);
+            this.listViewSubnets.Name = "listViewSubnets";
+            this.listViewSubnets.Size = new System.Drawing.Size(825, 334);
+            this.listViewSubnets.TabIndex = 1;
+            this.listViewSubnets.UseCompatibleStateImageBehavior = false;
+            this.listViewSubnets.View = System.Windows.Forms.View.Details;
+            // 
+            // listViewGroups
+            // 
+            this.listViewGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewGroups.FullRowSelect = true;
+            this.listViewGroups.GridLines = true;
+            this.listViewGroups.Location = new System.Drawing.Point(0, 25);
+            this.listViewGroups.Name = "listViewGroups";
+            this.listViewGroups.Size = new System.Drawing.Size(825, 334);
+            this.listViewGroups.TabIndex = 1;
+            this.listViewGroups.UseCompatibleStateImageBehavior = false;
+            this.listViewGroups.View = System.Windows.Forms.View.Details;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -919,6 +995,10 @@
             this.contextMenuStripLCGroup.ResumeLayout(false);
             this.contextMenuStripLCRoot.ResumeLayout(false);
             this.contextMenuStripLCSubnet.ResumeLayout(false);
+            this.tabPageSubnets.ResumeLayout(false);
+            this.tabPageSubnets.PerformLayout();
+            this.tabPageGroups.ResumeLayout(false);
+            this.tabPageGroups.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1017,6 +1097,12 @@
         private System.Windows.Forms.ColumnHeader columnHeaderSubNetOrGroup;
         private System.Windows.Forms.ColumnHeader columnHeaderDescriptionPC;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.TabPage tabPageSubnets;
+        private System.Windows.Forms.TabPage tabPageGroups;
+        private System.Windows.Forms.ListView listViewSubnets;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ListView listViewGroups;
+        private System.Windows.Forms.ToolStrip toolStrip3;
     }
 }
 

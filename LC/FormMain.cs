@@ -224,10 +224,15 @@ namespace LC
                     {
                         // Делаем активным компьютер в дереве справочника
                         this.treeViewObject.SelectedNode = lcComp;
+
+                        ListViewItem lvi = new ListViewItem(new string[] { lcComp.IP, lcComp.Text, lcComp.ParentGroup, lcComp.Description });
+                        this.listViewComputers.Items.Add(lvi);
+                        lvi.Selected = true;
+
                         // Создаём вкладку
-                        lcComp.CreateTabPage(this.tabControlObject);
+                        // lcComp.CreateTabPage(this.tabControlObject);
                         // Делаем созданую вкладку активной
-                        this.tabControlObject.SelectedIndex = this.tabControlObject.TabPages.Count - 1;
+                        // this.tabControlObject.SelectedIndex = this.tabControlObject.TabPages.Count - 1;
                     }
                     else
                     {
@@ -362,13 +367,38 @@ namespace LC
         {
             // Времено сделано так
             if (e.Control == tabPageComputers)
+            {
                 return;
+            }
+            if (e.Control == tabPageSubnets)
+            {
+                return;
+            }
+            if (e.Control == tabPageGroups)
+            {
+                return;
+            }
 
             LCTabPage lcTP = (LCTabPage)e.Control;
             lcTP.LCTreeNode.TabPage = null;
         }
         private void tabControlObject_Selecting(object sender, TabControlCancelEventArgs e)
         {
+            // !!!! Временное решение. Потом надо удалить.
+            if(this.tabControlObject.SelectedTab == this.tabPageComputers)
+            {
+                return;
+            }
+            if (this.tabControlObject.SelectedTab == this.tabPageSubnets)
+            {
+                return;
+            }
+            if (this.tabControlObject.SelectedTab == this.tabPageGroups)
+            {
+                return;
+            }
+
+
             LCTabPage lcTabPage = (LCTabPage)this.tabControlObject.SelectedTab;
             // Проверяем есть ли открытые вкладки
             if (lcTabPage != null)
