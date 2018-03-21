@@ -302,12 +302,35 @@ namespace LC
         {
             LCTreeNode lcTreeNode = (LCTreeNode)this.treeViewObject.SelectedNode;
 
-            if (lcTreeNode.LCObjectType == LCObjectType.Computer)
+            switch (lcTreeNode.LCObjectType)
             {
-                LCTreeNodeComputer lcPC = (LCTreeNodeComputer)lcTreeNode;
-                ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description });
-                this.listViewComputers.Items.Add(lvi);
+                case LCObjectType.Computer:
+                    {
+                        LCTreeNodeComputer lcPC = (LCTreeNodeComputer)lcTreeNode;
+                        ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description });
+                        this.listViewComputers.Items.Add(lvi);
+                        this.tabControlObject.SelectedTab = this.tabPageComputers;
+                        break;
+                    }
+                case LCObjectType.SubNet:
+                    {
+                        LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNode;
+                        ListViewItem lvi = new ListViewItem(new string[] { lcSubnet.Text, lcSubnet.IPSubnet,
+                            lcSubnet.MaskSubnet,lcSubnet.ParentGroup,lcSubnet.Description });
+                        this.listViewSubnets.Items.Add(lvi);
+                        this.tabControlObject.SelectedTab = this.tabPageSubnets;
+                        break;
+                    }
+                case LCObjectType.Group:
+                    {
+                        LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNode;
+                        ListViewItem lvi = new ListViewItem(new string[] { lcGroup.Text, lcGroup.ParentGroup, lcGroup.Description });
+                        this.listViewGroups.Items.Add(lvi);
+                        this.tabControlObject.SelectedTab = this.tabPageGroups;
+                        break;
+                    }
             }
+            /*
             else
             {
                 // проверяем открыто ли 
@@ -324,6 +347,7 @@ namespace LC
                     this.tabControlObject.SelectedTab = lcTreeNode.TabPage;
                 }
             }
+            */
         }
         /// <summary>
         /// Отображение всех дочерних узлов
