@@ -64,6 +64,7 @@ namespace LC
                 this.splitContainer1.Panel2Collapsed = true;
             }
             CommandToolStripButton.toolStrip = this.toolStripComputers;
+            CommandToolStripButton.listComputers = this.listViewComputers;
             CommandToolStripButton.CreateCommandButtons();
         }
 

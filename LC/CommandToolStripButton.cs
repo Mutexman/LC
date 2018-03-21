@@ -10,6 +10,8 @@ namespace LC
 {
     class CommandToolStripButton : ToolStripButton
     {
+        // Поле в котором будет храниться ссылка на список компьютеров
+        public static ListView listComputers = null;
         // Поле в котором будет храниться ссылка на активный ToolStripButton 
         public static ToolStripButton activeToolStripButton = null;
         // Поле на ToolStrip в котором находиться данная кнопка
@@ -58,6 +60,7 @@ namespace LC
         public void Execute()
         {
             LCTabPage lcTab = (LCTabPage)tabControl.SelectedTab;
+
             // Проверяем есть ли активная вкладка
             if (lcTab != null)
             {
