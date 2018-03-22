@@ -413,25 +413,7 @@ namespace LC
         /// <param name="e"></param>
         private void editLCTreeNode(object sender, EventArgs e)
         {
-            LCTreeNode lcTreeNode = (LCTreeNode)this.treeViewObject.SelectedNode;
-            LCTabPage ltp = null;
-            // проверяем открыто ли 
-            if (lcTreeNode.TabPage == null)
-            {
-                // Открываем
-                lcTreeNode.CreateTabPage(this.tabControlObject);
-                ltp = (LCTabPage)lcTreeNode.TabPage;
-                ltp.Mode = TypeModeTabPage.Edit;
-                // Как сделать по другому я не знаю ????
-                this.tabControlObject.SelectedIndex = this.tabControlObject.Controls.Count - 1;
-            }
-            else
-            {
-                // выделяем открытый ранее
-                this.tabControlObject.SelectedTab = lcTreeNode.TabPage;
-                ltp = (LCTabPage)lcTreeNode.TabPage;
-                ltp.Mode = TypeModeTabPage.Edit;
-            }
+            MessageBox.Show("Временная заглушка!");
         }
         /// <summary>
         /// Событие удаления объекта LC
@@ -450,8 +432,8 @@ namespace LC
                 if (MessageBox.Show("Объект имеет дочерние узлы! Все равно удалить?", "Удаление", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    // Удаляем дочерние
-                    this.deleteChilds(lcTreeNode);
+                    // Здесь нужен код для удаления из таблиц объектов, которые являются дочерними по отношению к удаляемому объекту
+
                     // Удаляем текущий
                     lcTreeNode.Remove();
                     // Сообщаем об удалении
@@ -463,10 +445,6 @@ namespace LC
                 if (MessageBox.Show("Вы дейстительно хотите удалить этот объект ?", "Удаление", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    if (lcTreeNode.TabPage != null)
-                    {
-                        this.tabControlObject.TabPages.Remove(lcTreeNode.TabPage);
-                    }
                     if (lcTreeNode.LCObjectType == LCObjectType.Computer)
                     {
                         tempStr = "Компьютер: " + tempStr + " удалён.";
@@ -479,21 +457,6 @@ namespace LC
                     // Сообщаем об удалении
                     this.WriteListBox(tempStr);
                 }
-            }
-        }
-        /// <summary>
-        /// Метод закрытия вкладок дочерних узлов
-        /// </summary>
-        /// <param name="lcTreenode">Удаляемый узел дерева</param>
-        private void deleteChilds(LCTreeNode lcTreenode)
-        {
-            if (lcTreenode.TabPage != null)
-            {
-                this.tabControlObject.TabPages.Remove(lcTreenode.TabPage);
-            }
-            foreach (LCTreeNode lcTN in lcTreenode.Nodes)
-            {
-                this.deleteChilds(lcTN);
             }
         }
         /// <summary>
@@ -792,18 +755,10 @@ namespace LC
         /// </summary>
         private void SaveOpenedPages()
         {
-            this.tabControlObject.TabPages.Remove(this.tabPageComputers);
-            this.tabControlObject.TabPages.Remove(this.tabPageSubnets);
-            this.tabControlObject.TabPages.Remove(this.tabPageGroups);
-
             Properties.Settings.Default.OpenPages = "";
-            foreach (LCTabPage lcTabPage in this.tabControlObject.TabPages)
+            foreach (ListViewItem lvi in this.listViewComputers.Items)
             {
-                if (lcTabPage.LCTreeNode.LCObjectType == LCObjectType.Computer)
-                {
-                    LCTreeNodeComputer lcComp = (LCTreeNodeComputer)lcTabPage.LCTreeNode;
-                    Properties.Settings.Default.OpenPages += lcComp.IP + ";";
-                }
+                Properties.Settings.Default.OpenPages += lvi.SubItems[0].Text + ";";
             }
             Properties.Settings.Default.Save();
         }

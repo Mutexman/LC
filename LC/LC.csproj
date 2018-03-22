@@ -87,9 +87,6 @@
     <Compile Include="FormNewSubnet.Designer.cs">
       <DependentUpon>FormNewSubnet.cs</DependentUpon>
     </Compile>
-    <Compile Include="LCTabPageSubnet.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CommandToolStripButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -154,15 +151,6 @@
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="ILCPlugin.cs" />
-    <Compile Include="LCTabPage.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="LCTabPageComputer.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="LCTabPageGroup.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="LCTreeNode.cs" />
     <Compile Include="LCTreeNodeComputer.cs" />
     <Compile Include="LCTreeNodeGroup.cs" />
@@ -200,9 +188,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LCTabPageComputer.resx">
-      <DependentUpon>LCTabPageComputer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

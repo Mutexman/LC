@@ -10,6 +10,7 @@ using System.Xml;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.Net;
 
 namespace LC
 {
@@ -102,8 +103,6 @@ namespace LC
                 LCTreeNode.computerContextMenuStrip = this.contextMenuStripLCComputer;
                 LCTreeNode.subnetContextMenuStrip = this.contextMenuStripLCSubnet;
                 LCTreeNode.StatusLabel = this.toolStripStatusLabelMain;
-                LCTabPage.ListBoxMessage = this.listBoxOperation;
-                LCTabPage.StatusLabel = this.toolStripStatusLabelMain;
                 CommandToolStripButton.StatusLabel = this.toolStripStatusLabelMain;
                 CommandToolStripButton.listBoxMessage = this.listBoxOperation;
                 CommandToolStripButton.tabControl = this.tabControlObject;
@@ -223,24 +222,12 @@ namespace LC
                 // Проверяем по IP-адресу
                 if (lcComp.IP == ip)
                 {
-                    if (lcComp.TabPage == null)
-                    {
-                        // Делаем активным компьютер в дереве справочника
-                        this.treeViewObject.SelectedNode = lcComp;
+                    // Делаем активным компьютер в дереве справочника
+                    this.treeViewObject.SelectedNode = lcComp;
 
-                        ListViewItem lvi = new ListViewItem(new string[] { lcComp.IP, lcComp.Text, lcComp.ParentGroup, lcComp.Description });
-                        this.listViewComputers.Items.Add(lvi);
-                        lvi.Selected = true;
-
-                        // Создаём вкладку
-                        // lcComp.CreateTabPage(this.tabControlObject);
-                        // Делаем созданую вкладку активной
-                        // this.tabControlObject.SelectedIndex = this.tabControlObject.TabPages.Count - 1;
-                    }
-                    else
-                    {
-                        this.tabControlObject.SelectedTab = lcComp.TabPage;
-                    }
+                    ListViewItem lvi = new ListViewItem(new string[] { lcComp.IP, lcComp.Text, lcComp.ParentGroup, lcComp.Description });
+                    this.listViewComputers.Items.Add(lvi);
+                    lvi.Selected = true;
                     countFind++;
                     this.WriteListBox("Найден компьютер с именем: " + lcComp.Text + ".");
                 }
@@ -361,59 +348,33 @@ namespace LC
         #endregion
 
         #region События TabControlObject
-        private void tabControlObject_DoubleClick(object sender, EventArgs e)
-        {
-            TabPage tp = this.tabControlObject.SelectedTab;
-            this.tabControlObject.TabPages.Remove(tp);
-        }
-        private void tabControlObject_ControlRemoved(object sender, ControlEventArgs e)
-        {
-            // Времено сделано так
-            if (e.Control == tabPageComputers)
-            {
-                return;
-            }
-            if (e.Control == tabPageSubnets)
-            {
-                return;
-            }
-            if (e.Control == tabPageGroups)
-            {
-                return;
-            }
-
-            LCTabPage lcTP = (LCTabPage)e.Control;
-            lcTP.LCTreeNode.TabPage = null;
-        }
-        private void tabControlObject_Selecting(object sender, TabControlCancelEventArgs e)
-        {
-            // !!!! Временное решение. Потом надо удалить.
-            if(this.tabControlObject.SelectedTab == this.tabPageComputers)
-            {
-                return;
-            }
-            if (this.tabControlObject.SelectedTab == this.tabPageSubnets)
-            {
-                return;
-            }
-            if (this.tabControlObject.SelectedTab == this.tabPageGroups)
-            {
-                return;
-            }
-
-
-            LCTabPage lcTabPage = (LCTabPage)this.tabControlObject.SelectedTab;
-            // Проверяем есть ли открытые вкладки
-            if (lcTabPage != null)
-            {
-                // Выделяем узел в дереве
-                this.treeViewObject.SelectedNode = lcTabPage.LCTreeNode;
-            }
-            else
-            {
-                this.WriteListBox("Нет открытых вкладок !");
-            }
-        }
         #endregion
+
+        private void toolStripButtonGetNamePC_Click(object sender, EventArgs e)
+        {
+            string ipStr;
+            try
+            {
+                ipStr = this.listViewComputers.SelectedItems[0].SubItems[0].Text;
+            }
+            catch (System.ArgumentOutOfRangeException myException)
+            {
+                this.WriteListBox(myException.Message);
+                this.WriteListBox("Не выделен компьютер для подключения !");
+                return;
+            }
+            try
+            {
+                IPAddress ip = IPAddress.Parse(ipStr);
+                IPHostEntry host = Dns.GetHostEntry(ip);
+                string hostName = host.HostName;
+                this.listViewComputers.SelectedItems[0].SubItems[1].Text = hostName;
+                this.WriteListBox("Имя ПК с IP " + ipStr + " @ " + hostName);
+            }
+            catch (System.Exception myException)
+            {
+                this.WriteListBox("Определение имени для ПК с IP " + ipStr + ":" + myException.Message);
+            }
+        }
     }
 }

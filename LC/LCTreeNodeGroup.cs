@@ -13,12 +13,6 @@ namespace LC
         {
             this.lcObjectType = LCObjectType.Group;
         }
-        public override void CreateTabPage(TabControl tabControl)
-        {
-            LCTabPageGroup lcTabPageGroup = new LCTabPageGroup(this);
-            this.tabPage = lcTabPageGroup;
-            tabControl.Controls.Add(lcTabPageGroup);
-        }
         public override void Save(XmlTextWriter xw)
         {
             base.Save(xw);

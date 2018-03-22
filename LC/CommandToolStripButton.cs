@@ -59,43 +59,38 @@ namespace LC
         /// </summary>
         public void Execute()
         {
-            LCTabPage lcTab = (LCTabPage)tabControl.SelectedTab;
+            string ip;
+            try
+            {
+                ip = listComputers.SelectedItems[0].SubItems[0].Text;
+            }
+            catch (System.ArgumentOutOfRangeException e)
+            {
+                this.WriteListBox(e.Message);
+                this.WriteListBox("Не выделен компьютер для подключения !");
+                return;
+            }
 
-            // Проверяем есть ли активная вкладка
-            if (lcTab != null)
+            string execStr = this.parameters;
+            execStr = execStr.Replace("@[IP]", ip);
+            execStr = execStr.Replace("@[User]", FormMain.User);
+            string displayStr = execStr;
+            execStr = execStr.Replace("@[Password]", FormMain.Password);
+            displayStr = displayStr.Replace("@[Password]", "********");
+            this.WriteListBox(" Выполняем: " + this.command + " " + displayStr);
+            try
             {
-                if (lcTab.LCTreeNode.LCObjectType == LCObjectType.Computer)
-                {
-                    LCTabPageComputer lcComp = (LCTabPageComputer) lcTab;
-                    string execStr = this.parameters;
-                    execStr = execStr.Replace("@[IP]", lcComp.textBoxIP.Text);
-                    execStr = execStr.Replace("@[User]", FormMain.User);
-                    string displayStr = execStr;
-                    execStr = execStr.Replace("@[Password]", FormMain.Password);
-                    displayStr = displayStr.Replace("@[Password]", "********");
-                    this.WriteListBox(" Выполняем: " + this.command + " " + displayStr);
-                    try
-                    {
-                        System.Diagnostics.Process.Start(this.command, execStr);
-                    }
-                    catch (System.ComponentModel.Win32Exception e)
-                    {
-                        this.WriteListBox(e.Message);
-                    }
-                    catch (InvalidOperationException e)
-                    {
-                        this.WriteListBox(e.Message);
-                    }
-                }
-                else
-                {
-                    this.WriteListBox("Данную кнопку можно использовать для вкладки со свойствами компьютера!");
-                }
+                System.Diagnostics.Process.Start(this.command, execStr);
             }
-            else
+            catch (System.ComponentModel.Win32Exception e)
             {
-                this.WriteListBox("Нет открытой вкладки !");
+                this.WriteListBox(e.Message);
             }
+            catch (InvalidOperationException e)
+            {
+                this.WriteListBox(e.Message);
+            }
+
         }
         private void WriteListBox(string message)
         {

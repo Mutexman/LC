@@ -135,6 +135,8 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButtonGetNamePC = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -147,6 +149,7 @@
             this.contextMenuStripLCComputer.SuspendLayout();
             this.tabControlObject.SuspendLayout();
             this.tabPageComputers.SuspendLayout();
+            this.toolStripComputers.SuspendLayout();
             this.tabPageSubnets.SuspendLayout();
             this.tabPageGroups.SuspendLayout();
             this.contextMenuStripLCGroup.SuspendLayout();
@@ -498,9 +501,6 @@
             this.tabControlObject.ShowToolTips = true;
             this.tabControlObject.Size = new System.Drawing.Size(833, 385);
             this.tabControlObject.TabIndex = 1;
-            this.tabControlObject.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControlObject_Selecting);
-            this.tabControlObject.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControlObject_ControlRemoved);
-            this.tabControlObject.DoubleClick += new System.EventHandler(this.tabControlObject_DoubleClick);
             // 
             // tabPageComputers
             // 
@@ -553,6 +553,9 @@
             // 
             // toolStripComputers
             // 
+            this.toolStripComputers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonGetNamePC,
+            this.toolStripSeparator19});
             this.toolStripComputers.Location = new System.Drawing.Point(0, 0);
             this.toolStripComputers.Name = "toolStripComputers";
             this.toolStripComputers.Size = new System.Drawing.Size(825, 25);
@@ -1016,6 +1019,22 @@
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
+            // toolStripButtonGetNamePC
+            // 
+            this.toolStripButtonGetNamePC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGetNamePC.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNamePC.Image")));
+            this.toolStripButtonGetNamePC.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGetNamePC.Name = "toolStripButtonGetNamePC";
+            this.toolStripButtonGetNamePC.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGetNamePC.Text = "toolStripButtonGetNamePC";
+            this.toolStripButtonGetNamePC.ToolTipText = "Определяет имя ПК по IP адресу";
+            this.toolStripButtonGetNamePC.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            // 
+            // toolStripSeparator19
+            // 
+            this.toolStripSeparator19.Name = "toolStripSeparator19";
+            this.toolStripSeparator19.Size = new System.Drawing.Size(6, 25);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1050,6 +1069,8 @@
             this.tabControlObject.ResumeLayout(false);
             this.tabPageComputers.ResumeLayout(false);
             this.tabPageComputers.PerformLayout();
+            this.toolStripComputers.ResumeLayout(false);
+            this.toolStripComputers.PerformLayout();
             this.tabPageSubnets.ResumeLayout(false);
             this.tabPageSubnets.PerformLayout();
             this.tabPageGroups.ResumeLayout(false);
@@ -1169,6 +1190,8 @@
         private System.Windows.Forms.ColumnHeader columnHeaderNameGroup;
         private System.Windows.Forms.ColumnHeader columnHeaderPlaceGroup;
         private System.Windows.Forms.ColumnHeader columnHeaderDescriptionGroup;
+        private System.Windows.Forms.ToolStripButton toolStripButtonGetNamePC;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
     }
 }
 

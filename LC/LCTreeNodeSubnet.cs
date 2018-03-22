@@ -37,12 +37,6 @@ namespace LC
                 this.masksubnet = value;
             }
         }
-        public override void CreateTabPage(TabControl tabControl)
-        {
-            LCTabPageSubnet lcTabPageSubnet = new LCTabPageSubnet(this);
-            this.tabPage = lcTabPageSubnet;
-            tabControl.Controls.Add(lcTabPageSubnet);
-        }
         public override void Save(XmlTextWriter xw)
         {
             //base.Save(xw);

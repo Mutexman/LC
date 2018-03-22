@@ -30,21 +30,6 @@ namespace LC
         }
         // поле для хранения имени файла фотографии
         protected string fotoFile = "";
-        protected TabPage tabPage = null;
-        /// <summary>
-        /// Ссылка на TabPage который отображает данные данного объекта дерева
-        /// </summary>
-        public TabPage TabPage
-        {
-            get
-            {
-                return this.tabPage;
-            }
-            set
-            {
-                this.tabPage = value;
-            }
-        }
         static private ListBox listBoxOperation;
         static public ToolStripLabel StatusLabel = null;
         //Контекстные меню
@@ -90,13 +75,6 @@ namespace LC
         /// Метод сохранения данных объекта
         /// </summary>
         virtual public void Save(XmlTextWriter xw)
-        {
-        }
-        /// <summary>
-        /// Метод создания компонента TabPage со свойствами объекта
-        /// </summary>
-        /// <param name="tabControl"></param>
-        virtual public void CreateTabPage(TabControl tabControl)
         {
         }
         /// <summary>

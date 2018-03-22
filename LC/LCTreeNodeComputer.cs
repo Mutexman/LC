@@ -29,12 +29,6 @@ namespace LC
                 this.ip = value;
             }
         }
-        public override void CreateTabPage(TabControl tabControl)
-        {
-            LCTabPageComputer lcTabPageComputer = new LCTabPageComputer(this);
-            this.tabPage = lcTabPageComputer;
-            tabControl.Controls.Add(lcTabPageComputer);
-        }
         public override void Save(XmlTextWriter xw)
         {
             base.Save(xw);
