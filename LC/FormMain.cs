@@ -347,12 +347,10 @@ namespace LC
         }
         #endregion
 
-        #region События TabControlObject
-        #endregion
-
         private void toolStripButtonGetNamePC_Click(object sender, EventArgs e)
         {
             string ipStr;
+            // Пока не понятно как определить что выделена какая либо строка в listView
             try
             {
                 ipStr = this.listViewComputers.SelectedItems[0].SubItems[0].Text;
