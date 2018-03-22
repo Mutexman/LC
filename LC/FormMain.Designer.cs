@@ -33,7 +33,6 @@
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.закрытьВсеВкладкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemPlugins = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +50,6 @@
             this.toolStripButtonPasteClipboard = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonFind = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRunCMD = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonMutexCMD = new System.Windows.Forms.ToolStripButton();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -75,6 +73,8 @@
             this.columnHeaderSubNetOrGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDescriptionPC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStripComputers = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonGetNamePC = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.tabPageSubnets = new System.Windows.Forms.TabPage();
             this.listViewSubnets = new System.Windows.Forms.ListView();
             this.columnHeaderNameSubnet = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -135,14 +135,14 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonGetNamePC = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -174,7 +174,6 @@
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.открытьToolStripMenuItem,
-            this.закрытьВсеВкладкиToolStripMenuItem,
             this.toolStripSeparator1,
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
@@ -188,13 +187,6 @@
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
-            // закрытьВсеВкладкиToolStripMenuItem
-            // 
-            this.закрытьВсеВкладкиToolStripMenuItem.Name = "закрытьВсеВкладкиToolStripMenuItem";
-            this.закрытьВсеВкладкиToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.закрытьВсеВкладкиToolStripMenuItem.Text = "Закрыть все вкладки";
-            this.закрытьВсеВкладкиToolStripMenuItem.Click += new System.EventHandler(this.закрытьВсеВкладкиToolStripMenuItem_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -204,7 +196,7 @@
             // 
             this.выходToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выходToolStripMenuItem.Image")));
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
@@ -283,8 +275,7 @@
             this.toolStripTextBoxIP,
             this.toolStripButtonPasteClipboard,
             this.toolStripButtonFind,
-            this.toolStripButtonRunCMD,
-            this.toolStripButtonMutexCMD});
+            this.toolStripButtonRunCMD});
             this.toolStripMain.Location = new System.Drawing.Point(0, 24);
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.Size = new System.Drawing.Size(1177, 55);
@@ -334,17 +325,6 @@
             this.toolStripButtonRunCMD.Text = "cmd.exe";
             this.toolStripButtonRunCMD.ToolTipText = "Запуск коммандной строки";
             this.toolStripButtonRunCMD.Click += new System.EventHandler(this.toolStripButtonRunCMD_Click);
-            // 
-            // toolStripButtonMutexCMD
-            // 
-            this.toolStripButtonMutexCMD.Image = global::LC.Properties.Resources.MutexCmd;
-            this.toolStripButtonMutexCMD.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonMutexCMD.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonMutexCMD.Name = "toolStripButtonMutexCMD";
-            this.toolStripButtonMutexCMD.Size = new System.Drawing.Size(119, 52);
-            this.toolStripButtonMutexCMD.Text = "MutexCMD";
-            this.toolStripButtonMutexCMD.ToolTipText = "Запуск MutexCMD";
-            this.toolStripButtonMutexCMD.Click += new System.EventHandler(this.toolStripButtonMutexCMD_Click);
             // 
             // statusStripMain
             // 
@@ -561,6 +541,22 @@
             this.toolStripComputers.Size = new System.Drawing.Size(825, 25);
             this.toolStripComputers.TabIndex = 0;
             this.toolStripComputers.Text = "toolStrip1";
+            // 
+            // toolStripButtonGetNamePC
+            // 
+            this.toolStripButtonGetNamePC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGetNamePC.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNamePC.Image")));
+            this.toolStripButtonGetNamePC.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGetNamePC.Name = "toolStripButtonGetNamePC";
+            this.toolStripButtonGetNamePC.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGetNamePC.Text = "toolStripButtonGetNamePC";
+            this.toolStripButtonGetNamePC.ToolTipText = "Определяет имя ПК по IP адресу";
+            this.toolStripButtonGetNamePC.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            // 
+            // toolStripSeparator19
+            // 
+            this.toolStripSeparator19.Name = "toolStripSeparator19";
+            this.toolStripSeparator19.Size = new System.Drawing.Size(6, 25);
             // 
             // tabPageSubnets
             // 
@@ -1019,22 +1015,6 @@
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
-            // toolStripButtonGetNamePC
-            // 
-            this.toolStripButtonGetNamePC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonGetNamePC.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNamePC.Image")));
-            this.toolStripButtonGetNamePC.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonGetNamePC.Name = "toolStripButtonGetNamePC";
-            this.toolStripButtonGetNamePC.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonGetNamePC.Text = "toolStripButtonGetNamePC";
-            this.toolStripButtonGetNamePC.ToolTipText = "Определяет имя ПК по IP адресу";
-            this.toolStripButtonGetNamePC.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
-            // 
-            // toolStripSeparator19
-            // 
-            this.toolStripSeparator19.Name = "toolStripSeparator19";
-            this.toolStripSeparator19.Size = new System.Drawing.Size(6, 25);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1061,9 +1041,11 @@
             this.statusStripMain.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.contextMenuStripLCComputer.ResumeLayout(false);
             this.tabControlObject.ResumeLayout(false);
@@ -1093,7 +1075,6 @@
         private System.Windows.Forms.TreeView treeViewObject;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripLCComputer;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem закрытьВсеВкладкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
@@ -1146,7 +1127,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialogImport;
         private System.Windows.Forms.SaveFileDialog saveFileDialogExport;
         private System.Windows.Forms.ToolStripButton toolStripButtonRunCMD;
-        private System.Windows.Forms.ToolStripButton toolStripButtonMutexCMD;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelMain;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonPasteClipboard;
