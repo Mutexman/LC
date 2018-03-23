@@ -308,6 +308,7 @@ namespace LC
                     {
                         LCTreeNodeComputer lcPC = (LCTreeNodeComputer)lcTreeNode;
                         ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description });
+                        lvi.Tag = lcPC;
                         this.listViewComputers.Items.Add(lvi);
                         this.tabControlObject.SelectedTab = this.tabPageComputers;
                         break;
@@ -317,6 +318,7 @@ namespace LC
                         LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNode;
                         ListViewItem lvi = new ListViewItem(new string[] { lcSubnet.Text, lcSubnet.IPSubnet,
                             lcSubnet.MaskSubnet,lcSubnet.ParentGroup,lcSubnet.Description });
+                        lvi.Tag = lcSubnet;
                         this.listViewSubnets.Items.Add(lvi);
                         this.tabControlObject.SelectedTab = this.tabPageSubnets;
                         break;
@@ -325,29 +327,12 @@ namespace LC
                     {
                         LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNode;
                         ListViewItem lvi = new ListViewItem(new string[] { lcGroup.Text, lcGroup.ParentGroup, lcGroup.Description });
+                        lvi.Tag = lcGroup;
                         this.listViewGroups.Items.Add(lvi);
                         this.tabControlObject.SelectedTab = this.tabPageGroups;
                         break;
                     }
             }
-            /*
-            else
-            {
-                // проверяем открыто ли 
-                if (lcTreeNode.TabPage == null)
-                {
-                    // Открываем
-                    lcTreeNode.CreateTabPage(this.tabControlObject);
-                    // Как сделать по другому я не знаю ????
-                    this.tabControlObject.SelectedIndex = this.tabControlObject.Controls.Count - 1;
-                }
-                else
-                {
-                    // выделяем открытый ранее
-                    this.tabControlObject.SelectedTab = lcTreeNode.TabPage;
-                }
-            }
-            */
         }
         /// <summary>
         /// Отображение всех дочерних узлов
