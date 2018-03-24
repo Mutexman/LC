@@ -59,8 +59,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemEditComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemExportComputer = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemCutComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDeleteComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
@@ -94,12 +92,7 @@
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemOpenNodesGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemNewGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemNewSubnet = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemNewComputer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemEditGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
@@ -109,9 +102,6 @@
             this.contextMenuStripLCRoot = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemOpenNodesRoot = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemImportRoot = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemNewComputerRoot = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemNewGroupRoot = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSubnetRoot = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -123,12 +113,6 @@
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemOpenNodesSubnet = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemSubnetImport = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSubnetExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemGroupNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemComputerNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemEditSubnet = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
@@ -391,52 +375,40 @@
             this.toolStripSeparator3,
             this.toolStripMenuItemEditComputer,
             this.toolStripSeparator12,
-            this.toolStripMenuItemExportComputer,
-            this.toolStripSeparator4,
             this.toolStripMenuItemCutComputer,
             this.toolStripMenuItemDeleteComputer});
             this.contextMenuStripLCComputer.Name = "contextMenuStripLCTree";
-            this.contextMenuStripLCComputer.Size = new System.Drawing.Size(129, 132);
+            this.contextMenuStripLCComputer.Size = new System.Drawing.Size(129, 104);
             // 
             // toolStripMenuItemOpenComputer
             // 
             this.toolStripMenuItemOpenComputer.Name = "toolStripMenuItemOpenComputer";
-            this.toolStripMenuItemOpenComputer.Size = new System.Drawing.Size(128, 22);
+            this.toolStripMenuItemOpenComputer.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemOpenComputer.Text = "Открыть";
             this.toolStripMenuItemOpenComputer.Click += new System.EventHandler(this.openLCTreeNode);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(125, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItemEditComputer
             // 
             this.toolStripMenuItemEditComputer.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemEditComputer.Image")));
             this.toolStripMenuItemEditComputer.Name = "toolStripMenuItemEditComputer";
-            this.toolStripMenuItemEditComputer.Size = new System.Drawing.Size(128, 22);
+            this.toolStripMenuItemEditComputer.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemEditComputer.Text = "Изменить";
             this.toolStripMenuItemEditComputer.Click += new System.EventHandler(this.editLCTreeNode);
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(125, 6);
-            // 
-            // toolStripMenuItemExportComputer
-            // 
-            this.toolStripMenuItemExportComputer.Name = "toolStripMenuItemExportComputer";
-            this.toolStripMenuItemExportComputer.Size = new System.Drawing.Size(128, 22);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(125, 6);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItemCutComputer
             // 
             this.toolStripMenuItemCutComputer.Name = "toolStripMenuItemCutComputer";
-            this.toolStripMenuItemCutComputer.Size = new System.Drawing.Size(128, 22);
+            this.toolStripMenuItemCutComputer.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemCutComputer.Text = "Вырезать";
             this.toolStripMenuItemCutComputer.Click += new System.EventHandler(this.CutLCTreeNode);
             // 
@@ -444,7 +416,7 @@
             // 
             this.toolStripMenuItemDeleteComputer.Image = global::LC.Properties.Resources.Close;
             this.toolStripMenuItemDeleteComputer.Name = "toolStripMenuItemDeleteComputer";
-            this.toolStripMenuItemDeleteComputer.Size = new System.Drawing.Size(128, 22);
+            this.toolStripMenuItemDeleteComputer.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemDeleteComputer.Text = "Удалить";
             this.toolStripMenuItemDeleteComputer.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
@@ -677,12 +649,7 @@
             this.toolStripSeparator9,
             this.toolStripMenuItemOpenNodesGroup,
             this.toolStripSeparator11,
-            this.toolStripMenuItem1,
-            this.toolStripMenuItemExport,
-            this.toolStripSeparator5,
-            this.toolStripMenuItemNewGroup,
             this.toolStripMenuItemNewSubnet,
-            this.toolStripMenuItemNewComputer,
             this.toolStripSeparator6,
             this.toolStripMenuItemEditGroup,
             this.toolStripSeparator7,
@@ -690,7 +657,7 @@
             this.toolStripMenuItemCutGroup,
             this.toolStripMenuItemDeleteGroup});
             this.contextMenuStripLCGroup.Name = "contextMenuStripLCGroup";
-            this.contextMenuStripLCGroup.Size = new System.Drawing.Size(199, 276);
+            this.contextMenuStripLCGroup.Size = new System.Drawing.Size(199, 182);
             // 
             // toolStripMenuItemOpenGroup
             // 
@@ -715,29 +682,6 @@
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
             this.toolStripSeparator11.Size = new System.Drawing.Size(195, 6);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(198, 22);
-            // 
-            // toolStripMenuItemExport
-            // 
-            this.toolStripMenuItemExport.Name = "toolStripMenuItemExport";
-            this.toolStripMenuItemExport.Size = new System.Drawing.Size(198, 22);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(195, 6);
-            // 
-            // toolStripMenuItemNewGroup
-            // 
-            this.toolStripMenuItemNewGroup.Image = global::LC.Properties.Resources.AddNewContextMenu;
-            this.toolStripMenuItemNewGroup.Name = "toolStripMenuItemNewGroup";
-            this.toolStripMenuItemNewGroup.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemNewGroup.Text = "Новая группа";
-            this.toolStripMenuItemNewGroup.Click += new System.EventHandler(this.createNewGroup);
             // 
             // toolStripMenuItemNewSubnet
             // 
@@ -793,15 +737,12 @@
             this.contextMenuStripLCRoot.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemOpenNodesRoot,
             this.toolStripSeparator10,
-            this.toolStripMenuItemImportRoot,
-            this.toolStripSeparator13,
-            this.toolStripMenuItemNewComputerRoot,
             this.toolStripMenuItemNewGroupRoot,
             this.toolStripMenuItemSubnetRoot,
             this.toolStripSeparator8,
             this.toolStripMenuItemPasteRoot});
             this.contextMenuStripLCRoot.Name = "contextMenuStripLCRoot";
-            this.contextMenuStripLCRoot.Size = new System.Drawing.Size(199, 154);
+            this.contextMenuStripLCRoot.Size = new System.Drawing.Size(199, 104);
             // 
             // toolStripMenuItemOpenNodesRoot
             // 
@@ -814,16 +755,6 @@
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             this.toolStripSeparator10.Size = new System.Drawing.Size(195, 6);
-            // 
-            // toolStripMenuItemImportRoot
-            // 
-            this.toolStripMenuItemImportRoot.Name = "toolStripMenuItemImportRoot";
-            this.toolStripMenuItemImportRoot.Size = new System.Drawing.Size(198, 22);
-            // 
-            // toolStripSeparator13
-            // 
-            this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(195, 6);
             // 
             // toolStripMenuItemNewGroupRoot
             // 
@@ -870,19 +801,13 @@
             this.toolStripSeparator14,
             this.toolStripMenuItemOpenNodesSubnet,
             this.toolStripSeparator15,
-            this.toolStripMenuItemSubnetImport,
-            this.toolStripMenuItemSubnetExport,
-            this.toolStripSeparator16,
-            this.toolStripMenuItemGroupNew,
-            this.toolStripMenuItemComputerNew,
-            this.toolStripSeparator17,
             this.toolStripMenuItemEditSubnet,
             this.toolStripSeparator18,
             this.toolStripMenuItemPaste,
             this.toolStripMenuItemCut,
             this.toolStripMenuItemDelete});
             this.contextMenuStripLCSubnet.Name = "contextMenuStripLCGroup";
-            this.contextMenuStripLCSubnet.Size = new System.Drawing.Size(199, 254);
+            this.contextMenuStripLCSubnet.Size = new System.Drawing.Size(199, 154);
             // 
             // toolStripMenuItemOpenSubnet
             // 
@@ -907,34 +832,6 @@
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
             this.toolStripSeparator15.Size = new System.Drawing.Size(195, 6);
-            // 
-            // toolStripMenuItemSubnetImport
-            // 
-            this.toolStripMenuItemSubnetImport.Name = "toolStripMenuItemSubnetImport";
-            this.toolStripMenuItemSubnetImport.Size = new System.Drawing.Size(198, 22);
-            // 
-            // toolStripMenuItemSubnetExport
-            // 
-            this.toolStripMenuItemSubnetExport.Name = "toolStripMenuItemSubnetExport";
-            this.toolStripMenuItemSubnetExport.Size = new System.Drawing.Size(198, 22);
-            // 
-            // toolStripSeparator16
-            // 
-            this.toolStripSeparator16.Name = "toolStripSeparator16";
-            this.toolStripSeparator16.Size = new System.Drawing.Size(195, 6);
-            // 
-            // toolStripMenuItemGroupNew
-            // 
-            this.toolStripMenuItemGroupNew.Image = global::LC.Properties.Resources.AddNewContextMenu;
-            this.toolStripMenuItemGroupNew.Name = "toolStripMenuItemGroupNew";
-            this.toolStripMenuItemGroupNew.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemGroupNew.Text = "Новая группа";
-            this.toolStripMenuItemGroupNew.Click += new System.EventHandler(this.createNewGroup);
-            // 
-            // toolStripSeparator17
-            // 
-            this.toolStripSeparator17.Name = "toolStripSeparator17";
-            this.toolStripSeparator17.Size = new System.Drawing.Size(195, 6);
             // 
             // toolStripMenuItemEditSubnet
             // 
@@ -1049,20 +946,15 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenComputer;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemEditComputer;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCutComputer;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDeleteComputer;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenGroup;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNewGroup;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNewComputer;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemEditGroup;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPasteGroup;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCutGroup;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDeleteGroup;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNewComputerRoot;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNewGroupRoot;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPasteRoot;
@@ -1074,12 +966,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenNodesGroup;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExport;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExportComputer;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemImportRoot;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.OpenFileDialog openFileDialogImport;
         private System.Windows.Forms.SaveFileDialog saveFileDialogExport;
         private System.Windows.Forms.ToolStripButton toolStripButtonRunCMD;
@@ -1092,12 +979,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenNodesSubnet;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSubnetImport;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSubnetExport;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGroupNew;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemComputerNew;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemEditSubnet;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPaste;

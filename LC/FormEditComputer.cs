@@ -24,7 +24,6 @@ namespace LC
             this.IP = this.lcTreeNodeComputer.IP;
             this.Description = this.lcTreeNodeComputer.Description;
         }
-        private LCTreeNodeGroup lcTreeNodeGroup = null ;
         private LCTreeNodeComputer lcTreeNodeComputer = null;
         public static TreeView treeView = null;
         /// <summary>
@@ -131,37 +130,12 @@ namespace LC
         {
             if (this.textBoxNameComputer.Text != "")
             {
-                string pattern = @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
-                      @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
-                      @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
-                      @"(25[0-5]|2[0-4]\d|[01]?\d\d?)";
-                Regex regex = new Regex(pattern);
-                Match match = regex.Match(this.textBoxIP.Text);
-                // Проверяем корректно ли введен IP-адрес
-                if (match.Success)
-                {
-                    this.textBoxIP.Text = match.Value;
-                    // Обнуляем счётчик компьютеров
-                    // проверка нет ли уже компьютера с таким IP-адресом в справочнике
-                    if (this.DoubleIP(FormEditComputer.treeView.Nodes[0], this.textBoxIP.Text))
-                    {
-                        if (MessageBox.Show("Компьютер с таким IP уже имеется в справочнике! Все равно добавить ?", "Линейный специалист",
-                            MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
-                        {
-                            return;
-                        }
-                    }
-                    // создаем новый узел Computer
-                    LCTreeNode temp = this.lcTreeNodeGroup.AddComputer(this.textBoxNameComputer.Text, this.textBoxIP.Text, this.textBoxDescription.Text);
-                    //treeView.SelectedNode = this.lcTreeNodeGroup.AddComputer(this.textBoxNameComputer.Text, this.textBoxIP.Text, this.textBoxDescription.Text);
-                    treeView.SelectedNode = temp;
-                    this.lcTreeNodeComputer = (LCTreeNodeComputer) temp;
-                    this.Close();
-                }
-                else
-                {
-                    this.labelErrorMessage.Text = "Не верно задан IP адрес";
-                }
+                this.lcTreeNodeComputer.Text = this.textBoxNameComputer.Text;
+                this.lcTreeNodeComputer.Description = this.textBoxDescription.Text;
+                ListViewItem lvi = (ListViewItem)lcTreeNodeComputer.Tag;
+                lvi.SubItems[1].Text = this.lcTreeNodeComputer.Text;
+                lvi.SubItems[3].Text = this.lcTreeNodeComputer.Description;
+                this.Close();
             }
             else
             {

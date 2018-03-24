@@ -210,6 +210,8 @@ namespace LC
                     this.treeViewObject.SelectedNode = lcComp;
 
                     ListViewItem lvi = new ListViewItem(new string[] { lcComp.IP, lcComp.Text, lcComp.ParentGroup, lcComp.Description });
+                    lcComp.Tag = lvi;
+                    lvi.Tag = lcComp;
                     this.listViewComputers.Items.Add(lvi);
                     lvi.Selected = true;
                     countFind++;
@@ -685,7 +687,7 @@ namespace LC
         {
             if (this.listViewComputers.SelectedItems != null)
             {
-                TreeNode tn = (TreeNode)this.listViewComputers.SelectedItems[0].Tag;
+                LCTreeNodeComputer tn = (LCTreeNodeComputer)this.listViewComputers.SelectedItems[0].Tag;
                 FormEditComputer formNewComputer = new FormEditComputer(tn);
                 formNewComputer.ShowDialog();
             }
