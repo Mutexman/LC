@@ -10,20 +10,22 @@ using System.Text.RegularExpressions;
 
 namespace LC
 {
-    public partial class FormNewComputer : Form
+    public partial class FormEditComputer : Form
     {
-        public FormNewComputer()
+        public FormEditComputer()
         {
             InitializeComponent();
         }
-        public FormNewComputer(TreeNode treeNode)
+        public FormEditComputer(TreeNode treeNode)
         {
             InitializeComponent();
-            this.lcTreeNodeGroup  = (LCTreeNodeGroup) treeNode;
-            this.Text += " (в группу: " + this.lcTreeNodeGroup.Text + " )";
+            this.lcTreeNodeComputer = (LCTreeNodeComputer)treeNode;
+            this.NameComputer = this.lcTreeNodeComputer.Text;
+            this.IP = this.lcTreeNodeComputer.IP;
+            this.Description = this.lcTreeNodeComputer.Description;
         }
         private LCTreeNodeGroup lcTreeNodeGroup = null ;
-        private TreeNode lcTreeNode = null;
+        private LCTreeNodeComputer lcTreeNodeComputer = null;
         public static TreeView treeView = null;
         /// <summary>
         /// Свойство возвращающее и принимающее ip
@@ -54,13 +56,27 @@ namespace LC
             }
         }
         /// <summary>
+        /// Свойство возвращающее и принимающее описание компьютера
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return this.textBoxDescription.Text;
+            }
+            set
+            {
+                this.textBoxDescription.Text = value;
+            }
+        }
+        /// <summary>
         /// Свойство возвращающее новый созданный компьютер
         /// </summary>
         public TreeNode TreeNode
         {
             get
             {
-                return this.lcTreeNode;
+                return (TreeNode)this.lcTreeNodeComputer;
             }
         }
         
@@ -111,7 +127,7 @@ namespace LC
         }
         #endregion
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
             if (this.textBoxNameComputer.Text != "")
             {
@@ -127,7 +143,7 @@ namespace LC
                     this.textBoxIP.Text = match.Value;
                     // Обнуляем счётчик компьютеров
                     // проверка нет ли уже компьютера с таким IP-адресом в справочнике
-                    if (this.DoubleIP(FormNewComputer.treeView.Nodes[0], this.textBoxIP.Text))
+                    if (this.DoubleIP(FormEditComputer.treeView.Nodes[0], this.textBoxIP.Text))
                     {
                         if (MessageBox.Show("Компьютер с таким IP уже имеется в справочнике! Все равно добавить ?", "Линейный специалист",
                             MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
@@ -139,7 +155,7 @@ namespace LC
                     LCTreeNode temp = this.lcTreeNodeGroup.AddComputer(this.textBoxNameComputer.Text, this.textBoxIP.Text, this.textBoxDescription.Text);
                     //treeView.SelectedNode = this.lcTreeNodeGroup.AddComputer(this.textBoxNameComputer.Text, this.textBoxIP.Text, this.textBoxDescription.Text);
                     treeView.SelectedNode = temp;
-                    this.lcTreeNode = temp;
+                    this.lcTreeNodeComputer = (LCTreeNodeComputer) temp;
                     this.Close();
                 }
                 else

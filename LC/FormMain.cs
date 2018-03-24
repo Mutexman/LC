@@ -87,7 +87,7 @@ namespace LC
                 CommandToolStripButton.StatusLabel = this.toolStripStatusLabelMain;
                 CommandToolStripButton.listBoxMessage = this.listBoxOperation;
                 CommandToolStripButton.tabControl = this.tabControlObject;
-                FormNewComputer.treeView = this.treeViewObject;
+                FormEditComputer.treeView = this.treeViewObject;
                 FormOpenFileXML formOpenFileXML = new FormOpenFileXML();
                 formOpenFileXML.ShowDialog();
                 this.fileData = formOpenFileXML.OpenFile;
@@ -368,22 +368,6 @@ namespace LC
         private void toolStripMenuItemOpenNodes(object sender, EventArgs e)
         {
             this.treeViewObject.SelectedNode.ExpandAll();
-        }
-        /// <summary>
-        /// Событие создания нового компьютера
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void createNewComputer(object sender, EventArgs e)
-        {
-            FormNewComputer formNewComputer = new FormNewComputer(this.treeViewObject.SelectedNode);
-            formNewComputer.ShowDialog();
-            this.treeViewObject.Sort();
-            if (formNewComputer.TreeNode != null)
-            {
-                // Выделяем только что созданный компьютер в дереве справочника
-                this.treeViewObject.SelectedNode = formNewComputer.TreeNode;
-            }
         }
         /// <summary>
         /// Событие создания новой группы
@@ -694,6 +678,16 @@ namespace LC
             catch (System.Exception myException)
             {
                 this.WriteListBox("Определение имени для ПК с IP " + ipStr + ":" + myException.Message);
+            }
+        }
+
+        private void listViewComputers_DoubleClick(object sender, EventArgs e)
+        {
+            if (this.listViewComputers.SelectedItems != null)
+            {
+                TreeNode tn = (TreeNode)this.listViewComputers.SelectedItems[0].Tag;
+                FormEditComputer formNewComputer = new FormEditComputer(tn);
+                formNewComputer.ShowDialog();
             }
         }
     }

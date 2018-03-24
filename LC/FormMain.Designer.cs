@@ -500,6 +500,7 @@
             this.listViewComputers.TabIndex = 1;
             this.listViewComputers.UseCompatibleStateImageBehavior = false;
             this.listViewComputers.View = System.Windows.Forms.View.Details;
+            this.listViewComputers.DoubleClick += new System.EventHandler(this.listViewComputers_DoubleClick);
             // 
             // columnHeaderIP_PC
             // 
@@ -746,14 +747,6 @@
             this.toolStripMenuItemNewSubnet.Text = "Новая сеть";
             this.toolStripMenuItemNewSubnet.Click += new System.EventHandler(this.createNewSubnet);
             // 
-            // toolStripMenuItemNewComputer
-            // 
-            this.toolStripMenuItemNewComputer.Image = global::LC.Properties.Resources.AddNewContextMenu;
-            this.toolStripMenuItemNewComputer.Name = "toolStripMenuItemNewComputer";
-            this.toolStripMenuItemNewComputer.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemNewComputer.Text = "Новый компьютер";
-            this.toolStripMenuItemNewComputer.Click += new System.EventHandler(this.createNewComputer);
-            // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
@@ -831,14 +824,6 @@
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
             this.toolStripSeparator13.Size = new System.Drawing.Size(195, 6);
-            // 
-            // toolStripMenuItemNewComputerRoot
-            // 
-            this.toolStripMenuItemNewComputerRoot.Image = global::LC.Properties.Resources.AddNewContextMenu;
-            this.toolStripMenuItemNewComputerRoot.Name = "toolStripMenuItemNewComputerRoot";
-            this.toolStripMenuItemNewComputerRoot.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemNewComputerRoot.Text = "Новый компьютер";
-            this.toolStripMenuItemNewComputerRoot.Click += new System.EventHandler(this.createNewComputer);
             // 
             // toolStripMenuItemNewGroupRoot
             // 
@@ -945,14 +930,6 @@
             this.toolStripMenuItemGroupNew.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemGroupNew.Text = "Новая группа";
             this.toolStripMenuItemGroupNew.Click += new System.EventHandler(this.createNewGroup);
-            // 
-            // toolStripMenuItemComputerNew
-            // 
-            this.toolStripMenuItemComputerNew.Image = global::LC.Properties.Resources.AddNewContextMenu;
-            this.toolStripMenuItemComputerNew.Name = "toolStripMenuItemComputerNew";
-            this.toolStripMenuItemComputerNew.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemComputerNew.Text = "Новый компьютер";
-            this.toolStripMenuItemComputerNew.Click += new System.EventHandler(this.createNewComputer);
             // 
             // toolStripSeparator17
             // 

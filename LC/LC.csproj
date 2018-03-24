@@ -118,11 +118,11 @@
     <Compile Include="FormMainCryptoMethods.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNewComputer.cs">
+    <Compile Include="FormEditComputer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNewComputer.Designer.cs">
-      <DependentUpon>FormNewComputer.cs</DependentUpon>
+    <Compile Include="FormEditComputer.Designer.cs">
+      <DependentUpon>FormEditComputer.cs</DependentUpon>
     </Compile>
     <Compile Include="FormNewGroup.cs">
       <SubType>Form</SubType>
@@ -170,8 +170,8 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNewComputer.resx">
-      <DependentUpon>FormNewComputer.cs</DependentUpon>
+    <EmbeddedResource Include="FormEditComputer.resx">
+      <DependentUpon>FormEditComputer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNewGroup.resx">
       <DependentUpon>FormNewGroup.cs</DependentUpon>
