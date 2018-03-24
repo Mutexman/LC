@@ -121,11 +121,11 @@
     <Compile Include="FormEditComputer.Designer.cs">
       <DependentUpon>FormEditComputer.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNewGroup.cs">
+    <Compile Include="FormEditGroup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNewGroup.Designer.cs">
-      <DependentUpon>FormNewGroup.cs</DependentUpon>
+    <Compile Include="FormEditGroup.Designer.cs">
+      <DependentUpon>FormEditGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="FormOpenFileXML.cs">
       <SubType>Form</SubType>
@@ -169,8 +169,8 @@
     <EmbeddedResource Include="FormEditComputer.resx">
       <DependentUpon>FormEditComputer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNewGroup.resx">
-      <DependentUpon>FormNewGroup.cs</DependentUpon>
+    <EmbeddedResource Include="FormEditGroup.resx">
+      <DependentUpon>FormEditGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNewSubnet.resx">
       <DependentUpon>FormNewSubnet.cs</DependentUpon>

@@ -378,7 +378,7 @@ namespace LC
         /// <param name="e"></param>
         private void createNewGroup(object sender, EventArgs e)
         {
-            FormNewGroup formNewGroup = new FormNewGroup(this.treeViewObject.SelectedNode);
+            FormEditGroup formNewGroup = new FormEditGroup(this.treeViewObject.SelectedNode, ModeForm.New);
             formNewGroup.ShowDialog();
             this.treeViewObject.Sort();
             if (formNewGroup.TreeNode != null)

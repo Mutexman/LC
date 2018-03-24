@@ -9,15 +9,28 @@ using System.Windows.Forms;
 
 namespace LC
 {
-    public partial class FormNewGroup : Form
+    public enum ModeForm
     {
-        public FormNewGroup()
+        Edit,
+        New
+    };
+    public partial class FormEditGroup : Form
+    {
+        public FormEditGroup()
         {
             InitializeComponent();
         }
+        public FormEditGroup(TreeNode treeNode, LC.ModeForm modeForm)
+        {
+            InitializeComponent();
+            this.modeForm = modeForm;
+            this.lcTreeNodeGroup = (LCTreeNodeGroup)treeNode;
+            this.Text += " (в группу: " + this.lcTreeNodeGroup.Text;
+        }
+        private ModeForm modeForm;
         private LCTreeNodeGroup lcTreeNodeGroup = null;
-        public static ListBox ListBoxOperation = null;
         private LCTreeNodeGroup lcTreeNode = null;
+        public static ListBox ListBoxOperation = null;
         /// <summary>
         /// Возвращает созданую новую группу в данной форме
         /// </summary>
@@ -27,12 +40,6 @@ namespace LC
             {
                 return this.lcTreeNode;
             }
-        }
-        public FormNewGroup(TreeNode treeNode)
-        {
-            InitializeComponent();
-            this.lcTreeNodeGroup = (LCTreeNodeGroup)treeNode;
-            this.Text += " (в группу: " + this.lcTreeNodeGroup.Text;
         }
         private void buttonAddGroup_Click(object sender, EventArgs e)
         {

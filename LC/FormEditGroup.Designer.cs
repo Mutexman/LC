@@ -1,6 +1,6 @@
 ﻿namespace LC
 {
-    partial class FormNewGroup
+    partial class FormEditGroup
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNewGroup));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditGroup));
             this.labelNameGroup = new System.Windows.Forms.Label();
             this.textBoxNameGroup = new System.Windows.Forms.TextBox();
             this.labelDescription = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.buttonAddGroup = new System.Windows.Forms.Button();
+            this.buttonEditGroup = new System.Windows.Forms.Button();
             this.labelErrorMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -70,15 +70,15 @@
             this.textBoxDescription.Size = new System.Drawing.Size(297, 83);
             this.textBoxDescription.TabIndex = 3;
             // 
-            // buttonAddGroup
+            // buttonEditGroup
             // 
-            this.buttonAddGroup.Location = new System.Drawing.Point(169, 150);
-            this.buttonAddGroup.Name = "buttonAddGroup";
-            this.buttonAddGroup.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddGroup.TabIndex = 4;
-            this.buttonAddGroup.Text = "Добавить";
-            this.buttonAddGroup.UseVisualStyleBackColor = true;
-            this.buttonAddGroup.Click += new System.EventHandler(this.buttonAddGroup_Click);
+            this.buttonEditGroup.Location = new System.Drawing.Point(169, 150);
+            this.buttonEditGroup.Name = "buttonEditGroup";
+            this.buttonEditGroup.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditGroup.TabIndex = 4;
+            this.buttonEditGroup.Text = "Сохранить";
+            this.buttonEditGroup.UseVisualStyleBackColor = true;
+            this.buttonEditGroup.Click += new System.EventHandler(this.buttonAddGroup_Click);
             // 
             // labelErrorMessage
             // 
@@ -89,14 +89,14 @@
             this.labelErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.labelErrorMessage.TabIndex = 5;
             // 
-            // FormNewGroup
+            // FormEditGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(415, 185);
             this.Controls.Add(this.labelErrorMessage);
-            this.Controls.Add(this.buttonAddGroup);
+            this.Controls.Add(this.buttonEditGroup);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.textBoxNameGroup);
@@ -104,7 +104,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "FormNewGroup";
+            this.Name = "FormEditGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Новая группа";
             this.ResumeLayout(false);
@@ -118,7 +118,7 @@
         private System.Windows.Forms.TextBox textBoxNameGroup;
         private System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.Button buttonAddGroup;
+        private System.Windows.Forms.Button buttonEditGroup;
         private System.Windows.Forms.Label labelErrorMessage;
     }
 }
