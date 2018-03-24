@@ -35,7 +35,6 @@
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemPlugins = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.опцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.командныеКнопкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -161,7 +160,6 @@
             // 
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
-            this.ToolStripMenuItemPlugins,
             this.настройкиToolStripMenuItem,
             this.помощьToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
@@ -183,28 +181,22 @@
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(118, 6);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выходToolStripMenuItem.Image")));
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
-            // 
-            // ToolStripMenuItemPlugins
-            // 
-            this.ToolStripMenuItemPlugins.Name = "ToolStripMenuItemPlugins";
-            this.ToolStripMenuItemPlugins.Size = new System.Drawing.Size(69, 20);
-            this.ToolStripMenuItemPlugins.Text = "Плагины";
             // 
             // настройкиToolStripMenuItem
             // 
@@ -435,8 +427,6 @@
             // 
             this.toolStripMenuItemExportComputer.Name = "toolStripMenuItemExportComputer";
             this.toolStripMenuItemExportComputer.Size = new System.Drawing.Size(128, 22);
-            this.toolStripMenuItemExportComputer.Text = "Экспорт";
-            this.toolStripMenuItemExportComputer.Click += new System.EventHandler(this.ExportsNodes);
             // 
             // toolStripSeparator4
             // 
@@ -729,15 +719,11 @@
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItem1.Text = "Импорт";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.ImportNodes);
             // 
             // toolStripMenuItemExport
             // 
             this.toolStripMenuItemExport.Name = "toolStripMenuItemExport";
             this.toolStripMenuItemExport.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemExport.Text = "Экспорт";
-            this.toolStripMenuItemExport.Click += new System.EventHandler(this.ExportsNodes);
             // 
             // toolStripSeparator5
             // 
@@ -840,8 +826,6 @@
             // 
             this.toolStripMenuItemImportRoot.Name = "toolStripMenuItemImportRoot";
             this.toolStripMenuItemImportRoot.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemImportRoot.Text = "Импорт";
-            this.toolStripMenuItemImportRoot.Click += new System.EventHandler(this.ImportNodes);
             // 
             // toolStripSeparator13
             // 
@@ -943,15 +927,11 @@
             // 
             this.toolStripMenuItemSubnetImport.Name = "toolStripMenuItemSubnetImport";
             this.toolStripMenuItemSubnetImport.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemSubnetImport.Text = "Импорт";
-            this.toolStripMenuItemSubnetImport.Click += new System.EventHandler(this.ImportNodes);
             // 
             // toolStripMenuItemSubnetExport
             // 
             this.toolStripMenuItemSubnetExport.Name = "toolStripMenuItemSubnetExport";
             this.toolStripMenuItemSubnetExport.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemSubnetExport.Text = "Экспорт";
-            this.toolStripMenuItemSubnetExport.Click += new System.EventHandler(this.ExportsNodes);
             // 
             // toolStripSeparator16
             // 
@@ -1079,7 +1059,6 @@
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem опцииToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemPlugins;
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem проверкаОбновленийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;

@@ -17,35 +17,15 @@ namespace LC
     public partial class FormMain : Form
     {
         // поле показывающее был ли корректно осуществлен ввод логина и пароля
-        private bool logged = false;
+        public static bool logged = false;
         // ссылка на найденную подсеть
         private TreeNode findSubnet= null;
-        // поле показывающее корректно ли был загружен справочник
-        private bool correctLoad = true;
         public static string User = "";
         public static string Password = "";
         /// <summary>
         /// Переменная содержащая имя файла в котором храниться справочник
         /// </summary>
         private string fileData = Application.LocalUserAppDataPath + "\\Computers.xml";
-        private string fileDataTripleDES = Application.LocalUserAppDataPath + "\\Computers.cxml";
-        /// <summary>
-        /// Возвращает путь к файлу зашифрованного справочника
-        /// </summary>
-        private string FileDataTripleDES
-        {
-            get
-            {
-                if (Properties.Settings.Default.AllUserAccess)
-                {
-                    return Application.CommonAppDataPath + "\\Computers.xml";
-                }
-                else
-                {
-                    return Application.LocalUserAppDataPath + "\\Computers.xml";
-                }
-            }
-        }
         /// <summary>
         /// Переменная содержащая имя файла конфигурации кнопок
         /// </summary>
@@ -53,6 +33,7 @@ namespace LC
         private BufferLCTreeNode buffer = new BufferLCTreeNode();
         // Поле для сохранения найденых компьютеров
         private static int countFind = 0;
+        private LCDirectory lCDirectory = null;
         public FormMain()
         {
             InitializeComponent();
@@ -80,7 +61,7 @@ namespace LC
                 // Параметр были переданы, запоминаем логин и пароль пользователя
                 FormMain.User = Environment.GetCommandLineArgs()[1];
                 FormMain.Password = Environment.GetCommandLineArgs()[2];
-                this.logged = true;
+                FormMain.logged = true;
             }
             else
             {
@@ -90,15 +71,15 @@ namespace LC
                 {
                     FormMain.User = formLogin.User;
                     FormMain.Password = formLogin.Password;
-                    this.logged = true;
+                    FormMain.logged = true;
                 }
             }
-            if (this.logged)
+            if (FormMain.logged)
             {
                 // Выводим имя пользователя в заголовок формы
                 this.Text += " Пользователь: " + FormMain.User;
                 LCTreeNode.SetListBoxOperation(this.listBoxOperation);
-                LCTreeNode.rootContextMenuStrip = this.contextMenuStripLCComputer;
+                LCTreeNode.rootContextMenuStrip = this.contextMenuStripLCRoot;
                 LCTreeNode.groupContextMemuStrip = this.contextMenuStripLCGroup;
                 LCTreeNode.computerContextMenuStrip = this.contextMenuStripLCComputer;
                 LCTreeNode.subnetContextMenuStrip = this.contextMenuStripLCSubnet;
@@ -115,11 +96,14 @@ namespace LC
                 {
                     this.CreateDefaultFileConfig();
                 }
-                this.CreateDOM();
+                LCDirectory.treeView = this.treeViewObject;
+                LCDirectory.listBox = this.listBoxOperation;
+                LCDirectory.listBox = this.listBoxOperation;
+                LCDirectory.toolStripStatusLabel = this.toolStripStatusLabelMain;
+                this.lCDirectory = new LCDirectory();
+                this.lCDirectory.CreateDOM(this.fileData);
                 // Восстанавливаем открытые вкладки
                 this.OpenSavedPages();
-                // Загружаем плагины
-                this.LoadPlugins();
                 // Открываем компьютер ip адрес которого был передан в параметрах командной строки
                 if (Environment.GetCommandLineArgs().Length >= 4)
                 {
@@ -135,13 +119,13 @@ namespace LC
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             // Сохраняем справочник
-            this.SaveXML();
+            this.lCDirectory.SaveXML();
             // Сохраняем открытые вкладки
             this.SaveOpenedPages();
         }
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.logged)
+            if (FormMain.logged)
             {
                 if (MessageBox.Show("Вы действительно хотите завершить работу приложения ? " +
                     "При следующем запуске приложения, Вам опять потребуется вводить свой логин и пароль! Рекомендуется свернуть программу на панель задач.",
@@ -272,15 +256,6 @@ namespace LC
             // запускаем интерпретатор коммандной строки cmd.exe
             System.Diagnostics.Process.Start("cmd.exe");
         }
-        private void toolStripButtonMutexCMD_Click(object sender, EventArgs e)
-        {
-            string str = Application.StartupPath + "\\MutexCMD.exe";
-            if (File.Exists(str))
-            {
-                // Запускаем мой вариант cmd.exe
-                System.Diagnostics.Process.Start(str);
-            }
-        }
         private void toolStripButtonPasteClipboard_Click(object sender, EventArgs e)
         {
             this.toolStripTextBoxIP.Text = Clipboard.GetText(TextDataFormat.Text);
@@ -294,16 +269,9 @@ namespace LC
             formOpenFileXML.ShowDialog();
             if (formOpenFileXML.SelectOk)
             {
-                this.tabControlObject.TabPages.Clear();
-                this.treeViewObject.Nodes.Clear();
-                this.CreateDOM();
+                this.lCDirectory.CreateDOM(this.fileData);
             }
 
-        }
-        private void закрытьВсеВкладкиToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Закрываем все открытые вкладки
-            this.tabControlObject.TabPages.Clear();
         }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -344,6 +312,360 @@ namespace LC
         {
             FormAbout formAbout = new FormAbout();
             formAbout.ShowDialog();
+        }
+        #endregion
+
+        #region Действия приложения
+        /// <summary>
+        /// Событие открытие какого либо LC объекта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void openLCTreeNode(object sender, EventArgs e)
+        {
+            LCTreeNode lcTreeNode = (LCTreeNode)this.treeViewObject.SelectedNode;
+
+            switch (lcTreeNode.LCObjectType)
+            {
+                case LCObjectType.Computer:
+                    {
+                        LCTreeNodeComputer lcPC = (LCTreeNodeComputer)lcTreeNode;
+                        ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description });
+                        lvi.Tag = lcPC;
+                        lcPC.Tag = lvi;
+                        this.listViewComputers.Items.Add(lvi);
+                        this.tabControlObject.SelectedTab = this.tabPageComputers;
+                        break;
+                    }
+                case LCObjectType.SubNet:
+                    {
+                        LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNode;
+                        ListViewItem lvi = new ListViewItem(new string[] { lcSubnet.Text, lcSubnet.IPSubnet,
+                            lcSubnet.MaskSubnet,lcSubnet.ParentGroup,lcSubnet.Description });
+                        lvi.Tag = lcSubnet;
+                        lcSubnet.Tag = lvi;
+                        this.listViewSubnets.Items.Add(lvi);
+                        this.tabControlObject.SelectedTab = this.tabPageSubnets;
+                        break;
+                    }
+                case LCObjectType.Group:
+                    {
+                        LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNode;
+                        ListViewItem lvi = new ListViewItem(new string[] { lcGroup.Text, lcGroup.ParentGroup, lcGroup.Description });
+                        lvi.Tag = lcGroup;
+                        lcGroup.Tag = lvi;
+                        this.listViewGroups.Items.Add(lvi);
+                        this.tabControlObject.SelectedTab = this.tabPageGroups;
+                        break;
+                    }
+            }
+        }
+        /// <summary>
+        /// Отображение всех дочерних узлов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemOpenNodes(object sender, EventArgs e)
+        {
+            this.treeViewObject.SelectedNode.ExpandAll();
+        }
+        /// <summary>
+        /// Событие создания нового компьютера
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void createNewComputer(object sender, EventArgs e)
+        {
+            FormNewComputer formNewComputer = new FormNewComputer(this.treeViewObject.SelectedNode);
+            formNewComputer.ShowDialog();
+            this.treeViewObject.Sort();
+            if (formNewComputer.TreeNode != null)
+            {
+                // Выделяем только что созданный компьютер в дереве справочника
+                this.treeViewObject.SelectedNode = formNewComputer.TreeNode;
+            }
+        }
+        /// <summary>
+        /// Событие создания новой группы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void createNewGroup(object sender, EventArgs e)
+        {
+            FormNewGroup formNewGroup = new FormNewGroup(this.treeViewObject.SelectedNode);
+            formNewGroup.ShowDialog();
+            this.treeViewObject.Sort();
+            if (formNewGroup.TreeNode != null)
+            {
+                // Выделяем только что созданную группу в дереве справочника
+                this.treeViewObject.SelectedNode = formNewGroup.TreeNode;
+            }
+        }
+        /// <summary>
+        /// Событие создания новой сети
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void createNewSubnet(object sender, EventArgs e)
+        {
+            FormNewSubnet formNewSubnet = new FormNewSubnet(this.treeViewObject.SelectedNode);
+            formNewSubnet.ShowDialog();
+            this.treeViewObject.Sort();
+            if (formNewSubnet.TreeNode != null)
+            {
+                // Выделяем только что созданную сеть в дереве справочника
+                this.treeViewObject.SelectedNode = formNewSubnet.TreeNode;
+            }
+        }
+        /// <summary>
+        /// Событие редактирования объекта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void editLCTreeNode(object sender, EventArgs e)
+        {
+            MessageBox.Show("Временная заглушка!");
+        }
+        /// <summary>
+        /// Событие удаления объекта LC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteLCTreeNode(object sender, EventArgs e)
+        {
+            string tempStr = "";
+            LCTreeNode lcTreeNode = (LCTreeNode)this.treeViewObject.SelectedNode;
+            tempStr = lcTreeNode.Text;
+            // Проверяем есть ли у этого узла дочерние объекты
+            if (lcTreeNode.Nodes.Count > 0)
+            {
+                // надо перебрать все узлы
+                if (MessageBox.Show("Объект имеет дочерние узлы! Все равно удалить?", "Удаление", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    // Здесь нужен код для удаления из таблиц объектов, которые являются дочерними по отношению к удаляемому объекту
+
+                    // Удаляем текущий
+                    lcTreeNode.Remove();
+                    // Сообщаем об удалении
+                    this.WriteListBox("Группа " + tempStr + " и её дочерние объекты удалены.");
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("Вы дейстительно хотите удалить этот объект ?", "Удаление", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    if (lcTreeNode.LCObjectType == LCObjectType.Computer)
+                    {
+                        tempStr = "Компьютер: " + tempStr + " удалён.";
+                    }
+                    if (lcTreeNode.LCObjectType == LCObjectType.Group)
+                    {
+                        tempStr = "Группа: " + tempStr + " удалёна.";
+                    }
+                    lcTreeNode.Remove();
+                    // Сообщаем об удалении
+                    this.WriteListBox(tempStr);
+                }
+            }
+        }
+        /// <summary>
+        /// Событие вырезания объекта в буфер обмена
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CutLCTreeNode(object sender, EventArgs e)
+        {
+            LCTreeNode lc = (LCTreeNode)this.treeViewObject.SelectedNode;
+            this.buffer.InBuffer(lc);
+            lc.Remove();
+            this.WriteListBox("Объект " + lc.Text + " помещен в буфер");
+        }
+        /// <summary>
+        /// Вставка объекта из буфера обмена
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PasteLCTreeNode(object sender, EventArgs e)
+        {
+            if (this.buffer.LCTreeNode != null)
+            {
+                this.treeViewObject.SelectedNode.Nodes.Add(this.buffer.OutBuffer());
+                this.WriteListBox("Объект успешно перемещен");
+            }
+            else
+            {
+                this.WriteListBox("Буфер пуст");
+            }
+        }
+        #endregion
+
+        #region Прочие методы
+        /// <summary>
+        /// Вывод сообщения в нижний ListBox компонент
+        /// </summary>
+        /// <param name="message">Текст сообщений</param>
+        public void WriteListBox(string message)
+        {
+            this.listBoxOperation.Items.Add("[" + DateTime.Now.ToString() + "] " + message);
+            this.listBoxOperation.SelectedIndex = this.listBoxOperation.Items.Count - 1;
+            this.toolStripStatusLabelMain.Text = message;
+        }
+        /// <summary>
+        /// Проверка с помощью регулярно выражения действительно ли это ip адрес
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        private bool CorrectIP()
+        {
+            string str = this.toolStripTextBoxIP.Text;
+            str = str.Replace('-', '.');
+            string pattern = @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
+                      @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
+                      @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
+                      @"(25[0-5]|2[0-4]\d|[01]?\d\d?)";
+            Regex regex = new Regex(pattern);
+            Match match = regex.Match(str);
+            if (match.Success)
+            {
+                this.toolStripTextBoxIP.Text = match.Value;
+                return true;
+            }
+            return false;
+        }
+        /// <summary>
+        /// Возвращает узел дерева "не в списке", а если его не существует, то создает новый. 
+        /// </summary>
+        /// <returns>Возвращает узел дерева "не в списке".</returns>
+        private TreeNode ReturnGroupNoList()
+        {
+            TreeNode treeNode = this.treeViewObject.Nodes[0];
+            if (treeNode != null)
+            {
+                // рекурсивный перебор всех дочерних узлов
+                foreach (TreeNode treeNodeWorking in treeNode.Nodes)
+                {
+                    if (treeNodeWorking.Text == "<Не в списке>")
+                    {
+                        return treeNodeWorking;
+                    }
+                }
+            }
+            LCTreeNodeGroup lcTreeNodeGroup = new LCTreeNodeGroup();
+            lcTreeNodeGroup.Text = "<Не в списке>";
+            lcTreeNodeGroup.Description = "Компьютеры которые не добавлялись в группу";
+            lcTreeNodeGroup.ContextMenuStrip = this.contextMenuStripLCGroup;
+            lcTreeNodeGroup.ImageIndex = 2;
+            lcTreeNodeGroup.ToolTipText += "<Не в списке>";
+            lcTreeNodeGroup.ToolTipText += "\n" + "Компьютеры которые не добавлялись в группу";
+            treeNode.Nodes.Add(lcTreeNodeGroup);
+            return lcTreeNodeGroup;
+        }
+        /// <summary>
+        /// Метод создания нового файла config.xml
+        /// </summary>
+        private void CreateDefaultFileConfig()
+        {
+            // открытие нового XML-файла c помощью объекта XmlTextWriter
+            XmlTextWriter xw = new XmlTextWriter(Application.LocalUserAppDataPath + "\\config.xml", System.Text.Encoding.UTF8);
+            // Настраиваем форматирование для более удобного чтения файла
+            xw.Formatting = Formatting.Indented;
+            xw.Indentation = 2;
+            // запись декларации документа
+            xw.WriteStartDocument();
+            // запись корневого элемента
+            xw.WriteStartElement("Buttons");
+
+            // Запись о первой кнопке (VNC+proxy)
+            xw.WriteStartElement("Button");
+            xw.WriteElementString("Text", "VNC+proxy");
+            xw.WriteElementString("Command", "C:\\Program Files\\VNCViewer\\vncviewer.exe");
+            xw.WriteElementString("Parameters", "@[IP]:5047 /proxy 10.35.38.184:5901 /user @[User] /password @[Password]");
+            xw.WriteElementString("ToolTipText", "Запуск VNC с использованием proxy. Для подключения к ПК в других регионах");
+            xw.WriteEndElement();
+            // Запись о второй кнопке
+            xw.WriteStartElement("Button");
+            xw.WriteElementString("Text", "VNC");
+            xw.WriteElementString("Command", "C:\\Program Files\\VNCViewer\\vncviewer.exe");
+            xw.WriteElementString("Parameters", "@[IP]:5047 /user @[User] /password @[Password]");
+            xw.WriteElementString("ToolTipText", "Запуск VNC без использования proxy. Для подключения к ПК в своём регионе");
+            xw.WriteEndElement();
+            // Запись о третьей кнопке (RDP)
+            xw.WriteStartElement("Button");
+            xw.WriteElementString("Text", "RDP");
+            xw.WriteElementString("Command", "C:\\WINDOWS\\system32\\mstsc.exe");
+            xw.WriteElementString("Parameters", "/v:@[IP]");
+            xw.WriteElementString("ToolTipText", "Удалённый рабочий стол");
+            xw.WriteEndElement();
+            // Запись о четвёртой кнопке (SMS)
+            xw.WriteStartElement("Button");
+            xw.WriteElementString("Text", "CMRC");
+            xw.WriteElementString("Command", "rc.exe");
+            xw.WriteElementString("Parameters", "1 @[IP]");
+            xw.WriteElementString("ToolTipText", "Подключение через Configuration Manager Remote Control");
+            xw.WriteEndElement();
+            // Запись о пятой кнопке
+            xw.WriteStartElement("Button");
+            xw.WriteElementString("Text", "Ping");
+            xw.WriteElementString("Command", "ping");
+            xw.WriteElementString("Parameters", "-a @[IP]");
+            xw.WriteElementString("ToolTipText", "Команда ping с параметром -a");
+            xw.WriteEndElement();
+            // Запись о шестой кнопке
+            xw.WriteStartElement("Button");
+            xw.WriteElementString("Text", "Ping -t");
+            xw.WriteElementString("Command", "ping");
+            xw.WriteElementString("Parameters", "-a -t @[IP]");
+            xw.WriteElementString("ToolTipText", "Команда ping с параметрами -a и -t");
+            xw.WriteEndElement();
+            // Запись о седьмой кнопке
+            xw.WriteStartElement("Button");
+            xw.WriteElementString("Text", "Tracert");
+            xw.WriteElementString("Command", "tracert");
+            xw.WriteElementString("Parameters", "@[IP]");
+            xw.WriteElementString("ToolTipText", "Трассировка по заданному IP");
+            xw.WriteEndElement();
+
+            // Закрытие корневого элемента
+            xw.WriteEndElement();
+            // Завершение документа
+            xw.WriteEndDocument();
+            // сброс буфера на диск и закрытие файла
+            xw.Flush();
+            xw.Close();
+        }
+        #endregion
+
+        #region Запоминание открытых вкладок
+        /// <summary>
+        /// Метод открывает вкладки которые не были закрыты при прошлом запуске программы
+        /// </summary>
+        private void OpenSavedPages()
+        {
+            if (this.treeViewObject.Nodes != null)
+            {
+                string[] str = Properties.Settings.Default.OpenPages.Split(';');
+                foreach (string st in str)
+                {
+                    if (st != "")
+                    {
+                        this.FindComputer_IP(this.treeViewObject.Nodes[0], st);
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Сохранение не закрытых вкладок
+        /// </summary>
+        private void SaveOpenedPages()
+        {
+            Properties.Settings.Default.OpenPages = "";
+            foreach (ListViewItem lvi in this.listViewComputers.Items)
+            {
+                Properties.Settings.Default.OpenPages += lvi.SubItems[0].Text + ";";
+            }
+            Properties.Settings.Default.Save();
         }
         #endregion
 

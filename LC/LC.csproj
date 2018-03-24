@@ -118,9 +118,6 @@
     <Compile Include="FormMainCryptoMethods.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMainDirectory.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FormNewComputer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +149,7 @@
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="ILCPlugin.cs" />
+    <Compile Include="LCDirectory.cs" />
     <Compile Include="LCTreeNode.cs" />
     <Compile Include="LCTreeNodeComputer.cs" />
     <Compile Include="LCTreeNodeGroup.cs" />
