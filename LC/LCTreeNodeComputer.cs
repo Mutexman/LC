@@ -37,10 +37,5 @@ namespace LC
             xw.WriteAttributeString("IP", this.ip);
             xw.WriteAttributeString("Description", this.Description); //??? почему доступно здесь только свойство
         }
-        public override string GetFileNameFoto()
-        {
-            LCTreeNode lc = (LCTreeNode)this.Parent;
-            return lc.GetFileNameFoto();
-        }
     }
 }

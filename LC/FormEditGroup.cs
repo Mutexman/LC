@@ -26,6 +26,20 @@ namespace LC
             this.modeForm = modeForm;
             this.lcTreeNodeGroup = (LCTreeNodeGroup)treeNode;
             this.Text += " (в группу: " + this.lcTreeNodeGroup.Text;
+            switch (this.modeForm)
+            {
+                case ModeForm.Edit:
+                    {
+                        this.textBoxNameGroup.Text = this.lcTreeNodeGroup.Text;
+                        this.textBoxDescription.Text = this.lcTreeNodeGroup.Description;
+                        break;
+                    }
+                case ModeForm.New:
+                    {
+                        this.textBoxNameGroup.Text = "Новая группа";
+                        break;
+                    }
+            }
         }
         private ModeForm modeForm;
         private LCTreeNodeGroup lcTreeNodeGroup = null;
@@ -41,11 +55,24 @@ namespace LC
                 return this.lcTreeNode;
             }
         }
-        private void buttonAddGroup_Click(object sender, EventArgs e)
+        private void buttonSaveGroup_Click(object sender, EventArgs e)
         {
             if (this.textBoxNameGroup.Text != "")
             {
-                this.lcTreeNode = this.lcTreeNodeGroup.AddGroup(this.textBoxNameGroup.Text, this.textBoxDescription.Text, "");
+                switch (this.modeForm)
+                {
+                    case ModeForm.New:
+                        {
+                            this.lcTreeNode = this.lcTreeNodeGroup.AddGroup(this.textBoxNameGroup.Text, this.textBoxDescription.Text, "");
+                            break;
+                        }
+                    case ModeForm.Edit:
+                        {
+                            this.lcTreeNodeGroup.Text = this.textBoxNameGroup.Text;
+                            this.lcTreeNodeGroup.Description = this.textBoxDescription.Text;
+                            break;
+                        }
+                }
                 this.Close();
             }
             else

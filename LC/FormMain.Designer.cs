@@ -383,32 +383,32 @@
             // toolStripMenuItemOpenComputer
             // 
             this.toolStripMenuItemOpenComputer.Name = "toolStripMenuItemOpenComputer";
-            this.toolStripMenuItemOpenComputer.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemOpenComputer.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItemOpenComputer.Text = "Открыть";
             this.toolStripMenuItemOpenComputer.Click += new System.EventHandler(this.openLCTreeNode);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(125, 6);
             // 
             // toolStripMenuItemEditComputer
             // 
             this.toolStripMenuItemEditComputer.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemEditComputer.Image")));
             this.toolStripMenuItemEditComputer.Name = "toolStripMenuItemEditComputer";
-            this.toolStripMenuItemEditComputer.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemEditComputer.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItemEditComputer.Text = "Изменить";
             this.toolStripMenuItemEditComputer.Click += new System.EventHandler(this.editLCTreeNode);
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(125, 6);
             // 
             // toolStripMenuItemCutComputer
             // 
             this.toolStripMenuItemCutComputer.Name = "toolStripMenuItemCutComputer";
-            this.toolStripMenuItemCutComputer.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemCutComputer.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItemCutComputer.Text = "Вырезать";
             this.toolStripMenuItemCutComputer.Click += new System.EventHandler(this.CutLCTreeNode);
             // 
@@ -416,7 +416,7 @@
             // 
             this.toolStripMenuItemDeleteComputer.Image = global::LC.Properties.Resources.Close;
             this.toolStripMenuItemDeleteComputer.Name = "toolStripMenuItemDeleteComputer";
-            this.toolStripMenuItemDeleteComputer.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemDeleteComputer.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItemDeleteComputer.Text = "Удалить";
             this.toolStripMenuItemDeleteComputer.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 

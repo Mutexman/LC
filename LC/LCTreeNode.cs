@@ -13,7 +13,7 @@ namespace LC
     /// </summary>
     enum LCObjectType
     {
-        ROOT,        // Корень дерева
+        //ROOT,        // Корень дерева
         NoList,      // Узел с компьютерами не в списке
         Group,       // Группа компьютеров
         Computer,    // Компьютеров
@@ -76,14 +76,6 @@ namespace LC
         /// </summary>
         virtual public void Save(XmlTextWriter xw)
         {
-        }
-        /// <summary>
-        /// Метод возвращающий путь к имени файла фотографии
-        /// </summary>
-        /// <returns>Пусть к файлу</returns>
-        virtual public string GetFileNameFoto()
-        {
-            return this.fotoFile;
         }
         /// <summary>
         /// Метод вывода сообщения в ListBoxOperation 

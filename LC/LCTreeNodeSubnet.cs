@@ -47,10 +47,6 @@ namespace LC
             xw.WriteAttributeString("Description", this.Description); // А почему свойство ?????
             xw.WriteAttributeString("FotoFile", this.fotoFile);
         }
-        public override string GetFileNameFoto()
-        {
-            return base.GetFileNameFoto();
-        }
         /// <summary>
         /// Метод проверки принадлежности IP адреса сети
         /// </summary>

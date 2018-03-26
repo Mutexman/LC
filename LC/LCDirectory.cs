@@ -48,7 +48,7 @@ namespace LC
                                         }
                                         lcTreeNodeGroup.ToolTipText += lcTreeNodeGroup.Text;
                                         lcTreeNodeGroup.ToolTipText += "\n" + lcTreeNodeGroup.Description;
-                                        //lcTreeNodeGroup.ContextMenuStrip = this.contextMenuStripLCGroup;
+                                        lcTreeNodeGroup.ContextMenuStrip = LCTreeNode.groupContextMemuStrip;
                                         lcTreeNodeGroup.ImageIndex = 2;
                                         newNode.Nodes.Add(lcTreeNodeGroup);
                                         newNode = lcTreeNodeGroup;
@@ -63,7 +63,7 @@ namespace LC
                                         lcTreeNodeComputer.ToolTipText += lcTreeNodeComputer.Text;
                                         lcTreeNodeComputer.ToolTipText += "\n" + lcTreeNodeComputer.IP;
                                         lcTreeNodeComputer.ToolTipText += "\n" + lcTreeNodeComputer.Description;
-                                        //lcTreeNodeComputer.ContextMenuStrip = this.contextMenuStripLCComputer;
+                                        lcTreeNodeComputer.ContextMenuStrip = LCTreeNode.computerContextMenuStrip;
                                         lcTreeNodeComputer.ImageIndex = 3;
                                         newNode.Nodes.Add(lcTreeNodeComputer);
                                         newNode = lcTreeNodeComputer;
@@ -79,7 +79,7 @@ namespace LC
                                         lcTreeNodeSubnet.ToolTipText += lcTreeNodeSubnet.Text;
                                         lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.IPSubnet;
                                         lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.MaskSubnet;
-                                        //lcTreeNodeSubnet.ContextMenuStrip = this.contextMenuStripLCSubnet;
+                                        lcTreeNodeSubnet.ContextMenuStrip = LCTreeNode.subnetContextMenuStrip;
                                         lcTreeNodeSubnet.ImageIndex = 5;
                                         newNode.Nodes.Add(lcTreeNodeSubnet);
                                         newNode = lcTreeNodeSubnet;
@@ -194,7 +194,7 @@ namespace LC
             lcTreeRoot.Name = "Root";
             lcTreeRoot.Text = "Компьютеры";
             lcTreeRoot.Description = "Корневой узел справочника.";
-            //lcTreeRoot.ContextMenuStrip = this.contextMenuStripLCRoot;
+            lcTreeRoot.ContextMenuStrip = LCTreeNode.rootContextMenuStrip;
             lcTreeRoot.ImageIndex = 1;
             // И добавить его в дерево
             treeView.Nodes.Add(lcTreeRoot);

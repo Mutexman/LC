@@ -21,10 +21,6 @@ namespace LC
             xw.WriteAttributeString("Description", this.Description); // А почему свойство ?????
             xw.WriteAttributeString("FotoFile", this.fotoFile);
         }
-        public override string GetFileNameFoto()
-        {
-            return base.GetFileNameFoto();
-        }
         public void SetFoto(string fileName)
         {
             this.fotoFile = fileName;

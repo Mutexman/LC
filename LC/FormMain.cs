@@ -410,7 +410,17 @@ namespace LC
         /// <param name="e"></param>
         private void editLCTreeNode(object sender, EventArgs e)
         {
-            MessageBox.Show("Временная заглушка!");
+            //MessageBox.Show("Временная заглушка!");
+            FormEditGroup formNewGroup = new FormEditGroup(this.treeViewObject.SelectedNode, ModeForm.Edit);
+            formNewGroup.ShowDialog();
+            this.treeViewObject.Sort();
+            /*
+            if (formNewGroup.TreeNode != null)
+            {
+                // Выделяем только что созданную группу в дереве справочника
+                this.treeViewObject.SelectedNode = formNewGroup.TreeNode;
+            }
+            */
         }
         /// <summary>
         /// Событие удаления объекта LC
