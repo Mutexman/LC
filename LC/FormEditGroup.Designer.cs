@@ -106,7 +106,7 @@
             this.MaximizeBox = false;
             this.Name = "FormEditGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Новая группа";
+            this.Text = "Группа";
             this.ResumeLayout(false);
             this.PerformLayout();
 
