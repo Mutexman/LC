@@ -394,7 +394,7 @@ namespace LC
         /// <param name="e"></param>
         private void createNewSubnet(object sender, EventArgs e)
         {
-            FormNewSubnet formNewSubnet = new FormNewSubnet(this.treeViewObject.SelectedNode);
+            FormEditSubnet formNewSubnet = new FormEditSubnet(this.treeViewObject.SelectedNode);
             formNewSubnet.ShowDialog();
             this.treeViewObject.Sort();
             if (formNewSubnet.TreeNode != null)

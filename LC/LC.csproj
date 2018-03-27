@@ -82,11 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferTreeNodeClass.cs" />
-    <Compile Include="FormNewSubnet.cs">
+    <Compile Include="FormEditSubnet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNewSubnet.Designer.cs">
-      <DependentUpon>FormNewSubnet.cs</DependentUpon>
+    <Compile Include="FormEditSubnet.Designer.cs">
+      <DependentUpon>FormEditSubnet.cs</DependentUpon>
     </Compile>
     <Compile Include="CommandToolStripButton.cs">
       <SubType>Component</SubType>
@@ -163,8 +163,8 @@
     <EmbeddedResource Include="FormEditGroup.resx">
       <DependentUpon>FormEditGroup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNewSubnet.resx">
-      <DependentUpon>FormNewSubnet.cs</DependentUpon>
+    <EmbeddedResource Include="FormEditSubnet.resx">
+      <DependentUpon>FormEditSubnet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormOpenFileXML.resx">
       <DependentUpon>FormOpenFileXML.cs</DependentUpon>

@@ -10,9 +10,9 @@ using System.Text.RegularExpressions;
 
 namespace LC
 {
-    public partial class FormNewSubnet : Form
+    public partial class FormEditSubnet : Form
     {
-        public FormNewSubnet()
+        public FormEditSubnet()
         {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace LC
                 return this.lcTreeNode;
             }
         }
-        public FormNewSubnet(TreeNode treeNode)
+        public FormEditSubnet(TreeNode treeNode)
         {
             InitializeComponent();
             this.lcTreeNodeGroup = (LCTreeNodeGroup)treeNode;

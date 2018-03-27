@@ -1,6 +1,6 @@
 ﻿namespace LC
 {
-    partial class FormNewSubnet
+    partial class FormEditSubnet
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNewSubnet));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditSubnet));
             this.labelIPSubnet = new System.Windows.Forms.Label();
             this.textBoxIPSubnet = new System.Windows.Forms.TextBox();
             this.labelMaskSubnet = new System.Windows.Forms.Label();
