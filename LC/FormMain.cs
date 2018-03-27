@@ -394,7 +394,7 @@ namespace LC
         /// <param name="e"></param>
         private void createNewSubnet(object sender, EventArgs e)
         {
-            FormEditSubnet formNewSubnet = new FormEditSubnet(this.treeViewObject.SelectedNode);
+            FormEditSubnet formNewSubnet = new FormEditSubnet(this.treeViewObject.SelectedNode, ModeForm.New);
             formNewSubnet.ShowDialog();
             this.treeViewObject.Sort();
             if (formNewSubnet.TreeNode != null)
@@ -410,17 +410,29 @@ namespace LC
         /// <param name="e"></param>
         private void editLCTreeNode(object sender, EventArgs e)
         {
-            //MessageBox.Show("Временная заглушка!");
-            FormEditGroup formNewGroup = new FormEditGroup(this.treeViewObject.SelectedNode, ModeForm.Edit);
-            formNewGroup.ShowDialog();
-            this.treeViewObject.Sort();
-            /*
-            if (formNewGroup.TreeNode != null)
+            LCTreeNode tn = (LCTreeNode)this.treeViewObject.SelectedNode;
+            switch (tn.LCObjectType)
             {
-                // Выделяем только что созданную группу в дереве справочника
-                this.treeViewObject.SelectedNode = formNewGroup.TreeNode;
+                case LCObjectType.Computer:
+                    {
+                        FormEditComputer formEditComputer = new FormEditComputer(this.treeViewObject.SelectedNode);
+                        formEditComputer.ShowDialog();
+                        break;
+                    }
+                case LCObjectType.Group:
+                    {
+                        FormEditGroup formEditGroup = new FormEditGroup(this.treeViewObject.SelectedNode, ModeForm.Edit);
+                        formEditGroup.ShowDialog();
+                        break;
+                    }
+                case LCObjectType.SubNet:
+                    {
+                        FormEditSubnet formEditSubnet = new FormEditSubnet(this.treeViewObject.SelectedNode, ModeForm.Edit);
+                        formEditSubnet.ShowDialog();
+                        break;
+                    }
             }
-            */
+            this.treeViewObject.Sort();
         }
         /// <summary>
         /// Событие удаления объекта LC

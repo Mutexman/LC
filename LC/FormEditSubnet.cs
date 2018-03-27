@@ -16,9 +16,10 @@ namespace LC
         {
             InitializeComponent();
         }
-        private LCTreeNodeGroup lcTreeNodeGroup = null;
         public static ListBox ListBoxOperation = null;
-        private LCTreeNode lcTreeNode = null;
+        private LCTreeNodeSubnet lcTreeNodeGroup = null;
+        private LCTreeNodeSubnet lcTreeNode = null;
+        private ModeForm modeForm;
          /// <summary>
         /// Возвращает созданую новую сеть в данной форме
         /// </summary>
@@ -29,56 +30,72 @@ namespace LC
                 return this.lcTreeNode;
             }
         }
-        public FormEditSubnet(TreeNode treeNode)
+        public FormEditSubnet(TreeNode treeNode, ModeForm modeForm)
         {
             InitializeComponent();
-            this.lcTreeNodeGroup = (LCTreeNodeGroup)treeNode;
+            this.modeForm = modeForm;
+            this.lcTreeNodeGroup = (LCTreeNodeSubnet)treeNode;
             this.Text += " (в группу: " + this.lcTreeNodeGroup.Text;
+            switch (this.modeForm)
+            {
+                case ModeForm.Edit:
+                    {
+                        this.textBoxNameSubnet.Text = this.lcTreeNodeGroup.Text;
+                        this.textBoxIPSubnet.Text = this.lcTreeNodeGroup.IPSubnet;
+                        this.textBoxMaskSubnet.Text = this.lcTreeNodeGroup.MaskSubnet;
+                        break;
+                    }
+                case ModeForm.New:
+                    {
+                        this.textBoxNameSubnet.Text = "Новая сеть";
+                        break;
+                    }
+            }
         }
        
         private void buttonAddSubnet_Click(object sender, EventArgs e)
         {
             if (this.textBoxNameSubnet.Text != "")
             {
-                if (this.textBoxIPSubnet.Text != "")
-                {
-                    string pattern = @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
+                string pattern = @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
                       @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
                       @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
                       @"(25[0-5]|2[0-4]\d|[01]?\d\d?)";
-                    Regex regex = new Regex(pattern);
-                    Match match = regex.Match(this.textBoxIPSubnet.Text);
-                    // Проверяем корректно ли введен IP-адрес
+                Regex regex = new Regex(pattern);
+                Match match = regex.Match(this.textBoxIPSubnet.Text);
+                // Проверяем корректно ли введен IP-адрес сети
+                if (match.Success)
+                {
+                    this.textBoxIPSubnet.Text = match.Value;
+                    match = regex.Match(this.textBoxMaskSubnet.Text);
                     if (match.Success)
                     {
-                        this.textBoxIPSubnet.Text = match.Value;
-                        if (this.textBoxMaskSubnet.Text != "")
+                        this.textBoxMaskSubnet.Text = match.Value;
+                        switch (this.modeForm)
                         {
-                            match = regex.Match(this.textBoxMaskSubnet.Text);
-                            if (match.Success)
-                            {
-                                this.textBoxMaskSubnet.Text = match.Value;
-                                this.lcTreeNode = this.lcTreeNodeGroup.AddSubnet(this.textBoxNameSubnet.Text, this.textBoxIPSubnet.Text,this.textBoxMaskSubnet.Text);
-                                this.Close();
-                            }
-                            else
-                            {
-                                this.labelError.Text = "Введенное в поле маска значение не корректно";
-                            }
+                            case ModeForm.New:
+                                {
+                                    this.lcTreeNode = this.lcTreeNodeGroup.AddSubnet(this.textBoxNameSubnet.Text, this.textBoxIPSubnet.Text, this.textBoxMaskSubnet.Text);
+                                    break;
+                                }
+                            case ModeForm.Edit:
+                                {
+                                    this.lcTreeNodeGroup.Text = this.textBoxNameSubnet.Text;
+                                    this.lcTreeNodeGroup.IPSubnet = this.textBoxIPSubnet.Text;
+                                    this.lcTreeNodeGroup.MaskSubnet = this.textBoxMaskSubnet.Text;
+                                    break;
+                                }
                         }
-                        else
-                        {
-                            this.labelError.Text = "Не задана маска сети";
-                        }
+                        this.Close();
                     }
                     else
                     {
-                        this.labelError.Text = "Введенное в поле адрес сети значение не корректно";
+                        this.labelError.Text = "Введенное в поле маска значение не корректно";
                     }
                 }
                 else
                 {
-                    this.labelError.Text = "Не задан IP сети";
+                    this.labelError.Text = "Введенное в поле адрес сети значение не корректно";
                 }
             }
             else

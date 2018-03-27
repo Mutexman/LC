@@ -106,7 +106,7 @@
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 7;
             // 
-            // FormNewSubnet
+            // FormEditSubnet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -121,9 +121,9 @@
             this.Controls.Add(this.textBoxIPSubnet);
             this.Controls.Add(this.labelIPSubnet);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormNewSubnet";
+            this.Name = "FormEditSubnet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Новая сеть";
+            this.Text = "Сеть";
             this.ResumeLayout(false);
             this.PerformLayout();
 
