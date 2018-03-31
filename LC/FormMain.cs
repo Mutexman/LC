@@ -331,33 +331,57 @@ namespace LC
             {
                 case LCObjectType.Computer:
                     {
+                        this.tabControlObject.SelectedTab = this.tabPageComputers;
                         LCTreeNodeComputer lcPC = (LCTreeNodeComputer)lcTreeNode;
+                        foreach (ListViewItem curilv in this.listViewComputers.Items)
+                        {
+                            if (curilv.Tag == lcPC)
+                            {
+                                curilv.Selected = true;
+                                return;
+                            }
+                        }
                         ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description });
                         lvi.Tag = lcPC;
                         lcPC.Tag = lvi;
                         this.listViewComputers.Items.Add(lvi);
-                        this.tabControlObject.SelectedTab = this.tabPageComputers;
                         break;
                     }
                 case LCObjectType.SubNet:
                     {
+                        this.tabControlObject.SelectedTab = this.tabPageSubnets;
                         LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNode;
+                        foreach(ListViewItem cutilv in this.listViewSubnets.Items)
+                        {
+                            if(cutilv.Tag == lcSubnet)
+                            {
+                                cutilv.Selected = true;
+                                return;
+                            }
+                        }
                         ListViewItem lvi = new ListViewItem(new string[] { lcSubnet.Text, lcSubnet.IPSubnet,
                             lcSubnet.MaskSubnet,lcSubnet.ParentGroup,lcSubnet.Description });
                         lvi.Tag = lcSubnet;
                         lcSubnet.Tag = lvi;
                         this.listViewSubnets.Items.Add(lvi);
-                        this.tabControlObject.SelectedTab = this.tabPageSubnets;
                         break;
                     }
                 case LCObjectType.Group:
                     {
+                        this.tabControlObject.SelectedTab = this.tabPageGroups;
                         LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNode;
+                        foreach(ListViewItem curilv in this.listViewGroups.Items)
+                        {
+                            if(curilv.Tag == lcGroup)
+                            {
+                                curilv.Selected = true;
+                                return;
+                            }
+                        }
                         ListViewItem lvi = new ListViewItem(new string[] { lcGroup.Text, lcGroup.ParentGroup, lcGroup.Description });
                         lvi.Tag = lcGroup;
                         lcGroup.Tag = lvi;
                         this.listViewGroups.Items.Add(lvi);
-                        this.tabControlObject.SelectedTab = this.tabPageGroups;
                         break;
                     }
             }

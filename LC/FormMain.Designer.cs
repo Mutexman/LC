@@ -465,6 +465,7 @@
             this.listViewComputers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewComputers.FullRowSelect = true;
             this.listViewComputers.GridLines = true;
+            this.listViewComputers.HideSelection = false;
             this.listViewComputers.Location = new System.Drawing.Point(0, 25);
             this.listViewComputers.MultiSelect = false;
             this.listViewComputers.Name = "listViewComputers";
@@ -543,6 +544,7 @@
             this.listViewSubnets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewSubnets.FullRowSelect = true;
             this.listViewSubnets.GridLines = true;
+            this.listViewSubnets.HideSelection = false;
             this.listViewSubnets.Location = new System.Drawing.Point(0, 25);
             this.listViewSubnets.Name = "listViewSubnets";
             this.listViewSubnets.Size = new System.Drawing.Size(825, 334);
@@ -603,6 +605,7 @@
             this.listViewGroups.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewGroups.FullRowSelect = true;
             this.listViewGroups.GridLines = true;
+            this.listViewGroups.HideSelection = false;
             this.listViewGroups.Location = new System.Drawing.Point(0, 25);
             this.listViewGroups.Name = "listViewGroups";
             this.listViewGroups.Size = new System.Drawing.Size(825, 334);
