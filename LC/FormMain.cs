@@ -341,10 +341,40 @@ namespace LC
                                 return;
                             }
                         }
-                        ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description });
-                        lvi.Tag = lcPC;
-                        lcPC.Tag = lvi;
-                        this.listViewComputers.Items.Add(lvi);
+                        // определяем родительскую группу элемента
+                        LCTreeNode lcNode = (LCTreeNode)lcPC.Parent;
+                        // Пока сделано так, в будущем предполагаются что ПК состоят только в сетях. Кроме группы <Не в списке>
+                        if (lcNode.LCObjectType == LCObjectType.SubNet)
+                        {
+                            ListViewGroup lvg = null;
+                            foreach(ListViewGroup curGroup in this.listViewComputers.Groups)
+                            {
+                                if (curGroup.Tag == lcNode)
+                                {
+                                    // Группа существует
+                                    lvg = curGroup;
+                                    break;
+                                }
+                            }
+                            if(lvg == null)
+                            {
+                                // Такой группы еще нет, надо её создать
+                                lvg = new ListViewGroup(lcNode.Text);
+                            }
+                            lvg.Tag = lcNode;
+                            this.listViewComputers.Groups.Add(lvg);
+                            ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description },lvg);
+                            lvi.Tag = lcPC;
+                            lcPC.Tag = lvi;
+                            this.listViewComputers.Items.Add(lvi);
+                        }
+                        else
+                        {
+                            ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description });
+                            lvi.Tag = lcPC;
+                            lcPC.Tag = lvi;
+                            this.listViewComputers.Items.Add(lvi);
+                        }
                         break;
                     }
                 case LCObjectType.SubNet:
@@ -731,12 +761,28 @@ namespace LC
 
         private void listViewComputers_DoubleClick(object sender, EventArgs e)
         {
-            if (this.listViewComputers.SelectedItems != null)
+            if (this.listViewComputers.SelectedItems.Count > 0)
             {
                 LCTreeNodeComputer tn = (LCTreeNodeComputer)this.listViewComputers.SelectedItems[0].Tag;
                 FormEditComputer formNewComputer = new FormEditComputer(tn);
                 formNewComputer.ShowDialog();
             }
+        }
+
+        private void listViewComputers_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Delete)
+            {
+                if (this.listViewComputers.SelectedItems.Count >0)
+                {
+                    this.listViewComputers.SelectedItems[0].Remove();
+                }
+            }
+        }
+
+        private void toolStripMenuItemClearPCList_Click(object sender, EventArgs e)
+        {
+            this.listViewComputers.Items.Clear();
         }
     }
 }

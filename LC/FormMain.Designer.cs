@@ -118,6 +118,7 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemClearPCList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -156,6 +157,7 @@
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.открытьToolStripMenuItem,
+            this.toolStripMenuItemClearPCList,
             this.toolStripSeparator1,
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
@@ -165,20 +167,20 @@
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(184, 6);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выходToolStripMenuItem.Image")));
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
@@ -474,6 +476,7 @@
             this.listViewComputers.UseCompatibleStateImageBehavior = false;
             this.listViewComputers.View = System.Windows.Forms.View.Details;
             this.listViewComputers.DoubleClick += new System.EventHandler(this.listViewComputers_DoubleClick);
+            this.listViewComputers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listViewComputers_KeyDown);
             // 
             // columnHeaderIP_PC
             // 
@@ -872,6 +875,13 @@
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
+            // toolStripMenuItemClearPCList
+            // 
+            this.toolStripMenuItemClearPCList.Name = "toolStripMenuItemClearPCList";
+            this.toolStripMenuItemClearPCList.Size = new System.Drawing.Size(187, 22);
+            this.toolStripMenuItemClearPCList.Text = "Очистить список ПК";
+            this.toolStripMenuItemClearPCList.Click += new System.EventHandler(this.toolStripMenuItemClearPCList_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1012,6 +1022,7 @@
         private System.Windows.Forms.ColumnHeader columnHeaderDescriptionGroup;
         private System.Windows.Forms.ToolStripButton toolStripButtonGetNamePC;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemClearPCList;
     }
 }
 
