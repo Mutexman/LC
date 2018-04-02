@@ -33,6 +33,7 @@
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemClearPCList = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,7 +119,6 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemClearPCList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -170,6 +170,13 @@
             this.открытьToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItemClearPCList
+            // 
+            this.toolStripMenuItemClearPCList.Name = "toolStripMenuItemClearPCList";
+            this.toolStripMenuItemClearPCList.Size = new System.Drawing.Size(187, 22);
+            this.toolStripMenuItemClearPCList.Text = "Очистить список ПК";
+            this.toolStripMenuItemClearPCList.Click += new System.EventHandler(this.toolStripMenuItemClearPCList_Click);
             // 
             // toolStripSeparator1
             // 
@@ -459,12 +466,17 @@
             // 
             // listViewComputers
             // 
+            this.listViewComputers.BackColor = System.Drawing.Color.White;
+            this.listViewComputers.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("listViewComputers.BackgroundImage")));
+            this.listViewComputers.BackgroundImageTiled = true;
             this.listViewComputers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderIP_PC,
             this.columnHeaderNamePC,
             this.columnHeaderSubNetOrGroup,
             this.columnHeaderDescriptionPC});
             this.listViewComputers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewComputers.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listViewComputers.ForeColor = System.Drawing.Color.DarkBlue;
             this.listViewComputers.FullRowSelect = true;
             this.listViewComputers.GridLines = true;
             this.listViewComputers.HideSelection = false;
@@ -874,13 +886,6 @@
             this.toolStripMenuItemDelete.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
-            // 
-            // toolStripMenuItemClearPCList
-            // 
-            this.toolStripMenuItemClearPCList.Name = "toolStripMenuItemClearPCList";
-            this.toolStripMenuItemClearPCList.Size = new System.Drawing.Size(187, 22);
-            this.toolStripMenuItemClearPCList.Text = "Очистить список ПК";
-            this.toolStripMenuItemClearPCList.Click += new System.EventHandler(this.toolStripMenuItemClearPCList_Click);
             // 
             // FormMain
             // 
