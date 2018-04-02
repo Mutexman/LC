@@ -209,11 +209,8 @@ namespace LC
                     // Делаем активным компьютер в дереве справочника
                     this.treeViewObject.SelectedNode = lcComp;
 
-                    ListViewItem lvi = new ListViewItem(new string[] { lcComp.IP, lcComp.Text, lcComp.ParentGroup, lcComp.Description });
-                    lcComp.Tag = lvi;
-                    lvi.Tag = lcComp;
-                    this.listViewComputers.Items.Add(lvi);
-                    lvi.Selected = true;
+                    this.openLCTreeNode(lcComp);
+
                     countFind++;
                     this.WriteListBox("Найден компьютер с именем: " + lcComp.Text + ".");
                 }
@@ -325,7 +322,15 @@ namespace LC
         /// <param name="e"></param>
         private void openLCTreeNode(object sender, EventArgs e)
         {
-            LCTreeNode lcTreeNode = (LCTreeNode)this.treeViewObject.SelectedNode;
+            this.openLCTreeNode(this.treeViewObject.SelectedNode);
+        }
+        /// <summary>
+        /// Метод открытия узла дерева.
+        /// </summary>
+        /// <param name="treeNode">Открываемый узел.</param>
+        private void openLCTreeNode(TreeNode treeNode)
+        {
+            LCTreeNode lcTreeNode = (LCTreeNode)treeNode;
 
             switch (lcTreeNode.LCObjectType)
             {
@@ -347,7 +352,7 @@ namespace LC
                         if (lcNode.LCObjectType == LCObjectType.SubNet)
                         {
                             ListViewGroup lvg = null;
-                            foreach(ListViewGroup curGroup in this.listViewComputers.Groups)
+                            foreach (ListViewGroup curGroup in this.listViewComputers.Groups)
                             {
                                 if (curGroup.Tag == lcNode)
                                 {
@@ -356,14 +361,14 @@ namespace LC
                                     break;
                                 }
                             }
-                            if(lvg == null)
+                            if (lvg == null)
                             {
                                 // Такой группы еще нет, надо её создать
                                 lvg = new ListViewGroup(lcNode.Text);
                             }
                             lvg.Tag = lcNode;
                             this.listViewComputers.Groups.Add(lvg);
-                            ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description },lvg);
+                            ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description }, lvg);
                             lvi.Tag = lcPC;
                             lcPC.Tag = lvi;
                             this.listViewComputers.Items.Add(lvi);
@@ -381,9 +386,9 @@ namespace LC
                     {
                         this.tabControlObject.SelectedTab = this.tabPageSubnets;
                         LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNode;
-                        foreach(ListViewItem cutilv in this.listViewSubnets.Items)
+                        foreach (ListViewItem cutilv in this.listViewSubnets.Items)
                         {
-                            if(cutilv.Tag == lcSubnet)
+                            if (cutilv.Tag == lcSubnet)
                             {
                                 cutilv.Selected = true;
                                 return;
@@ -400,9 +405,9 @@ namespace LC
                     {
                         this.tabControlObject.SelectedTab = this.tabPageGroups;
                         LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNode;
-                        foreach(ListViewItem curilv in this.listViewGroups.Items)
+                        foreach (ListViewItem curilv in this.listViewGroups.Items)
                         {
-                            if(curilv.Tag == lcGroup)
+                            if (curilv.Tag == lcGroup)
                             {
                                 curilv.Selected = true;
                                 return;
@@ -518,17 +523,31 @@ namespace LC
                 if (MessageBox.Show("Вы дейстительно хотите удалить этот объект ?", "Удаление", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    if (lcTreeNode.LCObjectType == LCObjectType.Computer)
+                    switch(lcTreeNode.LCObjectType)
                     {
-                        tempStr = "Компьютер: " + tempStr + " удалён.";
+                        case LCObjectType.Computer:
+                            {
+                                //tempStr = "Компьютер: " + tempStr + " удалён.";
+                                LCTreeNodeComputer lcComputer = (LCTreeNodeComputer)lcTreeNode;
+                                ListViewItem itm = (ListViewItem)lcComputer.Tag;
+                                this.listViewComputers.Items.Remove(itm);
+                                lcComputer.Remove();
+                                tempStr = "Компьютер: " + tempStr + " удалён.";
+                                // Сообщаем об удалении
+                                this.WriteListBox(tempStr);
+                                break;
+                            }
+                        case LCObjectType.SubNet:
+                            {
+                                MessageBox.Show("Удаление сети пока не реализовано!");
+                                break;
+                            }
+                        case LCObjectType.Group:
+                            {
+                                MessageBox.Show("Удаление группы пока не реализовано!");
+                                break;
+                            }
                     }
-                    if (lcTreeNode.LCObjectType == LCObjectType.Group)
-                    {
-                        tempStr = "Группа: " + tempStr + " удалёна.";
-                    }
-                    lcTreeNode.Remove();
-                    // Сообщаем об удалении
-                    this.WriteListBox(tempStr);
                 }
             }
         }
