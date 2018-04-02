@@ -17,8 +17,8 @@ namespace LC
             InitializeComponent();
         }
         public static ListBox ListBoxOperation = null;
-        private LCTreeNodeSubnet lcTreeNodeGroup = null;
-        private LCTreeNodeSubnet lcTreeNode = null;
+        private LCTreeNodeGroup lcTreeNodeGroup = null;
+        private LCTreeNodeSubnet lcTreeNodeSubnet = null;
         private ModeForm modeForm;
          /// <summary>
         /// Возвращает созданую новую сеть в данной форме
@@ -27,26 +27,27 @@ namespace LC
         {
             get
             {
-                return this.lcTreeNode;
+                return this.lcTreeNodeSubnet;
             }
         }
         public FormEditSubnet(TreeNode treeNode, ModeForm modeForm)
         {
             InitializeComponent();
             this.modeForm = modeForm;
-            this.lcTreeNodeGroup = (LCTreeNodeSubnet)treeNode;
-            this.Text += " (в группу: " + this.lcTreeNodeGroup.Text;
             switch (this.modeForm)
             {
                 case ModeForm.Edit:
                     {
-                        this.textBoxNameSubnet.Text = this.lcTreeNodeGroup.Text;
-                        this.textBoxIPSubnet.Text = this.lcTreeNodeGroup.IPSubnet;
-                        this.textBoxMaskSubnet.Text = this.lcTreeNodeGroup.MaskSubnet;
+                        this.Text += "Сеть : " + this.lcTreeNodeSubnet.Text;
+                        this.lcTreeNodeSubnet = (LCTreeNodeSubnet)treeNode;
+                        this.textBoxNameSubnet.Text = this.lcTreeNodeSubnet.Text;
+                        this.textBoxIPSubnet.Text = this.lcTreeNodeSubnet.IPSubnet;
+                        this.textBoxMaskSubnet.Text = this.lcTreeNodeSubnet.MaskSubnet;
                         break;
                     }
                 case ModeForm.New:
                     {
+                        this.lcTreeNodeGroup = (LCTreeNodeGroup)treeNode;
                         this.textBoxNameSubnet.Text = "Новая сеть";
                         break;
                     }
@@ -75,14 +76,14 @@ namespace LC
                         {
                             case ModeForm.New:
                                 {
-                                    this.lcTreeNode = this.lcTreeNodeGroup.AddSubnet(this.textBoxNameSubnet.Text, this.textBoxIPSubnet.Text, this.textBoxMaskSubnet.Text);
+                                    this.lcTreeNodeSubnet = this.lcTreeNodeGroup.AddSubnet(this.textBoxNameSubnet.Text, this.textBoxIPSubnet.Text, this.textBoxMaskSubnet.Text);
                                     break;
                                 }
                             case ModeForm.Edit:
                                 {
-                                    this.lcTreeNodeGroup.Text = this.textBoxNameSubnet.Text;
-                                    this.lcTreeNodeGroup.IPSubnet = this.textBoxIPSubnet.Text;
-                                    this.lcTreeNodeGroup.MaskSubnet = this.textBoxMaskSubnet.Text;
+                                    this.lcTreeNodeSubnet.Text = this.textBoxNameSubnet.Text;
+                                    this.lcTreeNodeSubnet.IPSubnet = this.textBoxIPSubnet.Text;
+                                    this.lcTreeNodeSubnet.MaskSubnet = this.textBoxMaskSubnet.Text;
                                     break;
                                 }
                         }
