@@ -168,7 +168,7 @@ namespace LC
                 {
                     this.WriteListBox("Ошибка загрузки файла: " + e.Message);
                     LCTreeNodeGroup lcTreeRootError = new LCTreeNodeGroup();
-                    lcTreeRootError.Text = "Компьютеры";
+                    lcTreeRootError.Text = "!";
                     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     // Здесь возможна загрузка специальной иконки обозначающей сбой
                     lcTreeRootError.ImageIndex = 1;
@@ -192,7 +192,7 @@ namespace LC
             // Здесь надо правильно настроить этот узел
             LCTreeNodeGroup lcTreeRoot = new LCTreeNodeGroup();
             lcTreeRoot.Name = "Root";
-            lcTreeRoot.Text = "Компьютеры";
+            lcTreeRoot.Text = ".";
             lcTreeRoot.Description = "Корневой узел справочника.";
             lcTreeRoot.ContextMenuStrip = LCTreeNode.rootContextMenuStrip;
             lcTreeRoot.ImageIndex = 1;

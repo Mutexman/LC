@@ -13,7 +13,7 @@ namespace LC
     /// </summary>
     enum LCObjectType
     {
-        //ROOT,        // Корень дерева
+        //Root,        // Корень дерева
         NoList,      // Узел с компьютерами не в списке
         Group,       // Группа компьютеров
         Computer,    // Компьютеров
@@ -106,7 +106,15 @@ namespace LC
                 while (lcTreeWork.Parent != null)
                 {
                     lcTreeWork = (LCTreeNode)lcTreeWork.Parent;
-                    str = "\\" + lcTreeWork.Text +  str;
+                    if (lcTreeWork.Name != "Root")
+                    {
+                        str = "\\" + lcTreeWork.Text + str;
+                    }
+                    else
+                    {
+                        // Делаем для того чтобы название всех групп и сетей отображались без имени узла Root
+                        str = "." + str;
+                    }
                 }
                 return str;
             }
