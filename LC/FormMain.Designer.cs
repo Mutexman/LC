@@ -342,7 +342,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listBoxOperation);
             this.splitContainer1.Size = new System.Drawing.Size(1177, 521);
-            this.splitContainer1.SplitterDistance = 385;
+            this.splitContainer1.SplitterDistance = 438;
             this.splitContainer1.TabIndex = 3;
             // 
             // splitContainer2
@@ -358,7 +358,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControlObject);
-            this.splitContainer2.Size = new System.Drawing.Size(1177, 385);
+            this.splitContainer2.Size = new System.Drawing.Size(1177, 438);
             this.splitContainer2.SplitterDistance = 340;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -373,7 +373,7 @@
             this.treeViewObject.Name = "treeViewObject";
             this.treeViewObject.SelectedImageIndex = 0;
             this.treeViewObject.ShowNodeToolTips = true;
-            this.treeViewObject.Size = new System.Drawing.Size(340, 385);
+            this.treeViewObject.Size = new System.Drawing.Size(340, 438);
             this.treeViewObject.TabIndex = 0;
             this.treeViewObject.DoubleClick += new System.EventHandler(this.openLCTreeNode);
             // 
@@ -450,7 +450,7 @@
             this.tabControlObject.Name = "tabControlObject";
             this.tabControlObject.SelectedIndex = 0;
             this.tabControlObject.ShowToolTips = true;
-            this.tabControlObject.Size = new System.Drawing.Size(833, 385);
+            this.tabControlObject.Size = new System.Drawing.Size(833, 438);
             this.tabControlObject.TabIndex = 1;
             // 
             // tabPageComputers
@@ -459,7 +459,7 @@
             this.tabPageComputers.Controls.Add(this.toolStripComputers);
             this.tabPageComputers.Location = new System.Drawing.Point(4, 22);
             this.tabPageComputers.Name = "tabPageComputers";
-            this.tabPageComputers.Size = new System.Drawing.Size(825, 359);
+            this.tabPageComputers.Size = new System.Drawing.Size(825, 412);
             this.tabPageComputers.TabIndex = 0;
             this.tabPageComputers.Text = "Компьютеры";
             this.tabPageComputers.UseVisualStyleBackColor = true;
@@ -483,7 +483,7 @@
             this.listViewComputers.Location = new System.Drawing.Point(0, 25);
             this.listViewComputers.MultiSelect = false;
             this.listViewComputers.Name = "listViewComputers";
-            this.listViewComputers.Size = new System.Drawing.Size(825, 334);
+            this.listViewComputers.Size = new System.Drawing.Size(825, 387);
             this.listViewComputers.TabIndex = 1;
             this.listViewComputers.UseCompatibleStateImageBehavior = false;
             this.listViewComputers.View = System.Windows.Forms.View.Details;
@@ -657,7 +657,7 @@
             this.listBoxOperation.FormattingEnabled = true;
             this.listBoxOperation.Location = new System.Drawing.Point(0, 0);
             this.listBoxOperation.Name = "listBoxOperation";
-            this.listBoxOperation.Size = new System.Drawing.Size(1177, 132);
+            this.listBoxOperation.Size = new System.Drawing.Size(1177, 79);
             this.listBoxOperation.TabIndex = 0;
             // 
             // contextMenuStripLCGroup

@@ -513,7 +513,8 @@ namespace LC
                     // Здесь нужен код для удаления из таблиц объектов, которые являются дочерними по отношению к удаляемому объекту
 
                     // Удаляем текущий
-                    lcTreeNode.Remove();
+                    //lcTreeNode.Remove();
+                    MessageBox.Show("Пока не реализовано удаление элементов с дочерними объектами!");
                     // Сообщаем об удалении
                     this.WriteListBox("Группа " + tempStr + " и её дочерние объекты удалены.");
                 }
@@ -539,12 +540,22 @@ namespace LC
                             }
                         case LCObjectType.SubNet:
                             {
-                                MessageBox.Show("Удаление сети пока не реализовано!");
+                                LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNode;
+                                ListViewItem itm = (ListViewItem)lcSubnet.Tag;
+                                this.listViewSubnets.Items.Remove(itm);
+                                lcSubnet.Remove();
+                                tempStr = "Сеть: " + tempStr + " удалена.";
+                                this.WriteListBox(tempStr);
                                 break;
                             }
                         case LCObjectType.Group:
                             {
-                                MessageBox.Show("Удаление группы пока не реализовано!");
+                                LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNode;
+                                ListViewItem itm = (ListViewItem)lcGroup.Tag;
+                                this.listViewGroups.Items.Remove(itm);
+                                lcGroup.Remove();
+                                tempStr = "Группа: " + tempStr + " удалена.";
+                                this.WriteListBox(tempStr);
                                 break;
                             }
                     }
