@@ -37,6 +37,7 @@ namespace LC
         public static ContextMenuStrip computerContextMenuStrip = null;
         public static ContextMenuStrip rootContextMenuStrip = null;
         public static ContextMenuStrip subnetContextMenuStrip = null;
+        public static ContextMenuStrip noListContextMenuStrip = null;
         /// <summary>
         /// Метод настройки компонента ListBox в который будут выводиться сообщения
         /// </summary>

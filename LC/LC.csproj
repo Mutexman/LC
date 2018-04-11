@@ -143,6 +143,7 @@
     <Compile Include="LCTreeNode.cs" />
     <Compile Include="LCTreeNodeComputer.cs" />
     <Compile Include="LCTreeNodeGroup.cs" />
+    <Compile Include="LCTreeNodeNoList.cs" />
     <Compile Include="LCTreeNodeSubnet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

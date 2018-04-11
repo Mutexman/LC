@@ -21,10 +21,6 @@ namespace LC
             xw.WriteAttributeString("Description", this.Description); // А почему свойство ?????
             xw.WriteAttributeString("FotoFile", this.fotoFile);
         }
-        public void SetFoto(string fileName)
-        {
-            this.fotoFile = fileName;
-        }
         /// <summary>
         /// Метод добавления дочерней группы
         /// </summary>

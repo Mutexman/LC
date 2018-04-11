@@ -94,6 +94,7 @@
             this.toolStripMenuItemOpenNodesGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemNewSubnet = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemNewGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemEditGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
@@ -119,7 +120,10 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemNewGroup = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripNoList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemDeleteNoList = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemFindSubnet = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -140,6 +144,7 @@
             this.contextMenuStripLCGroup.SuspendLayout();
             this.contextMenuStripLCRoot.SuspendLayout();
             this.contextMenuStripLCSubnet.SuspendLayout();
+            this.contextMenuStripNoList.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -677,7 +682,7 @@
             this.toolStripMenuItemCutGroup,
             this.toolStripMenuItemDeleteGroup});
             this.contextMenuStripLCGroup.Name = "contextMenuStripLCGroup";
-            this.contextMenuStripLCGroup.Size = new System.Drawing.Size(199, 226);
+            this.contextMenuStripLCGroup.Size = new System.Drawing.Size(199, 204);
             // 
             // toolStripMenuItemOpenGroup
             // 
@@ -710,6 +715,14 @@
             this.toolStripMenuItemNewSubnet.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemNewSubnet.Text = "Новая сеть";
             this.toolStripMenuItemNewSubnet.Click += new System.EventHandler(this.createNewSubnet);
+            // 
+            // toolStripMenuItemNewGroup
+            // 
+            this.toolStripMenuItemNewGroup.Image = global::LC.Properties.Resources.AddNewContextMenu;
+            this.toolStripMenuItemNewGroup.Name = "toolStripMenuItemNewGroup";
+            this.toolStripMenuItemNewGroup.Size = new System.Drawing.Size(198, 22);
+            this.toolStripMenuItemNewGroup.Text = "Новая группа";
+            this.toolStripMenuItemNewGroup.Click += new System.EventHandler(this.createNewGroup);
             // 
             // toolStripSeparator6
             // 
@@ -889,13 +902,33 @@
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
-            // toolStripMenuItemNewGroup
+            // contextMenuStripNoList
             // 
-            this.toolStripMenuItemNewGroup.Image = global::LC.Properties.Resources.AddNewContextMenu;
-            this.toolStripMenuItemNewGroup.Name = "toolStripMenuItemNewGroup";
-            this.toolStripMenuItemNewGroup.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItemNewGroup.Text = "Новая группа";
-            this.toolStripMenuItemNewGroup.Click += new System.EventHandler(this.createNewGroup);
+            this.contextMenuStripNoList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemFindSubnet,
+            this.toolStripSeparator4,
+            this.toolStripMenuItemDeleteNoList});
+            this.contextMenuStripNoList.Name = "contextMenuStripNoList";
+            this.contextMenuStripNoList.Size = new System.Drawing.Size(193, 76);
+            // 
+            // toolStripMenuItemDeleteNoList
+            // 
+            this.toolStripMenuItemDeleteNoList.Image = global::LC.Properties.Resources.Close;
+            this.toolStripMenuItemDeleteNoList.Name = "toolStripMenuItemDeleteNoList";
+            this.toolStripMenuItemDeleteNoList.Size = new System.Drawing.Size(192, 22);
+            this.toolStripMenuItemDeleteNoList.Text = "Удалить";
+            this.toolStripMenuItemDeleteNoList.Click += new System.EventHandler(this.deleteLCTreeNode);
+            // 
+            // toolStripMenuItemFindSubnet
+            // 
+            this.toolStripMenuItemFindSubnet.Name = "toolStripMenuItemFindSubnet";
+            this.toolStripMenuItemFindSubnet.Size = new System.Drawing.Size(192, 22);
+            this.toolStripMenuItemFindSubnet.Text = "Переопределить сеть";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(189, 6);
             // 
             // FormMain
             // 
@@ -942,6 +975,7 @@
             this.contextMenuStripLCGroup.ResumeLayout(false);
             this.contextMenuStripLCRoot.ResumeLayout(false);
             this.contextMenuStripLCSubnet.ResumeLayout(false);
+            this.contextMenuStripNoList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1039,6 +1073,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemClearPCList;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNewGroup;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripNoList;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFindSubnet;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDeleteNoList;
     }
 }
 

@@ -83,6 +83,7 @@ namespace LC
                 LCTreeNode.groupContextMemuStrip = this.contextMenuStripLCGroup;
                 LCTreeNode.computerContextMenuStrip = this.contextMenuStripLCComputer;
                 LCTreeNode.subnetContextMenuStrip = this.contextMenuStripLCSubnet;
+                LCTreeNode.noListContextMenuStrip = this.contextMenuStripNoList;
                 LCTreeNode.StatusLabel = this.toolStripStatusLabelMain;
                 CommandToolStripButton.StatusLabel = this.toolStripStatusLabelMain;
                 CommandToolStripButton.listBoxMessage = this.listBoxOperation;
@@ -97,7 +98,6 @@ namespace LC
                     this.CreateDefaultFileConfig();
                 }
                 LCDirectory.treeView = this.treeViewObject;
-                LCDirectory.listBox = this.listBoxOperation;
                 LCDirectory.listBox = this.listBoxOperation;
                 LCDirectory.toolStripStatusLabel = this.toolStripStatusLabelMain;
                 this.lCDirectory = new LCDirectory();
@@ -170,8 +170,8 @@ namespace LC
                     }
                     else
                     {
-                        LCTreeNodeGroup lcGroup = (LCTreeNodeGroup) this.ReturnGroupNoList();
-                        lcGroup.AddComputer(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
+                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList) this.ReturnGroupNoList();
+                        lcNoList.AddComputer(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
                         this.FindComputer_IP(this.ReturnGroupNoList(), this.toolStripTextBoxIP.Text);
@@ -558,6 +558,14 @@ namespace LC
                                 this.WriteListBox(tempStr);
                                 break;
                             }
+                        case LCObjectType.NoList:
+                            {
+                                LCTreeNodeNoList lcNoList = (LCTreeNodeNoList)lcTreeNode;
+                                lcNoList.Remove();
+                                tempStr = "Группа: " + tempStr + " удалена.";
+                                this.WriteListBox(tempStr);
+                                break;
+                            }
                     }
                 }
             }
@@ -644,15 +652,15 @@ namespace LC
                     }
                 }
             }
-            LCTreeNodeGroup lcTreeNodeGroup = new LCTreeNodeGroup();
-            lcTreeNodeGroup.Text = "<Не в списке>";
-            lcTreeNodeGroup.Description = "Компьютеры которые не добавлялись в группу";
-            lcTreeNodeGroup.ContextMenuStrip = this.contextMenuStripLCGroup;
-            lcTreeNodeGroup.ImageIndex = 2;
-            lcTreeNodeGroup.ToolTipText += "<Не в списке>";
-            lcTreeNodeGroup.ToolTipText += "\n" + "Компьютеры которые не добавлялись в группу";
-            treeNode.Nodes.Add(lcTreeNodeGroup);
-            return lcTreeNodeGroup;
+            LCTreeNodeNoList lcTreeNodeNoList = new LCTreeNodeNoList();
+            lcTreeNodeNoList.Text = "<Не в списке>";
+            lcTreeNodeNoList.Description = "Компьютеры которые не добавлялись в группу";
+            lcTreeNodeNoList.ContextMenuStrip = this.contextMenuStripNoList;
+            lcTreeNodeNoList.ImageIndex = 2;
+            lcTreeNodeNoList.ToolTipText += "<Не в списке>";
+            lcTreeNodeNoList.ToolTipText += "\n" + "Компьютеры которые не добавлялись в группу";
+            treeNode.Nodes.Add(lcTreeNodeNoList);
+            return lcTreeNodeNoList;
         }
         /// <summary>
         /// Метод создания нового файла config.xml

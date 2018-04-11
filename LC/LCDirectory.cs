@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,17 +42,25 @@ namespace LC
                                         LCTreeNodeGroup lcTreeNodeGroup = new LCTreeNodeGroup();
                                         lcTreeNodeGroup.Text = xnod.Attributes["NameGroup"].Value;
                                         lcTreeNodeGroup.Description = xnod.Attributes["Description"].Value;
-                                        // Эта проверка нужна на тот случай если этого атрибута не в файле
-                                        if (xnod.Attributes["FotoFile"] != null)
-                                        {
-                                            lcTreeNodeGroup.SetFoto(xnod.Attributes["FotoFile"].Value);
-                                        }
                                         lcTreeNodeGroup.ToolTipText += lcTreeNodeGroup.Text;
                                         lcTreeNodeGroup.ToolTipText += "\n" + lcTreeNodeGroup.Description;
                                         lcTreeNodeGroup.ContextMenuStrip = LCTreeNode.groupContextMemuStrip;
                                         lcTreeNodeGroup.ImageIndex = 2;
                                         newNode.Nodes.Add(lcTreeNodeGroup);
                                         newNode = lcTreeNodeGroup;
+                                    }
+                                    break;
+                                case "NoList":
+                                    {
+                                        LCTreeNodeNoList lcTreeNodeNoList = new LCTreeNodeNoList();
+                                        lcTreeNodeNoList.Text = xnod.Attributes["NameGroup"].Value;
+                                        lcTreeNodeNoList.Description = xnod.Attributes["Description"].Value;
+                                        lcTreeNodeNoList.ToolTipText += lcTreeNodeNoList.Text;
+                                        lcTreeNodeNoList.ToolTipText += "\n" + lcTreeNodeNoList.Description;
+                                        lcTreeNodeNoList.ContextMenuStrip = LCTreeNode.noListContextMenuStrip;
+                                        lcTreeNodeNoList.ImageIndex = 2;
+                                        newNode.Nodes.Add(lcTreeNodeNoList);
+                                        newNode = lcTreeNodeNoList;
                                     }
                                     break;
                                 case "Computer":
