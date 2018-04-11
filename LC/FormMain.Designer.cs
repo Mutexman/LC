@@ -119,6 +119,7 @@
             this.toolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemNewGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -543,7 +544,7 @@
             this.tabPageSubnets.Controls.Add(this.toolStrip2);
             this.tabPageSubnets.Location = new System.Drawing.Point(4, 22);
             this.tabPageSubnets.Name = "tabPageSubnets";
-            this.tabPageSubnets.Size = new System.Drawing.Size(825, 359);
+            this.tabPageSubnets.Size = new System.Drawing.Size(825, 412);
             this.tabPageSubnets.TabIndex = 1;
             this.tabPageSubnets.Text = "Сети";
             this.tabPageSubnets.UseVisualStyleBackColor = true;
@@ -562,7 +563,7 @@
             this.listViewSubnets.HideSelection = false;
             this.listViewSubnets.Location = new System.Drawing.Point(0, 25);
             this.listViewSubnets.Name = "listViewSubnets";
-            this.listViewSubnets.Size = new System.Drawing.Size(825, 334);
+            this.listViewSubnets.Size = new System.Drawing.Size(825, 387);
             this.listViewSubnets.TabIndex = 1;
             this.listViewSubnets.UseCompatibleStateImageBehavior = false;
             this.listViewSubnets.View = System.Windows.Forms.View.Details;
@@ -606,7 +607,7 @@
             this.tabPageGroups.Controls.Add(this.toolStrip3);
             this.tabPageGroups.Location = new System.Drawing.Point(4, 22);
             this.tabPageGroups.Name = "tabPageGroups";
-            this.tabPageGroups.Size = new System.Drawing.Size(825, 359);
+            this.tabPageGroups.Size = new System.Drawing.Size(825, 412);
             this.tabPageGroups.TabIndex = 2;
             this.tabPageGroups.Text = "Группы";
             this.tabPageGroups.UseVisualStyleBackColor = true;
@@ -623,7 +624,7 @@
             this.listViewGroups.HideSelection = false;
             this.listViewGroups.Location = new System.Drawing.Point(0, 25);
             this.listViewGroups.Name = "listViewGroups";
-            this.listViewGroups.Size = new System.Drawing.Size(825, 334);
+            this.listViewGroups.Size = new System.Drawing.Size(825, 387);
             this.listViewGroups.TabIndex = 1;
             this.listViewGroups.UseCompatibleStateImageBehavior = false;
             this.listViewGroups.View = System.Windows.Forms.View.Details;
@@ -668,6 +669,7 @@
             this.toolStripMenuItemOpenNodesGroup,
             this.toolStripSeparator11,
             this.toolStripMenuItemNewSubnet,
+            this.toolStripMenuItemNewGroup,
             this.toolStripSeparator6,
             this.toolStripMenuItemEditGroup,
             this.toolStripSeparator7,
@@ -675,7 +677,7 @@
             this.toolStripMenuItemCutGroup,
             this.toolStripMenuItemDeleteGroup});
             this.contextMenuStripLCGroup.Name = "contextMenuStripLCGroup";
-            this.contextMenuStripLCGroup.Size = new System.Drawing.Size(199, 182);
+            this.contextMenuStripLCGroup.Size = new System.Drawing.Size(199, 226);
             // 
             // toolStripMenuItemOpenGroup
             // 
@@ -887,6 +889,14 @@
             this.toolStripMenuItemDelete.Text = "Удалить";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
             // 
+            // toolStripMenuItemNewGroup
+            // 
+            this.toolStripMenuItemNewGroup.Image = global::LC.Properties.Resources.AddNewContextMenu;
+            this.toolStripMenuItemNewGroup.Name = "toolStripMenuItemNewGroup";
+            this.toolStripMenuItemNewGroup.Size = new System.Drawing.Size(198, 22);
+            this.toolStripMenuItemNewGroup.Text = "Новая группа";
+            this.toolStripMenuItemNewGroup.Click += new System.EventHandler(this.createNewGroup);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1028,6 +1038,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonGetNamePC;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemClearPCList;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNewGroup;
     }
 }
 
