@@ -7,6 +7,9 @@ using System.Xml;
 
 namespace LC
 {
+    /// <summary>
+    /// Класс группы каких либо устройст или других групп.
+    /// </summary>
     class LCTreeNodeGroup : LCTreeNode
     {
         public LCTreeNodeGroup(): base()
@@ -31,11 +34,13 @@ namespace LC
         public LCTreeNodeGroup AddGroup(string nameGroup, string description, string fotofile)
         {
             // создаем новый узел Group
-            LCTreeNodeGroup lcTreeNodeGroup = new LCTreeNodeGroup();
-            lcTreeNodeGroup.Text = nameGroup;
-            lcTreeNodeGroup.Description = description;
-            lcTreeNodeGroup.ContextMenuStrip = LCTreeNode.groupContextMemuStrip;
-            lcTreeNodeGroup.ImageIndex = 2;
+            LCTreeNodeGroup lcTreeNodeGroup = new LCTreeNodeGroup
+            {
+                Text = nameGroup,
+                Description = description,
+                ContextMenuStrip = LCTreeNode.groupContextMemuStrip,
+                ImageIndex = 2
+            };
             lcTreeNodeGroup.ToolTipText += nameGroup;
             lcTreeNodeGroup.ToolTipText += "\n" + description;
             this.Nodes.Add(lcTreeNodeGroup);
@@ -45,12 +50,14 @@ namespace LC
         public LCTreeNodeSubnet AddSubnet(string nameSubnet, string ipSubnet, string maskSubnet)
         {
             // созадем новую сеть
-            LCTreeNodeSubnet lcTreeNodeSubnet = new LCTreeNodeSubnet();
-            lcTreeNodeSubnet.Text = nameSubnet;
-            lcTreeNodeSubnet.ContextMenuStrip = LCTreeNode.subnetContextMenuStrip;
-            lcTreeNodeSubnet.IPSubnet = ipSubnet;
-            lcTreeNodeSubnet.MaskSubnet = maskSubnet;
-            lcTreeNodeSubnet.ToolTipText += nameSubnet;
+            LCTreeNodeSubnet lcTreeNodeSubnet = new LCTreeNodeSubnet
+            {
+                Text = nameSubnet,
+                ContextMenuStrip = LCTreeNode.subnetContextMenuStrip,
+                IPSubnet = ipSubnet,
+                MaskSubnet = maskSubnet,
+                ToolTipText = nameSubnet
+            };
             this.Nodes.Add(lcTreeNodeSubnet);
             this.WriteListBoxOperation("Добавлена группа : " + nameSubnet);
             return lcTreeNodeSubnet;
@@ -65,12 +72,14 @@ namespace LC
         public LCTreeNodeComputer AddComputer(string nameComputer, string ip, string description)
         {
             // создаем новый узел Computer
-            LCTreeNodeComputer lcTreeNodeComputer = new LCTreeNodeComputer();
-            lcTreeNodeComputer.Text = nameComputer;
-            lcTreeNodeComputer.IP = ip;
-            lcTreeNodeComputer.Description = description;
-            lcTreeNodeComputer.ContextMenuStrip = LCTreeNode.computerContextMenuStrip;
-            lcTreeNodeComputer.ImageIndex = 3;
+            LCTreeNodeComputer lcTreeNodeComputer = new LCTreeNodeComputer
+            {
+                Text = nameComputer,
+                IP = ip,
+                Description = description,
+                ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
+                ImageIndex = 3
+            };
             lcTreeNodeComputer.ToolTipText += nameComputer;
             lcTreeNodeComputer.ToolTipText += "\n" + ip;
             lcTreeNodeComputer.ToolTipText += "\n" + description;

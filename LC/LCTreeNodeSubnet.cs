@@ -7,6 +7,9 @@ using System.Xml;
 
 namespace LC
 {
+    /// <summary>
+    /// Класс компьютерной сети.
+    /// </summary>
     class LCTreeNodeSubnet : LCTreeNodeGroup
     {
         public LCTreeNodeSubnet(): base()
@@ -15,6 +18,9 @@ namespace LC
         }
         private string ipsubnet;
         private string masksubnet;
+        /// <summary>
+        /// IP адрес сети или её шлюз.
+        /// </summary>
         public string IPSubnet
         {
             get
@@ -26,6 +32,9 @@ namespace LC
                 this.ipsubnet = value;
             }
         }
+        /// <summary>
+        /// Маска сети.
+        /// </summary>
         public string MaskSubnet
         {
             get
@@ -37,6 +46,10 @@ namespace LC
                 this.masksubnet = value;
             }
         }
+        /// <summary>
+        /// Метод сохранения в хранилище.
+        /// </summary>
+        /// <param name="xw"></param>
         public override void Save(XmlTextWriter xw)
         {
             //base.Save(xw);
