@@ -121,12 +121,6 @@
     <Compile Include="FormEditGroup.Designer.cs">
       <DependentUpon>FormEditGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormOpenFileXML.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormOpenFileXML.Designer.cs">
-      <DependentUpon>FormOpenFileXML.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormSettingCommandButton.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditSubnet.resx">
       <DependentUpon>FormEditSubnet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormOpenFileXML.resx">
-      <DependentUpon>FormOpenFileXML.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSettingCommandButton.resx">
       <DependentUpon>FormSettingCommandButton.cs</DependentUpon>

@@ -25,11 +25,12 @@ namespace LC
         /// <summary>
         /// Переменная содержащая имя файла в котором храниться справочник
         /// </summary>
-        private string fileData = Application.LocalUserAppDataPath + "\\Computers.xml";
+        private string fileData = Application.LocalUserAppDataPath + "\\LCDirectory.xml";
         /// <summary>
         /// Переменная содержащая имя файла конфигурации кнопок
         /// </summary>
-        private string fileConfig = Application.LocalUserAppDataPath + "\\config.xml";
+        //private string fileConfig = Application.LocalUserAppDataPath + "\\config.xml";
+        private string fileConfigComputers = Application.LocalUserAppDataPath + "\\configComputers.xml";
         private BufferLCTreeNode buffer = new BufferLCTreeNode();
         // Поле для сохранения найденых компьютеров
         private static int countFind = 0;
@@ -45,9 +46,68 @@ namespace LC
             {
                 this.splitContainer1.Panel2Collapsed = true;
             }
-            CommandToolStripButton.toolStrip = this.toolStripComputers;
-            CommandToolStripButton.listComputers = this.listViewComputers;
-            CommandToolStripButton.CreateCommandButtons();
+            this.CreateCommandButtons(this.fileConfigComputers, this.toolStripComputers, this.listViewComputers);
+        }
+        /// <summary>
+        /// Метод создания коммандных кнопок в ToolStrip
+        /// </summary>
+        /// <param name="fileName">Имя файла хранения настроек кнопок.</param>
+        /// <param name="toolStrip">Панель в которой будут создаваться кнопки.</param>
+        public void CreateCommandButtons(string fileName,ToolStrip toolStrip,ListView listView)
+        {
+            // Загрузка файла в объект XmlDocument
+            XmlDocument xd = new XmlDocument();
+            if (File.Exists(fileName))
+            {
+                xd.Load(fileName);
+            }
+            else
+            {
+                // Здесь надо бы создавать пустой файл командных кнопок
+                string xmlStr = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+                xmlStr += "<Buttons></Buttons>";
+                xd.LoadXml(xmlStr);
+            }
+            XmlNode xn = xd.DocumentElement;
+            if (xn.NodeType == XmlNodeType.Element)
+            {
+                if (xn.Name == "Buttons")
+                {
+                    CommandToolStripButton progBut = null;
+                    XmlNode workxn = xn.FirstChild;
+                    while (workxn != null)
+                    {
+                        if (workxn.Name == "Button")
+                        {
+                            string text = "";
+                            string command = "";
+                            string parameters = "";
+                            string toolTipText = "";
+                            if (workxn.ChildNodes[0].ChildNodes[0] != null)
+                            {
+                                text = workxn.ChildNodes[0].ChildNodes[0].Value;
+                            }
+                            if (workxn.ChildNodes[1].ChildNodes[0] != null)
+                            {
+                                command = workxn.ChildNodes[1].ChildNodes[0].Value;
+                            }
+                            if (workxn.ChildNodes[2].ChildNodes[0] != null)
+                            {
+                                parameters = workxn.ChildNodes[2].ChildNodes[0].Value;
+                            }
+                            if (workxn.ChildNodes[3].ChildNodes[0] != null)
+                            {
+                                toolTipText = workxn.ChildNodes[3].ChildNodes[0].Value;
+                            }
+                            progBut = new CommandToolStripButton(text, command, parameters, toolTipText, true);
+                            progBut.ImageScaling = ToolStripItemImageScaling.None;
+                            progBut.listItems = listView;
+                            toolStrip.Items.Add(progBut);
+                        }
+                        workxn = workxn.NextSibling;
+                    }
+                }
+            }
         }
 
         #region События формы
@@ -89,14 +149,6 @@ namespace LC
                 CommandToolStripButton.listBoxMessage = this.listBoxOperation;
                 CommandToolStripButton.tabControl = this.tabControlObject;
                 FormEditComputer.treeView = this.treeViewObject;
-                FormOpenFileXML formOpenFileXML = new FormOpenFileXML();
-                formOpenFileXML.ShowDialog();
-                this.fileData = formOpenFileXML.OpenFile;
-                // Проверяем существует ли файл config.xml. Если его нет, то создаем.
-                if (!(File.Exists(this.fileConfig)))
-                {
-                    this.CreateDefaultFileConfig();
-                }
                 LCDirectory.treeView = this.treeViewObject;
                 LCDirectory.listBox = this.listBoxOperation;
                 LCDirectory.toolStripStatusLabel = this.toolStripStatusLabelMain;
@@ -262,16 +314,6 @@ namespace LC
         #endregion
 
         #region Главное меню
-        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormOpenFileXML formOpenFileXML = new FormOpenFileXML();
-            formOpenFileXML.ShowDialog();
-            if (formOpenFileXML.SelectOk)
-            {
-                this.lCDirectory.CreateDOM(this.fileData);
-            }
-
-        }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -368,15 +410,19 @@ namespace LC
                             }
                             lvg.Tag = lcNode;
                             this.listViewComputers.Groups.Add(lvg);
-                            ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description }, lvg);
-                            lvi.Tag = lcPC;
+                            ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description }, lvg)
+                            {
+                                Tag = lcPC
+                            };
                             lcPC.Tag = lvi;
                             this.listViewComputers.Items.Add(lvi);
                         }
                         else
                         {
-                            ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description });
-                            lvi.Tag = lcPC;
+                            ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description })
+                            {
+                                Tag = lcPC
+                            };
                             lcPC.Tag = lvi;
                             this.listViewComputers.Items.Add(lvi);
                         }
@@ -395,8 +441,10 @@ namespace LC
                             }
                         }
                         ListViewItem lvi = new ListViewItem(new string[] { lcSubnet.Text, lcSubnet.IPSubnet,
-                            lcSubnet.MaskSubnet,lcSubnet.ParentGroup,lcSubnet.Description });
-                        lvi.Tag = lcSubnet;
+                            lcSubnet.MaskSubnet,lcSubnet.ParentGroup,lcSubnet.Description })
+                        {
+                            Tag = lcSubnet
+                        };
                         lcSubnet.Tag = lvi;
                         this.listViewSubnets.Items.Add(lvi);
                         break;
@@ -413,8 +461,10 @@ namespace LC
                                 return;
                             }
                         }
-                        ListViewItem lvi = new ListViewItem(new string[] { lcGroup.Text, lcGroup.ParentGroup, lcGroup.Description });
-                        lvi.Tag = lcGroup;
+                        ListViewItem lvi = new ListViewItem(new string[] { lcGroup.Text, lcGroup.ParentGroup, lcGroup.Description })
+                        {
+                            Tag = lcGroup
+                        };
                         lcGroup.Tag = lvi;
                         this.listViewGroups.Items.Add(lvi);
                         break;
@@ -652,88 +702,16 @@ namespace LC
                     }
                 }
             }
-            LCTreeNodeNoList lcTreeNodeNoList = new LCTreeNodeNoList();
-            lcTreeNodeNoList.Text = "<Не в списке>";
-            lcTreeNodeNoList.Description = "Компьютеры которые не добавлялись в группу";
-            lcTreeNodeNoList.ContextMenuStrip = this.contextMenuStripNoList;
-            lcTreeNodeNoList.ImageIndex = 2;
-            lcTreeNodeNoList.ToolTipText += "<Не в списке>";
-            lcTreeNodeNoList.ToolTipText += "\n" + "Компьютеры которые не добавлялись в группу";
+            LCTreeNodeNoList lcTreeNodeNoList = new LCTreeNodeNoList
+            {
+                Text = "<Не в списке>",
+                Description = "Компьютеры которые не добавлялись в группу",
+                ContextMenuStrip = this.contextMenuStripNoList,
+                ImageIndex = 2,
+                ToolTipText = "<Не в списке>\nКомпьютеры которые не добавлялись в группу"
+            };
             treeNode.Nodes.Add(lcTreeNodeNoList);
             return lcTreeNodeNoList;
-        }
-        /// <summary>
-        /// Метод создания нового файла config.xml
-        /// </summary>
-        private void CreateDefaultFileConfig()
-        {
-            // открытие нового XML-файла c помощью объекта XmlTextWriter
-            XmlTextWriter xw = new XmlTextWriter(Application.LocalUserAppDataPath + "\\config.xml", System.Text.Encoding.UTF8);
-            // Настраиваем форматирование для более удобного чтения файла
-            xw.Formatting = Formatting.Indented;
-            xw.Indentation = 2;
-            // запись декларации документа
-            xw.WriteStartDocument();
-            // запись корневого элемента
-            xw.WriteStartElement("Buttons");
-
-            // Запись о первой кнопке (VNC+proxy)
-            xw.WriteStartElement("Button");
-            xw.WriteElementString("Text", "VNC+proxy");
-            xw.WriteElementString("Command", "C:\\Program Files\\VNCViewer\\vncviewer.exe");
-            xw.WriteElementString("Parameters", "@[IP]:5047 /proxy 10.35.38.184:5901 /user @[User] /password @[Password]");
-            xw.WriteElementString("ToolTipText", "Запуск VNC с использованием proxy. Для подключения к ПК в других регионах");
-            xw.WriteEndElement();
-            // Запись о второй кнопке
-            xw.WriteStartElement("Button");
-            xw.WriteElementString("Text", "VNC");
-            xw.WriteElementString("Command", "C:\\Program Files\\VNCViewer\\vncviewer.exe");
-            xw.WriteElementString("Parameters", "@[IP]:5047 /user @[User] /password @[Password]");
-            xw.WriteElementString("ToolTipText", "Запуск VNC без использования proxy. Для подключения к ПК в своём регионе");
-            xw.WriteEndElement();
-            // Запись о третьей кнопке (RDP)
-            xw.WriteStartElement("Button");
-            xw.WriteElementString("Text", "RDP");
-            xw.WriteElementString("Command", "C:\\WINDOWS\\system32\\mstsc.exe");
-            xw.WriteElementString("Parameters", "/v:@[IP]");
-            xw.WriteElementString("ToolTipText", "Удалённый рабочий стол");
-            xw.WriteEndElement();
-            // Запись о четвёртой кнопке (SMS)
-            xw.WriteStartElement("Button");
-            xw.WriteElementString("Text", "CMRC");
-            xw.WriteElementString("Command", "rc.exe");
-            xw.WriteElementString("Parameters", "1 @[IP]");
-            xw.WriteElementString("ToolTipText", "Подключение через Configuration Manager Remote Control");
-            xw.WriteEndElement();
-            // Запись о пятой кнопке
-            xw.WriteStartElement("Button");
-            xw.WriteElementString("Text", "Ping");
-            xw.WriteElementString("Command", "ping");
-            xw.WriteElementString("Parameters", "-a @[IP]");
-            xw.WriteElementString("ToolTipText", "Команда ping с параметром -a");
-            xw.WriteEndElement();
-            // Запись о шестой кнопке
-            xw.WriteStartElement("Button");
-            xw.WriteElementString("Text", "Ping -t");
-            xw.WriteElementString("Command", "ping");
-            xw.WriteElementString("Parameters", "-a -t @[IP]");
-            xw.WriteElementString("ToolTipText", "Команда ping с параметрами -a и -t");
-            xw.WriteEndElement();
-            // Запись о седьмой кнопке
-            xw.WriteStartElement("Button");
-            xw.WriteElementString("Text", "Tracert");
-            xw.WriteElementString("Command", "tracert");
-            xw.WriteElementString("Parameters", "@[IP]");
-            xw.WriteElementString("ToolTipText", "Трассировка по заданному IP");
-            xw.WriteEndElement();
-
-            // Закрытие корневого элемента
-            xw.WriteEndElement();
-            // Завершение документа
-            xw.WriteEndDocument();
-            // сброс буфера на диск и закрытие файла
-            xw.Flush();
-            xw.Close();
         }
         #endregion
 

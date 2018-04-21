@@ -165,7 +165,7 @@ namespace LC
         private void buttonSaveAndClose_Click(object sender, EventArgs e)
         {
             this.SaveButtons();
-            CommandToolStripButton.ReloadCommandButtons();
+            //ReloadCommandButtons();
             this.Close();
         }
         private void buttonPath_Click(object sender, EventArgs e)
