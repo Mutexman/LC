@@ -39,57 +39,65 @@ namespace LC
                             {
                                 case "Group":
                                     {
-                                        LCTreeNodeGroup lcTreeNodeGroup = new LCTreeNodeGroup();
-                                        lcTreeNodeGroup.Text = xnod.Attributes["NameGroup"].Value;
-                                        lcTreeNodeGroup.Description = xnod.Attributes["Description"].Value;
+                                        LCTreeNodeGroup lcTreeNodeGroup = new LCTreeNodeGroup
+                                        {
+                                            Text = xnod.Attributes["NameGroup"].Value,
+                                            Description = xnod.Attributes["Description"].Value,
+                                            ContextMenuStrip = LCTreeNode.groupContextMemuStrip,
+                                            ImageIndex =2
+                                        };
                                         lcTreeNodeGroup.ToolTipText += lcTreeNodeGroup.Text;
                                         lcTreeNodeGroup.ToolTipText += "\n" + lcTreeNodeGroup.Description;
-                                        lcTreeNodeGroup.ContextMenuStrip = LCTreeNode.groupContextMemuStrip;
-                                        lcTreeNodeGroup.ImageIndex = 2;
                                         newNode.Nodes.Add(lcTreeNodeGroup);
                                         newNode = lcTreeNodeGroup;
                                     }
                                     break;
                                 case "NoList":
                                     {
-                                        LCTreeNodeNoList lcTreeNodeNoList = new LCTreeNodeNoList();
-                                        lcTreeNodeNoList.Text = xnod.Attributes["NameGroup"].Value;
-                                        lcTreeNodeNoList.Description = xnod.Attributes["Description"].Value;
+                                        LCTreeNodeNoList lcTreeNodeNoList = new LCTreeNodeNoList
+                                        {
+                                            Text = xnod.Attributes["NameGroup"].Value,
+                                            Description = xnod.Attributes["Description"].Value,
+                                            ContextMenuStrip = LCTreeNode.noListContextMenuStrip,
+                                            ImageIndex = 2
+                                        };
                                         lcTreeNodeNoList.ToolTipText += lcTreeNodeNoList.Text;
                                         lcTreeNodeNoList.ToolTipText += "\n" + lcTreeNodeNoList.Description;
-                                        lcTreeNodeNoList.ContextMenuStrip = LCTreeNode.noListContextMenuStrip;
-                                        lcTreeNodeNoList.ImageIndex = 2;
                                         newNode.Nodes.Add(lcTreeNodeNoList);
                                         newNode = lcTreeNodeNoList;
                                     }
                                     break;
                                 case "Computer":
                                     {
-                                        LCTreeNodeComputer lcTreeNodeComputer = new LCTreeNodeComputer();
-                                        lcTreeNodeComputer.Text = xnod.Attributes["NameComputer"].Value;
-                                        lcTreeNodeComputer.IP = xnod.Attributes["IP"].Value;
-                                        lcTreeNodeComputer.Description = xnod.Attributes["Description"].Value;
+                                        LCTreeNodeComputer lcTreeNodeComputer = new LCTreeNodeComputer
+                                        {
+                                            Text = xnod.Attributes["NameComputer"].Value,
+                                            IP = xnod.Attributes["IP"].Value,
+                                            Description = xnod.Attributes["Description"].Value,
+                                            ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
+                                            ImageIndex = 3
+                                        };
                                         lcTreeNodeComputer.ToolTipText += lcTreeNodeComputer.Text;
                                         lcTreeNodeComputer.ToolTipText += "\n" + lcTreeNodeComputer.IP;
                                         lcTreeNodeComputer.ToolTipText += "\n" + lcTreeNodeComputer.Description;
-                                        lcTreeNodeComputer.ContextMenuStrip = LCTreeNode.computerContextMenuStrip;
-                                        lcTreeNodeComputer.ImageIndex = 3;
                                         newNode.Nodes.Add(lcTreeNodeComputer);
                                         newNode = lcTreeNodeComputer;
                                     }
                                     break;
                                 case "Subnet":
                                     {
-                                        LCTreeNodeSubnet lcTreeNodeSubnet = new LCTreeNodeSubnet();
-                                        lcTreeNodeSubnet.Text = xnod.Attributes["NameSubnet"].Value;
-                                        lcTreeNodeSubnet.IPSubnet = xnod.Attributes["IPSubnet"].Value;
-                                        lcTreeNodeSubnet.MaskSubnet = xnod.Attributes["MaskSubnet"].Value;
-                                        lcTreeNodeSubnet.Description = xnod.Attributes["Description"].Value;
+                                        LCTreeNodeSubnet lcTreeNodeSubnet = new LCTreeNodeSubnet
+                                        {
+                                            Text = xnod.Attributes["NameSubnet"].Value,
+                                            IPSubnet = xnod.Attributes["IPSubnet"].Value,
+                                            MaskSubnet = xnod.Attributes["MaskSubnet"].Value,
+                                            Description = xnod.Attributes["Description"].Value,
+                                            ContextMenuStrip = LCTreeNode.subnetContextMenuStrip,
+                                            ImageIndex = 5
+                                        };
                                         lcTreeNodeSubnet.ToolTipText += lcTreeNodeSubnet.Text;
                                         lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.IPSubnet;
                                         lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.MaskSubnet;
-                                        lcTreeNodeSubnet.ContextMenuStrip = LCTreeNode.subnetContextMenuStrip;
-                                        lcTreeNodeSubnet.ImageIndex = 5;
                                         newNode.Nodes.Add(lcTreeNodeSubnet);
                                         newNode = lcTreeNodeSubnet;
                                     }
@@ -99,6 +107,20 @@ namespace LC
                                         //MessageBox.Show("yes");
                                         //newNode.ImageIndex = 1;
                                         //newNode.Text = mapAttributes.Item(1).Value;
+                                    }
+                                    break;
+                                case "MFU":
+                                    {
+                                        LCTreeNodeMFU lcTreeNodeMFU = new LCTreeNodeMFU
+                                        {
+                                            Text = xnod.Attributes["NameMFU"].Value,
+                                            IP = xnod.Attributes["IP"].Value,
+                                            Description = xnod.Attributes["Description"].Value
+                                        };
+                                        lcTreeNodeMFU.ToolTipText += lcTreeNodeMFU.Text;
+                                        lcTreeNodeMFU.ToolTipText += lcTreeNodeMFU.Description;
+                                        newNode.Nodes.Add(lcTreeNodeMFU);
+                                        newNode = lcTreeNodeMFU;
                                     }
                                     break;
                             }
@@ -151,7 +173,7 @@ namespace LC
                 //Создаём резевную копию файла с данными о компьютерах
                 //Формируем путь в файлу резервной копии
                 string backupFileName = Application.LocalUserAppDataPath;
-                backupFileName += "\\Backup\\Computers.xml." + DateTime.Today.ToShortDateString() + ".backup";
+                backupFileName += "\\Backup\\LCDirectory.xml." + DateTime.Today.ToShortDateString() + ".backup";
                 //Проверяем была ли уже сделана резервная копия сегодня
                 if (!(File.Exists(backupFileName)))
                 {
@@ -176,11 +198,13 @@ namespace LC
                 catch (XmlException e)
                 {
                     this.WriteListBox("Ошибка загрузки файла: " + e.Message);
-                    LCTreeNodeGroup lcTreeRootError = new LCTreeNodeGroup();
-                    lcTreeRootError.Text = "!";
-                    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    // Здесь возможна загрузка специальной иконки обозначающей сбой
-                    lcTreeRootError.ImageIndex = 1;
+                    LCTreeNodeGroup lcTreeRootError = new LCTreeNodeGroup
+                    {
+                        Text = "!",
+                        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        // Здесь возможна загрузка специальной иконки обозначающей сбой
+                        ImageIndex = 1
+                    };
                     treeView.Nodes.Add(lcTreeRootError);
                     //lcTreeRootError.ContextMenuStrip = this.contextMenuStripLCRoot;
                     this.WriteListBox("Справочник не загружен. Закройте приложение и проверьте корректность файла!");
@@ -199,12 +223,14 @@ namespace LC
             XmlNode xnodDE = xmlDocument.DocumentElement;
             // Получение корневого узла дерева
             // Здесь надо правильно настроить этот узел
-            LCTreeNodeGroup lcTreeRoot = new LCTreeNodeGroup();
-            lcTreeRoot.Name = "Root";
-            lcTreeRoot.Text = ".";
-            lcTreeRoot.Description = "Корневой узел справочника.";
-            lcTreeRoot.ContextMenuStrip = LCTreeNode.rootContextMenuStrip;
-            lcTreeRoot.ImageIndex = 1;
+            LCTreeNodeGroup lcTreeRoot = new LCTreeNodeGroup
+            {
+                Name = "Root",
+                Text = ".",
+                Description = "Корневой узел справочника.",
+                ContextMenuStrip = LCTreeNode.rootContextMenuStrip,
+                ImageIndex = 1
+            };
             // И добавить его в дерево
             treeView.Nodes.Add(lcTreeRoot);
             TreeNode node = lcTreeRoot;
@@ -257,11 +283,13 @@ namespace LC
                 {
                     this.fileData = Application.LocalUserAppDataPath + "\\Computers.xml";
                 }
-                XmlTextWriter xw = new XmlTextWriter(this.fileData, System.Text.Encoding.UTF8);
-                // Настраиваем форматирование
-                xw.Formatting = Formatting.Indented;
-                xw.Indentation = 2;
-                xw.IndentChar = ' ';
+                XmlTextWriter xw = new XmlTextWriter(this.fileData, System.Text.Encoding.UTF8)
+                {
+                    // Настраиваем форматирование
+                    Formatting = Formatting.Indented,
+                    Indentation = 2,
+                    IndentChar = ' '
+                };
                 // Запиись декларации документа
                 xw.WriteStartDocument();
                 // запускаем рекурсивное сохранение

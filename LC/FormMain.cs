@@ -469,6 +469,10 @@ namespace LC
                         this.listViewGroups.Items.Add(lvi);
                         break;
                     }
+                case LCObjectType.MFU:
+                    {
+                        break;
+                    }
             }
         }
         /// <summary>
@@ -706,7 +710,7 @@ namespace LC
             {
                 Text = "<Не в списке>",
                 Description = "Компьютеры которые не добавлялись в группу",
-                ContextMenuStrip = this.contextMenuStripNoList,
+                ContextMenuStrip = LCTreeNode.noListContextMenuStrip,
                 ImageIndex = 2,
                 ToolTipText = "<Не в списке>\nКомпьютеры которые не добавлялись в группу"
             };
@@ -799,6 +803,11 @@ namespace LC
         private void toolStripMenuItemClearPCList_Click(object sender, EventArgs e)
         {
             this.listViewComputers.Items.Clear();
+        }
+
+        private void toolStripMenuItemFindSubnet_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("переопределение");
         }
     }
 }
