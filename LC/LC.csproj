@@ -82,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferTreeNodeClass.cs" />
+    <Compile Include="FormEditMFU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditMFU.Designer.cs">
+      <DependentUpon>FormEditMFU.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEditSubnet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     <Compile Include="SingleInstanceApplication.cs" />
     <EmbeddedResource Include="FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditMFU.resx">
+      <DependentUpon>FormEditMFU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

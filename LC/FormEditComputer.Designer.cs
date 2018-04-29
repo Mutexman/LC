@@ -42,7 +42,7 @@
             // labelNameComputer
             // 
             this.labelNameComputer.AutoSize = true;
-            this.labelNameComputer.Location = new System.Drawing.Point(15, 15);
+            this.labelNameComputer.Location = new System.Drawing.Point(12, 15);
             this.labelNameComputer.Name = "labelNameComputer";
             this.labelNameComputer.Size = new System.Drawing.Size(95, 13);
             this.labelNameComputer.TabIndex = 0;

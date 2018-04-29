@@ -20,7 +20,7 @@ namespace LC
         private LCTreeNodeGroup lcTreeNodeGroup = null;
         private LCTreeNodeSubnet lcTreeNodeSubnet = null;
         private ModeForm modeForm;
-         /// <summary>
+        /// <summary>
         /// Возвращает созданую новую сеть в данной форме
         /// </summary>
         public TreeNode TreeNode

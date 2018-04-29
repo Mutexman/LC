@@ -47,6 +47,13 @@ namespace LC
             this.WriteListBoxOperation("Добавлена группа : " + nameGroup);
             return lcTreeNodeGroup;
         }
+        /// <summary>
+        /// Метод добавления сети
+        /// </summary>
+        /// <param name="nameSubnet">Имя сети.</param>
+        /// <param name="ipSubnet">IP адрес сети.</param>
+        /// <param name="maskSubnet">Маска сети.</param>
+        /// <returns>Возвращает созданную сеть</returns>
         public LCTreeNodeSubnet AddSubnet(string nameSubnet, string ipSubnet, string maskSubnet)
         {
             // созадем новую сеть
@@ -86,6 +93,32 @@ namespace LC
             this.Nodes.Add(lcTreeNodeComputer);
             this.WriteListBoxOperation("Добавлен компьтер : " + nameComputer);
             return lcTreeNodeComputer;
+        }
+        /// <summary>
+        /// Метод добавления МФУ к данной группе
+        /// </summary>
+        /// <param name="nameMFU">Имя МФУ</param>
+        /// <param name="ip">IP адрес МФУ</param>
+        /// <param name="description">Описание МФУ</param>
+        /// <returns>Возвращает созданое МФУ</returns>
+        public LCTreeNodeMFU AddMFU(string nameMFU, string ip, string description)
+        {
+            // создаем новый узел МФУ
+            LCTreeNodeMFU lcTreeNodeMFU = new LCTreeNodeMFU
+            {
+                Text = nameMFU,
+                IP = ip,
+                Description = description,
+                // Здесь надо исправить контекстное меню на верное
+                ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
+                ImageIndex = 3
+            };
+            lcTreeNodeMFU.ToolTipText += nameMFU;
+            lcTreeNodeMFU.ToolTipText += "\n" + ip;
+            lcTreeNodeMFU.ToolTipText += "\n" + description;
+            this.Nodes.Add(lcTreeNodeMFU);
+            this.WriteListBoxOperation("Добавлен компьтер : " + nameMFU);
+            return lcTreeNodeMFU;
         }
     }
 }
