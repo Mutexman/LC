@@ -35,6 +35,7 @@
             this.labelMFUDescription = new System.Windows.Forms.Label();
             this.textBoxMFUDescription = new System.Windows.Forms.TextBox();
             this.buttonMFUSave = new System.Windows.Forms.Button();
+            this.labelErrorMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelMFUName
@@ -89,19 +90,30 @@
             // 
             // buttonMFUSave
             // 
-            this.buttonMFUSave.Location = new System.Drawing.Point(208, 232);
+            this.buttonMFUSave.Location = new System.Drawing.Point(209, 264);
             this.buttonMFUSave.Name = "buttonMFUSave";
             this.buttonMFUSave.Size = new System.Drawing.Size(75, 23);
             this.buttonMFUSave.TabIndex = 6;
             this.buttonMFUSave.Text = "Сохранить";
             this.buttonMFUSave.UseVisualStyleBackColor = true;
+            this.buttonMFUSave.Click += new System.EventHandler(this.buttonMFUSave_Click);
+            // 
+            // labelErrorMessage
+            // 
+            this.labelErrorMessage.AutoSize = true;
+            this.labelErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorMessage.Location = new System.Drawing.Point(72, 210);
+            this.labelErrorMessage.Name = "labelErrorMessage";
+            this.labelErrorMessage.Size = new System.Drawing.Size(0, 13);
+            this.labelErrorMessage.TabIndex = 7;
             // 
             // FormEditMFU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(480, 278);
+            this.ClientSize = new System.Drawing.Size(480, 308);
+            this.Controls.Add(this.labelErrorMessage);
             this.Controls.Add(this.buttonMFUSave);
             this.Controls.Add(this.textBoxMFUDescription);
             this.Controls.Add(this.labelMFUDescription);
@@ -125,5 +137,6 @@
         private System.Windows.Forms.Label labelMFUDescription;
         private System.Windows.Forms.TextBox textBoxMFUDescription;
         private System.Windows.Forms.Button buttonMFUSave;
+        private System.Windows.Forms.Label labelErrorMessage;
     }
 }

@@ -792,5 +792,10 @@ namespace LC
         {
             MessageBox.Show("переопределение");
         }
+
+        private void мФУToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -11,34 +11,37 @@ namespace LC
 {
     public partial class FormEditMFU : Form
     {
-        private ModeForm modeForm;
-        public static ListBox ListBoxOperation = null;
-        private LCTreeNodeGroup lcTreeNodeGroup = null;
         private LCTreeNodeMFU lcTreeNodeMFU = null;
         public FormEditMFU()
         {
             InitializeComponent();
         }
-        public FormEditMFU(TreeNode treeNode, ModeForm modeForm)
+        public FormEditMFU(TreeNode treeNode)
         {
             InitializeComponent();
-            this.modeForm = modeForm;
-            switch (this.modeForm)
+            this.Text += "МФУ : " + this.lcTreeNodeMFU.Text;
+            this.lcTreeNodeMFU = (LCTreeNodeMFU)treeNode;
+            this.textBoxMFUName.Text = this.lcTreeNodeMFU.Text;
+            this.textBoxMFUDescription.Text = this.lcTreeNodeMFU.Text;
+        }
+
+        private void buttonMFUSave_Click(object sender, EventArgs e)
+        {
+            this.lcTreeNodeMFU.Text = this.textBoxMFUName.Text;
+            this.lcTreeNodeMFU.Text = this.textBoxMFUDescription.Text;
+
+            if (this.textBoxMFUName.Text != "")
             {
-                case ModeForm.Edit:
-                    {
-                        this.Text += "МФУ : " + this.lcTreeNodeMFU.Text;
-                        this.lcTreeNodeMFU = (LCTreeNodeMFU)treeNode;
-                        this.textBoxMFUName.Text = this.lcTreeNodeMFU.Text;
-                        this.textBoxMFUDescription.Text = this.lcTreeNodeMFU.Text;
-                        break;
-                    }
-                case ModeForm.New:
-                    {
-                        this.lcTreeNodeGroup = (LCTreeNodeGroup)treeNode;
-                        this.textBoxMFUName.Text = "Новое МФУ";
-                        break;
-                    }
+                this.lcTreeNodeMFU.Text = this.textBoxMFUName.Text;
+                this.lcTreeNodeMFU.Description = this.textBoxMFUDescription.Text;
+                ListViewItem lvi = (ListViewItem)lcTreeNodeMFU.Tag;
+                lvi.SubItems[1].Text = this.lcTreeNodeMFU.Text;
+                lvi.SubItems[3].Text = this.lcTreeNodeMFU.Description;
+                this.Close();
+            }
+            else
+            {
+                this.labelErrorMessage.Text = "Не задано имя МФУ";
             }
         }
     }
