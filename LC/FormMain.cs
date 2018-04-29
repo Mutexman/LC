@@ -16,8 +16,6 @@ namespace LC
 {
     public partial class FormMain : Form
     {
-        // поле показывающее был ли корректно осуществлен ввод логина и пароля
-        public static bool logged = false;
         // ссылка на найденную подсеть
         private TreeNode findSubnet= null;
         public static string User = "";
@@ -115,57 +113,34 @@ namespace LC
         {
             // Выводим в заголовок номер версии программы
             this.Text += " " + Application.ProductVersion;
-            // Проверяем был ли введены параметры, логин и пароль
-            if(Environment.GetCommandLineArgs().Length >= 3)
+            // Считываем из настроек данные о пользователе
+            FormMain.User = Properties.Settings.Default.User;
+            FormMain.Password = Properties.Settings.Default.Password;
+            // Выводим имя пользователя в заголовок формы
+            this.Text += " Пользователь: " + FormMain.User;
+            LCTreeNode.SetListBoxOperation(this.listBoxOperation);
+            LCTreeNode.rootContextMenuStrip = this.contextMenuStripLCRoot;
+            LCTreeNode.groupContextMemuStrip = this.contextMenuStripLCGroup;
+            LCTreeNode.computerContextMenuStrip = this.contextMenuStripLCComputer;
+            LCTreeNode.subnetContextMenuStrip = this.contextMenuStripLCSubnet;
+            LCTreeNode.noListContextMenuStrip = this.contextMenuStripNoList;
+            LCTreeNode.StatusLabel = this.toolStripStatusLabelMain;
+            CommandToolStripButton.StatusLabel = this.toolStripStatusLabelMain;
+            CommandToolStripButton.listBoxMessage = this.listBoxOperation;
+            CommandToolStripButton.tabControl = this.tabControlObject;
+            FormEditComputer.treeView = this.treeViewObject;
+            LCDirectory.treeView = this.treeViewObject;
+            LCDirectory.listBox = this.listBoxOperation;
+            LCDirectory.toolStripStatusLabel = this.toolStripStatusLabelMain;
+            this.lCDirectory = new LCDirectory();
+            this.lCDirectory.CreateDOM(this.fileData);
+            // Восстанавливаем открытые вкладки
+            this.OpenSavedPages();
+            // Открываем компьютер ip адрес которого был передан в параметрах командной строки
+            if (Environment.GetCommandLineArgs().Length >= 4)
             {
-                // Параметр были переданы, запоминаем логин и пароль пользователя
-                FormMain.User = Environment.GetCommandLineArgs()[1];
-                FormMain.Password = Environment.GetCommandLineArgs()[2];
-                FormMain.logged = true;
-            }
-            else
-            {
-                FormLogin formLogin = new FormLogin();
-                formLogin.ShowDialog();
-                if (formLogin.Accept)
-                {
-                    FormMain.User = formLogin.User;
-                    FormMain.Password = formLogin.Password;
-                    FormMain.logged = true;
-                }
-            }
-            if (FormMain.logged)
-            {
-                // Выводим имя пользователя в заголовок формы
-                this.Text += " Пользователь: " + FormMain.User;
-                LCTreeNode.SetListBoxOperation(this.listBoxOperation);
-                LCTreeNode.rootContextMenuStrip = this.contextMenuStripLCRoot;
-                LCTreeNode.groupContextMemuStrip = this.contextMenuStripLCGroup;
-                LCTreeNode.computerContextMenuStrip = this.contextMenuStripLCComputer;
-                LCTreeNode.subnetContextMenuStrip = this.contextMenuStripLCSubnet;
-                LCTreeNode.noListContextMenuStrip = this.contextMenuStripNoList;
-                LCTreeNode.StatusLabel = this.toolStripStatusLabelMain;
-                CommandToolStripButton.StatusLabel = this.toolStripStatusLabelMain;
-                CommandToolStripButton.listBoxMessage = this.listBoxOperation;
-                CommandToolStripButton.tabControl = this.tabControlObject;
-                FormEditComputer.treeView = this.treeViewObject;
-                LCDirectory.treeView = this.treeViewObject;
-                LCDirectory.listBox = this.listBoxOperation;
-                LCDirectory.toolStripStatusLabel = this.toolStripStatusLabelMain;
-                this.lCDirectory = new LCDirectory();
-                this.lCDirectory.CreateDOM(this.fileData);
-                // Восстанавливаем открытые вкладки
-                this.OpenSavedPages();
-                // Открываем компьютер ip адрес которого был передан в параметрах командной строки
-                if (Environment.GetCommandLineArgs().Length >= 4)
-                {
-                    this.toolStripTextBoxIP.Text = Environment.GetCommandLineArgs()[3];
-                    this.toolStripButtonFind_Click(null, null);
-                }
-            }
-            else
-            {
-                this.Close();
+                this.toolStripTextBoxIP.Text = Environment.GetCommandLineArgs()[3];
+                this.toolStripButtonFind_Click(null, null);
             }
         }
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -177,14 +152,11 @@ namespace LC
         }
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (FormMain.logged)
-            {
-                if (MessageBox.Show("Вы действительно хотите завершить работу приложения ? " +
+            if (MessageBox.Show("Вы действительно хотите завершить работу приложения ? " +
                     "При следующем запуске приложения, Вам опять потребуется вводить свой логин и пароль! Рекомендуется свернуть программу на панель задач.",
                     "Линейный специалист", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                {
-                    e.Cancel = true;
-                }
+            {
+                e.Cancel = true;
             }
         }
         #endregion
@@ -336,6 +308,17 @@ namespace LC
         {
             FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton();
             formSettingCommandButton.ShowDialog();
+        }
+        private void учётнаяЗаписьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLogin formLogin = new FormLogin();
+            formLogin.ShowDialog();
+            FormMain.User = formLogin.User;
+            FormMain.Password = formLogin.Password;
+            // Выводим в заголовок номер версии программы
+            this.Text = "Линейный специалист " + Application.ProductVersion;
+            // Выводим имя пользователя в заголовок формы
+            this.Text += " Пользователь: " + FormMain.User;
         }
         private void проверкаОбновленийToolStripMenuItem_Click(object sender, EventArgs e)
         {

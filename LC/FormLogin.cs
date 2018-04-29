@@ -11,19 +11,11 @@ namespace LC
 {
     public partial class FormLogin : Form
     {
-        private bool accept = false;
         private string user = "";
         private string password = "";
         public FormLogin()
         {
             InitializeComponent();
-        }
-        public bool Accept
-        {
-            get
-            {
-                return this.accept;
-            }
         }
         public string User
         {
@@ -40,26 +32,32 @@ namespace LC
             }
 
         }
-        private void buttonOk_Click(object sender, EventArgs e)
+        private void ButtonOk_Click(object sender, EventArgs e)
         {
             this.Input();
             this.Close();
         }
         private void Input()
         {
-            if ((this.textBoxLogin.Text != "") && (this.textBoxPassword.Text != ""))
+            if (this.textBoxLogin.Text != "")
             {
-                this.accept = true;
-                // Здесь нужен код который проверяет корректность учетных данных
-                // И нужна ли эта проверка вообще
                 this.user = this.textBoxLogin.Text;
+                Properties.Settings.Default.User = this.user;
                 this.password = this.textBoxPassword.Text;
+                Properties.Settings.Default.Password = this.password;
+                Properties.Settings.Default.Save();
             }
         }
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            this.textBoxLogin.Text = SystemInformation.UserName;
+            this.textBoxLogin.Text = Properties.Settings.Default.User;
+            this.textBoxPassword.Text = Properties.Settings.Default.Password;
             this.textBoxPassword.Focus();
+        }
+
+        private void buttonGetCurrentUser_Click(object sender, EventArgs e)
+        {
+            this.textBoxLogin.Text = SystemInformation.UserName;
         }
     }
 }

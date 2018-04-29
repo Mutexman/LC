@@ -86,6 +86,10 @@
             this.columnHeaderPlaceGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDescriptionGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.tabPageMFU = new System.Windows.Forms.TabPage();
+            this.listViewMFU = new System.Windows.Forms.ListView();
+            this.columnHeaderIP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.listBoxOperation = new System.Windows.Forms.ListBox();
             this.contextMenuStripLCGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemOpenGroup = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,10 +130,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemDeleteNoList = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripLCMFU = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tabPageMFU = new System.Windows.Forms.TabPage();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.listViewMFU = new System.Windows.Forms.ListView();
-            this.columnHeaderIP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.учётнаяЗаписьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -147,11 +148,11 @@
             this.toolStripComputers.SuspendLayout();
             this.tabPageSubnets.SuspendLayout();
             this.tabPageGroups.SuspendLayout();
+            this.tabPageMFU.SuspendLayout();
             this.contextMenuStripLCGroup.SuspendLayout();
             this.contextMenuStripLCRoot.SuspendLayout();
             this.contextMenuStripLCSubnet.SuspendLayout();
             this.contextMenuStripNoList.SuspendLayout();
-            this.tabPageMFU.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -200,7 +201,8 @@
             // 
             this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.опцииToolStripMenuItem,
-            this.командныеКнопкиToolStripMenuItem});
+            this.командныеКнопкиToolStripMenuItem,
+            this.учётнаяЗаписьToolStripMenuItem});
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.настройкиToolStripMenuItem.Text = "Сервис";
@@ -657,6 +659,43 @@
             this.toolStrip3.TabIndex = 0;
             this.toolStrip3.Text = "toolStrip3";
             // 
+            // tabPageMFU
+            // 
+            this.tabPageMFU.Controls.Add(this.listViewMFU);
+            this.tabPageMFU.Controls.Add(this.toolStrip1);
+            this.tabPageMFU.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMFU.Name = "tabPageMFU";
+            this.tabPageMFU.Size = new System.Drawing.Size(825, 436);
+            this.tabPageMFU.TabIndex = 3;
+            this.tabPageMFU.Text = "МФУ";
+            this.tabPageMFU.UseVisualStyleBackColor = true;
+            // 
+            // listViewMFU
+            // 
+            this.listViewMFU.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderIP});
+            this.listViewMFU.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewMFU.FullRowSelect = true;
+            this.listViewMFU.GridLines = true;
+            this.listViewMFU.Location = new System.Drawing.Point(0, 25);
+            this.listViewMFU.Name = "listViewMFU";
+            this.listViewMFU.Size = new System.Drawing.Size(825, 411);
+            this.listViewMFU.TabIndex = 1;
+            this.listViewMFU.UseCompatibleStateImageBehavior = false;
+            this.listViewMFU.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderIP
+            // 
+            this.columnHeaderIP.Text = "IP";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(825, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // listBoxOperation
             // 
             this.listBoxOperation.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -949,42 +988,12 @@
             this.contextMenuStripLCMFU.Name = "contextMenuStripLCMFU";
             this.contextMenuStripLCMFU.Size = new System.Drawing.Size(61, 4);
             // 
-            // tabPageMFU
+            // учётнаяЗаписьToolStripMenuItem
             // 
-            this.tabPageMFU.Controls.Add(this.listViewMFU);
-            this.tabPageMFU.Controls.Add(this.toolStrip1);
-            this.tabPageMFU.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMFU.Name = "tabPageMFU";
-            this.tabPageMFU.Size = new System.Drawing.Size(825, 436);
-            this.tabPageMFU.TabIndex = 3;
-            this.tabPageMFU.Text = "МФУ";
-            this.tabPageMFU.UseVisualStyleBackColor = true;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(825, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // listViewMFU
-            // 
-            this.listViewMFU.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderIP});
-            this.listViewMFU.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewMFU.FullRowSelect = true;
-            this.listViewMFU.GridLines = true;
-            this.listViewMFU.Location = new System.Drawing.Point(0, 25);
-            this.listViewMFU.Name = "listViewMFU";
-            this.listViewMFU.Size = new System.Drawing.Size(825, 411);
-            this.listViewMFU.TabIndex = 1;
-            this.listViewMFU.UseCompatibleStateImageBehavior = false;
-            this.listViewMFU.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeaderIP
-            // 
-            this.columnHeaderIP.Text = "IP";
+            this.учётнаяЗаписьToolStripMenuItem.Name = "учётнаяЗаписьToolStripMenuItem";
+            this.учётнаяЗаписьToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.учётнаяЗаписьToolStripMenuItem.Text = "Учётная запись";
+            this.учётнаяЗаписьToolStripMenuItem.Click += new System.EventHandler(this.учётнаяЗаписьToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -1028,12 +1037,12 @@
             this.tabPageSubnets.PerformLayout();
             this.tabPageGroups.ResumeLayout(false);
             this.tabPageGroups.PerformLayout();
+            this.tabPageMFU.ResumeLayout(false);
+            this.tabPageMFU.PerformLayout();
             this.contextMenuStripLCGroup.ResumeLayout(false);
             this.contextMenuStripLCRoot.ResumeLayout(false);
             this.contextMenuStripLCSubnet.ResumeLayout(false);
             this.contextMenuStripNoList.ResumeLayout(false);
-            this.tabPageMFU.ResumeLayout(false);
-            this.tabPageMFU.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1141,6 +1150,7 @@
         private System.Windows.Forms.ListView listViewMFU;
         private System.Windows.Forms.ColumnHeader columnHeaderIP;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripMenuItem учётнаяЗаписьToolStripMenuItem;
     }
 }
 

@@ -276,7 +276,7 @@ namespace LC
         public void SaveXML()
         {
             // Сохранение справочника надо выполнять только в случае если он вообще загружался
-            if (FormMain.logged && this.correctLoad)
+            if (this.correctLoad)
             {
                 // Проверяем имя файла, возможно создаётся новый справочник
                 if (this.fileData == "")
