@@ -172,7 +172,7 @@ namespace LC
                 if (this.treeViewObject.Nodes.Count > 0)
                 {
                     countFind = 0;
-                    this.FindComputer_IP(this.treeViewObject.Nodes[0], this.toolStripTextBoxIP.Text);
+                    this.FindHost_IP(this.treeViewObject.Nodes[0], this.toolStripTextBoxIP.Text);
                 }
                 else
                 {
@@ -190,7 +190,7 @@ namespace LC
                         lcSubnet.AddComputer(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
-                        this.FindComputer_IP(this.findSubnet, this.toolStripTextBoxIP.Text);
+                        this.FindHost_IP(this.findSubnet, this.toolStripTextBoxIP.Text);
                     }
                     else
                     {
@@ -198,7 +198,7 @@ namespace LC
                         lcNoList.AddComputer(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
-                        this.FindComputer_IP(this.ReturnGroupNoList(), this.toolStripTextBoxIP.Text);
+                        this.FindHost_IP(this.ReturnGroupNoList(), this.toolStripTextBoxIP.Text);
                     }
                 }
             }
@@ -216,11 +216,11 @@ namespace LC
         }
 
         /// <summary>
-        /// Поиск компьютера по IP
+        /// Поиск хостов по IP
         /// </summary>
         /// <param name="treeNode">Узел дерева с которого начинаем искать</param>
         /// <param name="ip">ip-адрес</param>
-        private void FindComputer_IP(TreeNode treeNode, string ip)
+        private void FindHost_IP(TreeNode treeNode, string ip)
         {
             LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
             if (lcTreeNodeWork.LCObjectType == LCObjectType.Host)
@@ -244,7 +244,7 @@ namespace LC
                 // рекурсивный перебор всех дочерних узлов
                 foreach (TreeNode treeNodeWorking in treeNode.Nodes)
                 {
-                    this.FindComputer_IP(treeNodeWorking, ip);
+                    this.FindHost_IP(treeNodeWorking, ip);
                 }
             }
         }
@@ -715,7 +715,7 @@ namespace LC
                 {
                     if (st != "")
                     {
-                        this.FindComputer_IP(this.treeViewObject.Nodes[0], st);
+                        this.FindHost_IP(this.treeViewObject.Nodes[0], st);
                     }
                 }
             }
@@ -728,7 +728,7 @@ namespace LC
             Properties.Settings.Default.OpenPages = "";
             foreach (ListViewItem lvi in this.listViewHosts.Items)
             {
-                Properties.Settings.Default.OpenPages += lvi.SubItems[0].Text + ";";
+                Properties.Settings.Default.OpenPages += lvi.SubItems[1].Text + ";";
             }
             Properties.Settings.Default.Save();
         }

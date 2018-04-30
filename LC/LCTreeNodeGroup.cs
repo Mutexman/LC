@@ -70,29 +70,29 @@ namespace LC
             return lcTreeNodeSubnet;
         }
         /// <summary>
-        /// Метод добавления компьютера к данной группе
+        /// Метод добавления хоста к данной группе
         /// </summary>
-        /// <param name="nameComputer">Имя компьютера</param>
-        /// <param name="ip">IP-адрес компьютера</param>
-        /// <param name="description">Описание компьютера</param>
-        /// <returns>Возвращает созданный компьютер</returns>
-        public LCTreeNodeHost AddComputer(string nameComputer, string ip, string description)
+        /// <param name="nameHost">Имя хоста</param>
+        /// <param name="ip">IP-адрес хоста</param>
+        /// <param name="description">Описание хоста</param>
+        /// <returns>Возвращает созданный хост</returns>
+        public LCTreeNodeHost AddHost(string nameHost, string ip, string description)
         {
             // создаем новый узел Computer
-            LCTreeNodeHost lcTreeNodeComputer = new LCTreeNodeHost
+            LCTreeNodeHost lcTreeNodeHost = new LCTreeNodeHost
             {
-                Text = nameComputer,
+                Text = nameHost,
                 IP = ip,
                 Description = description,
                 ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
                 ImageIndex = 3
             };
-            lcTreeNodeComputer.ToolTipText += nameComputer;
-            lcTreeNodeComputer.ToolTipText += "\n" + ip;
-            lcTreeNodeComputer.ToolTipText += "\n" + description;
-            this.Nodes.Add(lcTreeNodeComputer);
-            this.WriteListBoxOperation("Добавлен компьтер : " + nameComputer);
-            return lcTreeNodeComputer;
+            lcTreeNodeHost.ToolTipText += nameHost;
+            lcTreeNodeHost.ToolTipText += "\n" + ip;
+            lcTreeNodeHost.ToolTipText += "\n" + description;
+            this.Nodes.Add(lcTreeNodeHost);
+            this.WriteListBoxOperation("Добавлен компьтер : " + nameHost);
+            return lcTreeNodeHost;
         }
     }
 }
