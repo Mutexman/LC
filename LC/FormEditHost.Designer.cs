@@ -123,11 +123,6 @@
             // 
             this.comboBoxTypeHost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTypeHost.FormattingEnabled = true;
-            this.comboBoxTypeHost.Items.AddRange(new object[] {
-            "Хост",
-            "Компьютер",
-            "МФУ",
-            "ЭТСО"});
             this.comboBoxTypeHost.Location = new System.Drawing.Point(113, 10);
             this.comboBoxTypeHost.Name = "comboBoxTypeHost";
             this.comboBoxTypeHost.Size = new System.Drawing.Size(156, 21);

@@ -178,6 +178,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\LC.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\LC.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\LCTreeNodeHost.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
