@@ -76,10 +76,10 @@ namespace LC
         /// <param name="ip">IP-адрес компьютера</param>
         /// <param name="description">Описание компьютера</param>
         /// <returns>Возвращает созданный компьютер</returns>
-        public LCTreeNodeComputer AddComputer(string nameComputer, string ip, string description)
+        public LCTreeNodeHost AddComputer(string nameComputer, string ip, string description)
         {
             // создаем новый узел Computer
-            LCTreeNodeComputer lcTreeNodeComputer = new LCTreeNodeComputer
+            LCTreeNodeHost lcTreeNodeComputer = new LCTreeNodeHost
             {
                 Text = nameComputer,
                 IP = ip,
@@ -93,32 +93,6 @@ namespace LC
             this.Nodes.Add(lcTreeNodeComputer);
             this.WriteListBoxOperation("Добавлен компьтер : " + nameComputer);
             return lcTreeNodeComputer;
-        }
-        /// <summary>
-        /// Метод добавления МФУ к данной группе
-        /// </summary>
-        /// <param name="nameMFU">Имя МФУ</param>
-        /// <param name="ip">IP адрес МФУ</param>
-        /// <param name="description">Описание МФУ</param>
-        /// <returns>Возвращает созданое МФУ</returns>
-        public LCTreeNodeMFU AddMFU(string nameMFU, string ip, string description)
-        {
-            // создаем новый узел МФУ
-            LCTreeNodeMFU lcTreeNodeMFU = new LCTreeNodeMFU
-            {
-                Text = nameMFU,
-                IP = ip,
-                Description = description,
-                // Здесь надо исправить контекстное меню на верное
-                ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
-                ImageIndex = 3
-            };
-            lcTreeNodeMFU.ToolTipText += nameMFU;
-            lcTreeNodeMFU.ToolTipText += "\n" + ip;
-            lcTreeNodeMFU.ToolTipText += "\n" + description;
-            this.Nodes.Add(lcTreeNodeMFU);
-            this.WriteListBoxOperation("Добавлен компьтер : " + nameMFU);
-            return lcTreeNodeMFU;
         }
     }
 }

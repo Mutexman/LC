@@ -10,21 +10,21 @@ using System.Text.RegularExpressions;
 
 namespace LC
 {
-    public partial class FormEditComputer : Form
+    public partial class FormEditHost : Form
     {
-        public FormEditComputer()
+        public FormEditHost()
         {
             InitializeComponent();
         }
-        public FormEditComputer(TreeNode treeNode)
+        public FormEditHost(TreeNode treeNode)
         {
             InitializeComponent();
-            this.lcTreeNodeComputer = (LCTreeNodeComputer)treeNode;
-            this.NameComputer = this.lcTreeNodeComputer.Text;
-            this.IP = this.lcTreeNodeComputer.IP;
-            this.Description = this.lcTreeNodeComputer.Description;
+            this.lcTreeNodeHost = (LCTreeNodeHost)treeNode;
+            this.NameHost = this.lcTreeNodeHost.Text;
+            this.IP = this.lcTreeNodeHost.IP;
+            this.Description = this.lcTreeNodeHost.Description;
         }
-        private LCTreeNodeComputer lcTreeNodeComputer = null;
+        private LCTreeNodeHost lcTreeNodeHost = null;
         public static TreeView treeView = null;
         /// <summary>
         /// Свойство возвращающее и принимающее ip
@@ -41,21 +41,21 @@ namespace LC
             }
         }
         /// <summary>
-        /// Свойство возвращающее и принимающее имя компьютера
+        /// Свойство возвращающее и принимающее имя хоста
         /// </summary>
-        public string NameComputer
+        public string NameHost
         {
             get
             {
-                return this.textBoxNameComputer.Text;
+                return this.textBoxNameHost.Text;
             }
             set
             {
-                this.textBoxNameComputer.Text = value;
+                this.textBoxNameHost.Text = value;
             }
         }
         /// <summary>
-        /// Свойство возвращающее и принимающее описание компьютера
+        /// Свойство возвращающее и принимающее описание хоста
         /// </summary>
         public string Description
         {
@@ -69,32 +69,32 @@ namespace LC
             }
         }
         /// <summary>
-        /// Свойство возвращающее новый созданный компьютер
+        /// Свойство возвращающее новый созданный хост
         /// </summary>
         public TreeNode TreeNode
         {
             get
             {
-                return (TreeNode)this.lcTreeNodeComputer;
+                return (TreeNode)this.lcTreeNodeHost;
             }
         }
         
         #region Поиск компьютера по IP на предмет дублирования
         private bool double_;
         /// <summary>
-        /// Проверяем есть ли уже компьютер с этим IP в справочнике
+        /// Проверяем есть ли уже хост с этим IP в справочнике
         /// </summary>
         /// <param name="treeNode">Узел дерева с которого начинаем искать</param>
         /// <param name="ip">ip-адрес</param>
         private void doubleIP(TreeNode treeNode, string ip)
         {
             LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
-            if (lcTreeNodeWork.LCObjectType == LCObjectType.Computer)
+            if (lcTreeNodeWork.LCObjectType == LCObjectType.Host)
             {
                 // Этот узел компьютер, приводим объект к нужному классу
-                LCTreeNodeComputer lcComp = (LCTreeNodeComputer)lcTreeNodeWork;
+                LCTreeNodeHost lcHost = (LCTreeNodeHost)lcTreeNodeWork;
                 // Проверяем по IP-адресу
-                if (lcComp.IP == ip)
+                if (lcHost.IP == ip)
                 {
                     this.double_ = true;
                 }
@@ -109,11 +109,11 @@ namespace LC
             }
         }
         /// <summary>
-        /// Проверяем есть ли уже компьютер с этим IP в справочнике
+        /// Проверяем есть ли уже хост с этим IP в справочнике
         /// </summary>
         /// <param name="treeNode">Узел дерева с которого начинаем искать</param>
         /// <param name="ip">ip-адрес</param>
-        /// <returns>Есть ли компьютер с таким ip-адресом</returns>
+        /// <returns>Есть ли хост с таким ip-адресом</returns>
         private bool DoubleIP(TreeNode treeNode, string ip)
         {
             if (treeNode == null)
@@ -128,18 +128,18 @@ namespace LC
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (this.textBoxNameComputer.Text != "")
+            if (this.textBoxNameHost.Text != "")
             {
-                this.lcTreeNodeComputer.Text = this.textBoxNameComputer.Text;
-                this.lcTreeNodeComputer.Description = this.textBoxDescription.Text;
-                ListViewItem lvi = (ListViewItem)lcTreeNodeComputer.Tag;
-                lvi.SubItems[1].Text = this.lcTreeNodeComputer.Text;
-                lvi.SubItems[3].Text = this.lcTreeNodeComputer.Description;
+                this.lcTreeNodeHost.Text = this.textBoxNameHost.Text;
+                this.lcTreeNodeHost.Description = this.textBoxDescription.Text;
+                ListViewItem lvi = (ListViewItem)lcTreeNodeHost.Tag;
+                lvi.SubItems[1].Text = this.lcTreeNodeHost.Text;
+                lvi.SubItems[3].Text = this.lcTreeNodeHost.Description;
                 this.Close();
             }
             else
             {
-                this.labelErrorMessage.Text = "Не задано имя компьютера";
+                this.labelErrorMessage.Text = "Не задано имя хоста";
             }
         }
     }

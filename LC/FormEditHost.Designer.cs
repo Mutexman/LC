@@ -1,6 +1,6 @@
 ﻿namespace LC
 {
-    partial class FormEditComputer
+    partial class FormEditHost
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditComputer));
-            this.labelNameComputer = new System.Windows.Forms.Label();
-            this.textBoxNameComputer = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditHost));
+            this.labelNameHost = new System.Windows.Forms.Label();
+            this.textBoxNameHost = new System.Windows.Forms.TextBox();
             this.labelIP = new System.Windows.Forms.Label();
             this.textBoxIP = new System.Windows.Forms.TextBox();
             this.labelDescription = new System.Windows.Forms.Label();
@@ -39,21 +39,21 @@
             this.labelErrorMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // labelNameComputer
+            // labelNameHost
             // 
-            this.labelNameComputer.AutoSize = true;
-            this.labelNameComputer.Location = new System.Drawing.Point(12, 15);
-            this.labelNameComputer.Name = "labelNameComputer";
-            this.labelNameComputer.Size = new System.Drawing.Size(95, 13);
-            this.labelNameComputer.TabIndex = 0;
-            this.labelNameComputer.Text = "Имя компьютера";
+            this.labelNameHost.AutoSize = true;
+            this.labelNameHost.Location = new System.Drawing.Point(12, 15);
+            this.labelNameHost.Name = "labelNameHost";
+            this.labelNameHost.Size = new System.Drawing.Size(60, 13);
+            this.labelNameHost.TabIndex = 0;
+            this.labelNameHost.Text = "Имя хоста";
             // 
-            // textBoxNameComputer
+            // textBoxNameHost
             // 
-            this.textBoxNameComputer.Location = new System.Drawing.Point(113, 12);
-            this.textBoxNameComputer.Name = "textBoxNameComputer";
-            this.textBoxNameComputer.Size = new System.Drawing.Size(313, 20);
-            this.textBoxNameComputer.TabIndex = 1;
+            this.textBoxNameHost.Location = new System.Drawing.Point(113, 12);
+            this.textBoxNameHost.Name = "textBoxNameHost";
+            this.textBoxNameHost.Size = new System.Drawing.Size(313, 20);
+            this.textBoxNameHost.TabIndex = 1;
             // 
             // labelIP
             // 
@@ -108,7 +108,7 @@
             this.labelErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.labelErrorMessage.TabIndex = 7;
             // 
-            // FormEditComputer
+            // FormEditHost
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -120,12 +120,12 @@
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.textBoxIP);
             this.Controls.Add(this.labelIP);
-            this.Controls.Add(this.textBoxNameComputer);
-            this.Controls.Add(this.labelNameComputer);
+            this.Controls.Add(this.textBoxNameHost);
+            this.Controls.Add(this.labelNameHost);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "FormEditComputer";
+            this.Name = "FormEditHost";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Компьютер";
             this.ResumeLayout(false);
@@ -135,8 +135,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelNameComputer;
-        private System.Windows.Forms.TextBox textBoxNameComputer;
+        private System.Windows.Forms.Label labelNameHost;
+        private System.Windows.Forms.TextBox textBoxNameHost;
         private System.Windows.Forms.Label labelIP;
         private System.Windows.Forms.TextBox textBoxIP;
         private System.Windows.Forms.Label labelDescription;

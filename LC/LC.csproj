@@ -82,12 +82,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferTreeNodeClass.cs" />
-    <Compile Include="FormEditMFU.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormEditMFU.Designer.cs">
-      <DependentUpon>FormEditMFU.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormEditSubnet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,11 +109,11 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEditComputer.cs">
+    <Compile Include="FormEditHost.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEditComputer.Designer.cs">
-      <DependentUpon>FormEditComputer.cs</DependentUpon>
+    <Compile Include="FormEditHost.Designer.cs">
+      <DependentUpon>FormEditHost.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEditGroup.cs">
       <SubType>Form</SubType>
@@ -141,9 +135,8 @@
     </Compile>
     <Compile Include="LCDirectory.cs" />
     <Compile Include="LCTreeNode.cs" />
-    <Compile Include="LCTreeNodeComputer.cs" />
+    <Compile Include="LCTreeNodeHost.cs" />
     <Compile Include="LCTreeNodeGroup.cs" />
-    <Compile Include="LCTreeNodeMFU.cs" />
     <Compile Include="LCTreeNodeNoList.cs" />
     <Compile Include="LCTreeNodeSubnet.cs" />
     <Compile Include="Program.cs" />
@@ -153,17 +146,14 @@
     <EmbeddedResource Include="FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEditMFU.resx">
-      <DependentUpon>FormEditMFU.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEditComputer.resx">
-      <DependentUpon>FormEditComputer.cs</DependentUpon>
+    <EmbeddedResource Include="FormEditHost.resx">
+      <DependentUpon>FormEditHost.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditGroup.resx">
       <DependentUpon>FormEditGroup.cs</DependentUpon>

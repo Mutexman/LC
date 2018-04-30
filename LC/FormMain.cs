@@ -44,7 +44,7 @@ namespace LC
             {
                 this.splitContainer1.Panel2Collapsed = true;
             }
-            this.CreateCommandButtons(this.fileConfigComputers, this.toolStripComputers, this.listViewComputers);
+            this.CreateCommandButtons(this.fileConfigComputers, this.toolStripComputers, this.listViewHosts);
         }
         /// <summary>
         /// Метод создания коммандных кнопок в ToolStrip
@@ -128,7 +128,7 @@ namespace LC
             CommandToolStripButton.StatusLabel = this.toolStripStatusLabelMain;
             CommandToolStripButton.listBoxMessage = this.listBoxOperation;
             CommandToolStripButton.tabControl = this.tabControlObject;
-            FormEditComputer.treeView = this.treeViewObject;
+            FormEditHost.treeView = this.treeViewObject;
             LCDirectory.treeView = this.treeViewObject;
             LCDirectory.listBox = this.listBoxOperation;
             LCDirectory.toolStripStatusLabel = this.toolStripStatusLabelMain;
@@ -223,20 +223,20 @@ namespace LC
         private void FindComputer_IP(TreeNode treeNode, string ip)
         {
             LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
-            if (lcTreeNodeWork.LCObjectType == LCObjectType.Computer)
+            if (lcTreeNodeWork.LCObjectType == LCObjectType.Host)
             {
                 // Этот узел компьютер, приводим объект к нужному классу
-                LCTreeNodeComputer lcComp = (LCTreeNodeComputer)lcTreeNodeWork;
+                LCTreeNodeHost lcHost = (LCTreeNodeHost)lcTreeNodeWork;
                 // Проверяем по IP-адресу
-                if (lcComp.IP == ip)
+                if (lcHost.IP == ip)
                 {
                     // Делаем активным компьютер в дереве справочника
-                    this.treeViewObject.SelectedNode = lcComp;
+                    this.treeViewObject.SelectedNode = lcHost;
 
-                    this.openLCTreeNode(lcComp);
+                    this.openLCTreeNode(lcHost);
 
                     countFind++;
-                    this.WriteListBox("Найден компьютер с именем: " + lcComp.Text + ".");
+                    this.WriteListBox("Найден компьютер с именем: " + lcHost.Text + ".");
                 }
             }
             else
@@ -359,25 +359,25 @@ namespace LC
 
             switch (lcTreeNode.LCObjectType)
             {
-                case LCObjectType.Computer:
+                case LCObjectType.Host:
                     {
-                        this.tabControlObject.SelectedTab = this.tabPageComputers;
-                        LCTreeNodeComputer lcPC = (LCTreeNodeComputer)lcTreeNode;
-                        foreach (ListViewItem curilv in this.listViewComputers.Items)
+                        this.tabControlObject.SelectedTab = this.tabPageHosts;
+                        LCTreeNodeHost lcHost = (LCTreeNodeHost)lcTreeNode;
+                        foreach (ListViewItem curilv in this.listViewHosts.Items)
                         {
-                            if (curilv.Tag == lcPC)
+                            if (curilv.Tag == lcHost)
                             {
                                 curilv.Selected = true;
                                 return;
                             }
                         }
                         // определяем родительскую группу элемента
-                        LCTreeNode lcNode = (LCTreeNode)lcPC.Parent;
+                        LCTreeNode lcNode = (LCTreeNode)lcHost.Parent;
                         // Пока сделано так, в будущем предполагаются что ПК состоят только в сетях. Кроме группы <Не в списке>
                         if (lcNode.LCObjectType == LCObjectType.SubNet)
                         {
                             ListViewGroup lvg = null;
-                            foreach (ListViewGroup curGroup in this.listViewComputers.Groups)
+                            foreach (ListViewGroup curGroup in this.listViewHosts.Groups)
                             {
                                 if (curGroup.Tag == lcNode)
                                 {
@@ -392,22 +392,22 @@ namespace LC
                                 lvg = new ListViewGroup(lcNode.Text);
                             }
                             lvg.Tag = lcNode;
-                            this.listViewComputers.Groups.Add(lvg);
-                            ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description }, lvg)
+                            this.listViewHosts.Groups.Add(lvg);
+                            ListViewItem lvi = new ListViewItem(new string[] { lcHost.TypeHost.ToString(), lcHost.IP, lcHost.Text, lcHost.ParentGroup, lcHost.Description }, lvg)
                             {
-                                Tag = lcPC
+                                Tag = lcHost
                             };
-                            lcPC.Tag = lvi;
-                            this.listViewComputers.Items.Add(lvi);
+                            lcHost.Tag = lvi;
+                            this.listViewHosts.Items.Add(lvi);
                         }
                         else
                         {
-                            ListViewItem lvi = new ListViewItem(new string[] { lcPC.IP, lcPC.Text, lcPC.ParentGroup, lcPC.Description })
+                            ListViewItem lvi = new ListViewItem(new string[] { lcHost.TypeHost.ToString(), lcHost.IP, lcHost.Text, lcHost.ParentGroup, lcHost.Description })
                             {
-                                Tag = lcPC
+                                Tag = lcHost
                             };
-                            lcPC.Tag = lvi;
-                            this.listViewComputers.Items.Add(lvi);
+                            lcHost.Tag = lvi;
+                            this.listViewHosts.Items.Add(lvi);
                         }
                         break;
                     }
@@ -509,9 +509,9 @@ namespace LC
             LCTreeNode tn = (LCTreeNode)this.treeViewObject.SelectedNode;
             switch (tn.LCObjectType)
             {
-                case LCObjectType.Computer:
+                case LCObjectType.Host:
                     {
-                        FormEditComputer formEditComputer = new FormEditComputer(this.treeViewObject.SelectedNode);
+                        FormEditHost formEditComputer = new FormEditHost(this.treeViewObject.SelectedNode);
                         formEditComputer.ShowDialog();
                         break;
                     }
@@ -563,13 +563,13 @@ namespace LC
                 {
                     switch(lcTreeNode.LCObjectType)
                     {
-                        case LCObjectType.Computer:
+                        case LCObjectType.Host:
                             {
                                 //tempStr = "Компьютер: " + tempStr + " удалён.";
-                                LCTreeNodeComputer lcComputer = (LCTreeNodeComputer)lcTreeNode;
-                                ListViewItem itm = (ListViewItem)lcComputer.Tag;
-                                this.listViewComputers.Items.Remove(itm);
-                                lcComputer.Remove();
+                                LCTreeNodeHost lcHost = (LCTreeNodeHost)lcTreeNode;
+                                ListViewItem itm = (ListViewItem)lcHost.Tag;
+                                this.listViewHosts.Items.Remove(itm);
+                                lcHost.Remove();
                                 tempStr = "Компьютер: " + tempStr + " удалён.";
                                 // Сообщаем об удалении
                                 this.WriteListBox(tempStr);
@@ -726,7 +726,7 @@ namespace LC
         private void SaveOpenedPages()
         {
             Properties.Settings.Default.OpenPages = "";
-            foreach (ListViewItem lvi in this.listViewComputers.Items)
+            foreach (ListViewItem lvi in this.listViewHosts.Items)
             {
                 Properties.Settings.Default.OpenPages += lvi.SubItems[0].Text + ";";
             }
@@ -740,7 +740,7 @@ namespace LC
             // Пока не понятно как определить что выделена какая либо строка в listView
             try
             {
-                ipStr = this.listViewComputers.SelectedItems[0].SubItems[0].Text;
+                ipStr = this.listViewHosts.SelectedItems[0].SubItems[0].Text;
             }
             catch (System.ArgumentOutOfRangeException myException)
             {
@@ -753,7 +753,7 @@ namespace LC
                 IPAddress ip = IPAddress.Parse(ipStr);
                 IPHostEntry host = Dns.GetHostEntry(ip);
                 string hostName = host.HostName;
-                this.listViewComputers.SelectedItems[0].SubItems[1].Text = hostName;
+                this.listViewHosts.SelectedItems[0].SubItems[1].Text = hostName;
                 this.WriteListBox("Имя ПК с IP " + ipStr + " @ " + hostName);
             }
             catch (System.Exception myException)
@@ -764,10 +764,10 @@ namespace LC
 
         private void listViewComputers_DoubleClick(object sender, EventArgs e)
         {
-            if (this.listViewComputers.SelectedItems.Count > 0)
+            if (this.listViewHosts.SelectedItems.Count > 0)
             {
-                LCTreeNodeComputer tn = (LCTreeNodeComputer)this.listViewComputers.SelectedItems[0].Tag;
-                FormEditComputer formNewComputer = new FormEditComputer(tn);
+                LCTreeNodeHost tn = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
+                FormEditHost formNewComputer = new FormEditHost(tn);
                 formNewComputer.ShowDialog();
             }
         }
@@ -776,26 +776,21 @@ namespace LC
         {
             if(e.KeyCode == Keys.Delete)
             {
-                if (this.listViewComputers.SelectedItems.Count >0)
+                if (this.listViewHosts.SelectedItems.Count >0)
                 {
-                    this.listViewComputers.SelectedItems[0].Remove();
+                    this.listViewHosts.SelectedItems[0].Remove();
                 }
             }
         }
 
         private void toolStripMenuItemClearPCList_Click(object sender, EventArgs e)
         {
-            this.listViewComputers.Items.Clear();
+            this.listViewHosts.Items.Clear();
         }
 
         private void toolStripMenuItemFindSubnet_Click(object sender, EventArgs e)
         {
             MessageBox.Show("переопределение");
-        }
-
-        private void мФУToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

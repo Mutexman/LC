@@ -27,10 +27,10 @@ namespace LC
         /// <param name="ip">IP-адрес компьютера</param>
         /// <param name="description">Описание компьютера</param>
         /// <returns>Возвращает созданный компьютер</returns>
-        public LCTreeNodeComputer AddComputer(string nameComputer, string ip, string description)
+        public LCTreeNodeHost AddComputer(string nameComputer, string ip, string description)
         {
             // создаем новый узел Computer
-            LCTreeNodeComputer lcTreeNodeComputer = new LCTreeNodeComputer();
+            LCTreeNodeHost lcTreeNodeComputer = new LCTreeNodeHost();
             lcTreeNodeComputer.Text = nameComputer;
             lcTreeNodeComputer.IP = ip;
             lcTreeNodeComputer.Description = description;

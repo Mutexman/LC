@@ -67,21 +67,22 @@ namespace LC
                                         newNode = lcTreeNodeNoList;
                                     }
                                     break;
-                                case "Computer":
+                                case "Host":
                                     {
-                                        LCTreeNodeComputer lcTreeNodeComputer = new LCTreeNodeComputer
+                                        LCTreeNodeHost lcTreeNodeHost = new LCTreeNodeHost
                                         {
-                                            Text = xnod.Attributes["NameComputer"].Value,
+                                            Text = xnod.Attributes["NameHost"].Value,
                                             IP = xnod.Attributes["IP"].Value,
                                             Description = xnod.Attributes["Description"].Value,
+                                            TypeHost = LCTreeNodeHost.StringToTypeHost(xnod.Attributes["TypeHost"].Value),
                                             ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
                                             ImageIndex = 3
                                         };
-                                        lcTreeNodeComputer.ToolTipText += lcTreeNodeComputer.Text;
-                                        lcTreeNodeComputer.ToolTipText += "\n" + lcTreeNodeComputer.IP;
-                                        lcTreeNodeComputer.ToolTipText += "\n" + lcTreeNodeComputer.Description;
-                                        newNode.Nodes.Add(lcTreeNodeComputer);
-                                        newNode = lcTreeNodeComputer;
+                                        lcTreeNodeHost.ToolTipText += lcTreeNodeHost.Text;
+                                        lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.IP;
+                                        lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Description;
+                                        newNode.Nodes.Add(lcTreeNodeHost);
+                                        newNode = lcTreeNodeHost;
                                     }
                                     break;
                                 case "Subnet":
@@ -107,20 +108,6 @@ namespace LC
                                         //MessageBox.Show("yes");
                                         //newNode.ImageIndex = 1;
                                         //newNode.Text = mapAttributes.Item(1).Value;
-                                    }
-                                    break;
-                                case "MFU":
-                                    {
-                                        LCTreeNodeMFU lcTreeNodeMFU = new LCTreeNodeMFU
-                                        {
-                                            Text = xnod.Attributes["NameMFU"].Value,
-                                            IP = xnod.Attributes["IP"].Value,
-                                            Description = xnod.Attributes["Description"].Value
-                                        };
-                                        lcTreeNodeMFU.ToolTipText += lcTreeNodeMFU.Text;
-                                        lcTreeNodeMFU.ToolTipText += lcTreeNodeMFU.Description;
-                                        newNode.Nodes.Add(lcTreeNodeMFU);
-                                        newNode = lcTreeNodeMFU;
                                     }
                                     break;
                             }
