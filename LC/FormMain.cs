@@ -236,7 +236,7 @@ namespace LC
                     this.openLCTreeNode(lcHost);
 
                     countFind++;
-                    this.WriteListBox("Найден компьютер с именем: " + lcHost.Text + ".");
+                    this.WriteListBox("Найден хост с именем: " + lcHost.Text + ".");
                 }
             }
             else

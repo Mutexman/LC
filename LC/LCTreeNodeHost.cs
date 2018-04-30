@@ -28,15 +28,15 @@ namespace LC
         {
             switch (typeHost)
             {
-                case "ПК":
+                case "COMPUTER":
                     {
                         return LCTypeHost.COMPUTER;
                     }
-                case "МФУ":
+                case "MFU":
                     {
                         return LCTypeHost.MFU;
                     }
-                case "ЭТСО":
+                case "ETCO":
                     {
                         return LCTypeHost.ETCO;
                     }
@@ -77,10 +77,10 @@ namespace LC
         {
             base.Save(xw);
             xw.WriteStartElement("Host");
-            xw.WriteAttributeString("TypeHost", "ПК");
+            xw.WriteAttributeString("TypeHost", this.TypeHost.ToString());
             xw.WriteAttributeString("NameHost", this.Text);
             xw.WriteAttributeString("IP", this.ip);
-            xw.WriteAttributeString("Description", this.Description); //??? почему доступно здесь только свойство
+            xw.WriteAttributeString("Description", this.Description);
         }
     }
 }

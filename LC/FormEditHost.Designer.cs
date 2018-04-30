@@ -37,12 +37,14 @@
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.labelErrorMessage = new System.Windows.Forms.Label();
+            this.labelTypeHost = new System.Windows.Forms.Label();
+            this.comboBoxTypeHost = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelNameHost
             // 
             this.labelNameHost.AutoSize = true;
-            this.labelNameHost.Location = new System.Drawing.Point(12, 15);
+            this.labelNameHost.Location = new System.Drawing.Point(12, 40);
             this.labelNameHost.Name = "labelNameHost";
             this.labelNameHost.Size = new System.Drawing.Size(60, 13);
             this.labelNameHost.TabIndex = 0;
@@ -50,7 +52,7 @@
             // 
             // textBoxNameHost
             // 
-            this.textBoxNameHost.Location = new System.Drawing.Point(113, 12);
+            this.textBoxNameHost.Location = new System.Drawing.Point(113, 37);
             this.textBoxNameHost.Name = "textBoxNameHost";
             this.textBoxNameHost.Size = new System.Drawing.Size(313, 20);
             this.textBoxNameHost.TabIndex = 1;
@@ -58,7 +60,7 @@
             // labelIP
             // 
             this.labelIP.AutoSize = true;
-            this.labelIP.Location = new System.Drawing.Point(12, 41);
+            this.labelIP.Location = new System.Drawing.Point(12, 66);
             this.labelIP.Name = "labelIP";
             this.labelIP.Size = new System.Drawing.Size(50, 13);
             this.labelIP.TabIndex = 2;
@@ -66,7 +68,7 @@
             // 
             // textBoxIP
             // 
-            this.textBoxIP.Location = new System.Drawing.Point(113, 38);
+            this.textBoxIP.Location = new System.Drawing.Point(113, 63);
             this.textBoxIP.Name = "textBoxIP";
             this.textBoxIP.ReadOnly = true;
             this.textBoxIP.Size = new System.Drawing.Size(313, 20);
@@ -75,7 +77,7 @@
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(12, 67);
+            this.labelDescription.Location = new System.Drawing.Point(12, 92);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(57, 13);
             this.labelDescription.TabIndex = 4;
@@ -83,7 +85,7 @@
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(113, 64);
+            this.textBoxDescription.Location = new System.Drawing.Point(113, 89);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(313, 86);
@@ -91,7 +93,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(188, 188);
+            this.buttonSave.Location = new System.Drawing.Point(188, 213);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(81, 23);
             this.buttonSave.TabIndex = 6;
@@ -103,17 +105,42 @@
             // 
             this.labelErrorMessage.AutoSize = true;
             this.labelErrorMessage.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorMessage.Location = new System.Drawing.Point(110, 156);
+            this.labelErrorMessage.Location = new System.Drawing.Point(110, 181);
             this.labelErrorMessage.Name = "labelErrorMessage";
             this.labelErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.labelErrorMessage.TabIndex = 7;
+            // 
+            // labelTypeHost
+            // 
+            this.labelTypeHost.AutoSize = true;
+            this.labelTypeHost.Location = new System.Drawing.Point(12, 13);
+            this.labelTypeHost.Name = "labelTypeHost";
+            this.labelTypeHost.Size = new System.Drawing.Size(57, 13);
+            this.labelTypeHost.TabIndex = 8;
+            this.labelTypeHost.Text = "Тип хоста";
+            // 
+            // comboBoxTypeHost
+            // 
+            this.comboBoxTypeHost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTypeHost.FormattingEnabled = true;
+            this.comboBoxTypeHost.Items.AddRange(new object[] {
+            "Хост",
+            "Компьютер",
+            "МФУ",
+            "ЭТСО"});
+            this.comboBoxTypeHost.Location = new System.Drawing.Point(113, 10);
+            this.comboBoxTypeHost.Name = "comboBoxTypeHost";
+            this.comboBoxTypeHost.Size = new System.Drawing.Size(156, 21);
+            this.comboBoxTypeHost.TabIndex = 9;
             // 
             // FormEditHost
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(438, 217);
+            this.ClientSize = new System.Drawing.Size(438, 270);
+            this.Controls.Add(this.comboBoxTypeHost);
+            this.Controls.Add(this.labelTypeHost);
             this.Controls.Add(this.labelErrorMessage);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxDescription);
@@ -127,7 +154,7 @@
             this.MaximizeBox = false;
             this.Name = "FormEditHost";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Компьютер";
+            this.Text = "Хост";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,5 +170,7 @@
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label labelErrorMessage;
+        private System.Windows.Forms.Label labelTypeHost;
+        private System.Windows.Forms.ComboBox comboBoxTypeHost;
     }
 }

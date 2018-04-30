@@ -20,6 +20,29 @@ namespace LC
         {
             InitializeComponent();
             this.lcTreeNodeHost = (LCTreeNodeHost)treeNode;
+            switch (lcTreeNodeHost.TypeHost)
+            {
+                case LCTypeHost.COMPUTER:
+                    {
+                        this.comboBoxTypeHost.Text = "Компьютер";
+                    }
+                    break;
+                case LCTypeHost.ETCO:
+                    {
+                        this.comboBoxTypeHost.Text = "ЭТСО";
+                    }
+                    break;
+                case LCTypeHost.HOST:
+                    {
+                        this.comboBoxTypeHost.Text = "Хост";
+                    }
+                    break;
+                case LCTypeHost.MFU:
+                    {
+                        this.comboBoxTypeHost.Text = "МФУ";
+                    }
+                    break;
+            }
             this.NameHost = this.lcTreeNodeHost.Text;
             this.IP = this.lcTreeNodeHost.IP;
             this.Description = this.lcTreeNodeHost.Description;
@@ -130,11 +153,27 @@ namespace LC
         {
             if (this.textBoxNameHost.Text != "")
             {
+                switch (this.comboBoxTypeHost.Text)
+                {
+                    case "Компьютер":
+                        this.lcTreeNodeHost.TypeHost = LCTypeHost.COMPUTER;
+                        break;
+                    case "ЭТСО":
+                        this.lcTreeNodeHost.TypeHost = LCTypeHost.ETCO;
+                        break;
+                    case "Хост":
+                        this.lcTreeNodeHost.TypeHost = LCTypeHost.HOST;
+                        break;
+                    case "МФУ":
+                        this.lcTreeNodeHost.TypeHost = LCTypeHost.MFU;
+                        break;
+                }
                 this.lcTreeNodeHost.Text = this.textBoxNameHost.Text;
                 this.lcTreeNodeHost.Description = this.textBoxDescription.Text;
                 ListViewItem lvi = (ListViewItem)lcTreeNodeHost.Tag;
-                lvi.SubItems[1].Text = this.lcTreeNodeHost.Text;
-                lvi.SubItems[3].Text = this.lcTreeNodeHost.Description;
+                lvi.SubItems[0].Text = this.comboBoxTypeHost.Text;
+                lvi.SubItems[2].Text = this.lcTreeNodeHost.Text;
+                lvi.SubItems[4].Text = this.lcTreeNodeHost.Description;
                 this.Close();
             }
             else
