@@ -14,7 +14,8 @@ namespace LC
     {
         HOST,       //Неопрелённый тип устройства
         COMPUTER,   //Компьютер
-        MFU         //Сетевое МФУ
+        MFU,        //Сетевое МФУ
+        ETCO        //Киоск ЭТСО
     }
     class LCTreeNodeHost : LCTreeNode
     {
@@ -30,6 +31,14 @@ namespace LC
                 case "ПК":
                     {
                         return LCTypeHost.COMPUTER;
+                    }
+                case "МФУ":
+                    {
+                        return LCTypeHost.MFU;
+                    }
+                case "ЭТСО":
+                    {
+                        return LCTypeHost.ETCO;
                     }
                 default:
                     {

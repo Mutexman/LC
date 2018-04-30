@@ -187,7 +187,7 @@ namespace LC
                     if (this.findSubnet != null)
                     {
                         LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet) this.findSubnet;
-                        lcSubnet.AddComputer(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
+                        lcSubnet.AddHost(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
                         this.FindHost_IP(this.findSubnet, this.toolStripTextBoxIP.Text);
@@ -195,7 +195,7 @@ namespace LC
                     else
                     {
                         LCTreeNodeNoList lcNoList = (LCTreeNodeNoList) this.ReturnGroupNoList();
-                        lcNoList.AddComputer(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
+                        lcNoList.AddHost(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
                         this.FindHost_IP(this.ReturnGroupNoList(), this.toolStripTextBoxIP.Text);
