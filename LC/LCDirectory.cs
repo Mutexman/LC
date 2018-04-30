@@ -74,7 +74,7 @@ namespace LC
                                             Text = xnod.Attributes["NameHost"].Value,
                                             IP = xnod.Attributes["IP"].Value,
                                             Description = xnod.Attributes["Description"].Value,
-                                            TypeHost = LCTreeNodeHost.StringToTypeHost(xnod.Attributes["TypeHost"].Value),
+                                            TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), xnod.Attributes["TypeHost"].Value),
                                             ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
                                             ImageIndex = 3
                                         };

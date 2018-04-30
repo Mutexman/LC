@@ -24,28 +24,6 @@ namespace LC
         {
             this.lcObjectType = LCObjectType.Host;
         }
-        static public LCTypeHost StringToTypeHost(string typeHost)
-        {
-            switch (typeHost)
-            {
-                case "COMPUTER":
-                    {
-                        return LCTypeHost.COMPUTER;
-                    }
-                case "MFU":
-                    {
-                        return LCTypeHost.MFU;
-                    }
-                case "ETCO":
-                    {
-                        return LCTypeHost.ETCO;
-                    }
-                default:
-                    {
-                        return LCTypeHost.HOST;
-                    }
-            }
-        }
         private LCTypeHost lcTypeHost = LCTypeHost.HOST;
         public LCTypeHost TypeHost
         {

@@ -20,29 +20,13 @@ namespace LC
         {
             InitializeComponent();
             this.lcTreeNodeHost = (LCTreeNodeHost)treeNode;
-            switch (lcTreeNodeHost.TypeHost)
-            {
-                case LCTypeHost.COMPUTER:
-                    {
-                        this.comboBoxTypeHost.Text = "Компьютер";
-                    }
-                    break;
-                case LCTypeHost.ETCO:
-                    {
-                        this.comboBoxTypeHost.Text = "ЭТСО";
-                    }
-                    break;
-                case LCTypeHost.HOST:
-                    {
-                        this.comboBoxTypeHost.Text = "Хост";
-                    }
-                    break;
-                case LCTypeHost.MFU:
-                    {
-                        this.comboBoxTypeHost.Text = "МФУ";
-                    }
-                    break;
-            }
+
+            this.comboBoxTypeHost.DataSource = Enum.GetValues(typeof(LCTypeHost)).Cast<LCTypeHost>()
+            .Select(p => new { Name = Enum.GetName(typeof(LCTypeHost), p), Value = (int)p }).ToList();
+            this.comboBoxTypeHost.DisplayMember = "Name";
+            this.comboBoxTypeHost.ValueMember = "Name";
+
+            this.comboBoxTypeHost.Text = lcTreeNodeHost.TypeHost.ToString();
             this.NameHost = this.lcTreeNodeHost.Text;
             this.IP = this.lcTreeNodeHost.IP;
             this.Description = this.lcTreeNodeHost.Description;
@@ -153,21 +137,7 @@ namespace LC
         {
             if (this.textBoxNameHost.Text != "")
             {
-                switch (this.comboBoxTypeHost.Text)
-                {
-                    case "Компьютер":
-                        this.lcTreeNodeHost.TypeHost = LCTypeHost.COMPUTER;
-                        break;
-                    case "ЭТСО":
-                        this.lcTreeNodeHost.TypeHost = LCTypeHost.ETCO;
-                        break;
-                    case "Хост":
-                        this.lcTreeNodeHost.TypeHost = LCTypeHost.HOST;
-                        break;
-                    case "МФУ":
-                        this.lcTreeNodeHost.TypeHost = LCTypeHost.MFU;
-                        break;
-                }
+                this.lcTreeNodeHost.TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), this.comboBoxTypeHost.Text);
                 this.lcTreeNodeHost.Text = this.textBoxNameHost.Text;
                 this.lcTreeNodeHost.Description = this.textBoxDescription.Text;
                 ListViewItem lvi = (ListViewItem)lcTreeNodeHost.Tag;
