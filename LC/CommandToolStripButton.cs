@@ -62,7 +62,9 @@ namespace LC
             string ip;
             try
             {
-                ip = listItems.SelectedItems[0].SubItems[0].Text;
+                LCTreeNodeHost lcTreeNodeHost = (LCTreeNodeHost)listItems.SelectedItems[0].Tag;
+                ip = lcTreeNodeHost.IP;
+                //ip = listItems.SelectedItems[0].SubItems[0].Text;
             }
             catch (System.ArgumentOutOfRangeException e)
             {

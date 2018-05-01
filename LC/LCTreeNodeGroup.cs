@@ -18,7 +18,6 @@ namespace LC
         }
         public override void Save(XmlTextWriter xw)
         {
-            base.Save(xw);
             xw.WriteStartElement("Group");
             xw.WriteAttributeString("NameGroup", this.Text);
             xw.WriteAttributeString("Description", this.Description); // А почему свойство ?????
@@ -78,7 +77,7 @@ namespace LC
         /// <returns>Возвращает созданный хост</returns>
         public LCTreeNodeHost AddHost(string nameHost, string ip, string description)
         {
-            // создаем новый узел Computer
+            // создаем новый узел Host
             LCTreeNodeHost lcTreeNodeHost = new LCTreeNodeHost
             {
                 Text = nameHost,

@@ -27,8 +27,9 @@ namespace LC
         /// <summary>
         /// Переменная содержащая имя файла конфигурации кнопок
         /// </summary>
-        //private string fileConfig = Application.LocalUserAppDataPath + "\\config.xml";
         private string fileConfigComputers = Application.LocalUserAppDataPath + "\\configComputers.xml";
+        private string fileConfigMFU = Application.LocalUserAppDataPath + "\\configMFU.xml";
+        private string fileConfigETCO = Application.LocalUserAppDataPath + "\\configETCO.xml";
         private BufferLCTreeNode buffer = new BufferLCTreeNode();
         // Поле для сохранения найденых компьютеров
         private static int countFind = 0;
@@ -44,14 +45,21 @@ namespace LC
             {
                 this.splitContainer1.Panel2Collapsed = true;
             }
+            this.toolStripComputers.Hide();
+            this.toolStripMFU.Hide();
+            this.toolStripETCO.Hide();
             this.CreateCommandButtons(this.fileConfigComputers, this.toolStripComputers, this.listViewHosts);
+            this.CreateCommandButtons(this.fileConfigMFU, this.toolStripMFU, this.listViewHosts);
+            this.CreateCommandButtons(this.fileConfigETCO, this.toolStripETCO, this.listViewHosts);
         }
+
+        #region Панели инструментов
         /// <summary>
         /// Метод создания коммандных кнопок в ToolStrip
         /// </summary>
         /// <param name="fileName">Имя файла хранения настроек кнопок.</param>
         /// <param name="toolStrip">Панель в которой будут создаваться кнопки.</param>
-        public void CreateCommandButtons(string fileName,ToolStrip toolStrip,ListView listView)
+         public void CreateCommandButtons(string fileName,ToolStrip toolStrip,ListView listView)
         {
             // Загрузка файла в объект XmlDocument
             XmlDocument xd = new XmlDocument();
@@ -107,6 +115,7 @@ namespace LC
                 }
             }
         }
+        #endregion
 
         #region События формы
         private void FormMain_Load(object sender, EventArgs e)
@@ -675,6 +684,7 @@ namespace LC
         /// Возвращает узел дерева "не в списке", а если его не существует, то создает новый. 
         /// </summary>
         /// <returns>Возвращает узел дерева "не в списке".</returns>
+        //private TreeNode ReturnGroupNoList()
         private TreeNode ReturnGroupNoList()
         {
             TreeNode treeNode = this.treeViewObject.Nodes[0];
@@ -683,7 +693,7 @@ namespace LC
                 // рекурсивный перебор всех дочерних узлов
                 foreach (TreeNode treeNodeWorking in treeNode.Nodes)
                 {
-                    if (treeNodeWorking.Text == "<Не в списке>")
+                    if(((LCTreeNode)treeNodeWorking).LCObjectType == LCObjectType.NoList)
                     {
                         return treeNodeWorking;
                     }
@@ -695,7 +705,7 @@ namespace LC
                 Description = "Компьютеры которые не добавлялись в группу",
                 ContextMenuStrip = LCTreeNode.noListContextMenuStrip,
                 ImageIndex = 2,
-                ToolTipText = "<Не в списке>\nКомпьютеры которые не добавлялись в группу"
+                ToolTipText = "<Не в списке>\nКомпьютеры которые не добавлялись в группу. Сообщение для отладки: Ранее группы не было!"
             };
             treeNode.Nodes.Add(lcTreeNodeNoList);
             return lcTreeNodeNoList;
@@ -791,6 +801,46 @@ namespace LC
         private void toolStripMenuItemFindSubnet_Click(object sender, EventArgs e)
         {
             MessageBox.Show("переопределение");
+        }
+
+        private void listViewHosts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.listViewHosts.SelectedItems.Count > 0)
+            {
+                LCTreeNodeHost lcHost = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
+                LCTypeHost lcTypeHost = lcHost.TypeHost;
+                switch (lcTypeHost)
+                {
+                    case LCTypeHost.COMPUTER:
+                        {
+                            this.toolStripComputers.Visible = true;
+                            this.toolStripETCO.Hide();
+                            this.toolStripMFU.Hide();
+                        }
+                        break;
+                    case LCTypeHost.ETCO:
+                        {
+                            this.toolStripComputers.Hide();
+                            this.toolStripETCO.Visible = true;
+                            this.toolStripMFU.Hide();
+                        }
+                        break;
+                    case LCTypeHost.HOST:
+                        {
+                            this.toolStripComputers.Visible = true;
+                            this.toolStripETCO.Hide();
+                            this.toolStripMFU.Hide();
+                        }
+                        break;
+                    case LCTypeHost.MFU:
+                        {
+                            this.toolStripComputers.Hide();
+                            this.toolStripETCO.Hide();
+                            this.toolStripMFU.Visible = true;
+                        }
+                        break;
+                }
+            }
         }
     }
 }
