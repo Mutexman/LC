@@ -782,17 +782,6 @@ namespace LC
             }
         }
 
-        private void listViewComputers_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Delete)
-            {
-                if (this.listViewHosts.SelectedItems.Count >0)
-                {
-                    this.listViewHosts.SelectedItems[0].Remove();
-                }
-            }
-        }
-
         private void toolStripMenuItemClearPCList_Click(object sender, EventArgs e)
         {
             this.listViewHosts.Items.Clear();
@@ -839,6 +828,17 @@ namespace LC
                             this.toolStripMFU.Visible = true;
                         }
                         break;
+                }
+            }
+        }
+
+        private void listViewHosts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (this.listViewHosts.SelectedItems.Count > 0)
+                {
+                    this.listViewHosts.SelectedItems[0].Remove();
                 }
             }
         }

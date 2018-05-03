@@ -65,6 +65,14 @@
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
             this.tabControlObject = new System.Windows.Forms.TabControl();
             this.tabPageHosts = new System.Windows.Forms.TabPage();
+            this.listViewHosts = new System.Windows.Forms.ListView();
+            this.columnHeaderTypeHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderIPHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderNameHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSubNetOrGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDescriptionHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolStripETCO = new System.Windows.Forms.ToolStrip();
+            this.toolStripMFU = new System.Windows.Forms.ToolStrip();
             this.toolStripComputers = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonGetNamePC = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
@@ -118,14 +126,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemDeleteNoList = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripLCMFU = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMFU = new System.Windows.Forms.ToolStrip();
-            this.toolStripETCO = new System.Windows.Forms.ToolStrip();
-            this.listViewHosts = new System.Windows.Forms.ListView();
-            this.columnHeaderTypeHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderIPHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderNameHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderSubNetOrGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderDescriptionHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -473,6 +473,74 @@
             this.tabPageHosts.TabIndex = 0;
             this.tabPageHosts.Text = "Хосты";
             this.tabPageHosts.UseVisualStyleBackColor = true;
+            // 
+            // listViewHosts
+            // 
+            this.listViewHosts.BackColor = System.Drawing.Color.White;
+            this.listViewHosts.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("listViewHosts.BackgroundImage")));
+            this.listViewHosts.BackgroundImageTiled = true;
+            this.listViewHosts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderTypeHost,
+            this.columnHeaderIPHost,
+            this.columnHeaderNameHost,
+            this.columnHeaderSubNetOrGroup,
+            this.columnHeaderDescriptionHost});
+            this.listViewHosts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewHosts.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listViewHosts.ForeColor = System.Drawing.Color.DarkBlue;
+            this.listViewHosts.FullRowSelect = true;
+            this.listViewHosts.GridLines = true;
+            this.listViewHosts.HideSelection = false;
+            this.listViewHosts.Location = new System.Drawing.Point(0, 75);
+            this.listViewHosts.MultiSelect = false;
+            this.listViewHosts.Name = "listViewHosts";
+            this.listViewHosts.Size = new System.Drawing.Size(825, 361);
+            this.listViewHosts.TabIndex = 4;
+            this.listViewHosts.UseCompatibleStateImageBehavior = false;
+            this.listViewHosts.View = System.Windows.Forms.View.Details;
+            this.listViewHosts.SelectedIndexChanged += new System.EventHandler(this.listViewHosts_SelectedIndexChanged);
+            this.listViewHosts.DoubleClick += new System.EventHandler(this.listViewComputers_DoubleClick);
+            this.listViewHosts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listViewHosts_KeyDown);
+            // 
+            // columnHeaderTypeHost
+            // 
+            this.columnHeaderTypeHost.Text = "Тип";
+            // 
+            // columnHeaderIPHost
+            // 
+            this.columnHeaderIPHost.Text = "IP";
+            this.columnHeaderIPHost.Width = 101;
+            // 
+            // columnHeaderNameHost
+            // 
+            this.columnHeaderNameHost.Text = "Имя";
+            this.columnHeaderNameHost.Width = 114;
+            // 
+            // columnHeaderSubNetOrGroup
+            // 
+            this.columnHeaderSubNetOrGroup.Text = "Сеть/Группа";
+            this.columnHeaderSubNetOrGroup.Width = 173;
+            // 
+            // columnHeaderDescriptionHost
+            // 
+            this.columnHeaderDescriptionHost.Text = "Описание";
+            this.columnHeaderDescriptionHost.Width = 386;
+            // 
+            // toolStripETCO
+            // 
+            this.toolStripETCO.Location = new System.Drawing.Point(0, 50);
+            this.toolStripETCO.Name = "toolStripETCO";
+            this.toolStripETCO.Size = new System.Drawing.Size(825, 25);
+            this.toolStripETCO.TabIndex = 3;
+            this.toolStripETCO.Text = "toolStrip4";
+            // 
+            // toolStripMFU
+            // 
+            this.toolStripMFU.Location = new System.Drawing.Point(0, 25);
+            this.toolStripMFU.Name = "toolStripMFU";
+            this.toolStripMFU.Size = new System.Drawing.Size(825, 25);
+            this.toolStripMFU.TabIndex = 2;
+            this.toolStripMFU.Text = "toolStrip1";
             // 
             // toolStripComputers
             // 
@@ -875,73 +943,6 @@
             // 
             this.contextMenuStripLCMFU.Name = "contextMenuStripLCMFU";
             this.contextMenuStripLCMFU.Size = new System.Drawing.Size(61, 4);
-            // 
-            // toolStripMFU
-            // 
-            this.toolStripMFU.Location = new System.Drawing.Point(0, 25);
-            this.toolStripMFU.Name = "toolStripMFU";
-            this.toolStripMFU.Size = new System.Drawing.Size(825, 25);
-            this.toolStripMFU.TabIndex = 2;
-            this.toolStripMFU.Text = "toolStrip1";
-            // 
-            // toolStripETCO
-            // 
-            this.toolStripETCO.Location = new System.Drawing.Point(0, 50);
-            this.toolStripETCO.Name = "toolStripETCO";
-            this.toolStripETCO.Size = new System.Drawing.Size(825, 25);
-            this.toolStripETCO.TabIndex = 3;
-            this.toolStripETCO.Text = "toolStrip4";
-            // 
-            // listViewHosts
-            // 
-            this.listViewHosts.BackColor = System.Drawing.Color.White;
-            this.listViewHosts.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("listViewHosts.BackgroundImage")));
-            this.listViewHosts.BackgroundImageTiled = true;
-            this.listViewHosts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderTypeHost,
-            this.columnHeaderIPHost,
-            this.columnHeaderNameHost,
-            this.columnHeaderSubNetOrGroup,
-            this.columnHeaderDescriptionHost});
-            this.listViewHosts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewHosts.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listViewHosts.ForeColor = System.Drawing.Color.DarkBlue;
-            this.listViewHosts.FullRowSelect = true;
-            this.listViewHosts.GridLines = true;
-            this.listViewHosts.HideSelection = false;
-            this.listViewHosts.Location = new System.Drawing.Point(0, 75);
-            this.listViewHosts.MultiSelect = false;
-            this.listViewHosts.Name = "listViewHosts";
-            this.listViewHosts.Size = new System.Drawing.Size(825, 361);
-            this.listViewHosts.TabIndex = 4;
-            this.listViewHosts.UseCompatibleStateImageBehavior = false;
-            this.listViewHosts.View = System.Windows.Forms.View.Details;
-            this.listViewHosts.SelectedIndexChanged += new System.EventHandler(this.listViewHosts_SelectedIndexChanged);
-            this.listViewHosts.DoubleClick += new System.EventHandler(this.listViewComputers_DoubleClick);
-            // 
-            // columnHeaderTypeHost
-            // 
-            this.columnHeaderTypeHost.Text = "Тип";
-            // 
-            // columnHeaderIPHost
-            // 
-            this.columnHeaderIPHost.Text = "IP";
-            this.columnHeaderIPHost.Width = 101;
-            // 
-            // columnHeaderNameHost
-            // 
-            this.columnHeaderNameHost.Text = "Имя";
-            this.columnHeaderNameHost.Width = 114;
-            // 
-            // columnHeaderSubNetOrGroup
-            // 
-            this.columnHeaderSubNetOrGroup.Text = "Сеть/Группа";
-            this.columnHeaderSubNetOrGroup.Width = 173;
-            // 
-            // columnHeaderDescriptionHost
-            // 
-            this.columnHeaderDescriptionHost.Text = "Описание";
-            this.columnHeaderDescriptionHost.Width = 386;
             // 
             // FormMain
             // 
