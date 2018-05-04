@@ -64,12 +64,14 @@ namespace LC
                     case ModeForm.New:
                         {
                             this.lcTreeNode = this.lcTreeNodeGroup.AddGroup(this.textBoxNameGroup.Text, this.textBoxDescription.Text, "");
+                            this.buttonEditGroup.Text = "Добавить";
                             break;
                         }
                     case ModeForm.Edit:
                         {
                             this.lcTreeNodeGroup.Text = this.textBoxNameGroup.Text;
                             this.lcTreeNodeGroup.Description = this.textBoxDescription.Text;
+                            this.buttonEditGroup.Text = "Сохранить";
                             break;
                         }
                 }

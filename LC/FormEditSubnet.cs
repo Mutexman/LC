@@ -38,11 +38,12 @@ namespace LC
             {
                 case ModeForm.Edit:
                     {
-                        this.Text += "Сеть : " + this.lcTreeNodeSubnet.Text;
                         this.lcTreeNodeSubnet = (LCTreeNodeSubnet)treeNode;
+                        this.Text = "Сеть : " + this.lcTreeNodeSubnet.Text;
                         this.textBoxNameSubnet.Text = this.lcTreeNodeSubnet.Text;
                         this.textBoxIPSubnet.Text = this.lcTreeNodeSubnet.IPSubnet;
                         this.textBoxMaskSubnet.Text = this.lcTreeNodeSubnet.MaskSubnet;
+                        this.buttonAddSubnet.Text = "Сохранить";
                         break;
                     }
                 case ModeForm.New:
