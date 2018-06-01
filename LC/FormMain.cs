@@ -789,7 +789,23 @@ namespace LC
 
         private void toolStripMenuItemFindSubnet_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("переопределение");
+            List<String> list = new List<String>();
+            TreeNode node = ReturnGroupNoList();
+            foreach(TreeNode tn in node.Nodes)
+            {
+                //node.FirstNode
+                LCTreeNodeHost lc = (LCTreeNodeHost)tn;
+                list.Add(lc.IP);
+            }
+            // Может надо переписать метод Remove, 
+            // чтобы он удалял объект и из listView
+            node.Remove();
+            string str = "";
+            foreach(string st in list)
+            {
+                str += st + "\n";
+            }
+            MessageBox.Show("переопределение \n" + str);
         }
 
         private void listViewHosts_SelectedIndexChanged(object sender, EventArgs e)
