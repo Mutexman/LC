@@ -71,9 +71,9 @@
             this.labelAuthor.AutoSize = true;
             this.labelAuthor.Location = new System.Drawing.Point(12, 79);
             this.labelAuthor.Name = "labelAuthor";
-            this.labelAuthor.Size = new System.Drawing.Size(113, 13);
+            this.labelAuthor.Size = new System.Drawing.Size(116, 13);
             this.labelAuthor.TabIndex = 3;
-            this.labelAuthor.Text = "Автор : Mutex 2012 г.";
+            this.labelAuthor.Text = "Автор :  Mutex 2012 г.";
             // 
             // labelDescription
             // 
