@@ -574,11 +574,8 @@ namespace LC
                     {
                         case LCObjectType.Host:
                             {
-                                //tempStr = "Компьютер: " + tempStr + " удалён.";
                                 LCTreeNodeHost lcHost = (LCTreeNodeHost)lcTreeNode;
-                                ListViewItem itm = (ListViewItem)lcHost.Tag;
-                                this.listViewHosts.Items.Remove(itm);
-                                lcHost.Remove();
+                                lcHost.RemoveLC();
                                 tempStr = "Компьютер: " + tempStr + " удалён.";
                                 // Сообщаем об удалении
                                 this.WriteListBox(tempStr);
@@ -786,26 +783,49 @@ namespace LC
         {
             this.listViewHosts.Items.Clear();
         }
-
+        /// <summary>
+        /// Метод переопределения сети для хостов из группы "Не в списке"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripMenuItemFindSubnet_Click(object sender, EventArgs e)
         {
             List<String> list = new List<String>();
             TreeNode node = ReturnGroupNoList();
             foreach(TreeNode tn in node.Nodes)
             {
-                //node.FirstNode
                 LCTreeNodeHost lc = (LCTreeNodeHost)tn;
                 list.Add(lc.IP);
+                ((ListViewItem)lc.Tag).Remove();
             }
-            // Может надо переписать метод Remove, 
-            // чтобы он удалял объект и из listView
+            // Удаляем группу "Не в списке"
             node.Remove();
-            string str = "";
-            foreach(string st in list)
+            // проверяем на всякий пожарный, не пустое ли дерево справочника
+            if (this.treeViewObject.Nodes.Count > 0)
             {
-                str += st + "\n";
+                foreach(string st in list)
+                {
+                    // Ищем принадлежность ПК к какой либо сети
+                    this.findSubnet = null;
+                    this.FindSubnet_IP(this.treeViewObject.Nodes[0], st);
+                    if (this.findSubnet != null)
+                    {
+                        LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)this.findSubnet;
+                        lcSubnet.AddHost(st, st, "");
+                        // и сразу же выделяем этот объект
+                        countFind = 0;
+                        this.FindHost_IP(this.findSubnet, st);
+                    }
+                    else
+                    {
+                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList)this.ReturnGroupNoList();
+                        lcNoList.AddHost(st, st, "");
+                        // и сразу же выделяем этот объект
+                        countFind = 0;
+                        this.FindHost_IP(this.ReturnGroupNoList(), st);
+                    }
+                }
             }
-            MessageBox.Show("переопределение \n" + str);
         }
 
         private void listViewHosts_SelectedIndexChanged(object sender, EventArgs e)

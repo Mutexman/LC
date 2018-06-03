@@ -122,5 +122,12 @@ namespace LC
                 return str;
             }
         }
+        /// <summary>
+        /// Метод удаления не только самого узла, но и строки в ListView
+        /// </summary>
+        virtual public void RemoveLC()
+        {
+            this.Remove();
+        }
     }
 }

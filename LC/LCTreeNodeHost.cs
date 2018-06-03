@@ -60,5 +60,11 @@ namespace LC
             xw.WriteAttributeString("IP", this.ip);
             xw.WriteAttributeString("Description", this.Description);
         }
+        public override void RemoveLC()
+        {
+            ListViewItem lvi = (ListViewItem) this.Tag;
+            lvi.Remove();
+            base.RemoveLC();
+        }
     }
 }
