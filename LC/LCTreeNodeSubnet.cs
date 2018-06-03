@@ -133,5 +133,10 @@ namespace LC
             }
             return rc;
         }
+        public override void RemoveLC()
+        {
+            ((ListViewItem)this.Tag).Remove();
+            base.RemoveLC();
+        }
     }
 }

@@ -93,5 +93,10 @@ namespace LC
             this.WriteListBoxOperation("Добавлен компьтер : " + nameHost);
             return lcTreeNodeHost;
         }
+        public override void RemoveLC()
+        {
+            ((ListViewItem)this.Tag).Remove();
+            base.RemoveLC();
+        }
     }
 }

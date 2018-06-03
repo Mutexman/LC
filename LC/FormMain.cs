@@ -584,9 +584,7 @@ namespace LC
                         case LCObjectType.SubNet:
                             {
                                 LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNode;
-                                ListViewItem itm = (ListViewItem)lcSubnet.Tag;
-                                this.listViewSubnets.Items.Remove(itm);
-                                lcSubnet.Remove();
+                                lcSubnet.RemoveLC();
                                 tempStr = "Сеть: " + tempStr + " удалена.";
                                 this.WriteListBox(tempStr);
                                 break;
@@ -594,9 +592,7 @@ namespace LC
                         case LCObjectType.Group:
                             {
                                 LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNode;
-                                ListViewItem itm = (ListViewItem)lcGroup.Tag;
-                                this.listViewGroups.Items.Remove(itm);
-                                lcGroup.Remove();
+                                lcGroup.RemoveLC();
                                 tempStr = "Группа: " + tempStr + " удалена.";
                                 this.WriteListBox(tempStr);
                                 break;
