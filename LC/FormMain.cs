@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.IO;
-using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Net;
 
@@ -155,7 +154,7 @@ namespace LC
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             // Сохраняем справочник
-            this.lCDirectory.SaveXML();
+            this.lCDirectory.SaveDomXML();
             // Сохраняем открытые вкладки
             this.SaveOpenedPages();
         }
@@ -459,10 +458,6 @@ namespace LC
                         };
                         lcGroup.Tag = lvi;
                         this.listViewGroups.Items.Add(lvi);
-                        break;
-                    }
-                case LCObjectType.MFU:
-                    {
                         break;
                     }
             }

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml;
-using System.Data;
 
 namespace LC
 {
@@ -13,14 +8,11 @@ namespace LC
     /// </summary>
     enum LCObjectType
     {
-        //Root,        // Корень дерева
         NoList,      // Узел с компьютерами не в списке
         Group,       // Группа компьютеров
-        //Computer,    // Компьютеров
         SubNet,      // Узел СПД
         None,        // Пустой узел
-        MFU,          // Сетевые МФУ или принтер
-        Host         //Какое либо устройство с IP адресом
+        Host         // Какое либо устройство с IP адресом
     }
     /// <summary>
     /// Класс узла дерева объектов
@@ -31,7 +23,6 @@ namespace LC
         {
         }
         // поле для хранения имени файла фотографии
-        protected string fotoFile = "";
         static private ListBox listBoxOperation;
         static public ToolStripLabel StatusLabel = null;
         //Контекстные меню
@@ -73,12 +64,6 @@ namespace LC
             {
                 return this.lcObjectType;
             }
-        }
-        /// <summary>
-        /// Метод сохранения данных объекта
-        /// </summary>
-        virtual public void Save(XmlTextWriter xw)
-        {
         }
         /// <summary>
         /// Метод вывода сообщения в ListBoxOperation 

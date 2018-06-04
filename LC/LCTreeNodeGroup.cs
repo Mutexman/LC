@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Xml;
+﻿using System.Windows.Forms;
 
 namespace LC
 {
@@ -15,13 +10,6 @@ namespace LC
         public LCTreeNodeGroup(): base()
         {
             this.lcObjectType = LCObjectType.Group;
-        }
-        public override void Save(XmlTextWriter xw)
-        {
-            xw.WriteStartElement("Group");
-            xw.WriteAttributeString("NameGroup", this.Text);
-            xw.WriteAttributeString("Description", this.Description); // А почему свойство ?????
-            xw.WriteAttributeString("FotoFile", this.fotoFile);
         }
         /// <summary>
         /// Метод добавления дочерней группы

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace LC
 {
@@ -45,20 +41,6 @@ namespace LC
             {
                 this.masksubnet = value;
             }
-        }
-        /// <summary>
-        /// Метод сохранения в хранилище.
-        /// </summary>
-        /// <param name="xw"></param>
-        public override void Save(XmlTextWriter xw)
-        {
-            //base.Save(xw);
-            xw.WriteStartElement("Subnet");
-            xw.WriteAttributeString("NameSubnet", this.Text);
-            xw.WriteAttributeString("IPSubnet", this.IPSubnet);
-            xw.WriteAttributeString("MaskSubnet", this.MaskSubnet);
-            xw.WriteAttributeString("Description", this.Description); // А почему свойство ?????
-            xw.WriteAttributeString("FotoFile", this.fotoFile);
         }
         /// <summary>
         /// Метод проверки принадлежности IP адреса сети

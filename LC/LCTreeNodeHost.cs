@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Xml;
+﻿using System.Windows.Forms;
 
 namespace LC
 {
@@ -24,7 +19,7 @@ namespace LC
         {
             this.lcObjectType = LCObjectType.Host;
         }
-        private LCTypeHost lcTypeHost = LCTypeHost.HOST;
+        private LCTypeHost lcTypeHost = LCTypeHost.HOST; 
         public LCTypeHost TypeHost
         {
             get
@@ -51,18 +46,12 @@ namespace LC
                 this.ip = value;
             }
         }
-        public override void Save(XmlTextWriter xw)
-        {
-            base.Save(xw);
-            xw.WriteStartElement("Host");
-            xw.WriteAttributeString("TypeHost", this.TypeHost.ToString());
-            xw.WriteAttributeString("NameHost", this.Text);
-            xw.WriteAttributeString("IP", this.ip);
-            xw.WriteAttributeString("Description", this.Description);
-        }
         public override void RemoveLC()
         {
-            ((ListViewItem)this.Tag).Remove();
+            if (this.Tag != null)
+            {
+                ((ListViewItem)this.Tag).Remove();
+            }
             base.RemoveLC();
         }
     }

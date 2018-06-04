@@ -1,9 +1,7 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 using System.Windows.Forms;
 using System.IO;
 
@@ -175,8 +173,6 @@ namespace LC
                     //Создаём резервную копию
                     File.Copy(this.fileData, backupFileName);
                 }
-                //Получается если работать под нужной учётной записью, то и с файлом можно работать без разшифровки
-                //File.Decrypt(this.fileData);
                 try
                 {
                     // Загружаем XML файл
@@ -233,34 +229,73 @@ namespace LC
         }
         #endregion
 
-        #region Сохранение справочника
-        /// <summary>
-        /// Метод сохранения дочернего узла справочника (рекурсивный)
-        /// </summary>
-        /// <param name="workxw">XML-считыватель</param>
-        /// <param name="treeNode">Текущий узел справочника</param>
-        private void SaveChildren(XmlTextWriter workxw, TreeNode treeNode)
+        // С использованием модели DOM сохранить справочник все таки было бы проще
+        #region Сохранение справочника с использованием DOM модели
+        private XElement SaveChildren(LCTreeNode item, XElement current)
         {
-            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
-            if (lcTreeNodeWork.Name != "Root")
+            LCTreeNode xnodWorking;
+            switch (item.LCObjectType)
             {
-                lcTreeNodeWork.Save(workxw);
-            }
-            else
-            {
-                workxw.WriteStartElement("Root");
+                case LCObjectType.Group:
+                    {
+                        if (item.Name != "Root")
+                        {
+                            LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)item;
+                            XElement xElement = new XElement("Group",
+                                new XAttribute("NameGroup", item.Text),
+                                new XAttribute("Description", item.Description));
+                            current = xElement;
+                        }
+                    }
+                    break;
+                case LCObjectType.Host:
+                    {
+                        LCTreeNodeHost lcHost = (LCTreeNodeHost)item;
+                        XElement xElement = new XElement("Host",
+                            new XAttribute("TypeHost", lcHost.TypeHost.ToString()),
+                            new XAttribute("NameHost", lcHost.Text),
+                            new XAttribute("IP", lcHost.IP),
+                            new XAttribute("Description", lcHost.Description));
+                        current = xElement;
+                    }
+                    break;
+                case LCObjectType.NoList:
+                    {
+                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList)item;
+                        XElement xElement = new XElement("NoList",
+                            new XAttribute("NameGroup", lcNoList.Text),
+                            new XAttribute("Description", lcNoList.Description));
+                        current = xElement;
+                    }
+                    break;
+                case LCObjectType.SubNet:
+                    {
+                        LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)item;
+                        XElement xElement = new XElement("Subnet",
+                            new XAttribute("NameSubnet", lcSubnet.Text),
+                            new XAttribute("IPSubnet", lcSubnet.IPSubnet),
+                            new XAttribute("MaskSubnet", lcSubnet.MaskSubnet),
+                            new XAttribute("Description", lcSubnet.Description));
+                        current = xElement;
+                    }
+                    break;
             }
             //рекурсивный перебор всех дочерних узлов
-            foreach (TreeNode treeNodeWorking in treeNode.Nodes)
+            if (item.Nodes.Count > 0)
             {
-                this.SaveChildren(workxw, treeNodeWorking);
+                xnodWorking = (LCTreeNode) item.FirstNode;
+                while (xnodWorking != null)
+                {
+                    current.Add(SaveChildren(xnodWorking, current));
+                    xnodWorking = (LCTreeNode) xnodWorking.NextNode;
+                }
             }
-            workxw.WriteEndElement();
+            return current;
         }
         /// <summary>
         /// Метод сохранения XML-справочника
         /// </summary>
-        public void SaveXML()
+        public void SaveDomXML()
         {
             // Сохранение справочника надо выполнять только в случае если он вообще загружался
             if (this.correctLoad)
@@ -268,50 +303,13 @@ namespace LC
                 // Проверяем имя файла, возможно создаётся новый справочник
                 if (this.fileData == "")
                 {
-                    this.fileData = Application.LocalUserAppDataPath + "\\Computers.xml";
+                    this.fileData = Application.LocalUserAppDataPath + "\\LCDirectory.xml";
                 }
-                XmlTextWriter xw = new XmlTextWriter(this.fileData, System.Text.Encoding.UTF8)
-                {
-                    // Настраиваем форматирование
-                    Formatting = Formatting.Indented,
-                    Indentation = 2,
-                    IndentChar = ' '
-                };
-                // Запиись декларации документа
-                xw.WriteStartDocument();
-                // запускаем рекурсивное сохранение
-                this.SaveChildren(xw, treeView.Nodes[0]);
-                // завершение элемента root
-                //xw.WriteEndElement();
-                // завершение документа
-                xw.WriteEndDocument();
-                // сброс буфера на диск и закрытие файла
-                xw.Flush();
-                xw.Close();
-                if (!Properties.Settings.Default.AllUserAccess)
-                {
-                    try
-                    {
-                        File.Encrypt(this.fileData);
-                    }
-                    catch (IOException e)
-                    {
-                        this.WriteListBox("Ошибка при шифровании! ");
-                        this.WriteListBox(e.Message);
-                        MessageBox.Show(e.Message, "Линейный специалист", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
+                XElement root = new XElement("Root");
+                LCTreeNode lcNode = (LCTreeNode)treeView.Nodes[0];
+                XDocument xDoc = new XDocument(this.SaveChildren(lcNode, root));
+                xDoc.Save(this.fileData);
             }
-        }
-        #endregion
-
-        // С использованием модели DOM сохранить справочник все таки было бы проще
-        #region Сохранение справочника с использованием DOM модели
-        private void SaveChildren()
-        {
-        }
-        private void SaveDomXML()
-        {
         }
         #endregion
 
