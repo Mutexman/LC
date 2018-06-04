@@ -141,7 +141,7 @@ namespace LC
             LCDirectory.listBox = this.listBoxOperation;
             LCDirectory.toolStripStatusLabel = this.toolStripStatusLabelMain;
             this.lCDirectory = new LCDirectory();
-            this.lCDirectory.CreateDOM(this.fileData);
+            this.lCDirectory.CreateDOMXML(this.fileData);
             // Восстанавливаем открытые вкладки
             this.OpenSavedPages();
             // Открываем компьютер ip адрес которого был передан в параметрах командной строки

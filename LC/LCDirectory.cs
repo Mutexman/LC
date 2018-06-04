@@ -1,6 +1,4 @@
-﻿
-using System;
-using System.Xml;
+﻿using System;
 using System.Xml.Linq;
 using System.Windows.Forms;
 using System.IO;
@@ -17,142 +15,20 @@ namespace LC
         }
         // поле показывающее корректно ли был загружен справочник
         private bool correctLoad = true;
-        #region Загрузка справочника
-        /// <summary>
-        /// Метод добавления дочерних узлов в дерево
-        /// </summary>
-        /// <param name="xnod">DOM модель XML</param>
-        /// <param name="newNode">Компонент TreeNode в котором создаются узлы</param>
-        private void AddChildren(XmlNode xnod, TreeNode newNode)
-        {
-            XmlNode xnodWorking;
-            switch (xnod.NodeType)
-            {
-                case XmlNodeType.Element:
-                    {
-                        //если это элемент, извлечь его атрибут
-                        if (xnod.NodeType == XmlNodeType.Element)
-                        {
-                            switch (xnod.Name)
-                            {
-                                case "Group":
-                                    {
-                                        LCTreeNodeGroup lcTreeNodeGroup = new LCTreeNodeGroup
-                                        {
-                                            Text = xnod.Attributes["NameGroup"].Value,
-                                            Description = xnod.Attributes["Description"].Value,
-                                            ContextMenuStrip = LCTreeNode.groupContextMemuStrip,
-                                            ImageIndex =2
-                                        };
-                                        lcTreeNodeGroup.ToolTipText += lcTreeNodeGroup.Text;
-                                        lcTreeNodeGroup.ToolTipText += "\n" + lcTreeNodeGroup.Description;
-                                        newNode.Nodes.Add(lcTreeNodeGroup);
-                                        newNode = lcTreeNodeGroup;
-                                    }
-                                    break;
-                                case "NoList":
-                                    {
-                                        LCTreeNodeNoList lcTreeNodeNoList = new LCTreeNodeNoList
-                                        {
-                                            Text = xnod.Attributes["NameGroup"].Value,
-                                            Description = xnod.Attributes["Description"].Value,
-                                            ContextMenuStrip = LCTreeNode.noListContextMenuStrip,
-                                            ImageIndex = 2
-                                        };
-                                        lcTreeNodeNoList.ToolTipText += lcTreeNodeNoList.Text;
-                                        lcTreeNodeNoList.ToolTipText += "\n" + lcTreeNodeNoList.Description;
-                                        newNode.Nodes.Add(lcTreeNodeNoList);
-                                        newNode = lcTreeNodeNoList;
-                                    }
-                                    break;
-                                case "Host":
-                                    {
-                                        LCTreeNodeHost lcTreeNodeHost = new LCTreeNodeHost
-                                        {
-                                            Text = xnod.Attributes["NameHost"].Value,
-                                            IP = xnod.Attributes["IP"].Value,
-                                            Description = xnod.Attributes["Description"].Value,
-                                            TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), xnod.Attributes["TypeHost"].Value),
-                                            ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
-                                            ImageIndex = 3
-                                        };
-                                        lcTreeNodeHost.ToolTipText += lcTreeNodeHost.Text;
-                                        lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.IP;
-                                        lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Description;
-                                        newNode.Nodes.Add(lcTreeNodeHost);
-                                        newNode = lcTreeNodeHost;
-                                    }
-                                    break;
-                                case "Subnet":
-                                    {
-                                        LCTreeNodeSubnet lcTreeNodeSubnet = new LCTreeNodeSubnet
-                                        {
-                                            Text = xnod.Attributes["NameSubnet"].Value,
-                                            IPSubnet = xnod.Attributes["IPSubnet"].Value,
-                                            MaskSubnet = xnod.Attributes["MaskSubnet"].Value,
-                                            Description = xnod.Attributes["Description"].Value,
-                                            ContextMenuStrip = LCTreeNode.subnetContextMenuStrip,
-                                            ImageIndex = 5
-                                        };
-                                        lcTreeNodeSubnet.ToolTipText += lcTreeNodeSubnet.Text;
-                                        lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.IPSubnet;
-                                        lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.MaskSubnet;
-                                        newNode.Nodes.Add(lcTreeNodeSubnet);
-                                        newNode = lcTreeNodeSubnet;
-                                    }
-                                    break;
-                                case "Root":
-                                    {
-                                        //MessageBox.Show("yes");
-                                        //newNode.ImageIndex = 1;
-                                        //newNode.Text = mapAttributes.Item(1).Value;
-                                    }
-                                    break;
-                            }
-                        }
-                    }
-                    break;
-                case XmlNodeType.Text:
-                    {
-                        //регулярное выражение отбрасывает символы форматирования
-                        /*
-                        Match mat = Regex.Match(xnod.Value, @"[^\t\v\f\r\n]+");
-                        newNode = newNode.Nodes.Add(mat.Value);
-                        newNode.ImageIndex = 5;
-                         */
-                    }
-                    break;
-                case XmlNodeType.CDATA:
-                    {
-                        newNode = newNode.Nodes.Add(xnod.Value);
-                        newNode.ImageIndex = 2;
-                    }
-                    break;
-            }
-            //рекурсивный перебор всех дочерних узлов
-            if (xnod.HasChildNodes)
-            {
-                xnodWorking = xnod.FirstChild;
-                while (xnodWorking != null)
-                {
-                    AddChildren(xnodWorking, newNode);
-                    xnodWorking = xnodWorking.NextSibling;
-                }
-            }
-        }
         public static TreeView treeView = null;
         public static ListBox listBox = null;
         public static ToolStripStatusLabel toolStripStatusLabel = null;
 
         private string fileData;
+        #region Загрузка справочника 
         /// <summary>
         /// Метод создания модели DOM на основе текста
         /// </summary>
-        public void CreateDOM(string fileName)
+        public void CreateDOMXML(string fileName)
         {
             this.fileData = fileName;
             treeView.Nodes.Clear();
-            XmlDocument xmlDocument = new XmlDocument();
+            XDocument xmlDocument;
             if (File.Exists(this.fileData))
             {
                 //Создаём резевную копию файла с данными о компьютерах
@@ -164,21 +40,17 @@ namespace LC
                 {
                     //формируем пусь к паке backup
                     string backupDirectory = Application.LocalUserAppDataPath + "\\Backup";
-                    //Проверяем существует ли папка backup
-                    if (!(Directory.Exists(backupDirectory)))
-                    {
-                        //Создаём папку backup
-                        Directory.CreateDirectory(backupDirectory);
-                    }
+                    //Создаём папку backup
+                    Directory.CreateDirectory(backupDirectory);
                     //Создаём резервную копию
                     File.Copy(this.fileData, backupFileName);
                 }
                 try
                 {
                     // Загружаем XML файл
-                    xmlDocument.Load(this.fileData);
+                    xmlDocument = XDocument.Load(this.fileData);
                 }
-                catch (XmlException e)
+                catch (Exception e)
                 {
                     this.WriteListBox("Ошибка загрузки файла: " + e.Message);
                     LCTreeNodeGroup lcTreeRootError = new LCTreeNodeGroup
@@ -198,13 +70,13 @@ namespace LC
             else
             {
                 this.WriteListBox("Файл справочника не найден!");
-                string xmlStr = "<?xml version=\"1.0\" encoding=\"windows-1251\"?><root></root>";
-                xmlDocument.LoadXml(xmlStr);
+                xmlDocument = new XDocument(
+                    new XDeclaration("1.0", "windows-1251", "yes"),
+                    new XElement("Root"));
                 this.WriteListBox("Создан новый, пустой справочник.");
             }
             // Получаем корневой узел элемента
-            XmlNode xnodDE = xmlDocument.DocumentElement;
-            // Получение корневого узла дерева
+            XElement xnodDE = xmlDocument.Root;
             // Здесь надо правильно настроить этот узел
             LCTreeNodeGroup lcTreeRoot = new LCTreeNodeGroup
             {
@@ -219,7 +91,7 @@ namespace LC
             TreeNode node = lcTreeRoot;
             treeView.BeginUpdate();
             //рекурсивный обход дерева
-            AddChildren(xnodDE, node);
+            AddChildrenDOMXML(xnodDE, node);
             // Сортируем объекты в дереве
             treeView.Sort();
             treeView.EndUpdate();
@@ -227,9 +99,99 @@ namespace LC
             // открываем дочерние узлы узла root
             node.Expand();
         }
+        /// <summary>
+        /// Метод добавления дочерних узлов в дерево
+        /// </summary>
+        /// <param name="xnod">XML элемент</param>
+        /// <param name="newNode">Компонент TreeNode в котором создаются узлы</param>
+        private void AddChildrenDOMXML(XElement xnod, TreeNode newNode)
+        {
+            if (xnod.NodeType == System.Xml.XmlNodeType.Element)
+            {
+                switch (xnod.Name.ToString())
+                {
+                    case "Group":
+                        {
+                            LCTreeNodeGroup lcTreeNodeGroup = new LCTreeNodeGroup
+                            {
+                                Text = xnod.Attribute("NameGroup").Value,
+                                Description = xnod.Attribute("Description").Value,
+                                ContextMenuStrip = LCTreeNode.groupContextMemuStrip,
+                                ImageIndex = 2
+                            };
+                            lcTreeNodeGroup.ToolTipText += lcTreeNodeGroup.Text;
+                            lcTreeNodeGroup.ToolTipText += "\n" + lcTreeNodeGroup.Description;
+                            newNode.Nodes.Add(lcTreeNodeGroup);
+                            newNode = lcTreeNodeGroup;
+                        }
+                        break;
+                    case "NoList":
+                        {
+                            LCTreeNodeNoList lcTreeNodeNoList = new LCTreeNodeNoList
+                            {
+                                Text = xnod.Attribute("NameGroup").Value,
+                                Description = xnod.Attribute("Description").Value,
+                                ContextMenuStrip = LCTreeNode.noListContextMenuStrip,
+                                ImageIndex = 2
+                            };
+                            lcTreeNodeNoList.ToolTipText += lcTreeNodeNoList.Text;
+                            lcTreeNodeNoList.ToolTipText += "\n" + lcTreeNodeNoList.Description;
+                            newNode.Nodes.Add(lcTreeNodeNoList);
+                            newNode = lcTreeNodeNoList;
+                        }
+                        break;
+                    case "Host":
+                        {
+                            LCTreeNodeHost lcTreeNodeHost = new LCTreeNodeHost
+                            {
+                                Text = xnod.Attribute("NameHost").Value,
+                                IP = xnod.Attribute("IP").Value,
+                                Description = xnod.Attribute("Description").Value,
+                                TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), xnod.Attribute("TypeHost").Value),
+                                ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
+                                ImageIndex = 3
+                            };
+                            lcTreeNodeHost.ToolTipText += lcTreeNodeHost.Text;
+                            lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.IP;
+                            lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Description;
+                            newNode.Nodes.Add(lcTreeNodeHost);
+                            return;
+                            //newNode = lcTreeNodeHost;
+                        }
+                    case "Subnet":
+                        {
+                            LCTreeNodeSubnet lcTreeNodeSubnet = new LCTreeNodeSubnet
+                            {
+                                Text = xnod.Attribute("NameSubnet").Value,
+                                IPSubnet = xnod.Attribute("IPSubnet").Value,
+                                MaskSubnet = xnod.Attribute("MaskSubnet").Value,
+                                Description = xnod.Attribute("Description").Value,
+                                ContextMenuStrip = LCTreeNode.subnetContextMenuStrip,
+                                ImageIndex = 5
+                            };
+                            lcTreeNodeSubnet.ToolTipText += lcTreeNodeSubnet.Text;
+                            lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.IPSubnet;
+                            lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.MaskSubnet;
+                            newNode.Nodes.Add(lcTreeNodeSubnet);
+                            newNode = lcTreeNodeSubnet;
+                        }
+                        break;
+                    case "Root":
+                        {
+                            //MessageBox.Show("yes");
+                            //newNode.ImageIndex = 1;
+                            //newNode.Text = mapAttributes.Item(1).Value;
+                        }
+                        break;
+                }
+                foreach (XElement element in xnod.Elements())
+                { 
+                    AddChildrenDOMXML(element, newNode);
+                }
+            }
+        }
         #endregion
 
-        // С использованием модели DOM сохранить справочник все таки было бы проще
         #region Сохранение справочника с использованием DOM модели
         private XElement SaveChildren(LCTreeNode item, XElement current)
         {
