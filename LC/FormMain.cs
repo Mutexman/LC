@@ -801,6 +801,7 @@ namespace LC
             // проверяем на всякий пожарный, не пустое ли дерево справочника
             if (this.treeViewObject.Nodes.Count > 0)
             {
+                this.treeViewObject.BeginUpdate();
                 foreach(string st in list)
                 {
                     // Ищем принадлежность ПК к какой либо сети
@@ -823,6 +824,7 @@ namespace LC
                         this.FindHost_IP(this.ReturnGroupNoList(), st, false);
                     }
                 }
+                this.treeViewObject.EndUpdate();
             }
         }
 

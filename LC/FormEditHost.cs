@@ -140,10 +140,16 @@ namespace LC
                 this.lcTreeNodeHost.TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), this.comboBoxTypeHost.Text);
                 this.lcTreeNodeHost.Text = this.textBoxNameHost.Text;
                 this.lcTreeNodeHost.Description = this.textBoxDescription.Text;
+
                 ListViewItem lvi = (ListViewItem)lcTreeNodeHost.Tag;
                 lvi.SubItems[0].Text = this.comboBoxTypeHost.Text;
                 lvi.SubItems[2].Text = this.lcTreeNodeHost.Text;
                 lvi.SubItems[4].Text = this.lcTreeNodeHost.Description;
+
+                lcTreeNodeHost.ToolTipText = lcTreeNodeHost.TypeHost.ToString();
+                lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Text;
+                lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.IP;
+                lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Description;
                 this.Close();
             }
             else

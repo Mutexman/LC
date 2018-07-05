@@ -151,7 +151,8 @@ namespace LC
                                 ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
                                 ImageIndex = 3
                             };
-                            lcTreeNodeHost.ToolTipText += lcTreeNodeHost.Text;
+                            lcTreeNodeHost.ToolTipText = lcTreeNodeHost.TypeHost.ToString();
+                            lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Text;
                             lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.IP;
                             lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Description;
                             newNode.Nodes.Add(lcTreeNodeHost);
