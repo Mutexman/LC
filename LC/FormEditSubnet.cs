@@ -43,6 +43,7 @@ namespace LC
                         this.textBoxNameSubnet.Text = this.lcTreeNodeSubnet.Text;
                         this.textBoxIPSubnet.Text = this.lcTreeNodeSubnet.IPSubnet;
                         this.textBoxMaskSubnet.Text = this.lcTreeNodeSubnet.MaskSubnet;
+                        this.textBoxDescription.Text = this.lcTreeNodeSubnet.Description;
                         this.buttonAddSubnet.Text = "Сохранить";
                         break;
                     }
@@ -85,6 +86,7 @@ namespace LC
                                     this.lcTreeNodeSubnet.Text = this.textBoxNameSubnet.Text;
                                     this.lcTreeNodeSubnet.IPSubnet = this.textBoxIPSubnet.Text;
                                     this.lcTreeNodeSubnet.MaskSubnet = this.textBoxMaskSubnet.Text;
+                                    this.lcTreeNodeSubnet.Description = this.textBoxDescription.Text;
                                     break;
                                 }
                         }

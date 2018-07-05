@@ -172,6 +172,7 @@ namespace LC
                             lcTreeNodeSubnet.ToolTipText += lcTreeNodeSubnet.Text;
                             lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.IPSubnet;
                             lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.MaskSubnet;
+                            lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.Description;
                             newNode.Nodes.Add(lcTreeNodeSubnet);
                             newNode = lcTreeNodeSubnet;
                         }

@@ -37,6 +37,8 @@
             this.labelNameSubnet = new System.Windows.Forms.Label();
             this.textBoxNameSubnet = new System.Windows.Forms.TextBox();
             this.labelError = new System.Windows.Forms.Label();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.labelDescription = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelIPSubnet
@@ -73,7 +75,7 @@
             // 
             // buttonAddSubnet
             // 
-            this.buttonAddSubnet.Location = new System.Drawing.Point(190, 135);
+            this.buttonAddSubnet.Location = new System.Drawing.Point(190, 208);
             this.buttonAddSubnet.Name = "buttonAddSubnet";
             this.buttonAddSubnet.Size = new System.Drawing.Size(75, 23);
             this.buttonAddSubnet.TabIndex = 4;
@@ -106,12 +108,31 @@
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 7;
             // 
+            // textBoxDescription
+            // 
+            this.textBoxDescription.Location = new System.Drawing.Point(113, 99);
+            this.textBoxDescription.Multiline = true;
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.Size = new System.Drawing.Size(303, 103);
+            this.textBoxDescription.TabIndex = 8;
+            // 
+            // labelDescription
+            // 
+            this.labelDescription.AutoSize = true;
+            this.labelDescription.Location = new System.Drawing.Point(34, 106);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(57, 13);
+            this.labelDescription.TabIndex = 9;
+            this.labelDescription.Text = "Описание";
+            // 
             // FormEditSubnet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(455, 186);
+            this.ClientSize = new System.Drawing.Size(455, 235);
+            this.Controls.Add(this.labelDescription);
+            this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.textBoxNameSubnet);
             this.Controls.Add(this.labelNameSubnet);
@@ -120,6 +141,7 @@
             this.Controls.Add(this.labelMaskSubnet);
             this.Controls.Add(this.textBoxIPSubnet);
             this.Controls.Add(this.labelIPSubnet);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormEditSubnet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -139,5 +161,7 @@
         private System.Windows.Forms.Label labelNameSubnet;
         private System.Windows.Forms.TextBox textBoxNameSubnet;
         private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.Label labelDescription;
     }
 }

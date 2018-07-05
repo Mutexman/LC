@@ -180,7 +180,7 @@ namespace LC
                 if (this.treeViewObject.Nodes.Count > 0)
                 {
                     countFind = 0;
-                    this.FindHost_IP(this.treeViewObject.Nodes[0], this.toolStripTextBoxIP.Text);
+                    this.FindHost_IP(this.treeViewObject.Nodes[0], this.toolStripTextBoxIP.Text,true);
                 }
                 else
                 {
@@ -198,7 +198,7 @@ namespace LC
                         lcSubnet.AddHost(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
-                        this.FindHost_IP(this.findSubnet, this.toolStripTextBoxIP.Text);
+                        this.FindHost_IP(this.findSubnet, this.toolStripTextBoxIP.Text, true);
                     }
                     else
                     {
@@ -206,7 +206,7 @@ namespace LC
                         lcNoList.AddHost(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
-                        this.FindHost_IP(this.ReturnGroupNoList(), this.toolStripTextBoxIP.Text);
+                        this.FindHost_IP(this.ReturnGroupNoList(), this.toolStripTextBoxIP.Text,true);
                     }
                 }
             }
@@ -226,9 +226,10 @@ namespace LC
         /// <summary>
         /// Поиск хостов по IP
         /// </summary>
-        /// <param name="treeNode">Узел дерева с которого начинаем искать</param>
-        /// <param name="ip">ip-адрес</param>
-        private void FindHost_IP(TreeNode treeNode, string ip)
+        /// <param name="treeNode">Узел дерева с которого начинаем искать.</param>
+        /// <param name="ip">ip-адрес.</param>
+        /// <param name="openhost">Открывать хост в listview или нет.</param>
+        private void FindHost_IP(TreeNode treeNode, string ip, bool openhost)
         {
             LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
             if (lcTreeNodeWork.LCObjectType == LCObjectType.Host)
@@ -241,7 +242,10 @@ namespace LC
                     // Делаем активным компьютер в дереве справочника
                     this.treeViewObject.SelectedNode = lcHost;
 
-                    this.openLCTreeNode(lcHost);
+                    if (openhost)
+                    {
+                        this.openLCTreeNode(lcHost);
+                    }
 
                     countFind++;
                     this.WriteListBox("Найден хост с именем: " + lcHost.Text + ".");
@@ -252,7 +256,7 @@ namespace LC
                 // рекурсивный перебор всех дочерних узлов
                 foreach (TreeNode treeNodeWorking in treeNode.Nodes)
                 {
-                    this.FindHost_IP(treeNodeWorking, ip);
+                    this.FindHost_IP(treeNodeWorking, ip, openhost);
                 }
             }
         }
@@ -713,7 +717,7 @@ namespace LC
                 {
                     if (st != "")
                     {
-                        this.FindHost_IP(this.treeViewObject.Nodes[0], st);
+                        this.FindHost_IP(this.treeViewObject.Nodes[0], st, true);
                     }
                 }
             }
@@ -787,7 +791,10 @@ namespace LC
             {
                 LCTreeNodeHost lc = (LCTreeNodeHost)tn;
                 list.Add(lc.IP);
-                ((ListViewItem)lc.Tag).Remove();
+                if (lc.Tag != null)
+                {
+                    ((ListViewItem)lc.Tag).Remove();
+                }
             }
             // Удаляем группу "Не в списке"
             node.Remove();
@@ -805,7 +812,7 @@ namespace LC
                         lcSubnet.AddHost(st, st, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
-                        this.FindHost_IP(this.findSubnet, st);
+                        this.FindHost_IP(this.findSubnet, st, false);
                     }
                     else
                     {
@@ -813,7 +820,7 @@ namespace LC
                         lcNoList.AddHost(st, st, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
-                        this.FindHost_IP(this.ReturnGroupNoList(), st);
+                        this.FindHost_IP(this.ReturnGroupNoList(), st, false);
                     }
                 }
             }
