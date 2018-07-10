@@ -755,7 +755,7 @@ namespace LC
                 IPAddress ip = IPAddress.Parse(ipStr);
                 IPHostEntry host = Dns.GetHostEntry(ip);
                 string hostName = host.HostName;
-                this.listViewHosts.SelectedItems[0].SubItems[1].Text = hostName;
+                this.listViewHosts.SelectedItems[0].SubItems[2].Text = hostName;
                 this.WriteListBox("Имя ПК с IP " + ipStr + " @ " + hostName);
             }
             catch (System.Exception myException)
