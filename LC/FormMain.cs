@@ -742,7 +742,7 @@ namespace LC
             // Пока не понятно как определить что выделена какая либо строка в listView
             try
             {
-                ipStr = this.listViewHosts.SelectedItems[0].SubItems[0].Text;
+                ipStr = this.listViewHosts.SelectedItems[0].SubItems[1].Text;
             }
             catch (System.ArgumentOutOfRangeException myException)
             {
