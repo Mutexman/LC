@@ -14,10 +14,24 @@ namespace LC
     public partial class FormSettingCommandButton : Form
     {
         private CommandToolStripButton activeButton = null;
+        // Имя редактируемого файла
+        private string editFile = "";
+
         public FormSettingCommandButton()
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Создание формы редактирования файла коммандных кнопок
+        /// </summary>
+        /// <param name="editFile">Редактируемый файл.</param>
+        public FormSettingCommandButton(string editFile)
+        {
+            InitializeComponent();
+            this.editFile = editFile;
+        }
+
         private void FormSettingCommandButton_Load(object sender, EventArgs e)
         {
             this.CreateButtons();
@@ -37,9 +51,9 @@ namespace LC
         {
             // Загрузка файла в объект XmlDocument
             XmlDocument xd = new XmlDocument();
-            if (File.Exists(Application.LocalUserAppDataPath + "\\config.xml"))
+            if (File.Exists(this.editFile))
             {
-                xd.Load(Application.LocalUserAppDataPath + "\\config.xml");
+                xd.Load(this.editFile);
             }
             else
             {
@@ -93,7 +107,7 @@ namespace LC
         private void SaveButtons()
         {
             // Открытие нового XML-файла с помощью объекта XmlTextWriter
-            XmlTextWriter xw = new XmlTextWriter(Application.LocalUserAppDataPath + "\\config.xml", System.Text.Encoding.UTF8);
+            XmlTextWriter xw = new XmlTextWriter(this.editFile, System.Text.Encoding.UTF8);
             // Запись декларации документа
             xw.WriteStartDocument();
             // Запись первого элемента

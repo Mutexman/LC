@@ -38,6 +38,9 @@
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.опцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.командныеКнопкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.компьютерToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.мФУToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.эТСОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.учётнаяЗаписьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проверкаОбновленийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -211,11 +214,35 @@
             // 
             // командныеКнопкиToolStripMenuItem
             // 
+            this.командныеКнопкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.компьютерToolStripMenuItem,
+            this.мФУToolStripMenuItem,
+            this.эТСОToolStripMenuItem});
             this.командныеКнопкиToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("командныеКнопкиToolStripMenuItem.Image")));
             this.командныеКнопкиToolStripMenuItem.Name = "командныеКнопкиToolStripMenuItem";
             this.командныеКнопкиToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.командныеКнопкиToolStripMenuItem.Text = "Командные кнопки";
-            this.командныеКнопкиToolStripMenuItem.Click += new System.EventHandler(this.командныеКнопкиToolStripMenuItem_Click);
+            // 
+            // компьютерToolStripMenuItem
+            // 
+            this.компьютерToolStripMenuItem.Name = "компьютерToolStripMenuItem";
+            this.компьютерToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.компьютерToolStripMenuItem.Text = "Компьютер";
+            this.компьютерToolStripMenuItem.Click += new System.EventHandler(this.компьютерToolStripMenuItem_Click);
+            // 
+            // мФУToolStripMenuItem
+            // 
+            this.мФУToolStripMenuItem.Name = "мФУToolStripMenuItem";
+            this.мФУToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.мФУToolStripMenuItem.Text = "МФУ";
+            this.мФУToolStripMenuItem.Click += new System.EventHandler(this.мФУToolStripMenuItem_Click);
+            // 
+            // эТСОToolStripMenuItem
+            // 
+            this.эТСОToolStripMenuItem.Name = "эТСОToolStripMenuItem";
+            this.эТСОToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.эТСОToolStripMenuItem.Text = "ЭТСО";
+            this.эТСОToolStripMenuItem.Click += new System.EventHandler(this.эТСОToolStripMenuItem_Click);
             // 
             // учётнаяЗаписьToolStripMenuItem
             // 
@@ -1091,6 +1118,9 @@
         private System.Windows.Forms.ColumnHeader columnHeaderNameHost;
         private System.Windows.Forms.ColumnHeader columnHeaderSubNetOrGroup;
         private System.Windows.Forms.ColumnHeader columnHeaderDescriptionHost;
+        private System.Windows.Forms.ToolStripMenuItem компьютерToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem мФУToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem эТСОToolStripMenuItem;
     }
 }
 

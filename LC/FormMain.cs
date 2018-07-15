@@ -316,11 +316,27 @@ namespace LC
                 this.splitContainer1.Panel2Collapsed = false;
             }
         }
-        private void командныеКнопкиToolStripMenuItem_Click(object sender, EventArgs e)
+        private void компьютерToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton();
+            FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton(this.fileConfigComputers);
+            formSettingCommandButton.Text += " : Компьютер";
             formSettingCommandButton.ShowDialog();
         }
+
+        private void мФУToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton(this.fileConfigMFU);
+            formSettingCommandButton.Text += " : МФУ";
+            formSettingCommandButton.ShowDialog();
+        }
+
+        private void эТСОToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton(this.fileConfigETCO);
+            formSettingCommandButton.Text += " : ЭТСО";
+            formSettingCommandButton.ShowDialog();
+        }
+
         private void учётнаяЗаписьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLogin formLogin = new FormLogin();
@@ -756,6 +772,7 @@ namespace LC
                 IPHostEntry host = Dns.GetHostEntry(ip);
                 string hostName = host.HostName;
                 this.listViewHosts.SelectedItems[0].SubItems[2].Text = hostName;
+                ((LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag).Text = hostName;
                 this.WriteListBox("Имя ПК с IP " + ipStr + " @ " + hostName);
             }
             catch (System.Exception myException)
@@ -778,6 +795,7 @@ namespace LC
         {
             this.listViewHosts.Items.Clear();
         }
+
         /// <summary>
         /// Метод переопределения сети для хостов из группы "Не в списке"
         /// </summary>
@@ -834,11 +852,13 @@ namespace LC
             {
                 LCTreeNodeHost lcHost = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
                 LCTypeHost lcTypeHost = lcHost.TypeHost;
+                // Выделяем узел в дереве.
+                this.treeViewObject.SelectedNode = lcHost;
                 switch (lcTypeHost)
                 {
                     case LCTypeHost.COMPUTER:
                         {
-                            this.toolStripComputers.Visible = true;
+                            this.toolStripComputers.Show();
                             this.toolStripETCO.Hide();
                             this.toolStripMFU.Hide();
                         }
@@ -846,13 +866,13 @@ namespace LC
                     case LCTypeHost.ETCO:
                         {
                             this.toolStripComputers.Hide();
-                            this.toolStripETCO.Visible = true;
+                            this.toolStripETCO.Show();
                             this.toolStripMFU.Hide();
                         }
                         break;
                     case LCTypeHost.HOST:
                         {
-                            this.toolStripComputers.Visible = true;
+                            this.toolStripComputers.Show();
                             this.toolStripETCO.Hide();
                             this.toolStripMFU.Hide();
                         }
@@ -861,7 +881,7 @@ namespace LC
                         {
                             this.toolStripComputers.Hide();
                             this.toolStripETCO.Hide();
-                            this.toolStripMFU.Visible = true;
+                            this.toolStripMFU.Show();
                         }
                         break;
                 }
@@ -877,6 +897,6 @@ namespace LC
                     this.listViewHosts.SelectedItems[0].Remove();
                 }
             }
-        }
+        }  
     }
 }
