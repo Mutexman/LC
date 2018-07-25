@@ -231,6 +231,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Eye.ico" />
+    <None Include="Resources\User1.png" />
+    <None Include="Resources\User.png" />
     <None Include="Resources\Foto.png" />
     <None Include="Resources\Edit2.png" />
     <None Include="Resources\save.png" />
