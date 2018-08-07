@@ -391,10 +391,13 @@ namespace LC
                     {
                         this.tabControlObject.SelectedTab = this.tabPageHosts;
                         LCTreeNodeHost lcHost = (LCTreeNodeHost)lcTreeNode;
+                        // Делаем активным список хостов
+                        this.listViewHosts.Focus();
                         foreach (ListViewItem curilv in this.listViewHosts.Items)
                         {
                             if (curilv.Tag == lcHost)
                             {
+                                // Выделяем нужный элемент в списке
                                 curilv.Selected = true;
                                 return;
                             }
@@ -427,6 +430,7 @@ namespace LC
                             };
                             lcHost.Tag = lvi;
                             this.listViewHosts.Items.Add(lvi);
+                            lvi.Selected = true;
                         }
                         else
                         {
@@ -436,12 +440,14 @@ namespace LC
                             };
                             lcHost.Tag = lvi;
                             this.listViewHosts.Items.Add(lvi);
+                            lvi.Selected = true;
                         }
                         break;
                     }
                 case LCObjectType.SubNet:
                     {
                         this.tabControlObject.SelectedTab = this.tabPageSubnets;
+                        this.listViewSubnets.Focus();
                         LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNode;
                         foreach (ListViewItem cutilv in this.listViewSubnets.Items)
                         {
@@ -458,11 +464,13 @@ namespace LC
                         };
                         lcSubnet.Tag = lvi;
                         this.listViewSubnets.Items.Add(lvi);
+                        lvi.Selected = true;
                         break;
                     }
                 case LCObjectType.Group:
                     {
                         this.tabControlObject.SelectedTab = this.tabPageGroups;
+                        this.listViewGroups.Focus();
                         LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNode;
                         foreach (ListViewItem curilv in this.listViewGroups.Items)
                         {
@@ -478,6 +486,7 @@ namespace LC
                         };
                         lcGroup.Tag = lvi;
                         this.listViewGroups.Items.Add(lvi);
+                        lvi.Selected = true;
                         break;
                     }
             }
