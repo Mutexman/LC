@@ -78,7 +78,7 @@ namespace LC
                         {
                             case ModeForm.New:
                                 {
-                                    this.lcTreeNodeSubnet = this.lcTreeNodeGroup.AddSubnet(this.textBoxNameSubnet.Text, this.textBoxIPSubnet.Text, this.textBoxMaskSubnet.Text);
+                                    this.lcTreeNodeSubnet = this.lcTreeNodeGroup.AddSubnet(this.textBoxNameSubnet.Text, this.textBoxIPSubnet.Text, this.textBoxMaskSubnet.Text, this.textBoxDescription.Text);
                                     break;
                                 }
                             case ModeForm.Edit:

@@ -41,12 +41,13 @@ namespace LC
         /// <param name="ipSubnet">IP адрес сети.</param>
         /// <param name="maskSubnet">Маска сети.</param>
         /// <returns>Возвращает созданную сеть</returns>
-        public LCTreeNodeSubnet AddSubnet(string nameSubnet, string ipSubnet, string maskSubnet)
+        public LCTreeNodeSubnet AddSubnet(string nameSubnet, string ipSubnet, string maskSubnet, string description)
         {
             // созадем новую сеть
             LCTreeNodeSubnet lcTreeNodeSubnet = new LCTreeNodeSubnet
             {
                 Text = nameSubnet,
+                Description = description,
                 ContextMenuStrip = LCTreeNode.subnetContextMenuStrip,
                 IPSubnet = ipSubnet,
                 MaskSubnet = maskSubnet,
