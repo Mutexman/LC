@@ -71,6 +71,8 @@ namespace LC
                         {
                             this.lcTreeNodeGroup.Text = this.textBoxNameGroup.Text;
                             this.lcTreeNodeGroup.Description = this.textBoxDescription.Text;
+                            this.lcTreeNodeGroup.ToolTipText = this.textBoxNameGroup.Text;
+                            this.lcTreeNodeGroup.ToolTipText += "\n" + this.textBoxDescription.Text;
                             this.buttonEditGroup.Text = "Сохранить";
                             break;
                         }

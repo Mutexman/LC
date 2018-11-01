@@ -42,7 +42,13 @@ namespace LC
             }
             if (Properties.Settings.Default.VisibleProtocol)
             {
+                this.splitContainer1.Panel2Collapsed = false;
+                this.ToolStripMenuItemVisibleProtocol.Checked = true;
+            }
+            else
+            {
                 this.splitContainer1.Panel2Collapsed = true;
+                this.ToolStripMenuItemVisibleProtocol.Checked = false;
             }
             this.toolStripComputers.Hide();
             this.toolStripMFU.Hide();
@@ -306,15 +312,6 @@ namespace LC
         {
             FormSettings formSettings = new FormSettings();
             formSettings.ShowDialog();
-            // проверяем настройки
-            if (Properties.Settings.Default.VisibleProtocol)
-            {
-                this.splitContainer1.Panel2Collapsed = true;
-            }
-            else
-            {
-                this.splitContainer1.Panel2Collapsed = false;
-            }
         }
         private void компьютерToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -897,6 +894,11 @@ namespace LC
             }
         }
 
+        /// <summary>
+        /// Удаление списка элемента по нажатии клавиши DELETE
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listViewHosts_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -906,6 +908,46 @@ namespace LC
                     this.listViewHosts.SelectedItems[0].Remove();
                 }
             }
-        }  
+        }
+
+        private void toolStripMenuItemGetHostIP_Click(object sender, EventArgs e)
+        {
+            if(this.listViewHosts.SelectedItems.Count > 0)
+            {
+                string ip = this.listViewHosts.SelectedItems[0].SubItems[1].Text;
+                Clipboard.SetText(ip);
+            }
+        }
+
+        private void toolStripMenuItemGetHostName_Click(object sender, EventArgs e)
+        {
+            string n = this.listViewHosts.SelectedItems[0].SubItems[2].Text;
+            // берем имя ПК до первой точки
+            n = n.Substring(0, n.IndexOf('.'));
+            Clipboard.SetText(n);
+        }
+
+        private void toolStripMenuItemGetHostFullName_Click(object sender, EventArgs e)
+        {
+            string n = this.listViewHosts.SelectedItems[0].SubItems[2].Text;
+            Clipboard.SetText(n);
+        }
+
+        private void ToolStripMenuItemVisibleProtocol_Click(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.VisibleProtocol)
+            {
+                Properties.Settings.Default.VisibleProtocol = false;
+                this.ToolStripMenuItemVisibleProtocol.Checked = false;
+                this.splitContainer1.Panel2Collapsed = true;
+            }
+            else
+            {
+                Properties.Settings.Default.VisibleProtocol = true;
+                this.ToolStripMenuItemVisibleProtocol.Checked = true;
+                this.splitContainer1.Panel2Collapsed = false;
+            }
+            Properties.Settings.Default.Save();
+        }
     }
 }

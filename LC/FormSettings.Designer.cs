@@ -33,7 +33,6 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonAccept = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
-            this.checkBoxVisibleProtocol = new System.Windows.Forms.CheckBox();
             this.groupBoxDirectory = new System.Windows.Forms.GroupBox();
             this.labelInfo = new System.Windows.Forms.Label();
             this.textBoxPathCurrentUser = new System.Windows.Forms.TextBox();
@@ -82,16 +81,6 @@
             this.buttonOk.Text = "Ок";
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
-            // 
-            // checkBoxVisibleProtocol
-            // 
-            this.checkBoxVisibleProtocol.AutoSize = true;
-            this.checkBoxVisibleProtocol.Location = new System.Drawing.Point(12, 35);
-            this.checkBoxVisibleProtocol.Name = "checkBoxVisibleProtocol";
-            this.checkBoxVisibleProtocol.Size = new System.Drawing.Size(209, 17);
-            this.checkBoxVisibleProtocol.TabIndex = 7;
-            this.checkBoxVisibleProtocol.Text = "Скрыть панель протокола действий";
-            this.checkBoxVisibleProtocol.UseVisualStyleBackColor = true;
             // 
             // groupBoxDirectory
             // 
@@ -160,7 +149,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(344, 391);
             this.Controls.Add(this.groupBoxDirectory);
-            this.Controls.Add(this.checkBoxVisibleProtocol);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonAccept);
             this.Controls.Add(this.buttonCancel);
@@ -186,7 +174,6 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonAccept;
         private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.CheckBox checkBoxVisibleProtocol;
         private System.Windows.Forms.GroupBox groupBoxDirectory;
         private System.Windows.Forms.RadioButton radioButtonCurrentUser;
         private System.Windows.Forms.RadioButton radioButtonAllUsers;

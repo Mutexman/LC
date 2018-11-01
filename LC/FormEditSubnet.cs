@@ -88,6 +88,11 @@ namespace LC
                                     this.lcTreeNodeSubnet.IPSubnet = this.textBoxIPSubnet.Text;
                                     this.lcTreeNodeSubnet.MaskSubnet = this.textBoxMaskSubnet.Text;
                                     this.lcTreeNodeSubnet.Description = this.textBoxDescription.Text;
+
+                                    this.lcTreeNodeSubnet.ToolTipText = this.textBoxNameSubnet.Text;
+                                    this.lcTreeNodeSubnet.ToolTipText += "\n" + this.textBoxIPSubnet.Text;
+                                    this.lcTreeNodeSubnet.ToolTipText += "\n" + this.textBoxMaskSubnet.Text;
+                                    this.lcTreeNodeSubnet.ToolTipText += "\n" + this.textBoxDescription.Text;
                                     break;
                                 }
                         }

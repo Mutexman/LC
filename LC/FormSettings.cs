@@ -15,7 +15,6 @@ namespace LC
         {
             InitializeComponent();
             this.checkBoxfullScreen.Checked = Properties.Settings.Default.FullScreen;
-            this.checkBoxVisibleProtocol.Checked = Properties.Settings.Default.VisibleProtocol;
             this.textBoxPathAllUsers.Text = Application.CommonAppDataPath;
             this.textBoxPathCurrentUser.Text = Application.LocalUserAppDataPath;
             if (Properties.Settings.Default.AllUserAccess)
@@ -33,7 +32,6 @@ namespace LC
         private void SaveSettings()
         {
             Properties.Settings.Default.FullScreen = this.checkBoxfullScreen.Checked;
-            Properties.Settings.Default.VisibleProtocol = this.checkBoxVisibleProtocol.Checked;
             if (this.radioButtonAllUsers.Checked)
             {
                 Properties.Settings.Default.AllUserAccess = true;
