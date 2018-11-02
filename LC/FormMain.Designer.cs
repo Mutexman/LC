@@ -35,6 +35,8 @@
             this.toolStripMenuItemClearPCList = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.видtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemVisibleProtocol = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.опцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.командныеКнопкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,6 +76,10 @@
             this.columnHeaderNameHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderSubNetOrGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDescriptionHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStripGetHostProperties = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemGetHostIP = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemGetHostName = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemGetHostFullName = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripETCO = new System.Windows.Forms.ToolStrip();
             this.toolStripMFU = new System.Windows.Forms.ToolStrip();
             this.toolStripComputers = new System.Windows.Forms.ToolStrip();
@@ -129,12 +135,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemDeleteNoList = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripLCMFU = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextMenuStripGetHostProperties = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemGetHostIP = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemGetHostName = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemGetHostFullName = new System.Windows.Forms.ToolStripMenuItem();
-            this.видtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemVisibleProtocol = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -149,6 +149,7 @@
             this.contextMenuStripLCComputer.SuspendLayout();
             this.tabControlObject.SuspendLayout();
             this.tabPageHosts.SuspendLayout();
+            this.contextMenuStripGetHostProperties.SuspendLayout();
             this.toolStripComputers.SuspendLayout();
             this.tabPageSubnets.SuspendLayout();
             this.tabPageGroups.SuspendLayout();
@@ -156,7 +157,6 @@
             this.contextMenuStripLCRoot.SuspendLayout();
             this.contextMenuStripLCSubnet.SuspendLayout();
             this.contextMenuStripNoList.SuspendLayout();
-            this.contextMenuStripGetHostProperties.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -201,6 +201,23 @@
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
+            // видtoolStripMenuItem
+            // 
+            this.видtoolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemVisibleProtocol});
+            this.видtoolStripMenuItem.Name = "видtoolStripMenuItem";
+            this.видtoolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.видtoolStripMenuItem.Text = "Вид";
+            // 
+            // ToolStripMenuItemVisibleProtocol
+            // 
+            this.ToolStripMenuItemVisibleProtocol.AutoToolTip = true;
+            this.ToolStripMenuItemVisibleProtocol.CheckOnClick = true;
+            this.ToolStripMenuItemVisibleProtocol.Name = "ToolStripMenuItemVisibleProtocol";
+            this.ToolStripMenuItemVisibleProtocol.Size = new System.Drawing.Size(182, 22);
+            this.ToolStripMenuItemVisibleProtocol.Text = "Протокол действий";
+            this.ToolStripMenuItemVisibleProtocol.Click += new System.EventHandler(this.ToolStripMenuItemVisibleProtocol_Click);
             // 
             // настройкиToolStripMenuItem
             // 
@@ -562,6 +579,36 @@
             // 
             this.columnHeaderDescriptionHost.Text = "Описание";
             this.columnHeaderDescriptionHost.Width = 386;
+            // 
+            // contextMenuStripGetHostProperties
+            // 
+            this.contextMenuStripGetHostProperties.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemGetHostIP,
+            this.toolStripMenuItemGetHostName,
+            this.toolStripMenuItemGetHostFullName});
+            this.contextMenuStripGetHostProperties.Name = "contextMenuStripGetHostProperties";
+            this.contextMenuStripGetHostProperties.Size = new System.Drawing.Size(209, 70);
+            // 
+            // toolStripMenuItemGetHostIP
+            // 
+            this.toolStripMenuItemGetHostIP.Name = "toolStripMenuItemGetHostIP";
+            this.toolStripMenuItemGetHostIP.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemGetHostIP.Text = "Копировать IP";
+            this.toolStripMenuItemGetHostIP.Click += new System.EventHandler(this.toolStripMenuItemGetHostIP_Click);
+            // 
+            // toolStripMenuItemGetHostName
+            // 
+            this.toolStripMenuItemGetHostName.Name = "toolStripMenuItemGetHostName";
+            this.toolStripMenuItemGetHostName.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemGetHostName.Text = "Копировать имя";
+            this.toolStripMenuItemGetHostName.Click += new System.EventHandler(this.toolStripMenuItemGetHostName_Click);
+            // 
+            // toolStripMenuItemGetHostFullName
+            // 
+            this.toolStripMenuItemGetHostFullName.Name = "toolStripMenuItemGetHostFullName";
+            this.toolStripMenuItemGetHostFullName.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemGetHostFullName.Text = "Копировать полное имя";
+            this.toolStripMenuItemGetHostFullName.Click += new System.EventHandler(this.toolStripMenuItemGetHostFullName_Click);
             // 
             // toolStripETCO
             // 
@@ -981,53 +1028,6 @@
             this.contextMenuStripLCMFU.Name = "contextMenuStripLCMFU";
             this.contextMenuStripLCMFU.Size = new System.Drawing.Size(61, 4);
             // 
-            // contextMenuStripGetHostProperties
-            // 
-            this.contextMenuStripGetHostProperties.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemGetHostIP,
-            this.toolStripMenuItemGetHostName,
-            this.toolStripMenuItemGetHostFullName});
-            this.contextMenuStripGetHostProperties.Name = "contextMenuStripGetHostProperties";
-            this.contextMenuStripGetHostProperties.Size = new System.Drawing.Size(209, 70);
-            // 
-            // toolStripMenuItemGetHostIP
-            // 
-            this.toolStripMenuItemGetHostIP.Name = "toolStripMenuItemGetHostIP";
-            this.toolStripMenuItemGetHostIP.Size = new System.Drawing.Size(208, 22);
-            this.toolStripMenuItemGetHostIP.Text = "Копировать IP";
-            this.toolStripMenuItemGetHostIP.Click += new System.EventHandler(this.toolStripMenuItemGetHostIP_Click);
-            // 
-            // toolStripMenuItemGetHostName
-            // 
-            this.toolStripMenuItemGetHostName.Name = "toolStripMenuItemGetHostName";
-            this.toolStripMenuItemGetHostName.Size = new System.Drawing.Size(208, 22);
-            this.toolStripMenuItemGetHostName.Text = "Копировать имя";
-            this.toolStripMenuItemGetHostName.Click += new System.EventHandler(this.toolStripMenuItemGetHostName_Click);
-            // 
-            // toolStripMenuItemGetHostFullName
-            // 
-            this.toolStripMenuItemGetHostFullName.Name = "toolStripMenuItemGetHostFullName";
-            this.toolStripMenuItemGetHostFullName.Size = new System.Drawing.Size(208, 22);
-            this.toolStripMenuItemGetHostFullName.Text = "Копировать полное имя";
-            this.toolStripMenuItemGetHostFullName.Click += new System.EventHandler(this.toolStripMenuItemGetHostFullName_Click);
-            // 
-            // видtoolStripMenuItem
-            // 
-            this.видtoolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemVisibleProtocol});
-            this.видtoolStripMenuItem.Name = "видtoolStripMenuItem";
-            this.видtoolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.видtoolStripMenuItem.Text = "Вид";
-            // 
-            // ToolStripMenuItemVisibleProtocol
-            // 
-            this.ToolStripMenuItemVisibleProtocol.AutoToolTip = true;
-            this.ToolStripMenuItemVisibleProtocol.CheckOnClick = true;
-            this.ToolStripMenuItemVisibleProtocol.Name = "ToolStripMenuItemVisibleProtocol";
-            this.ToolStripMenuItemVisibleProtocol.Size = new System.Drawing.Size(250, 22);
-            this.ToolStripMenuItemVisibleProtocol.Text = "Отображать протокол действий";
-            this.ToolStripMenuItemVisibleProtocol.Click += new System.EventHandler(this.ToolStripMenuItemVisibleProtocol_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1064,6 +1064,7 @@
             this.tabControlObject.ResumeLayout(false);
             this.tabPageHosts.ResumeLayout(false);
             this.tabPageHosts.PerformLayout();
+            this.contextMenuStripGetHostProperties.ResumeLayout(false);
             this.toolStripComputers.ResumeLayout(false);
             this.toolStripComputers.PerformLayout();
             this.tabPageSubnets.ResumeLayout(false);
@@ -1072,7 +1073,6 @@
             this.contextMenuStripLCRoot.ResumeLayout(false);
             this.contextMenuStripLCSubnet.ResumeLayout(false);
             this.contextMenuStripNoList.ResumeLayout(false);
-            this.contextMenuStripGetHostProperties.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
