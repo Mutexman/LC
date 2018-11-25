@@ -29,6 +29,7 @@ namespace LC
         private string fileConfigComputers = Application.LocalUserAppDataPath + "\\configComputers.xml";
         private string fileConfigMFU = Application.LocalUserAppDataPath + "\\configMFU.xml";
         private string fileConfigETCO = Application.LocalUserAppDataPath + "\\configETCO.xml";
+        private string fileConfigSPD = Application.LocalUserAppDataPath + "\\configSPD.xml";
         private BufferLCTreeNode buffer = new BufferLCTreeNode();
         // Поле для сохранения найденых компьютеров
         private static int countFind = 0;
@@ -39,6 +40,7 @@ namespace LC
             if (Properties.Settings.Default.FullScreen)
             {
                 this.WindowState = FormWindowState.Maximized;
+                this.ToolStripMenuItemFullScreen.Checked = true;
             }
             if (Properties.Settings.Default.VisibleProtocol)
             {
@@ -53,9 +55,11 @@ namespace LC
             this.toolStripComputers.Hide();
             this.toolStripMFU.Hide();
             this.toolStripETCO.Hide();
+            this.toolStripSPD.Hide();
             this.CreateCommandButtons(this.fileConfigComputers, this.toolStripComputers, this.listViewHosts);
             this.CreateCommandButtons(this.fileConfigMFU, this.toolStripMFU, this.listViewHosts);
             this.CreateCommandButtons(this.fileConfigETCO, this.toolStripETCO, this.listViewHosts);
+            this.CreateCommandButtons(this.fileConfigSPD, this.toolStripSPD, this.listViewHosts);
         }
 
         #region Панели инструментов
@@ -304,10 +308,60 @@ namespace LC
         #endregion
 
         #region Главное меню
+        //Файл
+        private void toolStripMenuItemClearPCList_Click(object sender, EventArgs e)
+        {
+            this.listViewHosts.Items.Clear();
+        }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        //Вид
+        /// <summary>
+        /// Включение/отключение отображения протокола внизу главного окна приложения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemVisibleProtocol_Click(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.VisibleProtocol)
+            {
+                Properties.Settings.Default.VisibleProtocol = false;
+                this.ToolStripMenuItemVisibleProtocol.Checked = false;
+                this.splitContainer1.Panel2Collapsed = true;
+            }
+            else
+            {
+                Properties.Settings.Default.VisibleProtocol = true;
+                this.ToolStripMenuItemVisibleProtocol.Checked = true;
+                this.splitContainer1.Panel2Collapsed = false;
+            }
+            Properties.Settings.Default.Save();
+        }
+        /// <summary>
+        /// Включение отображения главного окна приложения на весь рабочий стол
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemFullScreen_Click(object sender, EventArgs e)
+        {
+            //Properties.Settings.Default.FullScreen = this.checkBoxfullScreen.Checked;
+            if (Properties.Settings.Default.FullScreen)
+            {
+                Properties.Settings.Default.FullScreen = false;
+                this.ToolStripMenuItemFullScreen.Checked = false;
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                Properties.Settings.Default.FullScreen = true;
+                this.ToolStripMenuItemFullScreen.Checked = true;
+                this.WindowState = FormWindowState.Maximized;
+            }
+            Properties.Settings.Default.Save();
+        }
+        //Сервис
         private void опцииToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSettings formSettings = new FormSettings();
@@ -319,21 +373,24 @@ namespace LC
             formSettingCommandButton.Text += " : Компьютер";
             formSettingCommandButton.ShowDialog();
         }
-
         private void мФУToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton(this.fileConfigMFU);
             formSettingCommandButton.Text += " : МФУ";
             formSettingCommandButton.ShowDialog();
         }
-
         private void эТСОToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton(this.fileConfigETCO);
             formSettingCommandButton.Text += " : ЭТСО";
             formSettingCommandButton.ShowDialog();
         }
-
+        private void сПДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton(this.fileConfigSPD);
+            formSettingCommandButton.Text += " : СПД";
+            formSettingCommandButton.ShowDialog();
+        }
         private void учётнаяЗаписьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLogin formLogin = new FormLogin();
@@ -345,6 +402,7 @@ namespace LC
             // Выводим имя пользователя в заголовок формы
             this.Text += " Пользователь: " + FormMain.User;
         }
+        //Помощь
         private void проверкаОбновленийToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Пока данная функция не реализована", "Линейный специалист", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -364,7 +422,7 @@ namespace LC
         }
         #endregion
 
-        #region Действия приложения
+        #region Действия приложения. Дерево справочника.
         /// <summary>
         /// Событие открытие какого либо LC объекта
         /// </summary>
@@ -659,6 +717,55 @@ namespace LC
                 this.WriteListBox("Буфер пуст");
             }
         }
+        /// <summary>
+        /// Метод переопределения сети для хостов из группы "Не в списке"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemFindSubnet_Click(object sender, EventArgs e)
+        {
+            List<String> list = new List<String>();
+            TreeNode node = ReturnGroupNoList();
+            foreach (TreeNode tn in node.Nodes)
+            {
+                LCTreeNodeHost lc = (LCTreeNodeHost)tn;
+                list.Add(lc.IP);
+                if (lc.Tag != null)
+                {
+                    ((ListViewItem)lc.Tag).Remove();
+                }
+            }
+            // Удаляем группу "Не в списке"
+            node.Remove();
+            // проверяем на всякий пожарный, не пустое ли дерево справочника
+            if (this.treeViewObject.Nodes.Count > 0)
+            {
+                this.treeViewObject.BeginUpdate();
+                foreach (string st in list)
+                {
+                    // Ищем принадлежность ПК к какой либо сети
+                    this.findSubnet = null;
+                    this.FindSubnet_IP(this.treeViewObject.Nodes[0], st);
+                    if (this.findSubnet != null)
+                    {
+                        LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)this.findSubnet;
+                        lcSubnet.AddHost(st, st, "");
+                        // и сразу же выделяем этот объект
+                        countFind = 0;
+                        this.FindHost_IP(this.findSubnet, st, true);
+                    }
+                    else
+                    {
+                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList)this.ReturnGroupNoList();
+                        lcNoList.AddHost(st, st, "");
+                        // и сразу же выделяем этот объект
+                        countFind = 0;
+                        this.FindHost_IP(this.ReturnGroupNoList(), st, true);
+                    }
+                }
+                this.treeViewObject.EndUpdate();
+            }
+        }
         #endregion
 
         #region Прочие методы
@@ -758,6 +865,66 @@ namespace LC
         }
         #endregion
 
+        #region Действия приложения. Список хостов.
+        private void listViewHosts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.listViewHosts.SelectedItems.Count > 0)
+            {
+                LCTreeNodeHost lcHost = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
+                LCTypeHost lcTypeHost = lcHost.TypeHost;
+                // Выделяем узел в дереве.
+                this.treeViewObject.SelectedNode = lcHost;
+                switch (lcTypeHost)
+                {
+                    case LCTypeHost.COMPUTER:
+                        {
+                            this.toolStripComputers.Show();
+                            this.toolStripETCO.Hide();
+                            this.toolStripMFU.Hide();
+                            this.toolStripSPD.Hide();
+                        }
+                        break;
+                    case LCTypeHost.ETCO:
+                        {
+                            this.toolStripComputers.Hide();
+                            this.toolStripETCO.Show();
+                            this.toolStripMFU.Hide();
+                            this.toolStripSPD.Hide();
+                        }
+                        break;
+                    case LCTypeHost.HOST:
+                        {
+                            this.toolStripComputers.Show();
+                            this.toolStripETCO.Hide();
+                            this.toolStripMFU.Hide();
+                            this.toolStripSPD.Hide();
+                        }
+                        break;
+                    case LCTypeHost.MFU:
+                        {
+                            this.toolStripComputers.Hide();
+                            this.toolStripETCO.Hide();
+                            this.toolStripMFU.Show();
+                            this.toolStripSPD.Hide();
+                        }
+                        break;
+                    case LCTypeHost.SPD:
+                        {
+                            this.toolStripComputers.Hide();
+                            this.toolStripETCO.Hide();
+                            this.toolStripMFU.Hide();
+                            this.toolStripSPD.Show();
+                        }
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Удаление списка элемента по нажатии клавиши DELETE
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButtonGetNamePC_Click(object sender, EventArgs e)
         {
             string ipStr;
@@ -786,7 +953,7 @@ namespace LC
                 this.WriteListBox("Определение имени для ПК с IP " + ipStr + ":" + myException.Message);
             }
         }
-
+   
         private void listViewComputers_DoubleClick(object sender, EventArgs e)
         {
             if (this.listViewHosts.SelectedItems.Count > 0)
@@ -797,108 +964,6 @@ namespace LC
             }
         }
 
-        private void toolStripMenuItemClearPCList_Click(object sender, EventArgs e)
-        {
-            this.listViewHosts.Items.Clear();
-        }
-
-        /// <summary>
-        /// Метод переопределения сети для хостов из группы "Не в списке"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripMenuItemFindSubnet_Click(object sender, EventArgs e)
-        {
-            List<String> list = new List<String>();
-            TreeNode node = ReturnGroupNoList();
-            foreach(TreeNode tn in node.Nodes)
-            {
-                LCTreeNodeHost lc = (LCTreeNodeHost)tn;
-                list.Add(lc.IP);
-                if (lc.Tag != null)
-                {
-                    ((ListViewItem)lc.Tag).Remove();
-                }
-            }
-            // Удаляем группу "Не в списке"
-            node.Remove();
-            // проверяем на всякий пожарный, не пустое ли дерево справочника
-            if (this.treeViewObject.Nodes.Count > 0)
-            {
-                this.treeViewObject.BeginUpdate();
-                foreach(string st in list)
-                {
-                    // Ищем принадлежность ПК к какой либо сети
-                    this.findSubnet = null;
-                    this.FindSubnet_IP(this.treeViewObject.Nodes[0], st);
-                    if (this.findSubnet != null)
-                    {
-                        LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)this.findSubnet;
-                        lcSubnet.AddHost(st, st, "");
-                        // и сразу же выделяем этот объект
-                        countFind = 0;
-                        this.FindHost_IP(this.findSubnet, st, false);
-                    }
-                    else
-                    {
-                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList)this.ReturnGroupNoList();
-                        lcNoList.AddHost(st, st, "");
-                        // и сразу же выделяем этот объект
-                        countFind = 0;
-                        this.FindHost_IP(this.ReturnGroupNoList(), st, false);
-                    }
-                }
-                this.treeViewObject.EndUpdate();
-            }
-        }
-
-        private void listViewHosts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.listViewHosts.SelectedItems.Count > 0)
-            {
-                LCTreeNodeHost lcHost = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
-                LCTypeHost lcTypeHost = lcHost.TypeHost;
-                // Выделяем узел в дереве.
-                this.treeViewObject.SelectedNode = lcHost;
-                switch (lcTypeHost)
-                {
-                    case LCTypeHost.COMPUTER:
-                        {
-                            this.toolStripComputers.Show();
-                            this.toolStripETCO.Hide();
-                            this.toolStripMFU.Hide();
-                        }
-                        break;
-                    case LCTypeHost.ETCO:
-                        {
-                            this.toolStripComputers.Hide();
-                            this.toolStripETCO.Show();
-                            this.toolStripMFU.Hide();
-                        }
-                        break;
-                    case LCTypeHost.HOST:
-                        {
-                            this.toolStripComputers.Show();
-                            this.toolStripETCO.Hide();
-                            this.toolStripMFU.Hide();
-                        }
-                        break;
-                    case LCTypeHost.MFU:
-                        {
-                            this.toolStripComputers.Hide();
-                            this.toolStripETCO.Hide();
-                            this.toolStripMFU.Show();
-                        }
-                        break;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Удаление списка элемента по нажатии клавиши DELETE
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void listViewHosts_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -912,13 +977,12 @@ namespace LC
 
         private void toolStripMenuItemGetHostIP_Click(object sender, EventArgs e)
         {
-            if(this.listViewHosts.SelectedItems.Count > 0)
+            if (this.listViewHosts.SelectedItems.Count > 0)
             {
                 string ip = this.listViewHosts.SelectedItems[0].SubItems[1].Text;
                 Clipboard.SetText(ip);
             }
         }
-
         private void toolStripMenuItemGetHostName_Click(object sender, EventArgs e)
         {
             string n = this.listViewHosts.SelectedItems[0].SubItems[2].Text;
@@ -926,28 +990,11 @@ namespace LC
             n = n.Substring(0, n.IndexOf('.'));
             Clipboard.SetText(n);
         }
-
         private void toolStripMenuItemGetHostFullName_Click(object sender, EventArgs e)
         {
             string n = this.listViewHosts.SelectedItems[0].SubItems[2].Text;
             Clipboard.SetText(n);
         }
-
-        private void ToolStripMenuItemVisibleProtocol_Click(object sender, EventArgs e)
-        {
-            if (Properties.Settings.Default.VisibleProtocol)
-            {
-                Properties.Settings.Default.VisibleProtocol = false;
-                this.ToolStripMenuItemVisibleProtocol.Checked = false;
-                this.splitContainer1.Panel2Collapsed = true;
-            }
-            else
-            {
-                Properties.Settings.Default.VisibleProtocol = true;
-                this.ToolStripMenuItemVisibleProtocol.Checked = true;
-                this.splitContainer1.Panel2Collapsed = false;
-            }
-            Properties.Settings.Default.Save();
-        }
+        #endregion
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
-            this.checkBoxfullScreen = new System.Windows.Forms.CheckBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonAccept = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
@@ -41,16 +40,6 @@
             this.radioButtonAllUsers = new System.Windows.Forms.RadioButton();
             this.groupBoxDirectory.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // checkBoxfullScreen
-            // 
-            this.checkBoxfullScreen.AutoSize = true;
-            this.checkBoxfullScreen.Location = new System.Drawing.Point(12, 12);
-            this.checkBoxfullScreen.Name = "checkBoxfullScreen";
-            this.checkBoxfullScreen.Size = new System.Drawing.Size(325, 17);
-            this.checkBoxfullScreen.TabIndex = 0;
-            this.checkBoxfullScreen.Text = "При запуски открывать окно программы на полный экран";
-            this.checkBoxfullScreen.UseVisualStyleBackColor = true;
             // 
             // buttonCancel
             // 
@@ -89,7 +78,7 @@
             this.groupBoxDirectory.Controls.Add(this.textBoxPathAllUsers);
             this.groupBoxDirectory.Controls.Add(this.radioButtonCurrentUser);
             this.groupBoxDirectory.Controls.Add(this.radioButtonAllUsers);
-            this.groupBoxDirectory.Location = new System.Drawing.Point(6, 58);
+            this.groupBoxDirectory.Location = new System.Drawing.Point(6, 9);
             this.groupBoxDirectory.Name = "groupBoxDirectory";
             this.groupBoxDirectory.Size = new System.Drawing.Size(331, 160);
             this.groupBoxDirectory.TabIndex = 9;
@@ -152,7 +141,6 @@
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonAccept);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.checkBoxfullScreen);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -164,13 +152,10 @@
             this.groupBoxDirectory.ResumeLayout(false);
             this.groupBoxDirectory.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox checkBoxfullScreen;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonAccept;
         private System.Windows.Forms.Button buttonOk;

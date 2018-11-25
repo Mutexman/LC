@@ -14,7 +14,6 @@ namespace LC
         public FormSettings()
         {
             InitializeComponent();
-            this.checkBoxfullScreen.Checked = Properties.Settings.Default.FullScreen;
             this.textBoxPathAllUsers.Text = Application.CommonAppDataPath;
             this.textBoxPathCurrentUser.Text = Application.LocalUserAppDataPath;
             if (Properties.Settings.Default.AllUserAccess)
@@ -31,7 +30,6 @@ namespace LC
         /// </summary>
         private void SaveSettings()
         {
-            Properties.Settings.Default.FullScreen = this.checkBoxfullScreen.Checked;
             if (this.radioButtonAllUsers.Checked)
             {
                 Properties.Settings.Default.AllUserAccess = true;
