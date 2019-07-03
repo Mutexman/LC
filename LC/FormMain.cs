@@ -421,7 +421,7 @@ namespace LC
                             }
                             lvg.Tag = lcNode;
                             this.listViewHosts.Groups.Add(lvg);
-                            ListViewItem lvi = new ListViewItem(new string[] { lcHost.TypeHost.ToString(), lcHost.IP, lcHost.Text, lcHost.ParentGroup, lcHost.Description }, lvg)
+                            ListViewItem lvi = new ListViewItem(new string[] { lcHost.TypeHost.ToString(), lcHost.IP, lcHost.Text, lcHost.ParentGroup, lcHost.DescriptionStr}, lvg)
                             {
                                 Tag = lcHost
                             };
@@ -431,7 +431,7 @@ namespace LC
                         }
                         else
                         {
-                            ListViewItem lvi = new ListViewItem(new string[] { lcHost.TypeHost.ToString(), lcHost.IP, lcHost.Text, lcHost.ParentGroup, lcHost.Description })
+                            ListViewItem lvi = new ListViewItem(new string[] { lcHost.TypeHost.ToString(), lcHost.IP, lcHost.Text, lcHost.ParentGroup, lcHost.DescriptionStr })
                             {
                                 Tag = lcHost
                             };
@@ -455,7 +455,7 @@ namespace LC
                             }
                         }
                         ListViewItem lvi = new ListViewItem(new string[] { lcSubnet.Text, lcSubnet.IPSubnet,
-                            lcSubnet.MaskSubnet,lcSubnet.ParentGroup,lcSubnet.Description })
+                            lcSubnet.MaskSubnet,lcSubnet.ParentGroup,lcSubnet.DescriptionStr })
                         {
                             Tag = lcSubnet
                         };
@@ -477,7 +477,7 @@ namespace LC
                                 return;
                             }
                         }
-                        ListViewItem lvi = new ListViewItem(new string[] { lcGroup.Text, lcGroup.ParentGroup, lcGroup.Description })
+                        ListViewItem lvi = new ListViewItem(new string[] { lcGroup.Text, lcGroup.ParentGroup, lcGroup.DescriptionStr })
                         {
                             Tag = lcGroup
                         };

@@ -144,7 +144,7 @@ namespace LC
                 ListViewItem lvi = (ListViewItem)lcTreeNodeHost.Tag;
                 lvi.SubItems[0].Text = this.comboBoxTypeHost.Text;
                 lvi.SubItems[2].Text = this.lcTreeNodeHost.Text;
-                lvi.SubItems[4].Text = this.lcTreeNodeHost.Description;
+                lvi.SubItems[4].Text = this.lcTreeNodeHost.DescriptionStr;
 
                 lcTreeNodeHost.ToolTipText = lcTreeNodeHost.TypeHost.ToString();
                 lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Text;

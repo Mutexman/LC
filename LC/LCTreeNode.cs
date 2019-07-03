@@ -54,6 +54,16 @@ namespace LC
                 this.description = value;
             }
         }
+        /// <summary>
+        /// Свойство возвращающее описание в виде строки. Заменяет символ перевода строки на пробел.
+        /// </summary>
+        public string DescriptionStr
+        {
+            get
+            {
+                return this.description.Replace("\n", " ");
+            }
+        }
         protected LCObjectType lcObjectType = LCObjectType.None;
         /// <summary>
         /// Возвращает тип объекта
