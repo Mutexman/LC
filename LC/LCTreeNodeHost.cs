@@ -10,7 +10,8 @@ namespace LC
         HOST,       //Неопрелённый тип устройства
         COMPUTER,   //Компьютер
         MFU,        //Сетевое МФУ
-        ETCO        //Киоск ЭТСО
+        ETCO,       //Киоск ЭТСО
+        SPD         //Сетевое оборудование
     }
     class LCTreeNodeHost : LCTreeNode
     {
