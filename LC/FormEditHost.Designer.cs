@@ -126,7 +126,7 @@
             this.comboBoxTypeHost.FormattingEnabled = true;
             this.comboBoxTypeHost.Location = new System.Drawing.Point(113, 10);
             this.comboBoxTypeHost.Name = "comboBoxTypeHost";
-            this.comboBoxTypeHost.Size = new System.Drawing.Size(156, 21);
+            this.comboBoxTypeHost.Size = new System.Drawing.Size(171, 21);
             this.comboBoxTypeHost.TabIndex = 9;
             // 
             // FormEditHost
