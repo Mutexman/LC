@@ -296,11 +296,6 @@ namespace LC
                 this.FindSubnet_IP(treeNodeWorking, ip);
             }
         }
-        private void toolStripButtonRunCMD_Click(object sender, EventArgs e)
-        {
-            // запускаем интерпретатор коммандной строки cmd.exe
-            System.Diagnostics.Process.Start("cmd.exe");
-        }
         private void toolStripButtonPasteClipboard_Click(object sender, EventArgs e)
         {
             this.toolStripTextBoxIP.Text = Clipboard.GetText(TextDataFormat.Text);

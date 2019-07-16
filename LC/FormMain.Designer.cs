@@ -56,7 +56,6 @@
             this.toolStripTextBoxIP = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButtonPasteClipboard = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonFind = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonRunCMD = new System.Windows.Forms.ToolStripButton();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -83,11 +82,11 @@
             this.toolStripMenuItemGetHostName = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGetHostFullName = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComputers = new System.Windows.Forms.ToolStrip();
-            this.toolStripETCO = new System.Windows.Forms.ToolStrip();
-            this.toolStripMFU = new System.Windows.Forms.ToolStrip();
-            this.toolStripSPD = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonGetNamePC = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripETCO = new System.Windows.Forms.ToolStrip();
+            this.toolStripSPD = new System.Windows.Forms.ToolStrip();
+            this.toolStripMFU = new System.Windows.Forms.ToolStrip();
             this.tabPageSubnets = new System.Windows.Forms.TabPage();
             this.listViewSubnets = new System.Windows.Forms.ListView();
             this.columnHeaderNameSubnet = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -337,28 +336,29 @@
             // 
             // toolStripMain
             // 
+            this.toolStripMain.AutoSize = false;
             this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.toolStripTextBoxIP,
             this.toolStripButtonPasteClipboard,
-            this.toolStripButtonFind,
-            this.toolStripButtonRunCMD});
+            this.toolStripButtonFind});
             this.toolStripMain.Location = new System.Drawing.Point(0, 24);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(1177, 55);
+            this.toolStripMain.Size = new System.Drawing.Size(1177, 32);
             this.toolStripMain.TabIndex = 1;
             this.toolStripMain.Text = "toolStrip1";
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(100, 52);
+            this.toolStripLabel1.Size = new System.Drawing.Size(100, 29);
             this.toolStripLabel1.Text = "Введите IP адрес:";
             // 
             // toolStripTextBoxIP
             // 
+            this.toolStripTextBoxIP.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxIP.Name = "toolStripTextBoxIP";
-            this.toolStripTextBoxIP.Size = new System.Drawing.Size(100, 55);
+            this.toolStripTextBoxIP.Size = new System.Drawing.Size(100, 32);
             this.toolStripTextBoxIP.ToolTipText = "Введите IP адрес для поиска.";
             this.toolStripTextBoxIP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxIP_KeyDown);
             // 
@@ -367,7 +367,7 @@
             this.toolStripButtonPasteClipboard.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonPasteClipboard.Image")));
             this.toolStripButtonPasteClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonPasteClipboard.Name = "toolStripButtonPasteClipboard";
-            this.toolStripButtonPasteClipboard.Size = new System.Drawing.Size(75, 52);
+            this.toolStripButtonPasteClipboard.Size = new System.Drawing.Size(75, 29);
             this.toolStripButtonPasteClipboard.Text = "Вставить";
             this.toolStripButtonPasteClipboard.ToolTipText = "Вставить из буфера обмена";
             this.toolStripButtonPasteClipboard.Click += new System.EventHandler(this.toolStripButtonPasteClipboard_Click);
@@ -375,23 +375,11 @@
             // toolStripButtonFind
             // 
             this.toolStripButtonFind.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFind.Image")));
-            this.toolStripButtonFind.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFind.Name = "toolStripButtonFind";
-            this.toolStripButtonFind.Size = new System.Drawing.Size(170, 52);
+            this.toolStripButtonFind.Size = new System.Drawing.Size(138, 29);
             this.toolStripButtonFind.Text = "Найти или добавить";
             this.toolStripButtonFind.Click += new System.EventHandler(this.toolStripButtonFind_Click);
-            // 
-            // toolStripButtonRunCMD
-            // 
-            this.toolStripButtonRunCMD.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonRunCMD.Image")));
-            this.toolStripButtonRunCMD.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonRunCMD.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRunCMD.Name = "toolStripButtonRunCMD";
-            this.toolStripButtonRunCMD.Size = new System.Drawing.Size(103, 52);
-            this.toolStripButtonRunCMD.Text = "cmd.exe";
-            this.toolStripButtonRunCMD.ToolTipText = "Запуск коммандной строки";
-            this.toolStripButtonRunCMD.Click += new System.EventHandler(this.toolStripButtonRunCMD_Click);
             // 
             // statusStripMain
             // 
@@ -412,7 +400,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 79);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 56);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -423,8 +411,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listBoxOperation);
-            this.splitContainer1.Size = new System.Drawing.Size(1177, 521);
-            this.splitContainer1.SplitterDistance = 462;
+            this.splitContainer1.Size = new System.Drawing.Size(1177, 544);
+            this.splitContainer1.SplitterDistance = 482;
             this.splitContainer1.TabIndex = 3;
             // 
             // splitContainer2
@@ -440,7 +428,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControlObject);
-            this.splitContainer2.Size = new System.Drawing.Size(1177, 462);
+            this.splitContainer2.Size = new System.Drawing.Size(1177, 482);
             this.splitContainer2.SplitterDistance = 340;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -455,7 +443,7 @@
             this.treeViewObject.Name = "treeViewObject";
             this.treeViewObject.SelectedImageIndex = 0;
             this.treeViewObject.ShowNodeToolTips = true;
-            this.treeViewObject.Size = new System.Drawing.Size(340, 462);
+            this.treeViewObject.Size = new System.Drawing.Size(340, 482);
             this.treeViewObject.TabIndex = 0;
             this.treeViewObject.DoubleClick += new System.EventHandler(this.openLCTreeNode);
             // 
@@ -532,11 +520,11 @@
             this.tabControlObject.Name = "tabControlObject";
             this.tabControlObject.SelectedIndex = 0;
             this.tabControlObject.ShowToolTips = true;
-            this.tabControlObject.Size = new System.Drawing.Size(833, 462);
+            this.tabControlObject.Size = new System.Drawing.Size(833, 482);
             this.tabControlObject.TabIndex = 1;
             // 
             // tabPageHosts
-            //
+            // 
             this.tabPageHosts.Controls.Add(this.listViewHosts);
             this.tabPageHosts.Controls.Add(this.toolStripComputers);
             this.tabPageHosts.Controls.Add(this.toolStripETCO);
@@ -544,7 +532,7 @@
             this.tabPageHosts.Controls.Add(this.toolStripMFU);
             this.tabPageHosts.Location = new System.Drawing.Point(4, 22);
             this.tabPageHosts.Name = "tabPageHosts";
-            this.tabPageHosts.Size = new System.Drawing.Size(825, 436);
+            this.tabPageHosts.Size = new System.Drawing.Size(825, 456);
             this.tabPageHosts.TabIndex = 0;
             this.tabPageHosts.Text = "Хосты";
             this.tabPageHosts.UseVisualStyleBackColor = true;
@@ -567,10 +555,10 @@
             this.listViewHosts.FullRowSelect = true;
             this.listViewHosts.GridLines = true;
             this.listViewHosts.HideSelection = false;
-            this.listViewHosts.Location = new System.Drawing.Point(0, 75);
+            this.listViewHosts.Location = new System.Drawing.Point(0, 100);
             this.listViewHosts.MultiSelect = false;
             this.listViewHosts.Name = "listViewHosts";
-            this.listViewHosts.Size = new System.Drawing.Size(825, 361);
+            this.listViewHosts.Size = new System.Drawing.Size(825, 356);
             this.listViewHosts.TabIndex = 4;
             this.listViewHosts.UseCompatibleStateImageBehavior = false;
             this.listViewHosts.View = System.Windows.Forms.View.Details;
@@ -637,35 +625,11 @@
             this.toolStripComputers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonGetNamePC,
             this.toolStripSeparator19});
-            this.toolStripComputers.Location = new System.Drawing.Point(0, 0);
+            this.toolStripComputers.Location = new System.Drawing.Point(0, 75);
             this.toolStripComputers.Name = "toolStripComputers";
             this.toolStripComputers.Size = new System.Drawing.Size(825, 25);
             this.toolStripComputers.TabIndex = 0;
             this.toolStripComputers.Text = "toolStrip1";
-            // 
-            // toolStripMFU
-            // 
-            this.toolStripMFU.Location = new System.Drawing.Point(0, 25);
-            this.toolStripMFU.Name = "toolStripMFU";
-            this.toolStripMFU.Size = new System.Drawing.Size(825, 25);
-            this.toolStripMFU.TabIndex = 2;
-            this.toolStripMFU.Text = "toolStrip1";
-            // 
-            // toolStripETCO
-            // 
-            this.toolStripETCO.Location = new System.Drawing.Point(0, 50);
-            this.toolStripETCO.Name = "toolStripETCO";
-            this.toolStripETCO.Size = new System.Drawing.Size(825, 25);
-            this.toolStripETCO.TabIndex = 3;
-            this.toolStripETCO.Text = "toolStrip4";
-            // 
-            // toolStripSPD
-            // 
-            this.toolStripSPD.Location = new System.Drawing.Point(0, 75);
-            this.toolStripSPD.Name = "toolStripSPD";
-            this.toolStripSPD.Size = new System.Drawing.Size(825, 25);
-            this.toolStripSPD.TabIndex = 5;
-            this.toolStripSPD.Text = "toolStrip1";
             // 
             // toolStripButtonGetNamePC
             // 
@@ -682,6 +646,30 @@
             // 
             this.toolStripSeparator19.Name = "toolStripSeparator19";
             this.toolStripSeparator19.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripETCO
+            // 
+            this.toolStripETCO.Location = new System.Drawing.Point(0, 50);
+            this.toolStripETCO.Name = "toolStripETCO";
+            this.toolStripETCO.Size = new System.Drawing.Size(825, 25);
+            this.toolStripETCO.TabIndex = 3;
+            this.toolStripETCO.Text = "toolStrip4";
+            // 
+            // toolStripSPD
+            // 
+            this.toolStripSPD.Location = new System.Drawing.Point(0, 25);
+            this.toolStripSPD.Name = "toolStripSPD";
+            this.toolStripSPD.Size = new System.Drawing.Size(825, 25);
+            this.toolStripSPD.TabIndex = 5;
+            this.toolStripSPD.Text = "toolStrip1";
+            // 
+            // toolStripMFU
+            // 
+            this.toolStripMFU.Location = new System.Drawing.Point(0, 0);
+            this.toolStripMFU.Name = "toolStripMFU";
+            this.toolStripMFU.Size = new System.Drawing.Size(825, 25);
+            this.toolStripMFU.TabIndex = 2;
+            this.toolStripMFU.Text = "toolStrip1";
             // 
             // tabPageSubnets
             // 
@@ -785,7 +773,7 @@
             this.listBoxOperation.FormattingEnabled = true;
             this.listBoxOperation.Location = new System.Drawing.Point(0, 0);
             this.listBoxOperation.Name = "listBoxOperation";
-            this.listBoxOperation.Size = new System.Drawing.Size(1177, 55);
+            this.listBoxOperation.Size = new System.Drawing.Size(1177, 58);
             this.listBoxOperation.TabIndex = 0;
             // 
             // contextMenuStripLCGroup
@@ -1057,7 +1045,6 @@
             // 
             this.contextMenuStripLCMFU.Name = "contextMenuStripLCMFU";
             this.contextMenuStripLCMFU.Size = new System.Drawing.Size(61, 4);
-           
             // 
             // FormMain
             // 
@@ -1159,7 +1146,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         private System.Windows.Forms.OpenFileDialog openFileDialogImport;
         private System.Windows.Forms.SaveFileDialog saveFileDialogExport;
-        private System.Windows.Forms.ToolStripButton toolStripButtonRunCMD;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelMain;
         private System.Windows.Forms.ToolStripButton toolStripButtonPasteClipboard;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNewSubnet;

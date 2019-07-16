@@ -75,7 +75,7 @@
             // 
             // buttonAddSubnet
             // 
-            this.buttonAddSubnet.Location = new System.Drawing.Point(190, 208);
+            this.buttonAddSubnet.Location = new System.Drawing.Point(190, 237);
             this.buttonAddSubnet.Name = "buttonAddSubnet";
             this.buttonAddSubnet.Size = new System.Drawing.Size(75, 23);
             this.buttonAddSubnet.TabIndex = 4;
@@ -103,7 +103,7 @@
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(101, 106);
+            this.labelError.Location = new System.Drawing.Point(120, 205);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 7;
@@ -131,7 +131,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(455, 235);
+            this.ClientSize = new System.Drawing.Size(455, 271);
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.labelError);

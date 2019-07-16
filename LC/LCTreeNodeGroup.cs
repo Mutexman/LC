@@ -84,7 +84,10 @@ namespace LC
         }
         public override void RemoveLC()
         {
-            ((ListViewItem)this.Tag).Remove();
+            if (this.Tag != null)
+            {
+                ((ListViewItem)this.Tag).Remove();
+            }
             base.RemoveLC();
         }
     }
