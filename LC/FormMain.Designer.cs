@@ -137,6 +137,12 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemDeleteNoList = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripLCMFU = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripButtonGetNmaeETCO = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonGetNameSPD = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonGetNameMFU = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -153,6 +159,9 @@
             this.tabPageHosts.SuspendLayout();
             this.contextMenuStripGetHostProperties.SuspendLayout();
             this.toolStripComputers.SuspendLayout();
+            this.toolStripETCO.SuspendLayout();
+            this.toolStripSPD.SuspendLayout();
+            this.toolStripMFU.SuspendLayout();
             this.tabPageSubnets.SuspendLayout();
             this.tabPageGroups.SuspendLayout();
             this.contextMenuStripLCGroup.SuspendLayout();
@@ -356,7 +365,6 @@
             // 
             // toolStripTextBoxIP
             // 
-            this.toolStripTextBoxIP.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxIP.Name = "toolStripTextBoxIP";
             this.toolStripTextBoxIP.Size = new System.Drawing.Size(100, 32);
             this.toolStripTextBoxIP.ToolTipText = "Введите IP адрес для поиска.";
@@ -649,6 +657,9 @@
             // 
             // toolStripETCO
             // 
+            this.toolStripETCO.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonGetNmaeETCO,
+            this.toolStripSeparator5});
             this.toolStripETCO.Location = new System.Drawing.Point(0, 50);
             this.toolStripETCO.Name = "toolStripETCO";
             this.toolStripETCO.Size = new System.Drawing.Size(825, 25);
@@ -657,6 +668,9 @@
             // 
             // toolStripSPD
             // 
+            this.toolStripSPD.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonGetNameSPD,
+            this.toolStripSeparator13});
             this.toolStripSPD.Location = new System.Drawing.Point(0, 25);
             this.toolStripSPD.Name = "toolStripSPD";
             this.toolStripSPD.Size = new System.Drawing.Size(825, 25);
@@ -665,6 +679,9 @@
             // 
             // toolStripMFU
             // 
+            this.toolStripMFU.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonGetNameMFU,
+            this.toolStripSeparator16});
             this.toolStripMFU.Location = new System.Drawing.Point(0, 0);
             this.toolStripMFU.Name = "toolStripMFU";
             this.toolStripMFU.Size = new System.Drawing.Size(825, 25);
@@ -676,7 +693,7 @@
             this.tabPageSubnets.Controls.Add(this.listViewSubnets);
             this.tabPageSubnets.Location = new System.Drawing.Point(4, 22);
             this.tabPageSubnets.Name = "tabPageSubnets";
-            this.tabPageSubnets.Size = new System.Drawing.Size(825, 436);
+            this.tabPageSubnets.Size = new System.Drawing.Size(825, 456);
             this.tabPageSubnets.TabIndex = 1;
             this.tabPageSubnets.Text = "Сети";
             this.tabPageSubnets.UseVisualStyleBackColor = true;
@@ -695,7 +712,7 @@
             this.listViewSubnets.HideSelection = false;
             this.listViewSubnets.Location = new System.Drawing.Point(0, 0);
             this.listViewSubnets.Name = "listViewSubnets";
-            this.listViewSubnets.Size = new System.Drawing.Size(825, 436);
+            this.listViewSubnets.Size = new System.Drawing.Size(825, 456);
             this.listViewSubnets.TabIndex = 1;
             this.listViewSubnets.UseCompatibleStateImageBehavior = false;
             this.listViewSubnets.View = System.Windows.Forms.View.Details;
@@ -730,7 +747,7 @@
             this.tabPageGroups.Controls.Add(this.listViewGroups);
             this.tabPageGroups.Location = new System.Drawing.Point(4, 22);
             this.tabPageGroups.Name = "tabPageGroups";
-            this.tabPageGroups.Size = new System.Drawing.Size(825, 436);
+            this.tabPageGroups.Size = new System.Drawing.Size(825, 456);
             this.tabPageGroups.TabIndex = 2;
             this.tabPageGroups.Text = "Группы";
             this.tabPageGroups.UseVisualStyleBackColor = true;
@@ -747,7 +764,7 @@
             this.listViewGroups.HideSelection = false;
             this.listViewGroups.Location = new System.Drawing.Point(0, 0);
             this.listViewGroups.Name = "listViewGroups";
-            this.listViewGroups.Size = new System.Drawing.Size(825, 436);
+            this.listViewGroups.Size = new System.Drawing.Size(825, 456);
             this.listViewGroups.TabIndex = 1;
             this.listViewGroups.UseCompatibleStateImageBehavior = false;
             this.listViewGroups.View = System.Windows.Forms.View.Details;
@@ -1046,6 +1063,54 @@
             this.contextMenuStripLCMFU.Name = "contextMenuStripLCMFU";
             this.contextMenuStripLCMFU.Size = new System.Drawing.Size(61, 4);
             // 
+            // toolStripButtonGetNmaeETCO
+            // 
+            this.toolStripButtonGetNmaeETCO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGetNmaeETCO.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNmaeETCO.Image")));
+            this.toolStripButtonGetNmaeETCO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGetNmaeETCO.Name = "toolStripButtonGetNmaeETCO";
+            this.toolStripButtonGetNmaeETCO.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGetNmaeETCO.Text = "toolStripButtonGetNamePC";
+            this.toolStripButtonGetNmaeETCO.ToolTipText = "Определяет имя ПК по IP адресу";
+            this.toolStripButtonGetNmaeETCO.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            // 
+            // toolStripButtonGetNameSPD
+            // 
+            this.toolStripButtonGetNameSPD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGetNameSPD.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNameSPD.Image")));
+            this.toolStripButtonGetNameSPD.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGetNameSPD.Name = "toolStripButtonGetNameSPD";
+            this.toolStripButtonGetNameSPD.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGetNameSPD.Text = "toolStripButtonGetNamePC";
+            this.toolStripButtonGetNameSPD.ToolTipText = "Определяет имя ПК по IP адресу";
+            this.toolStripButtonGetNameSPD.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            // 
+            // toolStripButtonGetNameMFU
+            // 
+            this.toolStripButtonGetNameMFU.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGetNameMFU.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNameMFU.Image")));
+            this.toolStripButtonGetNameMFU.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGetNameMFU.Name = "toolStripButtonGetNameMFU";
+            this.toolStripButtonGetNameMFU.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGetNameMFU.Text = "toolStripButtonGetNamePC";
+            this.toolStripButtonGetNameMFU.ToolTipText = "Определяет имя ПК по IP адресу";
+            this.toolStripButtonGetNameMFU.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            this.toolStripSeparator16.Size = new System.Drawing.Size(6, 25);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1085,6 +1150,12 @@
             this.contextMenuStripGetHostProperties.ResumeLayout(false);
             this.toolStripComputers.ResumeLayout(false);
             this.toolStripComputers.PerformLayout();
+            this.toolStripETCO.ResumeLayout(false);
+            this.toolStripETCO.PerformLayout();
+            this.toolStripSPD.ResumeLayout(false);
+            this.toolStripSPD.PerformLayout();
+            this.toolStripMFU.ResumeLayout(false);
+            this.toolStripMFU.PerformLayout();
             this.tabPageSubnets.ResumeLayout(false);
             this.tabPageGroups.ResumeLayout(false);
             this.contextMenuStripLCGroup.ResumeLayout(false);
@@ -1205,6 +1276,12 @@
         private System.Windows.Forms.ToolStripMenuItem видtoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemVisibleProtocol;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemFullScreen;
+        private System.Windows.Forms.ToolStripButton toolStripButtonGetNmaeETCO;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButtonGetNameSPD;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+        private System.Windows.Forms.ToolStripButton toolStripButtonGetNameMFU;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
     }
 }
 
