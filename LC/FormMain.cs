@@ -170,8 +170,7 @@ namespace LC
         }
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите завершить работу приложения ? " +
-                    "При следующем запуске приложения, Вам опять потребуется вводить свой логин и пароль! Рекомендуется свернуть программу на панель задач.",
+            if (MessageBox.Show("Вы действительно хотите завершить работу приложения ? ",
                     "Линейный специалист", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
             {
                 e.Cancel = true;
