@@ -85,8 +85,14 @@
             this.toolStripButtonGetNamePC = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripETCO = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonGetNmaeETCO = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSPD = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonGetNameSPD = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMFU = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonGetNameMFU = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.tabPageSubnets = new System.Windows.Forms.TabPage();
             this.listViewSubnets = new System.Windows.Forms.ListView();
             this.columnHeaderNameSubnet = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -137,12 +143,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemDeleteNoList = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripLCMFU = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripButtonGetNmaeETCO = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonGetNameSPD = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonGetNameMFU = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -365,6 +365,7 @@
             // 
             // toolStripTextBoxIP
             // 
+            this.toolStripTextBoxIP.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxIP.Name = "toolStripTextBoxIP";
             this.toolStripTextBoxIP.Size = new System.Drawing.Size(100, 32);
             this.toolStripTextBoxIP.ToolTipText = "Введите IP адрес для поиска.";
@@ -666,6 +667,22 @@
             this.toolStripETCO.TabIndex = 3;
             this.toolStripETCO.Text = "toolStrip4";
             // 
+            // toolStripButtonGetNmaeETCO
+            // 
+            this.toolStripButtonGetNmaeETCO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGetNmaeETCO.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNmaeETCO.Image")));
+            this.toolStripButtonGetNmaeETCO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGetNmaeETCO.Name = "toolStripButtonGetNmaeETCO";
+            this.toolStripButtonGetNmaeETCO.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGetNmaeETCO.Text = "toolStripButtonGetNamePC";
+            this.toolStripButtonGetNmaeETCO.ToolTipText = "Определяет имя ПК по IP адресу";
+            this.toolStripButtonGetNmaeETCO.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripSPD
             // 
             this.toolStripSPD.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -677,6 +694,22 @@
             this.toolStripSPD.TabIndex = 5;
             this.toolStripSPD.Text = "toolStrip1";
             // 
+            // toolStripButtonGetNameSPD
+            // 
+            this.toolStripButtonGetNameSPD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGetNameSPD.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNameSPD.Image")));
+            this.toolStripButtonGetNameSPD.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGetNameSPD.Name = "toolStripButtonGetNameSPD";
+            this.toolStripButtonGetNameSPD.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGetNameSPD.Text = "toolStripButtonGetNamePC";
+            this.toolStripButtonGetNameSPD.ToolTipText = "Определяет имя ПК по IP адресу";
+            this.toolStripButtonGetNameSPD.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripMFU
             // 
             this.toolStripMFU.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -687,6 +720,22 @@
             this.toolStripMFU.Size = new System.Drawing.Size(825, 25);
             this.toolStripMFU.TabIndex = 2;
             this.toolStripMFU.Text = "toolStrip1";
+            // 
+            // toolStripButtonGetNameMFU
+            // 
+            this.toolStripButtonGetNameMFU.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGetNameMFU.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNameMFU.Image")));
+            this.toolStripButtonGetNameMFU.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGetNameMFU.Name = "toolStripButtonGetNameMFU";
+            this.toolStripButtonGetNameMFU.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGetNameMFU.Text = "toolStripButtonGetNamePC";
+            this.toolStripButtonGetNameMFU.ToolTipText = "Определяет имя ПК по IP адресу";
+            this.toolStripButtonGetNameMFU.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            this.toolStripSeparator16.Size = new System.Drawing.Size(6, 25);
             // 
             // tabPageSubnets
             // 
@@ -716,6 +765,7 @@
             this.listViewSubnets.TabIndex = 1;
             this.listViewSubnets.UseCompatibleStateImageBehavior = false;
             this.listViewSubnets.View = System.Windows.Forms.View.Details;
+            this.listViewSubnets.DoubleClick += new System.EventHandler(this.listViewSubnets_DoubleClick);
             // 
             // columnHeaderNameSubnet
             // 
@@ -768,6 +818,7 @@
             this.listViewGroups.TabIndex = 1;
             this.listViewGroups.UseCompatibleStateImageBehavior = false;
             this.listViewGroups.View = System.Windows.Forms.View.Details;
+            this.listViewGroups.DoubleClick += new System.EventHandler(this.listViewGroups_DoubleClick);
             // 
             // columnHeaderNameGroup
             // 
@@ -1062,54 +1113,6 @@
             // 
             this.contextMenuStripLCMFU.Name = "contextMenuStripLCMFU";
             this.contextMenuStripLCMFU.Size = new System.Drawing.Size(61, 4);
-            // 
-            // toolStripButtonGetNmaeETCO
-            // 
-            this.toolStripButtonGetNmaeETCO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonGetNmaeETCO.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNmaeETCO.Image")));
-            this.toolStripButtonGetNmaeETCO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonGetNmaeETCO.Name = "toolStripButtonGetNmaeETCO";
-            this.toolStripButtonGetNmaeETCO.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonGetNmaeETCO.Text = "toolStripButtonGetNamePC";
-            this.toolStripButtonGetNmaeETCO.ToolTipText = "Определяет имя ПК по IP адресу";
-            this.toolStripButtonGetNmaeETCO.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
-            // 
-            // toolStripButtonGetNameSPD
-            // 
-            this.toolStripButtonGetNameSPD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonGetNameSPD.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNameSPD.Image")));
-            this.toolStripButtonGetNameSPD.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonGetNameSPD.Name = "toolStripButtonGetNameSPD";
-            this.toolStripButtonGetNameSPD.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonGetNameSPD.Text = "toolStripButtonGetNamePC";
-            this.toolStripButtonGetNameSPD.ToolTipText = "Определяет имя ПК по IP адресу";
-            this.toolStripButtonGetNameSPD.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
-            // 
-            // toolStripButtonGetNameMFU
-            // 
-            this.toolStripButtonGetNameMFU.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonGetNameMFU.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetNameMFU.Image")));
-            this.toolStripButtonGetNameMFU.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonGetNameMFU.Name = "toolStripButtonGetNameMFU";
-            this.toolStripButtonGetNameMFU.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonGetNameMFU.Text = "toolStripButtonGetNamePC";
-            this.toolStripButtonGetNameMFU.ToolTipText = "Определяет имя ПК по IP адресу";
-            this.toolStripButtonGetNameMFU.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator13
-            // 
-            this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator16
-            // 
-            this.toolStripSeparator16.Name = "toolStripSeparator16";
-            this.toolStripSeparator16.Size = new System.Drawing.Size(6, 25);
             // 
             // FormMain
             // 

@@ -990,5 +990,24 @@ namespace LC
             Clipboard.SetText(n);
         }
         #endregion
+        private void listViewSubnets_DoubleClick(object sender, EventArgs e)
+        {
+            if (this.listViewSubnets.SelectedItems.Count > 0)
+            {
+                LCTreeNodeSubnet tn = (LCTreeNodeSubnet)this.listViewSubnets.SelectedItems[0].Tag;
+                FormEditSubnet formEditSubnet = new FormEditSubnet(tn, ModeForm.Edit);
+                formEditSubnet.ShowDialog();
+            }
+        }
+
+        private void listViewGroups_DoubleClick(object sender, EventArgs e)
+        {
+            if(this.listViewGroups.SelectedItems.Count > 0)
+            {
+                LCTreeNodeGroup tn = (LCTreeNodeGroup)this.listViewGroups.SelectedItems[0].Tag;
+                FormEditGroup formEditGroup = new FormEditGroup(tn, ModeForm.Edit);
+                formEditGroup.ShowDialog();
+            }
+        }
     }
 }
