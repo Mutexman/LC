@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Net;
 
 namespace LC
 {
@@ -48,6 +49,36 @@ namespace LC
         /// <param name="IPaddr">Проверяемый IP-адрес</param>
         /// <returns>Возвращает истину если IP адрес пренадлежит сети, и ложь если нет</returns>
         public bool CompareIPtoSubnet(String IPaddr)
+        {
+            IPAddress ipAdress = IPAddress.Parse(IPaddr);
+            IPAddress subnet = IPAddress.Parse(this.ipsubnet);
+            IPAddress mask = IPAddress.Parse(this.masksubnet);
+
+            UInt32 n = BitConverter.ToUInt32(subnet.GetAddressBytes(), 0);
+            UInt32 m = BitConverter.ToUInt32(mask.GetAddressBytes(), 0);
+            UInt32 i = BitConverter.ToUInt32(ipAdress.GetAddressBytes(), 0);
+
+            Console.WriteLine(n.ToString());
+            Console.WriteLine(m.ToString());
+            Console.WriteLine(i.ToString());
+
+            n &= m;
+            i &= m;
+
+            if (n == i)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        // Следует позднее удалить.
+        /// <summary>
+        /// Метод проверки принадлежности IP адреса сети
+        /// </summary>
+        /// <param name="IPaddr">Проверяемый IP-адрес</param>
+        /// <returns>Возвращает истину если IP адрес пренадлежит сети, и ложь если нет</returns>
+        public bool CompareIPtoSubnet2(String IPaddr)
         {
             String strbinsubnetname = "";
             String strbinipaddr = "";
