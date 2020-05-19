@@ -11,7 +11,7 @@
     <Setting Name="CryptTripleDES" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="OpenPages" Type="System.String" Scope="User">
+    <Setting Name="OpenHosts" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="VisibleProtocol" Description="Этот параметр показывает, будет ли отображаться панель протокола действий" Type="System.Boolean" Scope="User">
@@ -24,6 +24,12 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="OpenNets" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="OpenGroups" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

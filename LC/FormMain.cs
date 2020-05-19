@@ -295,6 +295,57 @@ namespace LC
                 this.FindSubnet_IP(treeNodeWorking, ip);
             }
         }
+        /// <summary>
+        /// Поиск сети по имени
+        /// </summary>
+        /// <param name="treeNode">Узел дерева с которого начинаем искать</param>
+        /// <param name="nameNet">Имя сети</param>
+        private void FindNet(TreeNode treeNode, string nameNet)
+        {
+            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
+            if (lcTreeNodeWork.LCObjectType == LCObjectType.SubNet)
+            {
+                // Этот узел сеть, приводим объект к нужному классу
+                LCTreeNodeSubnet lcSubNet = (LCTreeNodeSubnet)lcTreeNodeWork;
+                // Проверяем по имени
+                if (lcSubNet.Text == nameNet)
+                {
+                    this.openLCTreeNode(lcSubNet);
+                    this.WriteListBox("Найдена сеть с именем: " + lcSubNet.Text + ".");
+                }
+            }
+            //else
+            //{
+                // рекурсивный перебор всех дочерних узлов
+                foreach (TreeNode treeNodeWorking in treeNode.Nodes)
+                {
+                    this.FindNet(treeNodeWorking, nameNet);
+                }
+            //}
+        }
+        private void FindGroup(TreeNode treeNode, string nameGroup)
+        {
+            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
+            if (lcTreeNodeWork.LCObjectType == LCObjectType.Group)
+            {
+                // Этот узел группа, приводим объект к нужному классу
+                LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNodeWork;
+                // Проверяем по имени
+                if (lcGroup.Text == nameGroup)
+                {
+                    this.openLCTreeNode(lcGroup);
+                    this.WriteListBox("Найдена группа с именем: " + lcGroup.Text + ".");
+                }
+            }
+            //else
+            //{
+                // рекурсивный перебор всех дочерних узлов
+                foreach (TreeNode treeNodeWorking in treeNode.Nodes)
+                {
+                    this.FindGroup(treeNodeWorking, nameGroup);
+                }
+            //}
+        }
         private void toolStripButtonPasteClipboard_Click(object sender, EventArgs e)
         {
             this.toolStripTextBoxIP.Text = Clipboard.GetText(TextDataFormat.Text);
@@ -835,13 +886,20 @@ namespace LC
         {
             if (this.treeViewObject.Nodes != null)
             {
-                string[] str = Properties.Settings.Default.OpenPages.Split(';');
+                string[] str = Properties.Settings.Default.OpenNets.Split(';');
                 foreach (string st in str)
                 {
-                    if (st != "")
-                    {
-                        this.FindHost_IP(this.treeViewObject.Nodes[0], st, true);
-                    }
+                    this.FindNet(this.treeViewObject.Nodes[0], st);
+                }
+                str = Properties.Settings.Default.OpenGroups.Split(';');
+                foreach (string st in str)
+                {
+                    this.FindGroup(this.treeViewObject.Nodes[0], st);
+                }
+                str = Properties.Settings.Default.OpenHosts.Split(';');
+                foreach (string st in str)
+                {
+                    this.FindHost_IP(this.treeViewObject.Nodes[0], st, true);
                 }
             }
         }
@@ -850,10 +908,20 @@ namespace LC
         /// </summary>
         private void SaveOpenedPages()
         {
-            Properties.Settings.Default.OpenPages = "";
+            Properties.Settings.Default.OpenHosts = "";
             foreach (ListViewItem lvi in this.listViewHosts.Items)
             {
-                Properties.Settings.Default.OpenPages += lvi.SubItems[1].Text + ";";
+                Properties.Settings.Default.OpenHosts += lvi.SubItems[1].Text + ";";
+            }
+            Properties.Settings.Default.OpenNets = "";
+            foreach (ListViewItem lvi in this.listViewSubnets.Items)
+            {
+                Properties.Settings.Default.OpenNets += lvi.SubItems[0].Text + ";";
+            }
+            Properties.Settings.Default.OpenGroups = "";
+            foreach (ListViewItem lvi in this.listViewGroups.Items)
+            {
+                Properties.Settings.Default.OpenGroups += lvi.SubItems[0].Text + ";";
             }
             Properties.Settings.Default.Save();
         }
