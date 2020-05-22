@@ -211,11 +211,11 @@ namespace LC
                     }
                     else
                     {
-                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList) this.ReturnGroupNoList();
+                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList) this.lCDirectory.ReturnGroupNoList();
                         lcNoList.AddHost(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
-                        this.FindHost_IP(this.ReturnGroupNoList(), this.toolStripTextBoxIP.Text,true);
+                        this.FindHost_IP(this.lCDirectory.ReturnGroupNoList(), this.toolStripTextBoxIP.Text,true);
                     }
                 }
             }
@@ -294,57 +294,6 @@ namespace LC
             {
                 this.FindSubnet_IP(treeNodeWorking, ip);
             }
-        }
-        /// <summary>
-        /// Поиск сети по имени
-        /// </summary>
-        /// <param name="treeNode">Узел дерева с которого начинаем искать</param>
-        /// <param name="nameNet">Имя сети</param>
-        private void FindNet(TreeNode treeNode, string nameNet)
-        {
-            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
-            if (lcTreeNodeWork.LCObjectType == LCObjectType.SubNet)
-            {
-                // Этот узел сеть, приводим объект к нужному классу
-                LCTreeNodeSubnet lcSubNet = (LCTreeNodeSubnet)lcTreeNodeWork;
-                // Проверяем по имени
-                if (lcSubNet.Text == nameNet)
-                {
-                    this.openLCTreeNode(lcSubNet);
-                    this.WriteListBox("Найдена сеть с именем: " + lcSubNet.Text + ".");
-                }
-            }
-            //else
-            //{
-                // рекурсивный перебор всех дочерних узлов
-                foreach (TreeNode treeNodeWorking in treeNode.Nodes)
-                {
-                    this.FindNet(treeNodeWorking, nameNet);
-                }
-            //}
-        }
-        private void FindGroup(TreeNode treeNode, string nameGroup)
-        {
-            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
-            if (lcTreeNodeWork.LCObjectType == LCObjectType.Group)
-            {
-                // Этот узел группа, приводим объект к нужному классу
-                LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNodeWork;
-                // Проверяем по имени
-                if (lcGroup.Text == nameGroup)
-                {
-                    this.openLCTreeNode(lcGroup);
-                    this.WriteListBox("Найдена группа с именем: " + lcGroup.Text + ".");
-                }
-            }
-            //else
-            //{
-                // рекурсивный перебор всех дочерних узлов
-                foreach (TreeNode treeNodeWorking in treeNode.Nodes)
-                {
-                    this.FindGroup(treeNodeWorking, nameGroup);
-                }
-            //}
         }
         private void toolStripButtonPasteClipboard_Click(object sender, EventArgs e)
         {
@@ -483,6 +432,9 @@ namespace LC
         /// <param name="treeNode">Открываемый узел.</param>
         private void openLCTreeNode(TreeNode treeNode)
         {
+            if (treeNode == null)
+                return;
+
             LCTreeNode lcTreeNode = (LCTreeNode)treeNode;
 
             switch (lcTreeNode.LCObjectType)
@@ -770,7 +722,7 @@ namespace LC
         private void toolStripMenuItemFindSubnet_Click(object sender, EventArgs e)
         {
             List<String> list = new List<String>();
-            TreeNode node = ReturnGroupNoList();
+            TreeNode node = this.lCDirectory.ReturnGroupNoList();
             foreach (TreeNode tn in node.Nodes)
             {
                 LCTreeNodeHost lc = (LCTreeNodeHost)tn;
@@ -801,11 +753,11 @@ namespace LC
                     }
                     else
                     {
-                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList)this.ReturnGroupNoList();
+                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList)this.lCDirectory.ReturnGroupNoList();
                         lcNoList.AddHost(st, st, "");
                         // и сразу же выделяем этот объект
                         countFind = 0;
-                        this.FindHost_IP(this.ReturnGroupNoList(), st, true);
+                        this.FindHost_IP(this.lCDirectory.ReturnGroupNoList(), st, true);
                     }
                 }
                 this.treeViewObject.EndUpdate();
@@ -846,36 +798,7 @@ namespace LC
             }
             return false;
         }
-        /// <summary>
-        /// Возвращает узел дерева "не в списке", а если его не существует, то создает новый. 
-        /// </summary>
-        /// <returns>Возвращает узел дерева "не в списке".</returns>
-        //private TreeNode ReturnGroupNoList()
-        private TreeNode ReturnGroupNoList()
-        {
-            TreeNode treeNode = this.treeViewObject.Nodes[0];
-            if (treeNode != null)
-            {
-                // рекурсивный перебор всех дочерних узлов
-                foreach (TreeNode treeNodeWorking in treeNode.Nodes)
-                {
-                    if(((LCTreeNode)treeNodeWorking).LCObjectType == LCObjectType.NoList)
-                    {
-                        return treeNodeWorking;
-                    }
-                }
-            }
-            LCTreeNodeNoList lcTreeNodeNoList = new LCTreeNodeNoList
-            {
-                Text = "<Не в списке>",
-                Description = "Компьютеры которые не добавлялись в группу",
-                ContextMenuStrip = LCTreeNode.noListContextMenuStrip,
-                ImageIndex = 2,
-                ToolTipText = "<Не в списке>\nКомпьютеры которые не добавлялись в группу. Сообщение для отладки: Ранее группы не было!"
-            };
-            treeNode.Nodes.Add(lcTreeNodeNoList);
-            return lcTreeNodeNoList;
-        }
+        
         #endregion
 
         #region Запоминание открытых вкладок
@@ -889,12 +812,12 @@ namespace LC
                 string[] str = Properties.Settings.Default.OpenNets.Split(';');
                 foreach (string st in str)
                 {
-                    this.FindNet(this.treeViewObject.Nodes[0], st);
+                    this.openLCTreeNode(this.lCDirectory.FindNet(st));
                 }
                 str = Properties.Settings.Default.OpenGroups.Split(';');
                 foreach (string st in str)
                 {
-                    this.FindGroup(this.treeViewObject.Nodes[0], st);
+                    this.openLCTreeNode(this.lCDirectory.FindGroup(st));
                 }
                 str = Properties.Settings.Default.OpenHosts.Split(';');
                 foreach (string st in str)
@@ -1045,6 +968,7 @@ namespace LC
                 Clipboard.SetText(ip);
             }
         }
+
         private void toolStripMenuItemGetHostName_Click(object sender, EventArgs e)
         {
             string n = this.listViewHosts.SelectedItems[0].SubItems[2].Text;
@@ -1052,11 +976,13 @@ namespace LC
             n = n.Substring(0, n.IndexOf('.'));
             Clipboard.SetText(n);
         }
+
         private void toolStripMenuItemGetHostFullName_Click(object sender, EventArgs e)
         {
             string n = this.listViewHosts.SelectedItems[0].SubItems[2].Text;
             Clipboard.SetText(n);
         }
+
         #endregion
         private void listViewSubnets_DoubleClick(object sender, EventArgs e)
         {

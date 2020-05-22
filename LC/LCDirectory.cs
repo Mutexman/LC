@@ -278,6 +278,111 @@ namespace LC
         #endregion
 
         /// <summary>
+        /// Чего то я давно не занимался программированием и порядком подзатупел
+        /// Не могу пока придумать как обойтись без этой переменной при рекурсивном поиске
+        /// </summary>
+        private LCTreeNodeSubnet findlcSubNet;
+        /// <summary>
+        /// Поиск сети по имени
+        /// </summary>
+        /// <param name="nameNet">Имя сети</param>
+        public LCTreeNodeSubnet FindNet(string nameNet)
+        {
+            this.findlcSubNet = null;
+            rFindNet(LCDirectory.treeView.Nodes[0], nameNet);
+            return findlcSubNet;
+        }
+        private void rFindNet(TreeNode treeNode,string nameNet)
+        {
+            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
+            if (lcTreeNodeWork.LCObjectType == LCObjectType.SubNet)
+            {
+                // Этот узел сеть, приводим объект к нужному классу
+                LCTreeNodeSubnet lcSubNet = (LCTreeNodeSubnet)lcTreeNodeWork;
+                // Проверяем по имени
+                if (lcSubNet.Text == nameNet)
+                {
+                    this.findlcSubNet = lcSubNet;
+                    this.WriteListBox("Найдена сеть с именем: " + lcSubNet.Text + ".");
+                    return;
+                }
+            }
+            // рекурсивный перебор всех дочерних узлов
+            foreach (TreeNode treeNodeWorking in treeNode.Nodes)
+            {
+                rFindNet(treeNodeWorking, nameNet);
+            }
+        }
+
+        /// <summary>
+        /// Чего то я давно не занимался программированием и порядком подзатупел
+        /// Не могу пока придумать как обойтись без этой переменной при рекурсивном поиске
+        /// </summary>
+        private LCTreeNodeGroup findlcGroup;
+        /// <summary>
+        /// Поиск группы по имени
+        /// </summary>
+        /// <param name="nameGroup">Имя сети</param>
+        public LCTreeNodeGroup FindGroup(string nameGroup)
+        {
+            this.findlcGroup = null;
+            rFindGroup(LCDirectory.treeView.Nodes[0], nameGroup);
+            return findlcGroup;
+        }
+        private void rFindGroup(TreeNode treeNode, string nameGroup)
+        {
+            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
+            if (lcTreeNodeWork.LCObjectType == LCObjectType.Group)
+            {
+                // Этот узел группа, приводим объект к нужному классу
+                LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNodeWork;
+                // Проверяем по имени
+                if (lcGroup.Text == nameGroup)
+                {
+                    this.findlcGroup = lcGroup;
+                    this.WriteListBox("Найдена группа с именем: " + lcGroup.Text + ".");
+                    return;
+                }
+            }
+            // рекурсивный перебор всех дочерних узлов
+            foreach (TreeNode treeNodeWorking in treeNode.Nodes)
+            {
+                rFindGroup(treeNodeWorking, nameGroup);
+            }
+        }
+
+        /// <summary>
+        /// Возвращает узел дерева "не в списке", а если его не существует, то создает новый. 
+        /// </summary>
+        /// <returns>Возвращает узел дерева "не в списке".</returns>
+        public TreeNode ReturnGroupNoList()
+        {
+            //TreeNode treeNode = this.treeViewObject.Nodes[0];
+            TreeNode treeNode = LCDirectory.treeView.Nodes[0];
+            if (treeNode != null)
+            {
+                // рекурсивный перебор всех дочерних узлов
+                foreach (TreeNode treeNodeWorking in treeNode.Nodes)
+                {
+                    if (((LCTreeNode)treeNodeWorking).LCObjectType == LCObjectType.NoList)
+                    {
+                        return treeNodeWorking;
+                    }
+                }
+            }
+            LCTreeNodeNoList lcTreeNodeNoList = new LCTreeNodeNoList
+            {
+                Text = "<Не в списке>",
+                Description = "Компьютеры которые не добавлялись в группу",
+                ContextMenuStrip = LCTreeNode.noListContextMenuStrip,
+                ImageIndex = 2,
+                ToolTipText = "<Не в списке>\nКомпьютеры которые не добавлялись в группу. Сообщение для отладки: Ранее группы не было!"
+            };
+            treeNode.Nodes.Add(lcTreeNodeNoList);
+            return lcTreeNodeNoList;
+        }
+
+        /// <summary>
         /// Вывод сообщения в нижний ListBox компонент
         /// </summary>
         /// <param name="message">Текст сообщений</param>
