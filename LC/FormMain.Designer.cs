@@ -365,6 +365,7 @@
             // 
             // toolStripTextBoxIP
             // 
+            this.toolStripTextBoxIP.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxIP.Name = "toolStripTextBoxIP";
             this.toolStripTextBoxIP.Size = new System.Drawing.Size(100, 32);
             this.toolStripTextBoxIP.ToolTipText = "Введите IP адрес для поиска.";
@@ -765,6 +766,7 @@
             this.listViewSubnets.UseCompatibleStateImageBehavior = false;
             this.listViewSubnets.View = System.Windows.Forms.View.Details;
             this.listViewSubnets.DoubleClick += new System.EventHandler(this.listViewSubnets_DoubleClick);
+            this.listViewSubnets.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listViewSubnets_KeyDown);
             // 
             // columnHeaderNameSubnet
             // 
@@ -818,6 +820,7 @@
             this.listViewGroups.UseCompatibleStateImageBehavior = false;
             this.listViewGroups.View = System.Windows.Forms.View.Details;
             this.listViewGroups.DoubleClick += new System.EventHandler(this.listViewGroups_DoubleClick);
+            this.listViewGroups.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listViewGroups_KeyDown);
             // 
             // columnHeaderNameGroup
             // 

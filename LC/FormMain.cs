@@ -10,6 +10,7 @@ using System.Xml;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Net;
+using System.Runtime.CompilerServices;
 
 namespace LC
 {
@@ -182,8 +183,10 @@ namespace LC
         private void toolStripButtonFind_Click(object sender, EventArgs e)
         {
             // здесь надо провести проверку корректности введенного значения IP-адреса
-            if (this.CorrectIP())
+            string st = this.toolStripTextBoxIP.Text;
+            if (this.lCDirectory.CorrectIP(ref st))
             {
+                this.toolStripTextBoxIP.Text = st;
                 this.WriteListBox("Поиск компьютера с IP " + this.toolStripTextBoxIP.Text + " запущен.");
                 // проверяем на всякий пожарный, не пустое ли дерево справочника
                 if (this.treeViewObject.Nodes.Count > 0)
@@ -766,6 +769,7 @@ namespace LC
         #endregion
 
         #region Прочие методы
+        
         /// <summary>
         /// Вывод сообщения в нижний ListBox компонент
         /// </summary>
@@ -776,29 +780,6 @@ namespace LC
             this.listBoxOperation.SelectedIndex = this.listBoxOperation.Items.Count - 1;
             this.toolStripStatusLabelMain.Text = message;
         }
-        /// <summary>
-        /// Проверка с помощью регулярно выражения действительно ли это ip адрес
-        /// </summary>
-        /// <param name="ip"></param>
-        /// <returns></returns>
-        private bool CorrectIP()
-        {
-            string str = this.toolStripTextBoxIP.Text;
-            str = str.Replace('-', '.');
-            string pattern = @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
-                      @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
-                      @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
-                      @"(25[0-5]|2[0-4]\d|[01]?\d\d?)";
-            Regex regex = new Regex(pattern);
-            Match match = regex.Match(str);
-            if (match.Success)
-            {
-                this.toolStripTextBoxIP.Text = match.Value;
-                return true;
-            }
-            return false;
-        }
-        
         #endregion
 
         #region Запоминание открытых вкладок
@@ -984,6 +965,8 @@ namespace LC
         }
 
         #endregion
+
+        #region Действия приложения. Список сетей.
         private void listViewSubnets_DoubleClick(object sender, EventArgs e)
         {
             if (this.listViewSubnets.SelectedItems.Count > 0)
@@ -994,6 +977,19 @@ namespace LC
             }
         }
 
+        private void listViewSubnets_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (this.listViewSubnets.SelectedItems.Count > 0)
+                {
+                    this.listViewSubnets.SelectedItems[0].Remove();
+                }
+            }
+        }
+        #endregion
+
+        #region Действия приложения. Список групп.
         private void listViewGroups_DoubleClick(object sender, EventArgs e)
         {
             if(this.listViewGroups.SelectedItems.Count > 0)
@@ -1003,5 +999,17 @@ namespace LC
                 formEditGroup.ShowDialog();
             }
         }
+
+        private void listViewGroups_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Delete)
+            {
+                if(this.listViewGroups.SelectedItems.Count >0)
+                {
+                    this.listViewGroups.SelectedItems[0].Remove();
+                }
+            }
+        }
+        #endregion
     }
 }

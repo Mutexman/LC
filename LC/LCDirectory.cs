@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace LC
 {
@@ -277,6 +278,7 @@ namespace LC
         }
         #endregion
 
+        #region Поиск данных в справочнике
         /// <summary>
         /// Чего то я давно не занимался программированием и порядком подзатупел
         /// Не могу пока придумать как обойтись без этой переменной при рекурсивном поиске
@@ -350,6 +352,7 @@ namespace LC
                 rFindGroup(treeNodeWorking, nameGroup);
             }
         }
+        #endregion
 
         /// <summary>
         /// Возвращает узел дерева "не в списке", а если его не существует, то создает новый. 
@@ -380,6 +383,31 @@ namespace LC
             };
             treeNode.Nodes.Add(lcTreeNodeNoList);
             return lcTreeNodeNoList;
+        }
+
+        /// <summary>
+        /// Проверка с помощью регулярно выражения действительно ли это ip адрес
+        /// </summary>
+        /// <param name="ipStr">Строка с ip-адресом, которую нужно проверить.</param>
+        /// <returns>Возвращает истину если введённая строка верна.</returns>
+        public bool CorrectIP(ref string ipStr)
+        {
+            //string str = this.toolStripTextBoxIP.Text;
+            string str = ipStr;
+            str = str.Replace('-', '.');
+            string pattern = @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
+                      @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
+                      @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
+                      @"(25[0-5]|2[0-4]\d|[01]?\d\d?)";
+            Regex regex = new Regex(pattern);
+            Match match = regex.Match(str);
+            if (match.Success)
+            {
+                //this.toolStripTextBoxIP.Text = match.Value;
+                ipStr = match.Value;
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
