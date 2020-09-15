@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows.Forms.VisualStyles;
 
 namespace LC
 {
@@ -354,6 +355,13 @@ namespace LC
         }
         #endregion
 
+        #region Экспорт данных из справочника
+        public void ExportNetsToJSON (string fileExport)
+        {
+
+        }
+        #endregion
+
         /// <summary>
         /// Возвращает узел дерева "не в списке", а если его не существует, то создает новый. 
         /// </summary>
@@ -420,5 +428,6 @@ namespace LC
             listBox.SelectedIndex = listBox.Items.Count - 1;
             toolStripStatusLabel.Text = message;
         }
+
     }
 }

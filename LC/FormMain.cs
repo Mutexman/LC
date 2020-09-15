@@ -310,6 +310,9 @@ namespace LC
         {
             this.listViewHosts.Items.Clear();
         }
+        private void toolStripMenuItemExportNetsToJSON_Click(object sender, EventArgs e)
+        {
+        }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();

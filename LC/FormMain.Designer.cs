@@ -143,6 +143,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemDeleteNoList = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripLCMFU = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemExportNetsToJSON = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -187,6 +188,7 @@
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemClearPCList,
+            this.toolStripMenuItemExportNetsToJSON,
             this.toolStripSeparator1,
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
@@ -1116,6 +1118,13 @@
             this.contextMenuStripLCMFU.Name = "contextMenuStripLCMFU";
             this.contextMenuStripLCMFU.Size = new System.Drawing.Size(61, 4);
             // 
+            // toolStripMenuItemExportNetsToJSON
+            // 
+            this.toolStripMenuItemExportNetsToJSON.Name = "toolStripMenuItemExportNetsToJSON";
+            this.toolStripMenuItemExportNetsToJSON.Size = new System.Drawing.Size(187, 22);
+            this.toolStripMenuItemExportNetsToJSON.Text = "Экспорт сетей";
+            this.toolStripMenuItemExportNetsToJSON.Click += new System.EventHandler(this.toolStripMenuItemExportNetsToJSON_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1287,6 +1296,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripButton toolStripButtonGetNameMFU;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExportNetsToJSON;
     }
 }
 
