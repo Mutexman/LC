@@ -20,6 +20,7 @@ namespace LC
         public static TreeView treeView = null;
         public static ListBox listBox = null;
         public static ToolStripStatusLabel toolStripStatusLabel = null;
+        private StreamWriter sw = null;
 
         private string fileData;
         #region Загрузка справочника 
@@ -358,7 +359,27 @@ namespace LC
         #region Экспорт данных из справочника
         public void ExportNetsToJSON (string fileExport)
         {
-
+            this.sw = new StreamWriter("D:\\" + fileExport, true, System.Text.Encoding.UTF8);
+            sw.WriteLine("var nets = [");
+            this.FindSubnets(treeView.Nodes[0]);
+            sw.Write("];");
+            sw.Close();
+        }
+        private void FindSubnets(TreeNode treeNode)
+        {
+            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
+            if (lcTreeNodeWork.LCObjectType == LCObjectType.SubNet)
+            {
+                // Этот узел сеть, приводим объект к нужному классу
+                LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNodeWork;
+                string str = "{name:'" + lcSubnet.Text + "', ip:'" + lcSubnet.IPSubnet + "',mask:'" + lcSubnet.MaskSubnet + "'},";
+                sw.WriteLine(str);
+            }
+            // рекурсивный перебор всех дочерних узлов
+            foreach (TreeNode treeNodeWorking in treeNode.Nodes)
+            {
+                this.FindSubnets(treeNodeWorking);
+            }
         }
         #endregion
 

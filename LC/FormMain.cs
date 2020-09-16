@@ -312,6 +312,7 @@ namespace LC
         }
         private void toolStripMenuItemExportNetsToJSON_Click(object sender, EventArgs e)
         {
+            this.lCDirectory.ExportNetsToJSON("nets.js");
         }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
