@@ -359,7 +359,7 @@ namespace LC
         #region Экспорт данных из справочника
         public void ExportNetsToJSON (string fileExport)
         {
-            this.sw = new StreamWriter("D:\\" + fileExport, true, System.Text.Encoding.UTF8);
+            this.sw = new StreamWriter(fileExport, true, System.Text.Encoding.UTF8);
             sw.WriteLine("var nets = [");
             this.FindSubnets(treeView.Nodes[0]);
             sw.Write("];");
@@ -372,7 +372,7 @@ namespace LC
             {
                 // Этот узел сеть, приводим объект к нужному классу
                 LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNodeWork;
-                string str = "{name:'" + lcSubnet.Text + "', ip:'" + lcSubnet.IPSubnet + "',mask:'" + lcSubnet.MaskSubnet + "'},";
+                string str = "{name:'" + lcSubnet.Text + "', gateway:'" + lcSubnet.IPSubnet + "',mask:'" + lcSubnet.MaskSubnet + "'},";
                 sw.WriteLine(str);
             }
             // рекурсивный перебор всех дочерних узлов
