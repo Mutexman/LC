@@ -449,6 +449,5 @@ namespace LC
             listBox.SelectedIndex = listBox.Items.Count - 1;
             toolStripStatusLabel.Text = message;
         }
-
     }
 }
