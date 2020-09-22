@@ -21,6 +21,7 @@ namespace LC
         public static ListBox listBox = null;
         public static ToolStripStatusLabel toolStripStatusLabel = null;
         private StreamWriter sw = null;
+        private bool firstNet;
 
         private string fileData;
         #region Загрузка справочника 
@@ -357,11 +358,17 @@ namespace LC
         #endregion
 
         #region Экспорт данных из справочника
+        /// <summary>
+        /// Метод экспортирует все сети в JSON файл JS
+        /// </summary>
+        /// <param name="fileExport">Имя файла в которы осуществляется экспорт</param>
         public void ExportNetsToJSON (string fileExport)
         {
-            this.sw = new StreamWriter(fileExport, true, System.Text.Encoding.UTF8);
+            this.sw = new StreamWriter(fileExport, false, System.Text.Encoding.UTF8);
             sw.WriteLine("var nets = [");
+            this.firstNet = false;
             this.FindSubnets(treeView.Nodes[0]);
+            sw.WriteLine();
             sw.Write("];");
             sw.Close();
         }
@@ -372,8 +379,16 @@ namespace LC
             {
                 // Этот узел сеть, приводим объект к нужному классу
                 LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNodeWork;
-                string str = "{name:'" + lcSubnet.Text + "', gateway:'" + lcSubnet.IPSubnet + "',mask:'" + lcSubnet.MaskSubnet + "'},";
-                sw.WriteLine(str);
+                if (this.firstNet)
+                {
+                    sw.WriteLine(",");
+                }
+                else
+                {
+                    this.firstNet = true;
+                }
+                string str = "\t{name:'" + lcSubnet.Text + "', gateway:'" + lcSubnet.IPSubnet + "',mask:'" + lcSubnet.MaskSubnet + "'}";
+                sw.Write(str);
             }
             // рекурсивный перебор всех дочерних узлов
             foreach (TreeNode treeNodeWorking in treeNode.Nodes)
