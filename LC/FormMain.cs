@@ -317,25 +317,8 @@ namespace LC
             if(this.saveFileDialogExport.ShowDialog() == DialogResult.OK)
             {
                 this.lCDirectory.ExportNetsToJSON(this.saveFileDialogExport.FileName);
+                this.WriteListBox("Экспорт сетей в файл " + this.saveFileDialogExport.FileName + " выполнен.");
             }
-            
-            /*
-            Stream myStream ;
-             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
- 
-             saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
-             saveFileDialog1.FilterIndex = 2 ;
-             saveFileDialog1.RestoreDirectory = true ;
- 
-             if(saveFileDialog1.ShowDialog() == DialogResult.OK)
-             {
-                 if((myStream = saveFileDialog1.OpenFile()) != null)
-                 {
-                     // Code to write the stream goes here.
-                     myStream.Close();
-                 }
-             }
-             */
         }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -436,8 +419,15 @@ namespace LC
         {
             // открываем в браузере ссылку по которой находиться справка по работе с программой
             // System.Diagnostics.Process.Start(Properties.Settings.Default.HelpLink);
-            System.Diagnostics.Process.Start(Application.StartupPath + "\\LCHelp.chm");
-
+            string st = Application.StartupPath + "\\LCHelp.chm";
+            if (File.Exists(st))
+            {
+                System.Diagnostics.Process.Start(st);
+            }
+            else
+            {
+                MessageBox.Show("Файл " + st + " не найден!");
+            }
         }
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
