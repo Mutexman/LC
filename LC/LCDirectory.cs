@@ -3,7 +3,9 @@ using System.Xml.Linq;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 using System.Windows.Forms.VisualStyles;
+using System.Collections;
 
 namespace LC
 {
@@ -20,8 +22,6 @@ namespace LC
         public static TreeView treeView = null;
         public static ListBox listBox = null;
         public static ToolStripStatusLabel toolStripStatusLabel = null;
-        private StreamWriter sw = null;
-        private bool firstNet;
 
         private string fileData;
         #region Загрузка справочника 
@@ -191,7 +191,7 @@ namespace LC
                         break;
                 }
                 foreach (XElement element in xnod.Elements())
-                { 
+                {
                     AddChildrenDOMXML(element, newNode);
                 }
             }
@@ -251,11 +251,11 @@ namespace LC
             //рекурсивный перебор всех дочерних узлов
             if (item.Nodes.Count > 0)
             {
-                xnodWorking = (LCTreeNode) item.FirstNode;
+                xnodWorking = (LCTreeNode)item.FirstNode;
                 while (xnodWorking != null)
                 {
                     current.Add(SaveChildren(xnodWorking, current));
-                    xnodWorking = (LCTreeNode) xnodWorking.NextNode;
+                    xnodWorking = (LCTreeNode)xnodWorking.NextNode;
                 }
             }
             return current;
@@ -283,77 +283,67 @@ namespace LC
 
         #region Поиск данных в справочнике
         /// <summary>
-        /// Чего то я давно не занимался программированием и порядком подзатупел
-        /// Не могу пока придумать как обойтись без этой переменной при рекурсивном поиске
-        /// </summary>
-        private LCTreeNodeSubnet findlcSubNet;
-        /// <summary>
         /// Поиск сети по имени
         /// </summary>
         /// <param name="nameNet">Имя сети</param>
+        /// <returns>Возвращает найденую сеть.</returns>
         public LCTreeNodeSubnet FindNet(string nameNet)
         {
-            this.findlcSubNet = null;
-            rFindNet(LCDirectory.treeView.Nodes[0], nameNet);
-            return findlcSubNet;
-        }
-        private void rFindNet(TreeNode treeNode,string nameNet)
-        {
-            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
-            if (lcTreeNodeWork.LCObjectType == LCObjectType.SubNet)
+            foreach (LCTreeNode node in AllLCTreeNode(treeView.Nodes))
             {
-                // Этот узел сеть, приводим объект к нужному классу
-                LCTreeNodeSubnet lcSubNet = (LCTreeNodeSubnet)lcTreeNodeWork;
-                // Проверяем по имени
-                if (lcSubNet.Text == nameNet)
+                if(node.LCObjectType == LCObjectType.SubNet)
                 {
-                    this.findlcSubNet = lcSubNet;
-                    this.WriteListBox("Найдена сеть с именем: " + lcSubNet.Text + ".");
-                    return;
+                    LCTreeNodeSubnet lcSubNet = (LCTreeNodeSubnet)node;
+                    if(lcSubNet.Text == nameNet)
+                    {
+                        this.WriteListBox("Найдена сеть с именем: " + lcSubNet.Text + ".");
+                        return lcSubNet;
+                    }
                 }
             }
-            // рекурсивный перебор всех дочерних узлов
-            foreach (TreeNode treeNodeWorking in treeNode.Nodes)
-            {
-                rFindNet(treeNodeWorking, nameNet);
-            }
+            return null;
         }
-
-        /// <summary>
-        /// Чего то я давно не занимался программированием и порядком подзатупел
-        /// Не могу пока придумать как обойтись без этой переменной при рекурсивном поиске
-        /// </summary>
-        private LCTreeNodeGroup findlcGroup;
         /// <summary>
         /// Поиск группы по имени
         /// </summary>
         /// <param name="nameGroup">Имя сети</param>
+        /// <returns>Возвращает найденую группу</returns>
         public LCTreeNodeGroup FindGroup(string nameGroup)
         {
-            this.findlcGroup = null;
-            rFindGroup(LCDirectory.treeView.Nodes[0], nameGroup);
-            return findlcGroup;
-        }
-        private void rFindGroup(TreeNode treeNode, string nameGroup)
-        {
-            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
-            if (lcTreeNodeWork.LCObjectType == LCObjectType.Group)
+            foreach (LCTreeNode node in AllLCTreeNode(treeView.Nodes))
             {
-                // Этот узел группа, приводим объект к нужному классу
-                LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)lcTreeNodeWork;
-                // Проверяем по имени
-                if (lcGroup.Text == nameGroup)
+                if (node.LCObjectType == LCObjectType.Group)
                 {
-                    this.findlcGroup = lcGroup;
-                    this.WriteListBox("Найдена группа с именем: " + lcGroup.Text + ".");
-                    return;
+                    LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)node;
+                    if (lcGroup.Text == nameGroup)
+                    {
+                        this.WriteListBox("Найдена группа с именем: " + lcGroup.Text + ".");
+                        return lcGroup;
+                    }
                 }
             }
-            // рекурсивный перебор всех дочерних узлов
-            foreach (TreeNode treeNodeWorking in treeNode.Nodes)
+            return null;
+        }
+        /// <summary>
+        /// Поиск хоста по ip адресу
+        /// </summary>
+        /// <param name="ip">IP адрес.</param>
+        /// <returns>Возвращает найденный хост</returns>
+        public LCTreeNodeHost FindHost(string ip)
+        {
+            foreach(LCTreeNode node in AllLCTreeNode(treeView.Nodes))
             {
-                rFindGroup(treeNodeWorking, nameGroup);
+                if(node.LCObjectType == LCObjectType.Host)
+                {
+                    LCTreeNodeHost lcHost = (LCTreeNodeHost)node;
+                    if(lcHost.IP == ip)
+                    {
+                        this.WriteListBox("Найдена хост с ip : " + lcHost.IP + ".");
+                        return lcHost;
+                    }
+                }
             }
+            return null;
         }
         #endregion
 
@@ -362,39 +352,31 @@ namespace LC
         /// Метод экспортирует все сети в JSON файл JS
         /// </summary>
         /// <param name="fileExport">Имя файла в которы осуществляется экспорт</param>
-        public void ExportNetsToJSON (string fileExport)
+        public void ExportNetsToJSON(string fileExport)
         {
-            this.sw = new StreamWriter(fileExport, false, System.Text.Encoding.UTF8);
+            StreamWriter sw = new StreamWriter(fileExport, false, System.Text.Encoding.UTF8);
             sw.WriteLine("var nets = [");
-            this.firstNet = false;
-            this.FindSubnets(treeView.Nodes[0]);
+            bool firstNet = false;
+            foreach(LCTreeNode node in AllLCTreeNode(treeView.Nodes))
+            {
+                if(node.LCObjectType == LCObjectType.SubNet)
+                {
+                    LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)node;
+                    if(firstNet)
+                    {
+                        sw.WriteLine(",");
+                    }
+                    else
+                    {
+                        firstNet = true;
+                    }
+                    string str = "\t{name:'" + lcSubnet.Text + "', gateway:'" + lcSubnet.IPSubnet + "',mask:'" + lcSubnet.MaskSubnet + "'}";
+                    sw.Write(str);
+                }
+            }
             sw.WriteLine();
             sw.Write("];");
             sw.Close();
-        }
-        private void FindSubnets(TreeNode treeNode)
-        {
-            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
-            if (lcTreeNodeWork.LCObjectType == LCObjectType.SubNet)
-            {
-                // Этот узел сеть, приводим объект к нужному классу
-                LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNodeWork;
-                if (this.firstNet)
-                {
-                    sw.WriteLine(",");
-                }
-                else
-                {
-                    this.firstNet = true;
-                }
-                string str = "\t{name:'" + lcSubnet.Text + "', gateway:'" + lcSubnet.IPSubnet + "',mask:'" + lcSubnet.MaskSubnet + "'}";
-                sw.Write(str);
-            }
-            // рекурсивный перебор всех дочерних узлов
-            foreach (TreeNode treeNodeWorking in treeNode.Nodes)
-            {
-                this.FindSubnets(treeNodeWorking);
-            }
         }
         #endregion
 
@@ -404,11 +386,10 @@ namespace LC
         /// <returns>Возвращает узел дерева "не в списке".</returns>
         public TreeNode ReturnGroupNoList()
         {
-            //TreeNode treeNode = this.treeViewObject.Nodes[0];
             TreeNode treeNode = LCDirectory.treeView.Nodes[0];
             if (treeNode != null)
             {
-                // рекурсивный перебор всех дочерних узлов
+                //перебор всех дочерних узлов
                 foreach (TreeNode treeNodeWorking in treeNode.Nodes)
                 {
                     if (((LCTreeNode)treeNodeWorking).LCObjectType == LCObjectType.NoList)
@@ -463,6 +444,22 @@ namespace LC
             listBox.Items.Add("[" + DateTime.Now.ToString() + "] " + message);
             listBox.SelectedIndex = listBox.Items.Count - 1;
             toolStripStatusLabel.Text = message;
+        }
+        /// <summary>
+        /// Итератор для перебора всех узлов LCDirectory
+        /// </summary>
+        /// <param name="nodes">Узел с которого начинается перебор.</param>
+        /// <returns>Возвращает итератор.</returns>
+        public IEnumerable<TreeNode> AllLCTreeNode(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode c1 in nodes)
+            {
+                yield return c1;
+                foreach (TreeNode c2 in AllLCTreeNode(c1.Nodes))
+                {
+                    yield return c2;
+                }
+            }
         }
     }
 }

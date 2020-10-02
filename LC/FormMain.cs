@@ -182,43 +182,61 @@ namespace LC
         #region Главная панель инструментов
         private void toolStripButtonFind_Click(object sender, EventArgs e)
         {
+            int countFind = 0;
             // здесь надо провести проверку корректности введенного значения IP-адреса
             string st = this.toolStripTextBoxIP.Text;
             if (this.lCDirectory.CorrectIP(ref st))
             {
                 this.toolStripTextBoxIP.Text = st;
                 this.WriteListBox("Поиск компьютера с IP " + this.toolStripTextBoxIP.Text + " запущен.");
-                // проверяем на всякий пожарный, не пустое ли дерево справочника
-                if (this.treeViewObject.Nodes.Count > 0)
+                foreach(LCTreeNode node in this.lCDirectory.AllLCTreeNode(LCDirectory.treeView.Nodes))
                 {
-                    countFind = 0;
-                    this.FindHost_IP(this.treeViewObject.Nodes[0], this.toolStripTextBoxIP.Text,true);
-                }
-                else
-                {
-                    return;
+                    if(node.LCObjectType == LCObjectType.Host)
+                    {
+                        // Этот узел компьютер, приводим объект к нужному классу
+                        LCTreeNodeHost lcHost = (LCTreeNodeHost)node;
+                        // Проверяем по IP-адресу
+                        if(lcHost.IP == st)
+                        {
+                            LCDirectory.treeView.SelectedNode = lcHost;
+                            this.openLCTreeNode(lcHost);
+                            countFind++;
+                            this.WriteListBox("Найден хост с именем: " + lcHost.Text + ".");
+                        }
+                    }
                 }
                 this.WriteListBox("Поиск завершён. Найдено : " + countFind.ToString());
                 // Ищем принадлежность ПК к какой либо сети
                 if (countFind == 0)
                 {
-                    this.findSubnet = null;
-                    this.FindSubnet_IP(this.treeViewObject.Nodes[0], this.toolStripTextBoxIP.Text);
-                    if (this.findSubnet != null)
+                    //this.findSubnet = null;
+                    LCTreeNodeSubnet findSubnet = null;
+                    foreach(LCTreeNode node in this.lCDirectory.AllLCTreeNode(LCDirectory.treeView.Nodes))
                     {
-                        LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet) this.findSubnet;
-                        lcSubnet.AddHost(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
-                        // и сразу же выделяем этот объект
-                        countFind = 0;
-                        this.FindHost_IP(this.findSubnet, this.toolStripTextBoxIP.Text, true);
+                        if(node.LCObjectType == LCObjectType.SubNet)
+                        {
+                            // Этот узел сеть, приводим объект к нужному классу
+                            LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)node;
+                            // Проверяем принадлежит ли IP адрес сети
+                            if (lcSubnet.CompareIPtoSubnet(st))
+                            {
+                                findSubnet = lcSubnet;
+                                this.WriteListBox("IP адрес " + st + " принадлежит сети " + lcSubnet.Text);
+                                break;
+                            }
+                        }
+                    }
+                    if (findSubnet != null)
+                    {
+                        LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet) findSubnet;
+                        //добавляем хост и сразу же выделяем этот объект
+                        this.openLCTreeNode(lcSubnet.AddHost(st, st, ""));
                     }
                     else
                     {
-                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList) this.lCDirectory.ReturnGroupNoList();
-                        lcNoList.AddHost(this.toolStripTextBoxIP.Text, this.toolStripTextBoxIP.Text, "");
-                        // и сразу же выделяем этот объект
-                        countFind = 0;
-                        this.FindHost_IP(this.lCDirectory.ReturnGroupNoList(), this.toolStripTextBoxIP.Text,true);
+                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList)this.lCDirectory.ReturnGroupNoList();
+                        //добавляем хост и сразу же выделяем этот объект
+                        this.openLCTreeNode(lcNoList.AddHost(st, st, ""));
                     }
                 }
             }
@@ -820,7 +838,7 @@ namespace LC
                 str = Properties.Settings.Default.OpenHosts.Split(';');
                 foreach (string st in str)
                 {
-                    this.FindHost_IP(this.treeViewObject.Nodes[0], st, true);
+                    this.openLCTreeNode(this.lCDirectory.FindHost(st));
                 }
             }
         }

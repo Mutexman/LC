@@ -134,7 +134,6 @@
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="LCDirectory.cs" />
-    <Compile Include="LCEnumerator.cs" />
     <Compile Include="LCTreeNode.cs" />
     <Compile Include="LCTreeNodeHost.cs" />
     <Compile Include="LCTreeNodeGroup.cs" />
