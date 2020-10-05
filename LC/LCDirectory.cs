@@ -282,22 +282,23 @@ namespace LC
         #endregion
 
         #region Поиск данных в справочнике
+
         /// <summary>
-        /// Поиск сети по имени
+        /// Поиск хоста по ip адресу
         /// </summary>
-        /// <param name="nameNet">Имя сети</param>
-        /// <returns>Возвращает найденую сеть.</returns>
-        public LCTreeNodeSubnet FindNet(string nameNet)
+        /// <param name="ip">IP адрес.</param>
+        /// <returns>Возвращает найденный хост</returns>
+        public LCTreeNodeHost FindHost(string ip)
         {
             foreach (LCTreeNode node in AllLCTreeNode(treeView.Nodes))
             {
-                if(node.LCObjectType == LCObjectType.SubNet)
+                if (node.LCObjectType == LCObjectType.Host)
                 {
-                    LCTreeNodeSubnet lcSubNet = (LCTreeNodeSubnet)node;
-                    if(lcSubNet.Text == nameNet)
+                    LCTreeNodeHost lcHost = (LCTreeNodeHost)node;
+                    if (lcHost.IP == ip)
                     {
-                        this.WriteListBox("Найдена сеть с именем: " + lcSubNet.Text + ".");
-                        return lcSubNet;
+                        this.WriteListBox("Найдена хост с ip : " + lcHost.IP + ".");
+                        return lcHost;
                     }
                 }
             }
@@ -325,21 +326,43 @@ namespace LC
             return null;
         }
         /// <summary>
-        /// Поиск хоста по ip адресу
+        /// Поиск сети по ip адресу.
         /// </summary>
-        /// <param name="ip">IP адрес.</param>
-        /// <returns>Возвращает найденный хост</returns>
-        public LCTreeNodeHost FindHost(string ip)
+        /// <param name="ip">ip адрес.</param>
+        /// <returns>Возвращает сеть.</returns>
+        public LCTreeNodeSubnet FindSubnetIP(string ip)
         {
-            foreach(LCTreeNode node in AllLCTreeNode(treeView.Nodes))
+            foreach (LCTreeNode node in AllLCTreeNode(treeView.Nodes))
             {
-                if(node.LCObjectType == LCObjectType.Host)
+                if (node.LCObjectType == LCObjectType.SubNet)
                 {
-                    LCTreeNodeHost lcHost = (LCTreeNodeHost)node;
-                    if(lcHost.IP == ip)
+                    // Этот узел сеть, приводим объект к нужному классу
+                    LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)node;
+                    if (lcSubnet.CompareIPtoSubnet(ip))
                     {
-                        this.WriteListBox("Найдена хост с ip : " + lcHost.IP + ".");
-                        return lcHost;
+                        this.WriteListBox("IP адрес " + ip + " принадлежит сети " + lcSubnet.Text);
+                        return lcSubnet;
+                    }
+                }
+            }
+            return null;
+        }
+        /// <summary>
+        /// Поиск сети по имени
+        /// </summary>
+        /// <param name="nameNet">Имя сети</param>
+        /// <returns>Возвращает найденую сеть.</returns>
+        public LCTreeNodeSubnet FindSubnet(string nameNet)
+        {
+            foreach (LCTreeNode node in AllLCTreeNode(treeView.Nodes))
+            {
+                if (node.LCObjectType == LCObjectType.SubNet)
+                {
+                    LCTreeNodeSubnet lcSubNet = (LCTreeNodeSubnet)node;
+                    if (lcSubNet.Text == nameNet)
+                    {
+                        this.WriteListBox("Найдена сеть с именем: " + lcSubNet.Text + ".");
+                        return lcSubNet;
                     }
                 }
             }
@@ -384,7 +407,7 @@ namespace LC
         /// Возвращает узел дерева "не в списке", а если его не существует, то создает новый. 
         /// </summary>
         /// <returns>Возвращает узел дерева "не в списке".</returns>
-        public TreeNode ReturnGroupNoList()
+        public LCTreeNodeNoList ReturnGroupNoList()
         {
             TreeNode treeNode = LCDirectory.treeView.Nodes[0];
             if (treeNode != null)
@@ -394,7 +417,7 @@ namespace LC
                 {
                     if (((LCTreeNode)treeNodeWorking).LCObjectType == LCObjectType.NoList)
                     {
-                        return treeNodeWorking;
+                        return (LCTreeNodeNoList) treeNodeWorking;
                     }
                 }
             }

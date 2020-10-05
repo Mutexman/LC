@@ -11,13 +11,13 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Net;
 using System.Runtime.CompilerServices;
+using LC.Properties;
 
 namespace LC
 {
     public partial class FormMain : Form
     {
         // ссылка на найденную подсеть
-        private TreeNode findSubnet= null;
         public static string User = "";
         public static string Password = "";
         /// <summary>
@@ -33,7 +33,6 @@ namespace LC
         private string fileConfigSPD = Application.LocalUserAppDataPath + "\\configSPD.xml";
         private BufferLCTreeNode buffer = new BufferLCTreeNode();
         // Поле для сохранения найденых компьютеров
-        private static int countFind = 0;
         private LCDirectory lCDirectory = null;
         public FormMain()
         {
@@ -132,6 +131,9 @@ namespace LC
         {
             // Выводим в заголовок номер версии программы
             this.Text += " " + Application.ProductVersion;
+            // Сохраняем размеры и положение окна
+            this.Size = Settings.Default.WindowSize;
+            this.Location = Settings.Default.WindowLocation;
             // Считываем из настроек данные о пользователе
             FormMain.User = Properties.Settings.Default.User;
             FormMain.Password = Properties.Settings.Default.Password;
@@ -147,7 +149,6 @@ namespace LC
             CommandToolStripButton.StatusLabel = this.toolStripStatusLabelMain;
             CommandToolStripButton.listBoxMessage = this.listBoxOperation;
             CommandToolStripButton.tabControl = this.tabControlObject;
-            FormEditHost.treeView = this.treeViewObject;
             LCDirectory.treeView = this.treeViewObject;
             LCDirectory.listBox = this.listBoxOperation;
             LCDirectory.toolStripStatusLabel = this.toolStripStatusLabelMain;
@@ -176,10 +177,27 @@ namespace LC
             {
                 e.Cancel = true;
             }
+            else
+            {
+                Settings.Default.WindowLocation = this.Location;
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    Settings.Default.WindowSize = this.Size;
+                }
+                else
+                {
+                    Settings.Default.WindowSize = this.RestoreBounds.Size;
+                }
+                Settings.Default.Save();
+            }
         }
         #endregion
 
         #region Главная панель инструментов
+        private void toolStripButtonPasteClipboard_Click(object sender, EventArgs e)
+        {
+            this.toolStripTextBoxIP.Text = Clipboard.GetText(TextDataFormat.Text);
+        }
         private void toolStripButtonFind_Click(object sender, EventArgs e)
         {
             int countFind = 0;
@@ -251,74 +269,6 @@ namespace LC
             {
                 this.toolStripButtonFind_Click(sender, e);
             }
-        }
-
-        /// <summary>
-        /// Поиск хостов по IP
-        /// </summary>
-        /// <param name="treeNode">Узел дерева с которого начинаем искать.</param>
-        /// <param name="ip">ip-адрес.</param>
-        /// <param name="openhost">Открывать хост в listview или нет.</param>
-        private void FindHost_IP(TreeNode treeNode, string ip, bool openhost)
-        {
-            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
-            if (lcTreeNodeWork.LCObjectType == LCObjectType.Host)
-            {
-                // Этот узел компьютер, приводим объект к нужному классу
-                LCTreeNodeHost lcHost = (LCTreeNodeHost)lcTreeNodeWork;
-                // Проверяем по IP-адресу
-                if (lcHost.IP == ip)
-                {
-                    // Делаем активным компьютер в дереве справочника
-                    this.treeViewObject.SelectedNode = lcHost;
-
-                    if (openhost)
-                    {
-                        this.openLCTreeNode(lcHost);
-                    }
-
-                    countFind++;
-                    this.WriteListBox("Найден хост с именем: " + lcHost.Text + ".");
-                }
-            }
-            else
-            {
-                // рекурсивный перебор всех дочерних узлов
-                foreach (TreeNode treeNodeWorking in treeNode.Nodes)
-                {
-                    this.FindHost_IP(treeNodeWorking, ip, openhost);
-                }
-            }
-        }
-        /// <summary>
-        /// Поиск сети по IP
-        /// </summary>
-        /// <param name="treeNode">Узел дерева с которго начинаем искать</param>
-        /// <param name="ip">ip-адрес</param>
-        private void FindSubnet_IP(TreeNode treeNode, string ip)
-        {
-            LCTreeNode lcTreeNodeWork = (LCTreeNode)treeNode;
-            if (lcTreeNodeWork.LCObjectType == LCObjectType.SubNet)
-            {
-                // Этот узел сеть, приводим объект к нужному классу
-                LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)lcTreeNodeWork;
-                // Проверяем принадлежит ли IP адрес сети
-                if (lcSubnet.CompareIPtoSubnet(ip))
-                {
-                    this.findSubnet = lcTreeNodeWork;
-                    this.WriteListBox("IP адрес " + ip + " принадлежит сети " + lcSubnet.Text);
-                    return;
-                }
-            }
-            // рекурсивный перебор всех дочерних узлов
-            foreach (TreeNode treeNodeWorking in treeNode.Nodes)
-            {
-                this.FindSubnet_IP(treeNodeWorking, ip);
-            }
-        }
-        private void toolStripButtonPasteClipboard_Click(object sender, EventArgs e)
-        {
-            this.toolStripTextBoxIP.Text = Clipboard.GetText(TextDataFormat.Text);
         }
         #endregion
 
@@ -779,41 +729,21 @@ namespace LC
                 foreach (string st in list)
                 {
                     // Ищем принадлежность ПК к какой либо сети
-                    this.findSubnet = null;
-                    this.FindSubnet_IP(this.treeViewObject.Nodes[0], st);
-                    if (this.findSubnet != null)
+                    LCTreeNodeSubnet lcSubnet = this.lCDirectory.FindSubnetIP(st);
+                    if (lcSubnet != null)
                     {
-                        LCTreeNodeSubnet lcSubnet = (LCTreeNodeSubnet)this.findSubnet;
-                        lcSubnet.AddHost(st, st, "");
                         // и сразу же выделяем этот объект
-                        countFind = 0;
-                        this.FindHost_IP(this.findSubnet, st, true);
+                        this.openLCTreeNode(lcSubnet.AddHost(st, st, ""));
                     }
                     else
                     {
-                        LCTreeNodeNoList lcNoList = (LCTreeNodeNoList)this.lCDirectory.ReturnGroupNoList();
-                        lcNoList.AddHost(st, st, "");
+                        LCTreeNodeNoList lcNoList = lCDirectory.ReturnGroupNoList();
                         // и сразу же выделяем этот объект
-                        countFind = 0;
-                        this.FindHost_IP(this.lCDirectory.ReturnGroupNoList(), st, true);
+                        this.openLCTreeNode(lcNoList.AddHost(st, st, ""));
                     }
                 }
                 this.treeViewObject.EndUpdate();
             }
-        }
-        #endregion
-
-        #region Прочие методы
-        
-        /// <summary>
-        /// Вывод сообщения в нижний ListBox компонент
-        /// </summary>
-        /// <param name="message">Текст сообщений</param>
-        public void WriteListBox(string message)
-        {
-            this.listBoxOperation.Items.Add("[" + DateTime.Now.ToString() + "] " + message);
-            this.listBoxOperation.SelectedIndex = this.listBoxOperation.Items.Count - 1;
-            this.toolStripStatusLabelMain.Text = message;
         }
         #endregion
 
@@ -828,7 +758,7 @@ namespace LC
                 string[] str = Properties.Settings.Default.OpenNets.Split(';');
                 foreach (string st in str)
                 {
-                    this.openLCTreeNode(this.lCDirectory.FindNet(st));
+                    this.openLCTreeNode(this.lCDirectory.FindSubnet(st));
                 }
                 str = Properties.Settings.Default.OpenGroups.Split(';');
                 foreach (string st in str)
@@ -1044,6 +974,20 @@ namespace LC
                     this.listViewGroups.SelectedItems[0].Remove();
                 }
             }
+        }
+        #endregion
+
+        #region Прочие методы
+
+        /// <summary>
+        /// Вывод сообщения в нижний ListBox компонент
+        /// </summary>
+        /// <param name="message">Текст сообщений</param>
+        public void WriteListBox(string message)
+        {
+            this.listBoxOperation.Items.Add("[" + DateTime.Now.ToString() + "] " + message);
+            this.listBoxOperation.SelectedIndex = this.listBoxOperation.Items.Count - 1;
+            this.toolStripStatusLabelMain.Text = message;
         }
         #endregion
     }
