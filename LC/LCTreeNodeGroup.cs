@@ -16,9 +16,8 @@ namespace LC
         /// </summary>
         /// <param name="nameGroup">Имя группы</param>
         /// <param name="description">Описание группы</param>
-        /// <param name="fotofile">Файл фотографии</param>
         /// <returns>Возвращает созданную группу</returns>
-        public LCTreeNodeGroup AddGroup(string nameGroup, string description, string fotofile)
+        public LCTreeNodeGroup AddGroup(string nameGroup, string description)
         {
             // создаем новый узел Group
             LCTreeNodeGroup lcTreeNodeGroup = new LCTreeNodeGroup

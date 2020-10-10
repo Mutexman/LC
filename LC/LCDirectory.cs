@@ -92,16 +92,15 @@ namespace LC
             };
             // И добавить его в дерево
             treeView.Nodes.Add(lcTreeRoot);
-            TreeNode node = lcTreeRoot;
             treeView.BeginUpdate();
             //рекурсивный обход дерева
-            AddChildrenDOMXML(xnodDE, node);
+            AddChildrenDOMXML(xnodDE, lcTreeRoot);
             // Сортируем объекты в дереве
             treeView.Sort();
             treeView.EndUpdate();
             this.WriteListBox("Справочник успешно загружен.");
             // открываем дочерние узлы узла root
-            node.Expand();
+            lcTreeRoot.Expand();
         }
         /// <summary>
         /// Метод добавления дочерних узлов в дерево
@@ -210,8 +209,8 @@ namespace LC
                         {
                             LCTreeNodeGroup lcGroup = (LCTreeNodeGroup)item;
                             XElement xElement = new XElement("Group",
-                                new XAttribute("NameGroup", item.Text),
-                                new XAttribute("Description", item.Description));
+                                new XAttribute("NameGroup", lcGroup.Text),
+                                new XAttribute("Description", lcGroup.Description));
                             current = xElement;
                         }
                     }

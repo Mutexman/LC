@@ -33,6 +33,7 @@
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemClearPCList = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemExportNetsToJSON = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -143,7 +144,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemDeleteNoList = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripLCMFU = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemExportNetsToJSON = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -201,6 +201,13 @@
             this.toolStripMenuItemClearPCList.Size = new System.Drawing.Size(187, 22);
             this.toolStripMenuItemClearPCList.Text = "Очистить список ПК";
             this.toolStripMenuItemClearPCList.Click += new System.EventHandler(this.toolStripMenuItemClearPCList_Click);
+            // 
+            // toolStripMenuItemExportNetsToJSON
+            // 
+            this.toolStripMenuItemExportNetsToJSON.Name = "toolStripMenuItemExportNetsToJSON";
+            this.toolStripMenuItemExportNetsToJSON.Size = new System.Drawing.Size(187, 22);
+            this.toolStripMenuItemExportNetsToJSON.Text = "Экспорт сетей";
+            this.toolStripMenuItemExportNetsToJSON.Click += new System.EventHandler(this.toolStripMenuItemExportNetsToJSON_Click);
             // 
             // toolStripSeparator1
             // 
@@ -573,7 +580,7 @@
             this.listViewHosts.TabIndex = 4;
             this.listViewHosts.UseCompatibleStateImageBehavior = false;
             this.listViewHosts.View = System.Windows.Forms.View.Details;
-            this.listViewHosts.SelectedIndexChanged += new System.EventHandler(this.listViewHosts_SelectedIndexChanged);
+            this.listViewHosts.SelectedIndexChanged += new System.EventHandler(this.ListViewHosts_SelectedIndexChanged);
             this.listViewHosts.DoubleClick += new System.EventHandler(this.listViewComputers_DoubleClick);
             this.listViewHosts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listViewHosts_KeyDown);
             // 
@@ -762,6 +769,7 @@
             this.listViewSubnets.GridLines = true;
             this.listViewSubnets.HideSelection = false;
             this.listViewSubnets.Location = new System.Drawing.Point(0, 0);
+            this.listViewSubnets.MultiSelect = false;
             this.listViewSubnets.Name = "listViewSubnets";
             this.listViewSubnets.Size = new System.Drawing.Size(825, 456);
             this.listViewSubnets.TabIndex = 1;
@@ -783,7 +791,7 @@
             // columnHeaderMaskSubnet
             // 
             this.columnHeaderMaskSubnet.Text = "Маска";
-            this.columnHeaderMaskSubnet.Width = 87;
+            this.columnHeaderMaskSubnet.Width = 95;
             // 
             // columnHeaderPlaceSubnet
             // 
@@ -816,6 +824,7 @@
             this.listViewGroups.GridLines = true;
             this.listViewGroups.HideSelection = false;
             this.listViewGroups.Location = new System.Drawing.Point(0, 0);
+            this.listViewGroups.MultiSelect = false;
             this.listViewGroups.Name = "listViewGroups";
             this.listViewGroups.Size = new System.Drawing.Size(825, 456);
             this.listViewGroups.TabIndex = 1;
@@ -1098,7 +1107,7 @@
             this.toolStripMenuItemFindSubnet.Name = "toolStripMenuItemFindSubnet";
             this.toolStripMenuItemFindSubnet.Size = new System.Drawing.Size(192, 22);
             this.toolStripMenuItemFindSubnet.Text = "Переопределить сеть";
-            this.toolStripMenuItemFindSubnet.Click += new System.EventHandler(this.toolStripMenuItemFindSubnet_Click);
+            this.toolStripMenuItemFindSubnet.Click += new System.EventHandler(this.ToolStripMenuItemFindSubnet_Click);
             // 
             // toolStripSeparator4
             // 
@@ -1117,13 +1126,6 @@
             // 
             this.contextMenuStripLCMFU.Name = "contextMenuStripLCMFU";
             this.contextMenuStripLCMFU.Size = new System.Drawing.Size(61, 4);
-            // 
-            // toolStripMenuItemExportNetsToJSON
-            // 
-            this.toolStripMenuItemExportNetsToJSON.Name = "toolStripMenuItemExportNetsToJSON";
-            this.toolStripMenuItemExportNetsToJSON.Size = new System.Drawing.Size(187, 22);
-            this.toolStripMenuItemExportNetsToJSON.Text = "Экспорт сетей";
-            this.toolStripMenuItemExportNetsToJSON.Click += new System.EventHandler(this.toolStripMenuItemExportNetsToJSON_Click);
             // 
             // FormMain
             // 

@@ -88,7 +88,6 @@ namespace LC
             {
                 if (xn.Name == "Buttons")
                 {
-                    CommandToolStripButton progBut = null;
                     XmlNode workxn = xn.FirstChild;
                     while (workxn != null)
                     {
@@ -114,9 +113,11 @@ namespace LC
                             {
                                 toolTipText = workxn.ChildNodes[3].ChildNodes[0].Value;
                             }
-                            progBut = new CommandToolStripButton(text, command, parameters, toolTipText, true);
-                            progBut.ImageScaling = ToolStripItemImageScaling.None;
-                            progBut.listItems = listView;
+                            CommandToolStripButton progBut = new CommandToolStripButton(text, command, parameters, toolTipText, true)
+                            {
+                                ImageScaling = ToolStripItemImageScaling.None,
+                                listItems = listView
+                            };
                             toolStrip.Items.Add(progBut);
                         }
                         workxn = workxn.NextSibling;
@@ -584,9 +585,8 @@ namespace LC
         /// <param name="e"></param>
         private void deleteLCTreeNode(object sender, EventArgs e)
         {
-            string tempStr = "";
             LCTreeNode lcTreeNode = (LCTreeNode)this.treeViewObject.SelectedNode;
-            tempStr = lcTreeNode.Text;
+            string tempStr = lcTreeNode.Text;
             // Проверяем есть ли у этого узла дочерние объекты
             if (lcTreeNode.Nodes.Count > 0)
             {
@@ -681,7 +681,7 @@ namespace LC
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripMenuItemFindSubnet_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemFindSubnet_Click(object sender, EventArgs e)
         {
             List<String> list = new List<String>();
             TreeNode node = this.lCDirectory.ReturnGroupNoList();
@@ -771,7 +771,7 @@ namespace LC
         #endregion
 
         #region Действия приложения. Список хостов.
-        private void listViewHosts_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewHosts_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listViewHosts.SelectedItems.Count > 0)
             {

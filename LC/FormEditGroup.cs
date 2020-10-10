@@ -32,11 +32,13 @@ namespace LC
                     {
                         this.textBoxNameGroup.Text = this.lcTreeNodeGroup.Text;
                         this.textBoxDescription.Text = this.lcTreeNodeGroup.Description;
+                        this.buttonEditGroup.Text = "Сохранить";
                         break;
                     }
                 case ModeForm.New:
                     {
                         this.textBoxNameGroup.Text = "Новая группа";
+                        this.buttonEditGroup.Text = "Добавить";
                         break;
                     }
             }
@@ -55,7 +57,7 @@ namespace LC
                 return this.lcTreeNode;
             }
         }
-        private void buttonSaveGroup_Click(object sender, EventArgs e)
+        private void ButtonSaveGroup_Click(object sender, EventArgs e)
         {
             if (this.textBoxNameGroup.Text != "")
             {
@@ -63,8 +65,7 @@ namespace LC
                 {
                     case ModeForm.New:
                         {
-                            this.lcTreeNode = this.lcTreeNodeGroup.AddGroup(this.textBoxNameGroup.Text, this.textBoxDescription.Text, "");
-                            this.buttonEditGroup.Text = "Добавить";
+                            this.lcTreeNode = this.lcTreeNodeGroup.AddGroup(this.textBoxNameGroup.Text, this.textBoxDescription.Text);
                             break;
                         }
                     case ModeForm.Edit:
@@ -73,7 +74,11 @@ namespace LC
                             this.lcTreeNodeGroup.Description = this.textBoxDescription.Text;
                             this.lcTreeNodeGroup.ToolTipText = this.textBoxNameGroup.Text;
                             this.lcTreeNodeGroup.ToolTipText += "\n" + this.textBoxDescription.Text;
-                            this.buttonEditGroup.Text = "Сохранить";
+
+                            ListViewItem lvi = (ListViewItem)lcTreeNodeGroup.Tag;
+                            lvi.SubItems[0].Text = this.lcTreeNodeGroup.Text;
+                            lvi.SubItems[2].Text = this.lcTreeNodeGroup.DescriptionStr;
+                            
                             break;
                         }
                 }

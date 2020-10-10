@@ -33,7 +33,7 @@ namespace LC
         }
         private LCTreeNodeHost lcTreeNodeHost = null;
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             if (this.textBoxNameHost.Text != "")
             {

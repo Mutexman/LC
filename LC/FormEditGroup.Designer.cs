@@ -79,7 +79,7 @@
             this.buttonEditGroup.TabIndex = 4;
             this.buttonEditGroup.Text = "Сохранить";
             this.buttonEditGroup.UseVisualStyleBackColor = true;
-            this.buttonEditGroup.Click += new System.EventHandler(this.buttonSaveGroup_Click);
+            this.buttonEditGroup.Click += new System.EventHandler(this.ButtonSaveGroup_Click);
             // 
             // labelErrorMessage
             // 
