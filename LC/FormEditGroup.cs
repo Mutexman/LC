@@ -76,8 +76,11 @@ namespace LC
                             this.lcTreeNodeGroup.ToolTipText += "\n" + this.textBoxDescription.Text;
 
                             ListViewItem lvi = (ListViewItem)lcTreeNodeGroup.Tag;
-                            lvi.SubItems[0].Text = this.lcTreeNodeGroup.Text;
-                            lvi.SubItems[2].Text = this.lcTreeNodeGroup.DescriptionStr;
+                            if (lvi != null)
+                            {
+                                lvi.SubItems[0].Text = this.lcTreeNodeGroup.Text;
+                                lvi.SubItems[2].Text = this.lcTreeNodeGroup.DescriptionStr;
+                            }
                             
                             break;
                         }

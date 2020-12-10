@@ -42,9 +42,12 @@ namespace LC
                 this.lcTreeNodeHost.Description = this.textBoxDescription.Text;
 
                 ListViewItem lvi = (ListViewItem)lcTreeNodeHost.Tag;
-                lvi.SubItems[0].Text = this.comboBoxTypeHost.Text;
-                lvi.SubItems[2].Text = this.lcTreeNodeHost.Text;
-                lvi.SubItems[4].Text = this.lcTreeNodeHost.DescriptionStr;
+                if (lvi != null)
+                {
+                    lvi.SubItems[0].Text = this.comboBoxTypeHost.Text;
+                    lvi.SubItems[2].Text = this.lcTreeNodeHost.Text;
+                    lvi.SubItems[4].Text = this.lcTreeNodeHost.DescriptionStr;
+                }
 
                 lcTreeNodeHost.ToolTipText = lcTreeNodeHost.TypeHost.ToString();
                 lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Text;

@@ -95,10 +95,13 @@ namespace LC
                                     this.lcTreeNodeSubnet.ToolTipText += "\n" + this.textBoxDescription.Text;
 
                                     ListViewItem lvi = (ListViewItem)lcTreeNodeSubnet.Tag;
-                                    lvi.SubItems[0].Text = this.lcTreeNodeSubnet.Text;
-                                    lvi.SubItems[1].Text = this.lcTreeNodeSubnet.IPSubnet;
-                                    lvi.SubItems[2].Text = this.lcTreeNodeSubnet.MaskSubnet;
-                                    lvi.SubItems[4].Text = this.lcTreeNodeSubnet.DescriptionStr;
+                                    if (lvi != null)
+                                    {
+                                        lvi.SubItems[0].Text = this.lcTreeNodeSubnet.Text;
+                                        lvi.SubItems[1].Text = this.lcTreeNodeSubnet.IPSubnet;
+                                        lvi.SubItems[2].Text = this.lcTreeNodeSubnet.MaskSubnet;
+                                        lvi.SubItems[4].Text = this.lcTreeNodeSubnet.DescriptionStr;
+                                    }
 
                                     break;
                                 }
