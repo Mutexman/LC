@@ -374,7 +374,6 @@
             // 
             // toolStripTextBoxIP
             // 
-            this.toolStripTextBoxIP.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxIP.Name = "toolStripTextBoxIP";
             this.toolStripTextBoxIP.Size = new System.Drawing.Size(100, 32);
             this.toolStripTextBoxIP.ToolTipText = "Введите IP адрес для поиска.";
@@ -527,6 +526,9 @@
             this.imageListMain.Images.SetKeyName(3, "K013.ico");
             this.imageListMain.Images.SetKeyName(4, "Close.png");
             this.imageListMain.Images.SetKeyName(5, "group.ico");
+            this.imageListMain.Images.SetKeyName(6, "MFU.png");
+            this.imageListMain.Images.SetKeyName(7, "SPD.png");
+            this.imageListMain.Images.SetKeyName(8, "ETSO.png");
             // 
             // tabControlObject
             // 

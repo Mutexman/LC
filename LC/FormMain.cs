@@ -256,7 +256,7 @@ namespace LC
         private void toolStripMenuItemExportNetsToJSON_Click(object sender, EventArgs e)
         {
             this.saveFileDialogExport.Filter = "JSON files (*.js)|*.js";
-            this.saveFileDialogExport.FileName = "Nets";
+            this.saveFileDialogExport.FileName = "nets";
             if(this.saveFileDialogExport.ShowDialog() == DialogResult.OK)
             {
                 this.lCDirectory.ExportNetsToJSON(this.saveFileDialogExport.FileName);

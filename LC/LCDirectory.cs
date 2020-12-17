@@ -152,8 +152,31 @@ namespace LC
                                 Description = xnod.Attribute("Description").Value,
                                 TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), xnod.Attribute("TypeHost").Value),
                                 ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
-                                ImageIndex = 3
+                                //ImageIndex = 3
                             };
+                            switch(lcTreeNodeHost.TypeHost)
+                            {
+                                case LCTypeHost.HOST:
+                                    {
+                                        lcTreeNodeHost.ImageIndex = 3;
+                                    }
+                                    break;
+                                case LCTypeHost.MFU:
+                                    {
+                                        lcTreeNodeHost.ImageIndex = 6;
+                                    }
+                                    break;
+                                case LCTypeHost.SPD:
+                                    {
+                                        lcTreeNodeHost.ImageIndex = 7;
+                                    }
+                                    break;
+                                case LCTypeHost.ETCO:
+                                    {
+                                        lcTreeNodeHost.ImageIndex = 8;
+                                    }
+                                    break;
+                            }
                             lcTreeNodeHost.ToolTipText = lcTreeNodeHost.TypeHost.ToString();
                             lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Text;
                             lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.IP;
