@@ -374,6 +374,7 @@
             // 
             // toolStripTextBoxIP
             // 
+            this.toolStripTextBoxIP.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxIP.Name = "toolStripTextBoxIP";
             this.toolStripTextBoxIP.Size = new System.Drawing.Size(100, 32);
             this.toolStripTextBoxIP.ToolTipText = "Введите IP адрес для поиска.";
@@ -453,8 +454,10 @@
             // 
             this.treeViewObject.ContextMenuStrip = this.contextMenuStripLCComputer;
             this.treeViewObject.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewObject.FullRowSelect = true;
             this.treeViewObject.ImageIndex = 0;
             this.treeViewObject.ImageList = this.imageListMain;
+            this.treeViewObject.ItemHeight = 16;
             this.treeViewObject.LineColor = System.Drawing.Color.Blue;
             this.treeViewObject.Location = new System.Drawing.Point(0, 0);
             this.treeViewObject.Name = "treeViewObject";
