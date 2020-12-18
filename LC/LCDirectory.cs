@@ -161,6 +161,11 @@ namespace LC
                                         lcTreeNodeHost.ImageIndex = 3;
                                     }
                                     break;
+                                case LCTypeHost.COMPUTER:
+                                    {
+                                        lcTreeNodeHost.ImageIndex = 3;
+                                    }
+                                    break;
                                 case LCTypeHost.MFU:
                                     {
                                         lcTreeNodeHost.ImageIndex = 6;
