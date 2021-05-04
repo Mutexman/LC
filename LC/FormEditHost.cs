@@ -29,6 +29,8 @@ namespace LC
             this.comboBoxTypeHost.Text = lcTreeNodeHost.TypeHost.ToString();
             this.textBoxNameHost.Text = this.lcTreeNodeHost.Text;
             this.textBoxIP.Text = this.lcTreeNodeHost.IP;
+            this.textBoxBarcode.Text = this.lcTreeNodeHost.Barcode;
+            this.textBoxPassword.Text = this.lcTreeNodeHost.Password;
             this.textBoxDescription.Text = this.lcTreeNodeHost.Description;
         }
         private LCTreeNodeHost lcTreeNodeHost = null;
@@ -67,6 +69,8 @@ namespace LC
                         break;
                 }
                 this.lcTreeNodeHost.Text = this.textBoxNameHost.Text;
+                this.lcTreeNodeHost.Barcode = this.textBoxBarcode.Text;
+                this.lcTreeNodeHost.Password = this.textBoxPassword.Text;
                 this.lcTreeNodeHost.Description = this.textBoxDescription.Text;
 
                 ListViewItem lvi = (ListViewItem)lcTreeNodeHost.Tag;
@@ -80,6 +84,8 @@ namespace LC
                 lcTreeNodeHost.ToolTipText = lcTreeNodeHost.TypeHost.ToString();
                 lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Text;
                 lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.IP;
+                lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Barcode;
+                lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Password;
                 lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Description;
                 this.Close();
             }

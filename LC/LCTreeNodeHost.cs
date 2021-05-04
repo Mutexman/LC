@@ -33,8 +33,10 @@ namespace LC
             }
         }
         private string ip = "";
+        private string barcode = "";
+        private string password = "";
         /// <summary>
-        /// Свойство возвращающее и задающее IP-адрес компьютера
+        /// Свойство возвращающее и задающее IP-адрес хоста
         /// </summary>
         public string IP
         {
@@ -45,6 +47,34 @@ namespace LC
             set
             {
                 this.ip = value;
+            }
+        }
+        /// <summary>
+        /// Свойство возвращающее и задающее штрих код хоста
+        /// </summary>
+        public string Barcode
+        {
+            get
+            {
+                return this.barcode;
+            }
+            set
+            {
+                this.barcode = value;
+            }
+        }
+        /// <summary>
+        /// Свойство возвращающее и задающее пароль хоста
+        /// </summary>
+        public string Password
+        {
+            get
+            {
+                return this.password;
+            }
+            set
+            {
+                this.password = value;
             }
         }
         public override void RemoveLC()

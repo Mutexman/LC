@@ -149,6 +149,8 @@ namespace LC
                             {
                                 Text = xnod.Attribute("NameHost").Value,
                                 IP = xnod.Attribute("IP").Value,
+                                Barcode = xnod.Attribute("Barcode").Value,
+                                Password = xnod.Attribute("Password").Value,
                                 Description = xnod.Attribute("Description").Value,
                                 TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), xnod.Attribute("TypeHost").Value),
                                 ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
@@ -185,6 +187,8 @@ namespace LC
                             lcTreeNodeHost.ToolTipText = lcTreeNodeHost.TypeHost.ToString();
                             lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Text;
                             lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.IP;
+                            lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Barcode;
+                            lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Password;
                             lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Description;
                             newNode.Nodes.Add(lcTreeNodeHost);
                             return;
@@ -250,6 +254,8 @@ namespace LC
                             new XAttribute("TypeHost", lcHost.TypeHost.ToString()),
                             new XAttribute("NameHost", lcHost.Text),
                             new XAttribute("IP", lcHost.IP),
+                            new XAttribute("Barcode", lcHost.Barcode),
+                            new XAttribute("Password", lcHost.Password),
                             new XAttribute("Description", lcHost.Description));
                         current = xElement;
                     }

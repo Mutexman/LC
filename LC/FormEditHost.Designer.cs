@@ -39,6 +39,10 @@
             this.labelErrorMessage = new System.Windows.Forms.Label();
             this.labelTypeHost = new System.Windows.Forms.Label();
             this.comboBoxTypeHost = new System.Windows.Forms.ComboBox();
+            this.textBoxBarcode = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.labelBarcode = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelNameHost
@@ -77,7 +81,7 @@
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(12, 92);
+            this.labelDescription.Location = new System.Drawing.Point(12, 144);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(57, 13);
             this.labelDescription.TabIndex = 4;
@@ -85,7 +89,7 @@
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(113, 89);
+            this.textBoxDescription.Location = new System.Drawing.Point(113, 141);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -94,7 +98,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(188, 213);
+            this.buttonSave.Location = new System.Drawing.Point(188, 245);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(81, 23);
             this.buttonSave.TabIndex = 6;
@@ -129,12 +133,48 @@
             this.comboBoxTypeHost.Size = new System.Drawing.Size(171, 21);
             this.comboBoxTypeHost.TabIndex = 9;
             // 
+            // textBoxBarcode
+            // 
+            this.textBoxBarcode.Location = new System.Drawing.Point(113, 89);
+            this.textBoxBarcode.Name = "textBoxBarcode";
+            this.textBoxBarcode.Size = new System.Drawing.Size(313, 20);
+            this.textBoxBarcode.TabIndex = 10;
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(113, 115);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(313, 20);
+            this.textBoxPassword.TabIndex = 11;
+            // 
+            // labelBarcode
+            // 
+            this.labelBarcode.AutoSize = true;
+            this.labelBarcode.Location = new System.Drawing.Point(12, 92);
+            this.labelBarcode.Name = "labelBarcode";
+            this.labelBarcode.Size = new System.Drawing.Size(59, 13);
+            this.labelBarcode.TabIndex = 12;
+            this.labelBarcode.Text = "Штрих-код";
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Location = new System.Drawing.Point(12, 118);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(45, 13);
+            this.labelPassword.TabIndex = 13;
+            this.labelPassword.Text = "Пароль";
+            // 
             // FormEditHost
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(438, 270);
+            this.ClientSize = new System.Drawing.Size(438, 315);
+            this.Controls.Add(this.labelPassword);
+            this.Controls.Add(this.labelBarcode);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.textBoxBarcode);
             this.Controls.Add(this.comboBoxTypeHost);
             this.Controls.Add(this.labelTypeHost);
             this.Controls.Add(this.labelErrorMessage);
@@ -168,5 +208,9 @@
         private System.Windows.Forms.Label labelErrorMessage;
         private System.Windows.Forms.Label labelTypeHost;
         private System.Windows.Forms.ComboBox comboBoxTypeHost;
+        private System.Windows.Forms.TextBox textBoxBarcode;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label labelBarcode;
+        private System.Windows.Forms.Label labelPassword;
     }
 }
