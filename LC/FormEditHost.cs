@@ -72,21 +72,7 @@ namespace LC
                 this.lcTreeNodeHost.Barcode = this.textBoxBarcode.Text;
                 this.lcTreeNodeHost.Password = this.textBoxPassword.Text;
                 this.lcTreeNodeHost.Description = this.textBoxDescription.Text;
-
-                ListViewItem lvi = (ListViewItem)lcTreeNodeHost.Tag;
-                if (lvi != null)
-                {
-                    lvi.SubItems[0].Text = this.comboBoxTypeHost.Text;
-                    lvi.SubItems[2].Text = this.lcTreeNodeHost.Text;
-                    lvi.SubItems[4].Text = this.lcTreeNodeHost.DescriptionStr;
-                }
-
-                lcTreeNodeHost.ToolTipText = lcTreeNodeHost.TypeHost.ToString();
-                lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Text;
-                lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.IP;
-                lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Barcode;
-                lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Password;
-                lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Description;
+                this.lcTreeNodeHost.UpdateLC();
                 this.Close();
             }
             else

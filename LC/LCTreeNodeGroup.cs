@@ -53,6 +53,7 @@ namespace LC
                 ToolTipText = nameSubnet
             };
             this.Nodes.Add(lcTreeNodeSubnet);
+            lcTreeNodeSubnet.UpdateLC();
             this.WriteListBoxOperation("Добавлена группа : " + nameSubnet);
             return lcTreeNodeSubnet;
         }
@@ -74,10 +75,8 @@ namespace LC
                 ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
                 ImageIndex = 3
             };
-            lcTreeNodeHost.ToolTipText += nameHost;
-            lcTreeNodeHost.ToolTipText += "\n" + ip;
-            lcTreeNodeHost.ToolTipText += "\n" + description;
             this.Nodes.Add(lcTreeNodeHost);
+            lcTreeNodeHost.UpdateLC();
             this.WriteListBoxOperation("Добавлен компьтер : " + nameHost);
             return lcTreeNodeHost;
         }
@@ -88,6 +87,18 @@ namespace LC
                 ((ListViewItem)this.Tag).Remove();
             }
             base.RemoveLC();
+        }
+        public override void UpdateLC()
+        {
+            this.ToolTipText = this.Text;
+            this.ToolTipText += "\n" + this.Description;
+
+            ListViewItem lvi = (ListViewItem)this.Tag;
+            if (lvi != null)
+            {
+                lvi.SubItems[0].Text = this.Text;
+                lvi.SubItems[2].Text = this.DescriptionStr;
+            }
         }
     }
 }

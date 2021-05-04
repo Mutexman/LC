@@ -122,9 +122,8 @@ namespace LC
                                 ContextMenuStrip = LCTreeNode.groupContextMemuStrip,
                                 ImageIndex = 2
                             };
-                            lcTreeNodeGroup.ToolTipText += lcTreeNodeGroup.Text;
-                            lcTreeNodeGroup.ToolTipText += "\n" + lcTreeNodeGroup.Description;
                             newNode.Nodes.Add(lcTreeNodeGroup);
+                            lcTreeNodeGroup.UpdateLC();
                             newNode = lcTreeNodeGroup;
                         }
                         break;
@@ -184,13 +183,8 @@ namespace LC
                                     }
                                     break;
                             }
-                            lcTreeNodeHost.ToolTipText = lcTreeNodeHost.TypeHost.ToString();
-                            lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Text;
-                            lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.IP;
-                            lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Barcode;
-                            lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Password;
-                            lcTreeNodeHost.ToolTipText += "\n" + lcTreeNodeHost.Description;
                             newNode.Nodes.Add(lcTreeNodeHost);
+                            lcTreeNodeHost.UpdateLC();
                             return;
                             //newNode = lcTreeNodeHost;
                         }
@@ -205,11 +199,8 @@ namespace LC
                                 ContextMenuStrip = LCTreeNode.subnetContextMenuStrip,
                                 ImageIndex = 5
                             };
-                            lcTreeNodeSubnet.ToolTipText += lcTreeNodeSubnet.Text;
-                            lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.IPSubnet;
-                            lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.MaskSubnet;
-                            lcTreeNodeSubnet.ToolTipText += "\n" + lcTreeNodeSubnet.Description;
                             newNode.Nodes.Add(lcTreeNodeSubnet);
+                            lcTreeNodeSubnet.UpdateLC();
                             newNode = lcTreeNodeSubnet;
                         }
                         break;

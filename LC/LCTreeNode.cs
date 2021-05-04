@@ -124,5 +124,10 @@ namespace LC
         {
             this.Remove();
         }
+        virtual public void UpdateLC()
+        {
+            this.ToolTipText = this.Text;
+            this.ToolTipText += "\n" + this.Description;
+        }
     }
 }

@@ -85,5 +85,22 @@ namespace LC
             }
             base.RemoveLC();
         }
+        public override void UpdateLC()
+        {
+            ListViewItem lvi = (ListViewItem)this.Tag;
+            if (lvi != null)
+            {
+                lvi.SubItems[0].Text = this.TypeHost.ToString();
+                lvi.SubItems[2].Text = this.Text;
+                lvi.SubItems[4].Text = this.DescriptionStr;
+            }
+
+            this.ToolTipText = this.TypeHost.ToString();
+            this.ToolTipText += "\n" + this.Text;
+            this.ToolTipText += "\n" + this.IP;
+            this.ToolTipText += "\n" + this.Barcode;
+            this.ToolTipText += "\n" + this.Password;
+            this.ToolTipText += "\n" + this.Description;
+        }
     }
 }

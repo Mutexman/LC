@@ -154,5 +154,21 @@ namespace LC
             }
             base.RemoveLC();
         }
+        public override void UpdateLC()
+        {
+            this.ToolTipText = this.Text;
+            this.ToolTipText += "\n" + this.IPSubnet;
+            this.ToolTipText += "\n" + this.MaskSubnet;
+            this.ToolTipText += "\n" + this.Description;
+
+            ListViewItem lvi = (ListViewItem)this.Tag;
+            if (lvi != null)
+            {
+                lvi.SubItems[0].Text = this.Text;
+                lvi.SubItems[1].Text = this.IPSubnet;
+                lvi.SubItems[2].Text = this.MaskSubnet;
+                lvi.SubItems[4].Text = this.DescriptionStr;
+            }
+        }
     }
 }
