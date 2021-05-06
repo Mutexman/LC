@@ -153,40 +153,12 @@ namespace LC
                                 Description = xnod.Attribute("Description").Value,
                                 TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), xnod.Attribute("TypeHost").Value),
                                 ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
+                                ImageIndex = (int)(LCTypeHost)Enum.Parse(typeof(LCTypeHost), xnod.Attribute("TypeHost").Value)
                                 //ImageIndex = 3
                             };
-                            switch(lcTreeNodeHost.TypeHost)
-                            {
-                                case LCTypeHost.HOST:
-                                    {
-                                        lcTreeNodeHost.ImageIndex = 3;
-                                    }
-                                    break;
-                                case LCTypeHost.COMPUTER:
-                                    {
-                                        lcTreeNodeHost.ImageIndex = 3;
-                                    }
-                                    break;
-                                case LCTypeHost.MFU:
-                                    {
-                                        lcTreeNodeHost.ImageIndex = 6;
-                                    }
-                                    break;
-                                case LCTypeHost.SPD:
-                                    {
-                                        lcTreeNodeHost.ImageIndex = 7;
-                                    }
-                                    break;
-                                case LCTypeHost.ETCO:
-                                    {
-                                        lcTreeNodeHost.ImageIndex = 8;
-                                    }
-                                    break;
-                            }
                             newNode.Nodes.Add(lcTreeNodeHost);
                             lcTreeNodeHost.UpdateLC();
                             return;
-                            //newNode = lcTreeNodeHost;
                         }
                     case "Subnet":
                         {

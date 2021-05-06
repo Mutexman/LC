@@ -43,8 +43,8 @@ namespace LC
                     }
             }
         }
-        private ModeForm modeForm;
-        private LCTreeNodeGroup lcTreeNodeGroup = null;
+        private readonly ModeForm modeForm;
+        private readonly LCTreeNodeGroup lcTreeNodeGroup = null;
         private LCTreeNodeGroup lcTreeNode = null;
         public static ListBox ListBoxOperation = null;
         /// <summary>

@@ -81,7 +81,7 @@
             this.buttonAddSubnet.TabIndex = 4;
             this.buttonAddSubnet.Text = "Добавить";
             this.buttonAddSubnet.UseVisualStyleBackColor = true;
-            this.buttonAddSubnet.Click += new System.EventHandler(this.buttonAddSubnet_Click);
+            this.buttonAddSubnet.Click += new System.EventHandler(this.ButtonAddSubnet_Click);
             // 
             // labelNameSubnet
             // 

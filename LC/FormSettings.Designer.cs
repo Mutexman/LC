@@ -49,7 +49,7 @@
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // buttonAccept
             // 
@@ -59,7 +59,7 @@
             this.buttonAccept.TabIndex = 2;
             this.buttonAccept.Text = "Применить";
             this.buttonAccept.UseVisualStyleBackColor = true;
-            this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
+            this.buttonAccept.Click += new System.EventHandler(this.ButtonAccept_Click);
             // 
             // buttonOk
             // 
@@ -69,7 +69,7 @@
             this.buttonOk.TabIndex = 3;
             this.buttonOk.Text = "Ок";
             this.buttonOk.UseVisualStyleBackColor = true;
-            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
+            this.buttonOk.Click += new System.EventHandler(this.ButtonOk_Click);
             // 
             // groupBoxDirectory
             // 
