@@ -91,8 +91,9 @@ namespace LC
             {
                 lvi.SubItems[0].Text = this.TypeHost.ToString();
                 lvi.SubItems[2].Text = this.Text;
+                lvi.SubItems[4].Text = "";
                 if (this.Barcode.Length > 0)
-                    lvi.SubItems[4].Text = this.Barcode;
+                    lvi.SubItems[4].Text += this.Barcode;
                 if (this.Password.Length > 0)
                     lvi.SubItems[4].Text += " " + this.Password;
                 lvi.SubItems[4].Text += " " + this.DescriptionStr;
@@ -101,8 +102,10 @@ namespace LC
             this.ToolTipText = this.TypeHost.ToString();
             this.ToolTipText += "\n" + this.Text;
             this.ToolTipText += "\n" + this.IP;
-            this.ToolTipText += "\n" + this.Barcode;
-            this.ToolTipText += "\n" + this.Password;
+            if (this.Barcode.Length > 0)
+                this.ToolTipText += "\n" + this.Barcode;
+            if(this.Password.Length > 0)
+                this.ToolTipText += "\n" + this.Password;
             this.ToolTipText += "\n" + this.Description;
         }
     }
