@@ -7,11 +7,10 @@ namespace LC
     /// </summary>
     enum LCTypeHost
     {
-        HOST,       //Неопрелённый тип устройства
-        COMPUTER,   //Компьютер
-        MFU,        //Сетевое МФУ
-        ETCO,       //Киоск ЭТСО
-        SPD         //Сетевое оборудование
+        HOST = 3,       //Неопрелённый тип устройства
+        MFU = 6,        //Сетевое МФУ
+        SPD = 7,        //Сетевое оборудование
+        ETCO = 8        //Киоск ЭТСО
     }
     class LCTreeNodeHost : LCTreeNode
     {
@@ -92,14 +91,21 @@ namespace LC
             {
                 lvi.SubItems[0].Text = this.TypeHost.ToString();
                 lvi.SubItems[2].Text = this.Text;
-                lvi.SubItems[4].Text = this.DescriptionStr;
+                lvi.SubItems[4].Text = "";
+                if (this.Barcode.Length > 0)
+                    lvi.SubItems[4].Text += this.Barcode;
+                if (this.Password.Length > 0)
+                    lvi.SubItems[4].Text += " " + this.Password;
+                lvi.SubItems[4].Text += " " + this.DescriptionStr;
             }
 
             this.ToolTipText = this.TypeHost.ToString();
             this.ToolTipText += "\n" + this.Text;
             this.ToolTipText += "\n" + this.IP;
-            this.ToolTipText += "\n" + this.Barcode;
-            this.ToolTipText += "\n" + this.Password;
+            if (this.Barcode.Length > 0)
+                this.ToolTipText += "\n" + this.Barcode;
+            if(this.Password.Length > 0)
+                this.ToolTipText += "\n" + this.Password;
             this.ToolTipText += "\n" + this.Description;
         }
     }

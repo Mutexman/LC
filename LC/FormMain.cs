@@ -23,15 +23,15 @@ namespace LC
         /// <summary>
         /// Переменная содержащая имя файла в котором храниться справочник
         /// </summary>
-        private string fileData = Application.LocalUserAppDataPath + "\\LCDirectory.xml";
+        private readonly string fileData = Application.LocalUserAppDataPath + "\\LCDirectory.xml";
         /// <summary>
         /// Переменная содержащая имя файла конфигурации кнопок
         /// </summary>
-        private string fileConfigComputers = Application.LocalUserAppDataPath + "\\configComputers.xml";
-        private string fileConfigMFU = Application.LocalUserAppDataPath + "\\configMFU.xml";
-        private string fileConfigETCO = Application.LocalUserAppDataPath + "\\configETCO.xml";
-        private string fileConfigSPD = Application.LocalUserAppDataPath + "\\configSPD.xml";
-        private BufferLCTreeNode buffer = new BufferLCTreeNode();
+        private readonly string fileConfigComputers = Application.LocalUserAppDataPath + "\\configComputers.xml";
+        private readonly string fileConfigMFU = Application.LocalUserAppDataPath + "\\configMFU.xml";
+        private readonly string fileConfigETCO = Application.LocalUserAppDataPath + "\\configETCO.xml";
+        private readonly string fileConfigSPD = Application.LocalUserAppDataPath + "\\configSPD.xml";
+        private readonly BufferLCTreeNode buffer = new BufferLCTreeNode();
         // Поле для сохранения найденых компьютеров
         private LCDirectory lCDirectory = null;
         public FormMain()
@@ -161,7 +161,7 @@ namespace LC
             if (Environment.GetCommandLineArgs().Length >= 4)
             {
                 this.toolStripTextBoxIP.Text = Environment.GetCommandLineArgs()[3];
-                this.toolStripButtonFind_Click(null, null);
+                this.ToolStripButtonFind_Click(null, null);
             }
         }
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -195,11 +195,11 @@ namespace LC
         #endregion
 
         #region Главная панель инструментов
-        private void toolStripButtonPasteClipboard_Click(object sender, EventArgs e)
+        private void ToolStripButtonPasteClipboard_Click(object sender, EventArgs e)
         {
             this.toolStripTextBoxIP.Text = Clipboard.GetText(TextDataFormat.Text);
         }
-        private void toolStripButtonFind_Click(object sender, EventArgs e)
+        private void ToolStripButtonFind_Click(object sender, EventArgs e)
         {
             // здесь надо провести проверку корректности введенного значения IP-адреса
             string st = this.toolStripTextBoxIP.Text;
@@ -212,7 +212,7 @@ namespace LC
                 {
                     //Выделяем найденый хост в дереве
                     LCDirectory.treeView.SelectedNode = lcHost;
-                    this.openLCTreeNode(lcHost);
+                    this.OpenLCTreeNode(lcHost);
                     this.WriteListBox("Найден хост с именем: " + lcHost.Text + ".");
                 }
                 else
@@ -221,14 +221,14 @@ namespace LC
                     LCTreeNodeSubnet findSubnet = this.lCDirectory.FindSubnetIP(st);
                     if(findSubnet != null)
                     {
-                        this.openLCTreeNode(findSubnet.AddHost(st, st, ""));
+                        this.OpenLCTreeNode(findSubnet.AddHost(st, st, ""));
                         this.WriteListBox("IP адрес " + st + " принадлежит сети " + findSubnet.Text);
                     }
                     else
                     {
                         LCTreeNodeNoList lcNoList = (LCTreeNodeNoList)this.lCDirectory.ReturnGroupNoList();
                         //добавляем хост и сразу же выделяем этот объект
-                        this.openLCTreeNode(lcNoList.AddHost(st, st, ""));
+                        this.OpenLCTreeNode(lcNoList.AddHost(st, st, ""));
                         this.WriteListBox("IP адрес " + st + " добавлен в группу " + lcNoList.Text);
                     }
                 }
@@ -238,22 +238,22 @@ namespace LC
                 this.WriteListBox("Введенное значение не является IP адресом");
             }
         }
-        private void toolStripTextBoxIP_KeyDown(object sender, KeyEventArgs e)
+        private void ToolStripTextBoxIP_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                this.toolStripButtonFind_Click(sender, e);
+                this.ToolStripButtonFind_Click(sender, e);
             }
         }
         #endregion
 
         #region Главное меню
         //Файл
-        private void toolStripMenuItemClearPCList_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemClearPCList_Click(object sender, EventArgs e)
         {
             this.listViewHosts.Items.Clear();
         }
-        private void toolStripMenuItemExportNetsToJSON_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemExportNetsToJSON_Click(object sender, EventArgs e)
         {
             this.saveFileDialogExport.Filter = "JSON files (*.js)|*.js";
             this.saveFileDialogExport.FileName = "nets";
@@ -263,7 +263,7 @@ namespace LC
                 this.WriteListBox("Экспорт сетей в файл " + this.saveFileDialogExport.FileName + " выполнен.");
             }
         }
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -312,36 +312,36 @@ namespace LC
             Properties.Settings.Default.Save();
         }
         //Сервис
-        private void опцииToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ОпцииToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSettings formSettings = new FormSettings();
             formSettings.ShowDialog();
         }
-        private void компьютерToolStripMenuItem_Click(object sender, EventArgs e)
+        private void КомпьютерToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton(this.fileConfigComputers);
             formSettingCommandButton.Text += " : Компьютер";
             formSettingCommandButton.ShowDialog();
         }
-        private void мФУToolStripMenuItem_Click(object sender, EventArgs e)
+        private void МФУToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton(this.fileConfigMFU);
             formSettingCommandButton.Text += " : МФУ";
             formSettingCommandButton.ShowDialog();
         }
-        private void эТСОToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ЭТСОToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton(this.fileConfigETCO);
             formSettingCommandButton.Text += " : ЭТСО";
             formSettingCommandButton.ShowDialog();
         }
-        private void сПДToolStripMenuItem_Click(object sender, EventArgs e)
+        private void СПДToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSettingCommandButton formSettingCommandButton = new FormSettingCommandButton(this.fileConfigSPD);
             formSettingCommandButton.Text += " : СПД";
             formSettingCommandButton.ShowDialog();
         }
-        private void учётнаяЗаписьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void УчётнаяЗаписьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog();
@@ -353,12 +353,12 @@ namespace LC
             this.Text += " Пользователь: " + FormMain.User;
         }
         //Помощь
-        private void проверкаОбновленийToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ПроверкаОбновленийToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Пока данная функция не реализована", "Линейный специалист", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.WriteListBox("Пока данная функция не реализована!");
         }
-        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
+        private void СправкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // открываем в браузере ссылку по которой находиться справка по работе с программой
             // System.Diagnostics.Process.Start(Properties.Settings.Default.HelpLink);
@@ -372,7 +372,7 @@ namespace LC
                 MessageBox.Show("Файл " + st + " не найден!");
             }
         }
-        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormAbout formAbout = new FormAbout();
             formAbout.ShowDialog();
@@ -385,15 +385,15 @@ namespace LC
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void openLCTreeNode(object sender, EventArgs e)
+        private void OpenLCTreeNode(object sender, EventArgs e)
         {
-            this.openLCTreeNode(this.treeViewObject.SelectedNode);
+            this.OpenLCTreeNode(this.treeViewObject.SelectedNode);
         }
         /// <summary>
         /// Метод открытия узла дерева.
         /// </summary>
         /// <param name="treeNode">Открываемый узел.</param>
-        private void openLCTreeNode(TreeNode treeNode)
+        private void OpenLCTreeNode(TreeNode treeNode)
         {
             if (treeNode == null)
                 return;
@@ -445,6 +445,7 @@ namespace LC
                             };
                             lcHost.Tag = lvi;
                             this.listViewHosts.Items.Add(lvi);
+                            lcHost.UpdateLC();
                             lvi.Selected = true;
                         }
                         else
@@ -455,6 +456,7 @@ namespace LC
                             };
                             lcHost.Tag = lvi;
                             this.listViewHosts.Items.Add(lvi);
+                            lcHost.UpdateLC();
                             lvi.Selected = true;
                         }
                         break;
@@ -511,7 +513,7 @@ namespace LC
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripMenuItemOpenNodes(object sender, EventArgs e)
+        private void ToolStripMenuItemOpenNodes(object sender, EventArgs e)
         {
             this.treeViewObject.SelectedNode.ExpandAll();
         }
@@ -520,7 +522,7 @@ namespace LC
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void createNewGroup(object sender, EventArgs e)
+        private void CreateNewGroup(object sender, EventArgs e)
         {
             FormEditGroup formNewGroup = new FormEditGroup(this.treeViewObject.SelectedNode, ModeForm.New);
             formNewGroup.ShowDialog();
@@ -536,7 +538,7 @@ namespace LC
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void createNewSubnet(object sender, EventArgs e)
+        private void CreateNewSubnet(object sender, EventArgs e)
         {
             FormEditSubnet formNewSubnet = new FormEditSubnet(this.treeViewObject.SelectedNode, ModeForm.New);
             formNewSubnet.ShowDialog();
@@ -552,7 +554,7 @@ namespace LC
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void editLCTreeNode(object sender, EventArgs e)
+        private void EditLCTreeNode(object sender, EventArgs e)
         {
             LCTreeNode tn = (LCTreeNode)this.treeViewObject.SelectedNode;
             switch (tn.LCObjectType)
@@ -583,7 +585,7 @@ namespace LC
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void deleteLCTreeNode(object sender, EventArgs e)
+        private void DeleteLCTreeNode(object sender, EventArgs e)
         {
             LCTreeNode lcTreeNode = (LCTreeNode)this.treeViewObject.SelectedNode;
             string tempStr = lcTreeNode.Text;
@@ -707,13 +709,13 @@ namespace LC
                     if (lcSubnet != null)
                     {
                         // и сразу же выделяем этот объект
-                        this.openLCTreeNode(lcSubnet.AddHost(st, st, ""));
+                        this.OpenLCTreeNode(lcSubnet.AddHost(st, st, ""));
                     }
                     else
                     {
                         LCTreeNodeNoList lcNoList = lCDirectory.ReturnGroupNoList();
                         // и сразу же выделяем этот объект
-                        this.openLCTreeNode(lcNoList.AddHost(st, st, ""));
+                        this.OpenLCTreeNode(lcNoList.AddHost(st, st, ""));
                     }
                 }
                 this.treeViewObject.EndUpdate();
@@ -732,17 +734,17 @@ namespace LC
                 string[] str = Properties.Settings.Default.OpenNets.Split(';');
                 foreach (string st in str)
                 {
-                    this.openLCTreeNode(this.lCDirectory.FindSubnet(st));
+                    this.OpenLCTreeNode(this.lCDirectory.FindSubnet(st));
                 }
                 str = Properties.Settings.Default.OpenGroups.Split(';');
                 foreach (string st in str)
                 {
-                    this.openLCTreeNode(this.lCDirectory.FindGroup(st));
+                    this.OpenLCTreeNode(this.lCDirectory.FindGroup(st));
                 }
                 str = Properties.Settings.Default.OpenHosts.Split(';');
                 foreach (string st in str)
                 {
-                    this.openLCTreeNode(this.lCDirectory.FindHost(st));
+                    this.OpenLCTreeNode(this.lCDirectory.FindHost(st));
                 }
             }
         }
@@ -781,14 +783,6 @@ namespace LC
                 this.treeViewObject.SelectedNode = lcHost;
                 switch (lcTypeHost)
                 {
-                    case LCTypeHost.COMPUTER:
-                        {
-                            this.toolStripComputers.Show();
-                            this.toolStripETCO.Hide();
-                            this.toolStripMFU.Hide();
-                            this.toolStripSPD.Hide();
-                        }
-                        break;
                     case LCTypeHost.ETCO:
                         {
                             this.toolStripComputers.Hide();
@@ -830,7 +824,7 @@ namespace LC
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripButtonGetNamePC_Click(object sender, EventArgs e)
+        private void ToolStripButtonGetNamePC_Click(object sender, EventArgs e)
         {
             string ipStr;
             // Пока не понятно как определить что выделена какая либо строка в listView
@@ -859,7 +853,7 @@ namespace LC
             }
         }
    
-        private void listViewComputers_DoubleClick(object sender, EventArgs e)
+        private void ListViewComputers_DoubleClick(object sender, EventArgs e)
         {
             if (this.listViewHosts.SelectedItems.Count > 0)
             {
@@ -869,7 +863,7 @@ namespace LC
             }
         }
 
-        private void listViewHosts_KeyDown(object sender, KeyEventArgs e)
+        private void ListViewHosts_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
             {
@@ -880,7 +874,7 @@ namespace LC
             }
         }
 
-        private void toolStripMenuItemGetHostIP_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemGetHostIP_Click(object sender, EventArgs e)
         {
             if (this.listViewHosts.SelectedItems.Count > 0)
             {
@@ -889,7 +883,7 @@ namespace LC
             }
         }
 
-        private void toolStripMenuItemGetHostName_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemGetHostName_Click(object sender, EventArgs e)
         {
             if (this.listViewHosts.SelectedItems.Count > 0)
             {
@@ -900,7 +894,7 @@ namespace LC
             }
         }
 
-        private void toolStripMenuItemGetHostFullName_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemGetHostFullName_Click(object sender, EventArgs e)
         {
             if (this.listViewHosts.SelectedItems.Count > 0)
             {
@@ -929,7 +923,7 @@ namespace LC
         #endregion
 
         #region Действия приложения. Список сетей.
-        private void listViewSubnets_DoubleClick(object sender, EventArgs e)
+        private void ListViewSubnets_DoubleClick(object sender, EventArgs e)
         {
             if (this.listViewSubnets.SelectedItems.Count > 0)
             {
@@ -939,7 +933,7 @@ namespace LC
             }
         }
 
-        private void listViewSubnets_KeyDown(object sender, KeyEventArgs e)
+        private void ListViewSubnets_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
             {
@@ -952,7 +946,7 @@ namespace LC
         #endregion
 
         #region Действия приложения. Список групп.
-        private void listViewGroups_DoubleClick(object sender, EventArgs e)
+        private void ListViewGroups_DoubleClick(object sender, EventArgs e)
         {
             if(this.listViewGroups.SelectedItems.Count > 0)
             {
@@ -962,7 +956,7 @@ namespace LC
             }
         }
 
-        private void listViewGroups_KeyDown(object sender, KeyEventArgs e)
+        private void ListViewGroups_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Delete)
             {

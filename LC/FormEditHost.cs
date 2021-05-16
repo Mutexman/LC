@@ -33,7 +33,7 @@ namespace LC
             this.textBoxPassword.Text = this.lcTreeNodeHost.Password;
             this.textBoxDescription.Text = this.lcTreeNodeHost.Description;
         }
-        private LCTreeNodeHost lcTreeNodeHost = null;
+        private readonly LCTreeNodeHost lcTreeNodeHost = null;
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
@@ -43,11 +43,6 @@ namespace LC
                 switch (lcTreeNodeHost.TypeHost)
                 {
                     case LCTypeHost.HOST:
-                        {
-                            lcTreeNodeHost.ImageIndex = 3;
-                        }
-                        break;
-                    case LCTypeHost.COMPUTER:
                         {
                             lcTreeNodeHost.ImageIndex = 3;
                         }

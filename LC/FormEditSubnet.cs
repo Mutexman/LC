@@ -17,9 +17,9 @@ namespace LC
             InitializeComponent();
         }
         public static ListBox ListBoxOperation = null;
-        private LCTreeNodeGroup lcTreeNodeGroup = null;
+        private readonly LCTreeNodeGroup lcTreeNodeGroup = null;
         private LCTreeNodeSubnet lcTreeNodeSubnet = null;
-        private ModeForm modeForm;
+        private readonly ModeForm modeForm;
         /// <summary>
         /// Возвращает созданую новую сеть в данной форме
         /// </summary>
@@ -56,7 +56,7 @@ namespace LC
             }
         }
        
-        private void buttonAddSubnet_Click(object sender, EventArgs e)
+        private void ButtonAddSubnet_Click(object sender, EventArgs e)
         {
             if (this.textBoxNameSubnet.Text != "")
             {

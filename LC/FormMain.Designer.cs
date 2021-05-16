@@ -202,14 +202,14 @@
             this.toolStripMenuItemClearPCList.Name = "toolStripMenuItemClearPCList";
             this.toolStripMenuItemClearPCList.Size = new System.Drawing.Size(187, 22);
             this.toolStripMenuItemClearPCList.Text = "Очистить список ПК";
-            this.toolStripMenuItemClearPCList.Click += new System.EventHandler(this.toolStripMenuItemClearPCList_Click);
+            this.toolStripMenuItemClearPCList.Click += new System.EventHandler(this.ToolStripMenuItemClearPCList_Click);
             // 
             // toolStripMenuItemExportNetsToJSON
             // 
             this.toolStripMenuItemExportNetsToJSON.Name = "toolStripMenuItemExportNetsToJSON";
             this.toolStripMenuItemExportNetsToJSON.Size = new System.Drawing.Size(187, 22);
             this.toolStripMenuItemExportNetsToJSON.Text = "Экспорт сетей";
-            this.toolStripMenuItemExportNetsToJSON.Click += new System.EventHandler(this.toolStripMenuItemExportNetsToJSON_Click);
+            this.toolStripMenuItemExportNetsToJSON.Click += new System.EventHandler(this.ToolStripMenuItemExportNetsToJSON_Click);
             // 
             // toolStripSeparator1
             // 
@@ -222,7 +222,7 @@
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
             // 
             // видtoolStripMenuItem
             // 
@@ -267,7 +267,7 @@
             this.опцииToolStripMenuItem.Name = "опцииToolStripMenuItem";
             this.опцииToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.опцииToolStripMenuItem.Text = "Параметры";
-            this.опцииToolStripMenuItem.Click += new System.EventHandler(this.опцииToolStripMenuItem_Click);
+            this.опцииToolStripMenuItem.Click += new System.EventHandler(this.ОпцииToolStripMenuItem_Click);
             // 
             // командныеКнопкиToolStripMenuItem
             // 
@@ -286,28 +286,28 @@
             this.компьютерToolStripMenuItem.Name = "компьютерToolStripMenuItem";
             this.компьютерToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.компьютерToolStripMenuItem.Text = "Компьютер";
-            this.компьютерToolStripMenuItem.Click += new System.EventHandler(this.компьютерToolStripMenuItem_Click);
+            this.компьютерToolStripMenuItem.Click += new System.EventHandler(this.КомпьютерToolStripMenuItem_Click);
             // 
             // мФУToolStripMenuItem
             // 
             this.мФУToolStripMenuItem.Name = "мФУToolStripMenuItem";
             this.мФУToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.мФУToolStripMenuItem.Text = "МФУ";
-            this.мФУToolStripMenuItem.Click += new System.EventHandler(this.мФУToolStripMenuItem_Click);
+            this.мФУToolStripMenuItem.Click += new System.EventHandler(this.МФУToolStripMenuItem_Click);
             // 
             // эТСОToolStripMenuItem
             // 
             this.эТСОToolStripMenuItem.Name = "эТСОToolStripMenuItem";
             this.эТСОToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.эТСОToolStripMenuItem.Text = "ЭТСО";
-            this.эТСОToolStripMenuItem.Click += new System.EventHandler(this.эТСОToolStripMenuItem_Click);
+            this.эТСОToolStripMenuItem.Click += new System.EventHandler(this.ЭТСОToolStripMenuItem_Click);
             // 
             // сПДToolStripMenuItem
             // 
             this.сПДToolStripMenuItem.Name = "сПДToolStripMenuItem";
             this.сПДToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.сПДToolStripMenuItem.Text = "СПД";
-            this.сПДToolStripMenuItem.Click += new System.EventHandler(this.сПДToolStripMenuItem_Click);
+            this.сПДToolStripMenuItem.Click += new System.EventHandler(this.СПДToolStripMenuItem_Click);
             // 
             // учётнаяЗаписьToolStripMenuItem
             // 
@@ -315,7 +315,7 @@
             this.учётнаяЗаписьToolStripMenuItem.Name = "учётнаяЗаписьToolStripMenuItem";
             this.учётнаяЗаписьToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.учётнаяЗаписьToolStripMenuItem.Text = "Учётная запись";
-            this.учётнаяЗаписьToolStripMenuItem.Click += new System.EventHandler(this.учётнаяЗаписьToolStripMenuItem_Click);
+            this.учётнаяЗаписьToolStripMenuItem.Click += new System.EventHandler(this.УчётнаяЗаписьToolStripMenuItem_Click);
             // 
             // помощьToolStripMenuItem
             // 
@@ -333,14 +333,14 @@
             this.проверкаОбновленийToolStripMenuItem.Name = "проверкаОбновленийToolStripMenuItem";
             this.проверкаОбновленийToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.проверкаОбновленийToolStripMenuItem.Text = "Проверка обновлений";
-            this.проверкаОбновленийToolStripMenuItem.Click += new System.EventHandler(this.проверкаОбновленийToolStripMenuItem_Click);
+            this.проверкаОбновленийToolStripMenuItem.Click += new System.EventHandler(this.ПроверкаОбновленийToolStripMenuItem_Click);
             // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.справкаToolStripMenuItem.Text = "Справка";
-            this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
+            this.справкаToolStripMenuItem.Click += new System.EventHandler(this.СправкаToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -352,7 +352,7 @@
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
-            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.ОПрограммеToolStripMenuItem_Click);
             // 
             // toolStripMain
             // 
@@ -380,7 +380,7 @@
             this.toolStripTextBoxIP.Name = "toolStripTextBoxIP";
             this.toolStripTextBoxIP.Size = new System.Drawing.Size(100, 32);
             this.toolStripTextBoxIP.ToolTipText = "Введите IP адрес для поиска.";
-            this.toolStripTextBoxIP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxIP_KeyDown);
+            this.toolStripTextBoxIP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ToolStripTextBoxIP_KeyDown);
             // 
             // toolStripButtonPasteClipboard
             // 
@@ -390,7 +390,7 @@
             this.toolStripButtonPasteClipboard.Size = new System.Drawing.Size(75, 29);
             this.toolStripButtonPasteClipboard.Text = "Вставить";
             this.toolStripButtonPasteClipboard.ToolTipText = "Вставить из буфера обмена";
-            this.toolStripButtonPasteClipboard.Click += new System.EventHandler(this.toolStripButtonPasteClipboard_Click);
+            this.toolStripButtonPasteClipboard.Click += new System.EventHandler(this.ToolStripButtonPasteClipboard_Click);
             // 
             // toolStripButtonFind
             // 
@@ -399,7 +399,7 @@
             this.toolStripButtonFind.Name = "toolStripButtonFind";
             this.toolStripButtonFind.Size = new System.Drawing.Size(138, 29);
             this.toolStripButtonFind.Text = "Найти или добавить";
-            this.toolStripButtonFind.Click += new System.EventHandler(this.toolStripButtonFind_Click);
+            this.toolStripButtonFind.Click += new System.EventHandler(this.ToolStripButtonFind_Click);
             // 
             // statusStripMain
             // 
@@ -467,7 +467,7 @@
             this.treeViewObject.ShowNodeToolTips = true;
             this.treeViewObject.Size = new System.Drawing.Size(340, 482);
             this.treeViewObject.TabIndex = 0;
-            this.treeViewObject.DoubleClick += new System.EventHandler(this.openLCTreeNode);
+            this.treeViewObject.DoubleClick += new System.EventHandler(this.OpenLCTreeNode);
             // 
             // contextMenuStripLCComputer
             // 
@@ -486,7 +486,7 @@
             this.toolStripMenuItemOpenComputer.Name = "toolStripMenuItemOpenComputer";
             this.toolStripMenuItemOpenComputer.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItemOpenComputer.Text = "Открыть";
-            this.toolStripMenuItemOpenComputer.Click += new System.EventHandler(this.openLCTreeNode);
+            this.toolStripMenuItemOpenComputer.Click += new System.EventHandler(this.OpenLCTreeNode);
             // 
             // toolStripSeparator3
             // 
@@ -499,7 +499,7 @@
             this.toolStripMenuItemEditComputer.Name = "toolStripMenuItemEditComputer";
             this.toolStripMenuItemEditComputer.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItemEditComputer.Text = "Изменить";
-            this.toolStripMenuItemEditComputer.Click += new System.EventHandler(this.editLCTreeNode);
+            this.toolStripMenuItemEditComputer.Click += new System.EventHandler(this.EditLCTreeNode);
             // 
             // toolStripSeparator12
             // 
@@ -519,7 +519,7 @@
             this.toolStripMenuItemDeleteComputer.Name = "toolStripMenuItemDeleteComputer";
             this.toolStripMenuItemDeleteComputer.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItemDeleteComputer.Text = "Удалить";
-            this.toolStripMenuItemDeleteComputer.Click += new System.EventHandler(this.deleteLCTreeNode);
+            this.toolStripMenuItemDeleteComputer.Click += new System.EventHandler(this.DeleteLCTreeNode);
             // 
             // imageListMain
             // 
@@ -588,8 +588,8 @@
             this.listViewHosts.UseCompatibleStateImageBehavior = false;
             this.listViewHosts.View = System.Windows.Forms.View.Details;
             this.listViewHosts.SelectedIndexChanged += new System.EventHandler(this.ListViewHosts_SelectedIndexChanged);
-            this.listViewHosts.DoubleClick += new System.EventHandler(this.listViewComputers_DoubleClick);
-            this.listViewHosts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listViewHosts_KeyDown);
+            this.listViewHosts.DoubleClick += new System.EventHandler(this.ListViewComputers_DoubleClick);
+            this.listViewHosts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListViewHosts_KeyDown);
             // 
             // columnHeaderTypeHost
             // 
@@ -631,21 +631,21 @@
             this.toolStripMenuItemGetHostIP.Name = "toolStripMenuItemGetHostIP";
             this.toolStripMenuItemGetHostIP.Size = new System.Drawing.Size(208, 22);
             this.toolStripMenuItemGetHostIP.Text = "Копировать IP";
-            this.toolStripMenuItemGetHostIP.Click += new System.EventHandler(this.toolStripMenuItemGetHostIP_Click);
+            this.toolStripMenuItemGetHostIP.Click += new System.EventHandler(this.ToolStripMenuItemGetHostIP_Click);
             // 
             // toolStripMenuItemGetHostName
             // 
             this.toolStripMenuItemGetHostName.Name = "toolStripMenuItemGetHostName";
             this.toolStripMenuItemGetHostName.Size = new System.Drawing.Size(208, 22);
             this.toolStripMenuItemGetHostName.Text = "Копировать имя";
-            this.toolStripMenuItemGetHostName.Click += new System.EventHandler(this.toolStripMenuItemGetHostName_Click);
+            this.toolStripMenuItemGetHostName.Click += new System.EventHandler(this.ToolStripMenuItemGetHostName_Click);
             // 
             // toolStripMenuItemGetHostFullName
             // 
             this.toolStripMenuItemGetHostFullName.Name = "toolStripMenuItemGetHostFullName";
             this.toolStripMenuItemGetHostFullName.Size = new System.Drawing.Size(208, 22);
             this.toolStripMenuItemGetHostFullName.Text = "Копировать полное имя";
-            this.toolStripMenuItemGetHostFullName.Click += new System.EventHandler(this.toolStripMenuItemGetHostFullName_Click);
+            this.toolStripMenuItemGetHostFullName.Click += new System.EventHandler(this.ToolStripMenuItemGetHostFullName_Click);
             // 
             // toolStripMenuItemGetHostBarCode
             // 
@@ -681,7 +681,7 @@
             this.toolStripButtonGetNamePC.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonGetNamePC.Text = "toolStripButtonGetNamePC";
             this.toolStripButtonGetNamePC.ToolTipText = "Определяет имя ПК по IP адресу";
-            this.toolStripButtonGetNamePC.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            this.toolStripButtonGetNamePC.Click += new System.EventHandler(this.ToolStripButtonGetNamePC_Click);
             // 
             // toolStripSeparator19
             // 
@@ -708,7 +708,7 @@
             this.toolStripButtonGetNmaeETCO.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonGetNmaeETCO.Text = "toolStripButtonGetNamePC";
             this.toolStripButtonGetNmaeETCO.ToolTipText = "Определяет имя ПК по IP адресу";
-            this.toolStripButtonGetNmaeETCO.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            this.toolStripButtonGetNmaeETCO.Click += new System.EventHandler(this.ToolStripButtonGetNamePC_Click);
             // 
             // toolStripSeparator5
             // 
@@ -735,7 +735,7 @@
             this.toolStripButtonGetNameSPD.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonGetNameSPD.Text = "toolStripButtonGetNamePC";
             this.toolStripButtonGetNameSPD.ToolTipText = "Определяет имя ПК по IP адресу";
-            this.toolStripButtonGetNameSPD.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            this.toolStripButtonGetNameSPD.Click += new System.EventHandler(this.ToolStripButtonGetNamePC_Click);
             // 
             // toolStripSeparator13
             // 
@@ -762,7 +762,7 @@
             this.toolStripButtonGetNameMFU.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonGetNameMFU.Text = "toolStripButtonGetNamePC";
             this.toolStripButtonGetNameMFU.ToolTipText = "Определяет имя ПК по IP адресу";
-            this.toolStripButtonGetNameMFU.Click += new System.EventHandler(this.toolStripButtonGetNamePC_Click);
+            this.toolStripButtonGetNameMFU.Click += new System.EventHandler(this.ToolStripButtonGetNamePC_Click);
             // 
             // toolStripSeparator16
             // 
@@ -798,8 +798,8 @@
             this.listViewSubnets.TabIndex = 1;
             this.listViewSubnets.UseCompatibleStateImageBehavior = false;
             this.listViewSubnets.View = System.Windows.Forms.View.Details;
-            this.listViewSubnets.DoubleClick += new System.EventHandler(this.listViewSubnets_DoubleClick);
-            this.listViewSubnets.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listViewSubnets_KeyDown);
+            this.listViewSubnets.DoubleClick += new System.EventHandler(this.ListViewSubnets_DoubleClick);
+            this.listViewSubnets.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListViewSubnets_KeyDown);
             // 
             // columnHeaderNameSubnet
             // 
@@ -853,8 +853,8 @@
             this.listViewGroups.TabIndex = 1;
             this.listViewGroups.UseCompatibleStateImageBehavior = false;
             this.listViewGroups.View = System.Windows.Forms.View.Details;
-            this.listViewGroups.DoubleClick += new System.EventHandler(this.listViewGroups_DoubleClick);
-            this.listViewGroups.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listViewGroups_KeyDown);
+            this.listViewGroups.DoubleClick += new System.EventHandler(this.ListViewGroups_DoubleClick);
+            this.listViewGroups.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListViewGroups_KeyDown);
             // 
             // columnHeaderNameGroup
             // 
@@ -903,7 +903,7 @@
             this.toolStripMenuItemOpenGroup.Name = "toolStripMenuItemOpenGroup";
             this.toolStripMenuItemOpenGroup.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemOpenGroup.Text = "Открыть";
-            this.toolStripMenuItemOpenGroup.Click += new System.EventHandler(this.openLCTreeNode);
+            this.toolStripMenuItemOpenGroup.Click += new System.EventHandler(this.OpenLCTreeNode);
             // 
             // toolStripSeparator9
             // 
@@ -915,7 +915,7 @@
             this.toolStripMenuItemOpenNodesGroup.Name = "toolStripMenuItemOpenNodesGroup";
             this.toolStripMenuItemOpenNodesGroup.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemOpenNodesGroup.Text = "Открыть все дочерние";
-            this.toolStripMenuItemOpenNodesGroup.Click += new System.EventHandler(this.toolStripMenuItemOpenNodes);
+            this.toolStripMenuItemOpenNodesGroup.Click += new System.EventHandler(this.ToolStripMenuItemOpenNodes);
             // 
             // toolStripSeparator11
             // 
@@ -928,7 +928,7 @@
             this.toolStripMenuItemNewSubnet.Name = "toolStripMenuItemNewSubnet";
             this.toolStripMenuItemNewSubnet.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemNewSubnet.Text = "Новая сеть";
-            this.toolStripMenuItemNewSubnet.Click += new System.EventHandler(this.createNewSubnet);
+            this.toolStripMenuItemNewSubnet.Click += new System.EventHandler(this.CreateNewSubnet);
             // 
             // toolStripMenuItemNewGroup
             // 
@@ -936,7 +936,7 @@
             this.toolStripMenuItemNewGroup.Name = "toolStripMenuItemNewGroup";
             this.toolStripMenuItemNewGroup.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemNewGroup.Text = "Новая группа";
-            this.toolStripMenuItemNewGroup.Click += new System.EventHandler(this.createNewGroup);
+            this.toolStripMenuItemNewGroup.Click += new System.EventHandler(this.CreateNewGroup);
             // 
             // toolStripSeparator6
             // 
@@ -949,7 +949,7 @@
             this.toolStripMenuItemEditGroup.Name = "toolStripMenuItemEditGroup";
             this.toolStripMenuItemEditGroup.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemEditGroup.Text = "Изменить";
-            this.toolStripMenuItemEditGroup.Click += new System.EventHandler(this.editLCTreeNode);
+            this.toolStripMenuItemEditGroup.Click += new System.EventHandler(this.EditLCTreeNode);
             // 
             // toolStripSeparator7
             // 
@@ -977,7 +977,7 @@
             this.toolStripMenuItemDeleteGroup.Name = "toolStripMenuItemDeleteGroup";
             this.toolStripMenuItemDeleteGroup.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemDeleteGroup.Text = "Удалить";
-            this.toolStripMenuItemDeleteGroup.Click += new System.EventHandler(this.deleteLCTreeNode);
+            this.toolStripMenuItemDeleteGroup.Click += new System.EventHandler(this.DeleteLCTreeNode);
             // 
             // contextMenuStripLCRoot
             // 
@@ -996,7 +996,7 @@
             this.toolStripMenuItemOpenNodesRoot.Name = "toolStripMenuItemOpenNodesRoot";
             this.toolStripMenuItemOpenNodesRoot.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemOpenNodesRoot.Text = "Открыть все дочерние";
-            this.toolStripMenuItemOpenNodesRoot.Click += new System.EventHandler(this.toolStripMenuItemOpenNodes);
+            this.toolStripMenuItemOpenNodesRoot.Click += new System.EventHandler(this.ToolStripMenuItemOpenNodes);
             // 
             // toolStripSeparator10
             // 
@@ -1009,7 +1009,7 @@
             this.toolStripMenuItemNewGroupRoot.Name = "toolStripMenuItemNewGroupRoot";
             this.toolStripMenuItemNewGroupRoot.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemNewGroupRoot.Text = "Новая группа";
-            this.toolStripMenuItemNewGroupRoot.Click += new System.EventHandler(this.createNewGroup);
+            this.toolStripMenuItemNewGroupRoot.Click += new System.EventHandler(this.CreateNewGroup);
             // 
             // toolStripMenuItemSubnetRoot
             // 
@@ -1017,7 +1017,7 @@
             this.toolStripMenuItemSubnetRoot.Name = "toolStripMenuItemSubnetRoot";
             this.toolStripMenuItemSubnetRoot.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemSubnetRoot.Text = "Новая сеть";
-            this.toolStripMenuItemSubnetRoot.Click += new System.EventHandler(this.createNewSubnet);
+            this.toolStripMenuItemSubnetRoot.Click += new System.EventHandler(this.CreateNewSubnet);
             // 
             // toolStripSeparator8
             // 
@@ -1061,7 +1061,7 @@
             this.toolStripMenuItemOpenSubnet.Name = "toolStripMenuItemOpenSubnet";
             this.toolStripMenuItemOpenSubnet.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemOpenSubnet.Text = "Открыть";
-            this.toolStripMenuItemOpenSubnet.Click += new System.EventHandler(this.openLCTreeNode);
+            this.toolStripMenuItemOpenSubnet.Click += new System.EventHandler(this.OpenLCTreeNode);
             // 
             // toolStripSeparator14
             // 
@@ -1073,7 +1073,7 @@
             this.toolStripMenuItemOpenNodesSubnet.Name = "toolStripMenuItemOpenNodesSubnet";
             this.toolStripMenuItemOpenNodesSubnet.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemOpenNodesSubnet.Text = "Открыть все дочерние";
-            this.toolStripMenuItemOpenNodesSubnet.Click += new System.EventHandler(this.toolStripMenuItemOpenNodes);
+            this.toolStripMenuItemOpenNodesSubnet.Click += new System.EventHandler(this.ToolStripMenuItemOpenNodes);
             // 
             // toolStripSeparator15
             // 
@@ -1086,7 +1086,7 @@
             this.toolStripMenuItemEditSubnet.Name = "toolStripMenuItemEditSubnet";
             this.toolStripMenuItemEditSubnet.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemEditSubnet.Text = "Изменить";
-            this.toolStripMenuItemEditSubnet.Click += new System.EventHandler(this.editLCTreeNode);
+            this.toolStripMenuItemEditSubnet.Click += new System.EventHandler(this.EditLCTreeNode);
             // 
             // toolStripSeparator18
             // 
@@ -1114,7 +1114,7 @@
             this.toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
             this.toolStripMenuItemDelete.Size = new System.Drawing.Size(198, 22);
             this.toolStripMenuItemDelete.Text = "Удалить";
-            this.toolStripMenuItemDelete.Click += new System.EventHandler(this.deleteLCTreeNode);
+            this.toolStripMenuItemDelete.Click += new System.EventHandler(this.DeleteLCTreeNode);
             // 
             // contextMenuStripNoList
             // 
@@ -1143,7 +1143,7 @@
             this.toolStripMenuItemDeleteNoList.Name = "toolStripMenuItemDeleteNoList";
             this.toolStripMenuItemDeleteNoList.Size = new System.Drawing.Size(192, 22);
             this.toolStripMenuItemDeleteNoList.Text = "Удалить";
-            this.toolStripMenuItemDeleteNoList.Click += new System.EventHandler(this.deleteLCTreeNode);
+            this.toolStripMenuItemDeleteNoList.Click += new System.EventHandler(this.DeleteLCTreeNode);
             // 
             // contextMenuStripLCMFU
             // 
