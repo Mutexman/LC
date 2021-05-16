@@ -80,5 +80,14 @@ namespace LC
                 this.labelErrorMessage.Text = "Не задано имя хоста";
             }
         }
+
+        private void textBoxBarcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

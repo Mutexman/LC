@@ -891,18 +891,41 @@ namespace LC
 
         private void toolStripMenuItemGetHostName_Click(object sender, EventArgs e)
         {
-            string n = this.listViewHosts.SelectedItems[0].SubItems[2].Text;
-            // берем имя ПК до первой точки
-            n = n.Substring(0, n.IndexOf('.'));
-            Clipboard.SetText(n);
+            if (this.listViewHosts.SelectedItems.Count > 0)
+            {
+                string n = this.listViewHosts.SelectedItems[0].SubItems[2].Text;
+                // берем имя ПК до первой точки
+                n = n.Substring(0, n.IndexOf('.'));
+                Clipboard.SetText(n);
+            }
         }
 
         private void toolStripMenuItemGetHostFullName_Click(object sender, EventArgs e)
         {
-            string n = this.listViewHosts.SelectedItems[0].SubItems[2].Text;
-            Clipboard.SetText(n);
+            if (this.listViewHosts.SelectedItems.Count > 0)
+            {
+                string n = this.listViewHosts.SelectedItems[0].SubItems[2].Text;
+                Clipboard.SetText(n);
+            }
         }
 
+        private void toolStripMenuItemGetHostBarcode_Click(object sender, EventArgs e)
+        {
+            if (this.listViewHosts.SelectedItems.Count > 0)
+            {
+                LCTreeNodeHost h = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
+                Clipboard.SetText(h.Barcode);
+            }
+        }
+
+        private void toolStripMenuItemGetHostPassword_Click(object sender, EventArgs e)
+        {
+            if (this.listViewHosts.SelectedItems.Count > 0)
+            {
+                LCTreeNodeHost h = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
+                Clipboard.SetText(h.Password);
+            }
+        }
         #endregion
 
         #region Действия приложения. Список сетей.

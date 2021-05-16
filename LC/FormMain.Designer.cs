@@ -82,6 +82,8 @@
             this.toolStripMenuItemGetHostIP = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGetHostName = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGetHostFullName = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemGetHostBarCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemGetHostPassword = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComputers = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonGetNamePC = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
@@ -618,9 +620,11 @@
             this.contextMenuStripGetHostProperties.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemGetHostIP,
             this.toolStripMenuItemGetHostName,
-            this.toolStripMenuItemGetHostFullName});
+            this.toolStripMenuItemGetHostFullName,
+            this.toolStripMenuItemGetHostBarCode,
+            this.toolStripMenuItemGetHostPassword});
             this.contextMenuStripGetHostProperties.Name = "contextMenuStripGetHostProperties";
-            this.contextMenuStripGetHostProperties.Size = new System.Drawing.Size(209, 70);
+            this.contextMenuStripGetHostProperties.Size = new System.Drawing.Size(209, 136);
             // 
             // toolStripMenuItemGetHostIP
             // 
@@ -642,6 +646,20 @@
             this.toolStripMenuItemGetHostFullName.Size = new System.Drawing.Size(208, 22);
             this.toolStripMenuItemGetHostFullName.Text = "Копировать полное имя";
             this.toolStripMenuItemGetHostFullName.Click += new System.EventHandler(this.toolStripMenuItemGetHostFullName_Click);
+            // 
+            // toolStripMenuItemGetHostBarCode
+            // 
+            this.toolStripMenuItemGetHostBarCode.Name = "toolStripMenuItemGetHostBarCode";
+            this.toolStripMenuItemGetHostBarCode.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemGetHostBarCode.Text = "Копировать ШК";
+            this.toolStripMenuItemGetHostBarCode.Click += new System.EventHandler(this.toolStripMenuItemGetHostBarcode_Click);
+            // 
+            // toolStripMenuItemGetHostPassword
+            // 
+            this.toolStripMenuItemGetHostPassword.Name = "toolStripMenuItemGetHostPassword";
+            this.toolStripMenuItemGetHostPassword.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemGetHostPassword.Text = "Копировать пароль";
+            this.toolStripMenuItemGetHostPassword.Click += new System.EventHandler(this.toolStripMenuItemGetHostPassword_Click);
             // 
             // toolStripComputers
             // 
@@ -1304,6 +1322,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonGetNameMFU;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExportNetsToJSON;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGetHostBarCode;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGetHostPassword;
     }
 }
 
