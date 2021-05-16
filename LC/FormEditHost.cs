@@ -40,29 +40,6 @@ namespace LC
             if (this.textBoxNameHost.Text != "")
             {
                 this.lcTreeNodeHost.TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), this.comboBoxTypeHost.Text);
-                switch (lcTreeNodeHost.TypeHost)
-                {
-                    case LCTypeHost.HOST:
-                        {
-                            lcTreeNodeHost.ImageIndex = 3;
-                        }
-                        break;
-                    case LCTypeHost.MFU:
-                        {
-                            lcTreeNodeHost.ImageIndex = 6;
-                        }
-                        break;
-                    case LCTypeHost.SPD:
-                        {
-                            lcTreeNodeHost.ImageIndex = 7;
-                        }
-                        break;
-                    case LCTypeHost.ETCO:
-                        {
-                            lcTreeNodeHost.ImageIndex = 8;
-                        }
-                        break;
-                }
                 this.lcTreeNodeHost.Text = this.textBoxNameHost.Text;
                 this.lcTreeNodeHost.Barcode = this.textBoxBarcode.Text;
                 this.lcTreeNodeHost.Password = this.textBoxPassword.Text;

@@ -29,6 +29,7 @@ namespace LC
             set
             {
                 this.lcTypeHost = value;
+                this.ImageIndex = (int)value;
             }
         }
         private string ip = "";

@@ -152,9 +152,7 @@ namespace LC
                                 Password = xnod.Attribute("Password").Value,
                                 Description = xnod.Attribute("Description").Value,
                                 TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), xnod.Attribute("TypeHost").Value),
-                                ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
-                                ImageIndex = (int)(LCTypeHost)Enum.Parse(typeof(LCTypeHost), xnod.Attribute("TypeHost").Value)
-                                //ImageIndex = 3
+                                ContextMenuStrip = LCTreeNode.computerContextMenuStrip
                             };
                             newNode.Nodes.Add(lcTreeNodeHost);
                             lcTreeNodeHost.UpdateLC();
