@@ -202,13 +202,17 @@ namespace LC
         private void ToolStripButtonFind_Click(object sender, EventArgs e)
         {
             // здесь надо провести проверку корректности введенного значения IP-адреса
-            string st = this.toolStripTextBoxIP.Text;
+            string hostStr = this.toolStripTextBoxIP.Text;
+            this.FindAndOpenHost(hostStr);
+        }
+        private void FindAndOpenHost(string st)
+        {
             if (this.lCDirectory.CorrectIP(ref st))
             {
                 this.toolStripTextBoxIP.Text = st;
                 this.WriteListBox("Поиск компьютера с IP " + this.toolStripTextBoxIP.Text + " запущен.");
                 LCTreeNodeHost lcHost = this.lCDirectory.FindHost(st);
-                if(lcHost != null)
+                if (lcHost != null)
                 {
                     //Выделяем найденый хост в дереве
                     LCDirectory.treeView.SelectedNode = lcHost;
@@ -219,7 +223,7 @@ namespace LC
                 {
                     //Определяем принадлежность хоста сети
                     LCTreeNodeSubnet findSubnet = this.lCDirectory.FindSubnetIP(st);
-                    if(findSubnet != null)
+                    if (findSubnet != null)
                     {
                         this.OpenLCTreeNode(findSubnet.AddHost(st, st, ""));
                         this.WriteListBox("IP адрес " + st + " принадлежит сети " + findSubnet.Text);
@@ -249,10 +253,38 @@ namespace LC
 
         #region Главное меню
         //Файл
+        //Очистить список ПК
         private void ToolStripMenuItemClearPCList_Click(object sender, EventArgs e)
         {
             this.listViewHosts.Items.Clear();
         }
+        //Открыть список Host'ов
+        private void ToolStripMenuItemOpenHosts_Click(object sender, EventArgs e)
+        {
+            //this.openFileDialogImport.InitialDirectory = "c:\\";
+            this.openFileDialogImport.Filter = "txt files (*.txt)|*.txt";
+            //this.openFileDialogImport.Filter = 2;
+            //this.openFileDialogImport.RestoreDirectory = true;
+            if (this.openFileDialogImport.ShowDialog() == DialogResult.OK)
+            {
+                //Get the path of specified file
+                string fileName = this.openFileDialogImport.FileName;
+                //Get the path of specified file
+                string line;
+                int counter = 0;
+
+                // Read the file and display it line by line.  
+                System.IO.StreamReader file =
+                    new System.IO.StreamReader(fileName);
+                while ((line = file.ReadLine()) != null)
+                {
+                    this.FindAndOpenHost(line);
+                    counter++;
+                }
+                file.Close();
+            }
+        }
+        //Экспорт сетей
         private void ToolStripMenuItemExportNetsToJSON_Click(object sender, EventArgs e)
         {
             this.saveFileDialogExport.Filter = "JSON files (*.js)|*.js";
@@ -903,7 +935,7 @@ namespace LC
             }
         }
 
-        private void toolStripMenuItemGetHostBarcode_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemGetHostBarcode_Click(object sender, EventArgs e)
         {
             if (this.listViewHosts.SelectedItems.Count > 0)
             {
@@ -917,7 +949,7 @@ namespace LC
             }
         }
 
-        private void toolStripMenuItemGetHostPassword_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemGetHostPassword_Click(object sender, EventArgs e)
         {
             if (this.listViewHosts.SelectedItems.Count > 0)
             {
@@ -990,6 +1022,6 @@ namespace LC
             this.listBoxOperation.SelectedIndex = this.listBoxOperation.Items.Count - 1;
             this.toolStripStatusLabelMain.Text = message;
         }
-        #endregion
+        #endregion        
     }
 }

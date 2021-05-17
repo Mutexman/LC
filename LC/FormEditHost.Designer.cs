@@ -105,7 +105,7 @@
             // 
             resources.ApplyResources(this.textBoxBarcode, "textBoxBarcode");
             this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBarcode_KeyPress);
+            this.textBoxBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxBarcode_KeyPress);
             // 
             // textBoxPassword
             // 
