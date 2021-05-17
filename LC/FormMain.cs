@@ -908,7 +908,12 @@ namespace LC
             if (this.listViewHosts.SelectedItems.Count > 0)
             {
                 LCTreeNodeHost h = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
-                Clipboard.SetText(h.Barcode);
+                if(h.Barcode.Length > 0)
+                {
+                    //Пустой текст в этот метод передать нельзя, поэтому пока сделано так.
+                    //Надо позже сделать некативным пункт меню "Копировать ШК" если ШК пустой
+                    Clipboard.SetText(h.Barcode);
+                }
             }
         }
 
@@ -917,7 +922,12 @@ namespace LC
             if (this.listViewHosts.SelectedItems.Count > 0)
             {
                 LCTreeNodeHost h = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
-                Clipboard.SetText(h.Password);
+                if (h.Password.Length > 0)
+                {
+                    //Пустой текст в этот метод передать нельзя, поэтому пока сделано так.
+                    //Надо позже сделать некативным пункт меню "Копировать ШК" если ШК пустой
+                    Clipboard.SetText(h.Password);
+                }
             }
         }
         #endregion
