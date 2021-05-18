@@ -267,21 +267,35 @@ namespace LC
             //this.openFileDialogImport.RestoreDirectory = true;
             if (this.openFileDialogImport.ShowDialog() == DialogResult.OK)
             {
-                //Get the path of specified file
-                string fileName = this.openFileDialogImport.FileName;
-                //Get the path of specified file
-                string line;
-                int counter = 0;
-
-                // Read the file and display it line by line.  
                 System.IO.StreamReader file =
-                    new System.IO.StreamReader(fileName);
+                    new System.IO.StreamReader(this.openFileDialogImport.FileName);
+                string line;
                 while ((line = file.ReadLine()) != null)
                 {
-                    this.FindAndOpenHost(line);
-                    counter++;
+                    //Обходим строки в начале которых находится символ #
+                    if (line[0] != '#')
+                    {
+                        //Ищем в справочнике хост по IP адресу
+                        this.FindAndOpenHost(line);
+                    }
                 }
                 file.Close();
+            }
+        }
+        //Сохранить список ПК
+        private void toolStripMenuItemSaveHosts_Click(object sender, EventArgs e)
+        {
+            this.saveFileDialogExport.Filter = "txt files (*.txt)|*.txt";
+            //this.saveFileDialogExport.FilterIndex = 2;
+            //this.saveFileDialogExport.RestoreDirectory = true;
+            if (this.saveFileDialogExport.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter sw = new StreamWriter(this.saveFileDialogExport.FileName);
+                foreach (ListViewItem curilv in this.listViewHosts.Items)
+                {
+                    sw.WriteLine(curilv.SubItems[1].Text);
+                }
+                sw.Close();
             }
         }
         //Экспорт сетей
@@ -1022,6 +1036,6 @@ namespace LC
             this.listBoxOperation.SelectedIndex = this.listBoxOperation.Items.Count - 1;
             this.toolStripStatusLabelMain.Text = message;
         }
-        #endregion        
+        #endregion
     }
 }
