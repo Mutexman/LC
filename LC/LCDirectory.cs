@@ -434,7 +434,6 @@ namespace LC
         /// <returns>Возвращает истину если введённая строка верна.</returns>
         public bool CorrectIP(ref string ipStr)
         {
-            //string str = this.toolStripTextBoxIP.Text;
             string str = ipStr;
             str = str.Replace('-', '.');
             string pattern = @"([01]?\d\d?|2[0-4]\d|25[0-5])\." +
@@ -445,7 +444,6 @@ namespace LC
             Match match = regex.Match(str);
             if (match.Success)
             {
-                //this.toolStripTextBoxIP.Text = match.Value;
                 ipStr = match.Value;
                 return true;
             }
