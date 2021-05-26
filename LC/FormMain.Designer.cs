@@ -33,6 +33,7 @@
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemClearPCList = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemOpenHosts = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExportNetsToJSON = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -146,7 +147,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemDeleteNoList = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripLCMFU = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemOpenHosts = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveHosts = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -192,6 +193,7 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemClearPCList,
             this.toolStripMenuItemOpenHosts,
+            this.toolStripMenuItemSaveHosts,
             this.toolStripMenuItemExportNetsToJSON,
             this.toolStripSeparator1,
             this.выходToolStripMenuItem});
@@ -202,27 +204,34 @@
             // toolStripMenuItemClearPCList
             // 
             this.toolStripMenuItemClearPCList.Name = "toolStripMenuItemClearPCList";
-            this.toolStripMenuItemClearPCList.Size = new System.Drawing.Size(207, 22);
+            this.toolStripMenuItemClearPCList.Size = new System.Drawing.Size(219, 22);
             this.toolStripMenuItemClearPCList.Text = "Очистить список ПК";
             this.toolStripMenuItemClearPCList.Click += new System.EventHandler(this.ToolStripMenuItemClearPCList_Click);
+            // 
+            // toolStripMenuItemOpenHosts
+            // 
+            this.toolStripMenuItemOpenHosts.Name = "toolStripMenuItemOpenHosts";
+            this.toolStripMenuItemOpenHosts.Size = new System.Drawing.Size(219, 22);
+            this.toolStripMenuItemOpenHosts.Text = "Открыть список Host\'ов";
+            this.toolStripMenuItemOpenHosts.Click += new System.EventHandler(this.ToolStripMenuItemOpenHosts_Click);
             // 
             // toolStripMenuItemExportNetsToJSON
             // 
             this.toolStripMenuItemExportNetsToJSON.Name = "toolStripMenuItemExportNetsToJSON";
-            this.toolStripMenuItemExportNetsToJSON.Size = new System.Drawing.Size(207, 22);
+            this.toolStripMenuItemExportNetsToJSON.Size = new System.Drawing.Size(219, 22);
             this.toolStripMenuItemExportNetsToJSON.Text = "Экспорт сетей";
             this.toolStripMenuItemExportNetsToJSON.Click += new System.EventHandler(this.ToolStripMenuItemExportNetsToJSON_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(204, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(216, 6);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выходToolStripMenuItem.Image")));
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
             // 
@@ -1152,12 +1161,12 @@
             this.contextMenuStripLCMFU.Name = "contextMenuStripLCMFU";
             this.contextMenuStripLCMFU.Size = new System.Drawing.Size(61, 4);
             // 
-            // toolStripMenuItemOpenHosts
+            // toolStripMenuItemSaveHosts
             // 
-            this.toolStripMenuItemOpenHosts.Name = "toolStripMenuItemOpenHosts";
-            this.toolStripMenuItemOpenHosts.Size = new System.Drawing.Size(207, 22);
-            this.toolStripMenuItemOpenHosts.Text = "Открыть список Host\'ов";
-            this.toolStripMenuItemOpenHosts.Click += new System.EventHandler(this.ToolStripMenuItemOpenHosts_Click);
+            this.toolStripMenuItemSaveHosts.Name = "toolStripMenuItemSaveHosts";
+            this.toolStripMenuItemSaveHosts.Size = new System.Drawing.Size(219, 22);
+            this.toolStripMenuItemSaveHosts.Text = "Сохранить список Host\'ов";
+            this.toolStripMenuItemSaveHosts.Click += new System.EventHandler(this.ToolStripMenuItemSaveHosts_Click);
             // 
             // FormMain
             // 
@@ -1334,6 +1343,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGetHostBarCode;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGetHostPassword;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenHosts;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveHosts;
     }
 }
 

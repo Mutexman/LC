@@ -282,6 +282,25 @@ namespace LC
                     counter++;
                 }
                 file.Close();
+                this.WriteListBox("Открытие хостов из файла " + this.saveFileDialogExport.FileName + " выполнено.");
+            }
+        }
+        //Сохранить список Host,ов
+        private void ToolStripMenuItemSaveHosts_Click(object sender, EventArgs e)
+        {
+            this.saveFileDialogExport.Filter = "TXT (*.txt)|*.txt";
+            this.saveFileDialogExport.FileName = "IPs";
+            if (this.saveFileDialogExport.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter sw = new StreamWriter(this.saveFileDialogExport.FileName);
+                string str;
+                foreach(ListViewItem lvi in this.listViewHosts.Items)
+                {
+                    str = lvi.SubItems[4].Text.Replace("\r", "");
+                    sw.WriteLine(lvi.SubItems[1].Text + " " + str);
+                }
+                sw.Close();
+                this.WriteListBox("Сохранение списка хостов в файл " + this.saveFileDialogExport.FileName + " выполнено.");
             }
         }
         //Экспорт сетей
@@ -1022,6 +1041,6 @@ namespace LC
             this.listBoxOperation.SelectedIndex = this.listBoxOperation.Items.Count - 1;
             this.toolStripStatusLabelMain.Text = message;
         }
-        #endregion        
+        #endregion
     }
 }
