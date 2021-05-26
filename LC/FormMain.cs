@@ -312,6 +312,7 @@ namespace LC
                 this.WriteListBox("Экспорт сетей в файл " + this.saveFileDialogExport.FileName + " выполнен.");
             }
         }
+        //Выход
         private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
