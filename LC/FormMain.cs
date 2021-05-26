@@ -301,22 +301,6 @@ namespace LC
                 this.WriteListBox("Сохранение списка хостов в файл " + this.saveFileDialogExport.FileName + " выполнено.");
             }
         }
-        //Сохранить список ПК
-        private void toolStripMenuItemSaveHosts_Click(object sender, EventArgs e)
-        {
-            this.saveFileDialogExport.Filter = "txt files (*.txt)|*.txt";
-            //this.saveFileDialogExport.FilterIndex = 2;
-            //this.saveFileDialogExport.RestoreDirectory = true;
-            if (this.saveFileDialogExport.ShowDialog() == DialogResult.OK)
-            {
-                StreamWriter sw = new StreamWriter(this.saveFileDialogExport.FileName);
-                foreach (ListViewItem curilv in this.listViewHosts.Items)
-                {
-                    sw.WriteLine(curilv.SubItems[1].Text);
-                }
-                sw.Close();
-            }
-        }
         //Экспорт сетей
         private void ToolStripMenuItemExportNetsToJSON_Click(object sender, EventArgs e)
         {
