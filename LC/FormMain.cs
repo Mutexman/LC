@@ -25,14 +25,13 @@ namespace LC
         /// </summary>
         private readonly string fileData = Application.LocalUserAppDataPath + "\\LCDirectory.xml";
         /// <summary>
-        /// Переменная содержащая имя файла конфигурации кнопок
+        /// Переменнаые содержащие имена файлов конфигурации кнопок
         /// </summary>
         private readonly string fileConfigComputers = Application.LocalUserAppDataPath + "\\configComputers.xml";
         private readonly string fileConfigMFU = Application.LocalUserAppDataPath + "\\configMFU.xml";
         private readonly string fileConfigETCO = Application.LocalUserAppDataPath + "\\configETCO.xml";
         private readonly string fileConfigSPD = Application.LocalUserAppDataPath + "\\configSPD.xml";
         private readonly BufferLCTreeNode buffer = new BufferLCTreeNode();
-        // Поле для сохранения найденых компьютеров
         private LCDirectory lCDirectory = null;
         public FormMain()
         {
