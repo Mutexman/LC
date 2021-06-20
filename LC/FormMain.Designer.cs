@@ -34,6 +34,7 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemClearPCList = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOpenHosts = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveHosts = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExportNetsToJSON = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -147,7 +148,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemDeleteNoList = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripLCMFU = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemSaveHosts = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -214,6 +214,13 @@
             this.toolStripMenuItemOpenHosts.Size = new System.Drawing.Size(219, 22);
             this.toolStripMenuItemOpenHosts.Text = "Открыть список Host\'ов";
             this.toolStripMenuItemOpenHosts.Click += new System.EventHandler(this.ToolStripMenuItemOpenHosts_Click);
+            // 
+            // toolStripMenuItemSaveHosts
+            // 
+            this.toolStripMenuItemSaveHosts.Name = "toolStripMenuItemSaveHosts";
+            this.toolStripMenuItemSaveHosts.Size = new System.Drawing.Size(219, 22);
+            this.toolStripMenuItemSaveHosts.Text = "Сохранить список Host\'ов";
+            this.toolStripMenuItemSaveHosts.Click += new System.EventHandler(this.ToolStripMenuItemSaveHosts_Click);
             // 
             // toolStripMenuItemExportNetsToJSON
             // 
@@ -599,8 +606,8 @@
             this.listViewHosts.UseCompatibleStateImageBehavior = false;
             this.listViewHosts.View = System.Windows.Forms.View.Details;
             this.listViewHosts.SelectedIndexChanged += new System.EventHandler(this.ListViewHosts_SelectedIndexChanged);
-            this.listViewHosts.DoubleClick += new System.EventHandler(this.ListViewComputers_DoubleClick);
-            this.listViewHosts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListViewHosts_KeyDown);
+            this.listViewHosts.DoubleClick += new System.EventHandler(this.ListViewLC_DoubleClick);
+            this.listViewHosts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListViewLC_KeyDown);
             // 
             // columnHeaderTypeHost
             // 
@@ -809,8 +816,8 @@
             this.listViewSubnets.TabIndex = 1;
             this.listViewSubnets.UseCompatibleStateImageBehavior = false;
             this.listViewSubnets.View = System.Windows.Forms.View.Details;
-            this.listViewSubnets.DoubleClick += new System.EventHandler(this.ListViewSubnets_DoubleClick);
-            this.listViewSubnets.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListViewSubnets_KeyDown);
+            this.listViewSubnets.DoubleClick += new System.EventHandler(this.ListViewLC_DoubleClick);
+            this.listViewSubnets.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListViewLC_KeyDown);
             // 
             // columnHeaderNameSubnet
             // 
@@ -864,8 +871,8 @@
             this.listViewGroups.TabIndex = 1;
             this.listViewGroups.UseCompatibleStateImageBehavior = false;
             this.listViewGroups.View = System.Windows.Forms.View.Details;
-            this.listViewGroups.DoubleClick += new System.EventHandler(this.ListViewGroups_DoubleClick);
-            this.listViewGroups.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListViewGroups_KeyDown);
+            this.listViewGroups.DoubleClick += new System.EventHandler(this.ListViewLC_DoubleClick);
+            this.listViewGroups.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListViewLC_KeyDown);
             // 
             // columnHeaderNameGroup
             // 
@@ -1160,13 +1167,6 @@
             // 
             this.contextMenuStripLCMFU.Name = "contextMenuStripLCMFU";
             this.contextMenuStripLCMFU.Size = new System.Drawing.Size(61, 4);
-            // 
-            // toolStripMenuItemSaveHosts
-            // 
-            this.toolStripMenuItemSaveHosts.Name = "toolStripMenuItemSaveHosts";
-            this.toolStripMenuItemSaveHosts.Size = new System.Drawing.Size(219, 22);
-            this.toolStripMenuItemSaveHosts.Text = "Сохранить список Host\'ов";
-            this.toolStripMenuItemSaveHosts.Click += new System.EventHandler(this.ToolStripMenuItemSaveHosts_Click);
             // 
             // FormMain
             // 

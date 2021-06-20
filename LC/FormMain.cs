@@ -605,29 +605,42 @@ namespace LC
         /// <param name="e"></param>
         private void EditLCTreeNode(object sender, EventArgs e)
         {
-            LCTreeNode tn = (LCTreeNode)this.treeViewObject.SelectedNode;
-            switch (tn.LCObjectType)
-            {
-                case LCObjectType.Host:
-                    {
-                        FormEditHost formEditComputer = new FormEditHost(this.treeViewObject.SelectedNode);
-                        formEditComputer.ShowDialog();
-                        break;
-                    }
-                case LCObjectType.Group:
-                    {
-                        FormEditGroup formEditGroup = new FormEditGroup(this.treeViewObject.SelectedNode, ModeForm.Edit);
-                        formEditGroup.ShowDialog();
-                        break;
-                    }
-                case LCObjectType.SubNet:
-                    {
-                        FormEditSubnet formEditSubnet = new FormEditSubnet(this.treeViewObject.SelectedNode, ModeForm.Edit);
-                        formEditSubnet.ShowDialog();
-                        break;
-                    }
-            }
+            this.EditLCTreeNode((LCTreeNode)this.treeViewObject.SelectedNode);
             this.treeViewObject.Sort();
+        }
+        /// <summary>
+        /// Метод вывода форм редактирования объектов справочника
+        /// </summary>
+        /// <param name="tn">Редактируемый узел</param>
+        private void EditLCTreeNode(LCTreeNode tn)
+        {
+            if (tn != null)
+            {
+                switch (tn.LCObjectType)
+                {
+                    case LCObjectType.Host:
+                        {
+                            //FormEditHost formEditComputer = new FormEditHost(this.treeViewObject.SelectedNode);
+                            FormEditHost formEditComputer = new FormEditHost(tn);
+                            formEditComputer.ShowDialog();
+                            break;
+                        }
+                    case LCObjectType.Group:
+                        {
+                            //FormEditGroup formEditGroup = new FormEditGroup(this.treeViewObject.SelectedNode, ModeForm.Edit);
+                            FormEditGroup formEditGroup = new FormEditGroup(tn,ModeForm.Edit);
+                            formEditGroup.ShowDialog();
+                            break;
+                        }
+                    case LCObjectType.SubNet:
+                        {
+                            //FormEditSubnet formEditSubnet = new FormEditSubnet(this.treeViewObject.SelectedNode, ModeForm.Edit);
+                            FormEditSubnet formEditSubnet = new FormEditSubnet(tn, ModeForm.Edit);
+                            formEditSubnet.ShowDialog();
+                            break;
+                        }
+                }
+            }
         }
         /// <summary>
         /// Событие удаления объекта LC
@@ -868,11 +881,6 @@ namespace LC
             }
         }
 
-        /// <summary>
-        /// Удаление списка элемента по нажатии клавиши DELETE
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ToolStripButtonGetNamePC_Click(object sender, EventArgs e)
         {
             string ipStr;
@@ -899,27 +907,6 @@ namespace LC
             catch (System.Exception myException)
             {
                 this.WriteListBox("Определение имени для ПК с IP " + ipStr + ":" + myException.Message);
-            }
-        }
-   
-        private void ListViewComputers_DoubleClick(object sender, EventArgs e)
-        {
-            if (this.listViewHosts.SelectedItems.Count > 0)
-            {
-                LCTreeNodeHost tn = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
-                FormEditHost formNewComputer = new FormEditHost(tn);
-                formNewComputer.ShowDialog();
-            }
-        }
-
-        private void ListViewHosts_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete)
-            {
-                if (this.listViewHosts.SelectedItems.Count > 0)
-                {
-                    this.listViewHosts.SelectedItems[0].Remove();
-                }
             }
         }
 
@@ -981,47 +968,33 @@ namespace LC
         }
         #endregion
 
-        #region Действия приложения. Список сетей.
-        private void ListViewSubnets_DoubleClick(object sender, EventArgs e)
+        #region Действия приложения. Методы для работы со списками хостов, сетей и групп
+        
+        private void ListViewLC_DoubleClick(object sender, EventArgs e)
         {
-            if (this.listViewSubnets.SelectedItems.Count > 0)
+            ListView listView = (ListView)sender;
+            if (listView.SelectedItems.Count > 0)
             {
-                LCTreeNodeSubnet tn = (LCTreeNodeSubnet)this.listViewSubnets.SelectedItems[0].Tag;
-                FormEditSubnet formEditSubnet = new FormEditSubnet(tn, ModeForm.Edit);
-                formEditSubnet.ShowDialog();
+                this.EditLCTreeNode((LCTreeNode)listView.SelectedItems[0].Tag);
             }
         }
-
-        private void ListViewSubnets_KeyDown(object sender, KeyEventArgs e)
+        private void ListViewLC_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete)
+            ListView listView = (ListView)sender;
+            if (listView.SelectedItems.Count > 0)
             {
-                if (this.listViewSubnets.SelectedItems.Count > 0)
+                switch(e.KeyCode)
                 {
-                    this.listViewSubnets.SelectedItems[0].Remove();
-                }
-            }
-        }
-        #endregion
-
-        #region Действия приложения. Список групп.
-        private void ListViewGroups_DoubleClick(object sender, EventArgs e)
-        {
-            if(this.listViewGroups.SelectedItems.Count > 0)
-            {
-                LCTreeNodeGroup tn = (LCTreeNodeGroup)this.listViewGroups.SelectedItems[0].Tag;
-                FormEditGroup formEditGroup = new FormEditGroup(tn, ModeForm.Edit);
-                formEditGroup.ShowDialog();
-            }
-        }
-
-        private void ListViewGroups_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Delete)
-            {
-                if(this.listViewGroups.SelectedItems.Count >0)
-                {
-                    this.listViewGroups.SelectedItems[0].Remove();
+                    case Keys.Delete:
+                        {
+                            listView.SelectedItems[0].Remove();
+                        }
+                        break;
+                    case Keys.Enter:
+                        {
+                            this.EditLCTreeNode((LCTreeNode)listView.SelectedItems[0].Tag);
+                        }
+                        break;
                 }
             }
         }
