@@ -39,21 +39,11 @@ namespace LC
         {
             LCTreeNode.listBoxOperation = listBox;
         }
-        private string description = null;
+        //private string description = null;
         /// <summary>
         /// Свойство описывающее данный объект
         /// </summary>
-        public string Description
-        {
-            get
-            {
-                return this.description;
-            }
-            set
-            {
-                this.description = value;
-            }
-        }
+        public string Description { get; set; }
         /// <summary>
         /// Свойство возвращающее описание в виде строки. Заменяет символ перевода строки на пробел.
         /// </summary>
@@ -61,7 +51,7 @@ namespace LC
         {
             get
             {
-                return this.description.Replace("\n", " ");
+                return this.Description.Replace("\n", " ");
             }
         }
         protected LCObjectType lcObjectType = LCObjectType.None;

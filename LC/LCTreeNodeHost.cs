@@ -32,51 +32,18 @@ namespace LC
                 this.ImageIndex = (int)value;
             }
         }
-        private string ip = "";
-        private string barcode = "";
-        private string password = "";
         /// <summary>
         /// Свойство возвращающее и задающее IP-адрес хоста
         /// </summary>
-        public string IP
-        {
-            get
-            {
-                return this.ip;
-            }
-            set
-            {
-                this.ip = value;
-            }
-        }
+        public string IP { get; set; }
         /// <summary>
         /// Свойство возвращающее и задающее штрих код хоста
         /// </summary>
-        public string Barcode
-        {
-            get
-            {
-                return this.barcode;
-            }
-            set
-            {
-                this.barcode = value;
-            }
-        }
+        public string Barcode { get; set; }
         /// <summary>
         /// Свойство возвращающее и задающее пароль хоста
         /// </summary>
-        public string Password
-        {
-            get
-            {
-                return this.password;
-            }
-            set
-            {
-                this.password = value;
-            }
-        }
+        public string Password { get; set; }
         public override void RemoveLC()
         {
             if (this.Tag != null)
