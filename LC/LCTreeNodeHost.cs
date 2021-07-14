@@ -44,6 +44,10 @@ namespace LC
         /// Свойство возвращающее и задающее пароль хоста
         /// </summary>
         public string Password { get; set; }
+        /// <summary>
+        /// Свойство возвращающее и задающее логин для хоста
+        /// </summary>
+        public string Login { get; set; }
         public override void RemoveLC()
         {
             if (this.Tag != null)
@@ -62,6 +66,8 @@ namespace LC
                 lvi.SubItems[4].Text = "";
                 if (this.Barcode.Length > 0)
                     lvi.SubItems[4].Text += this.Barcode;
+                if (this.Login.Length > 0)
+                    lvi.SubItems[4].Text += " " + this.Login;
                 if (this.Password.Length > 0)
                     lvi.SubItems[4].Text += " " + this.Password;
                 lvi.SubItems[4].Text += " " + this.DescriptionStr;
@@ -72,6 +78,8 @@ namespace LC
             this.ToolTipText += "\n" + this.IP;
             if (this.Barcode.Length > 0)
                 this.ToolTipText += "\n" + this.Barcode;
+            if (this.Login.Length > 0)
+                this.ToolTipText += "\n" + this.Login;
             if(this.Password.Length > 0)
                 this.ToolTipText += "\n" + this.Password;
             this.ToolTipText += "\n" + this.Description;

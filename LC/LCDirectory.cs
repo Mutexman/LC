@@ -149,6 +149,7 @@ namespace LC
                                 Text = xnod.Attribute("NameHost").Value,
                                 IP = xnod.Attribute("IP").Value,
                                 Barcode = xnod.Attribute("Barcode").Value,
+                                Login = xnod.Attribute("Login").Value,
                                 Password = xnod.Attribute("Password").Value,
                                 Description = xnod.Attribute("Description").Value,
                                 TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), xnod.Attribute("TypeHost").Value),
@@ -216,8 +217,9 @@ namespace LC
                             new XAttribute("NameHost", lcHost.Text),
                             new XAttribute("IP", lcHost.IP),
                             new XAttribute("Barcode", lcHost.Barcode),
+                            new XAttribute("Login", lcHost.Login),
                             new XAttribute("Password", lcHost.Password),
-                            new XAttribute("Description", lcHost.Description));
+                            new XAttribute("Description", lcHost.Description)); ;
                         current = xElement;
                     }
                     break;

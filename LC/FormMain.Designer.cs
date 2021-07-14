@@ -86,6 +86,7 @@
             this.toolStripMenuItemGetHostFullName = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGetHostBarCode = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGetHostPassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemGetHostLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComputers = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonGetNamePC = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
@@ -640,9 +641,10 @@
             this.toolStripMenuItemGetHostName,
             this.toolStripMenuItemGetHostFullName,
             this.toolStripMenuItemGetHostBarCode,
+            this.toolStripMenuItemGetHostLogin,
             this.toolStripMenuItemGetHostPassword});
             this.contextMenuStripGetHostProperties.Name = "contextMenuStripGetHostProperties";
-            this.contextMenuStripGetHostProperties.Size = new System.Drawing.Size(209, 114);
+            this.contextMenuStripGetHostProperties.Size = new System.Drawing.Size(209, 158);
             // 
             // toolStripMenuItemGetHostIP
             // 
@@ -678,6 +680,13 @@
             this.toolStripMenuItemGetHostPassword.Size = new System.Drawing.Size(208, 22);
             this.toolStripMenuItemGetHostPassword.Text = "Копировать пароль";
             this.toolStripMenuItemGetHostPassword.Click += new System.EventHandler(this.ToolStripMenuItemGetHostPassword_Click);
+            // 
+            // toolStripMenuItemGetHostLogin
+            // 
+            this.toolStripMenuItemGetHostLogin.Name = "toolStripMenuItemGetHostLogin";
+            this.toolStripMenuItemGetHostLogin.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemGetHostLogin.Text = "Копировать логин";
+            this.toolStripMenuItemGetHostLogin.Click += new System.EventHandler(this.ToolStripMenuItemGetHostLogin_Click);
             // 
             // toolStripComputers
             // 
@@ -1344,6 +1353,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGetHostPassword;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenHosts;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveHosts;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGetHostLogin;
     }
 }
 

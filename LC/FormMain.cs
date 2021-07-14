@@ -953,6 +953,20 @@ namespace LC
             }
         }
 
+        private void ToolStripMenuItemGetHostLogin_Click(object sender, EventArgs e)
+        {
+            if (this.listViewHosts.SelectedItems.Count > 0)
+            {
+                LCTreeNodeHost h = (LCTreeNodeHost)this.listViewHosts.SelectedItems[0].Tag;
+                if (h.Password.Length > 0)
+                {
+                    //Пустой текст в этот метод передать нельзя, поэтому пока сделано так.
+                    //Надо позже сделать некативным пункт меню "Копировать ШК" если ШК пустой
+                    Clipboard.SetText(h.Login);
+                }
+            }
+        }
+
         private void ToolStripMenuItemGetHostPassword_Click(object sender, EventArgs e)
         {
             if (this.listViewHosts.SelectedItems.Count > 0)
@@ -966,6 +980,7 @@ namespace LC
                 }
             }
         }
+
         #endregion
 
         #region Действия приложения. Методы для работы со списками хостов, сетей и групп

@@ -144,7 +144,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelNameHost.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="textBoxNameHost.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 37</value>
@@ -165,7 +165,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxNameHost.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="labelIP.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -192,7 +192,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelIP.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="textBoxIP.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 63</value>
@@ -213,13 +213,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxIP.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="labelDescription.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 144</value>
+    <value>12, 170</value>
   </data>
   <data name="labelDescription.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 13</value>
@@ -240,10 +240,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelDescription.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="textBoxDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 141</value>
+    <value>113, 167</value>
   </data>
   <data name="textBoxDescription.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -268,10 +268,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxDescription.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="buttonSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 245</value>
+    <value>188, 282</value>
   </data>
   <data name="buttonSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 23</value>
@@ -292,7 +292,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonSave.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="labelErrorMessage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -316,7 +316,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelErrorMessage.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="labelTypeHost.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -343,7 +343,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelTypeHost.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="comboBoxTypeHost.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 10</value>
@@ -364,7 +364,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboBoxTypeHost.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="textBoxBarcode.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 89</value>
@@ -388,16 +388,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxBarcode.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="textBoxPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 115</value>
+    <value>113, 141</value>
   </data>
   <data name="textBoxPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 20</value>
   </data>
   <data name="textBoxPassword.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;textBoxPassword.Name" xml:space="preserve">
     <value>textBoxPassword</value>
@@ -409,7 +409,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxPassword.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="labelBarcode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -436,13 +436,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelBarcode.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="labelPassword.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 118</value>
+    <value>12, 144</value>
   </data>
   <data name="labelPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -463,6 +463,54 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelPassword.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelLogin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 118</value>
+  </data>
+  <data name="labelLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="labelLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="labelLogin.Text" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.Name" xml:space="preserve">
+    <value>labelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBoxLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 115</value>
+  </data>
+  <data name="textBoxLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>313, 20</value>
+  </data>
+  <data name="textBoxLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;textBoxLogin.Name" xml:space="preserve">
+    <value>textBoxLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLogin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxLogin.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -472,7 +520,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>438, 315</value>
+    <value>438, 348</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1605,6 +1653,9 @@
         AAAAAAA//AAAAAAAAAAAAAAAAAAAP/wAAAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAA//gAAAAAA
         AAAAAAAAAAAAf/8AAAAAAAAAAAAAAAAAAP8=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

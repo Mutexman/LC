@@ -42,6 +42,7 @@ namespace LC
                 this.lcTreeNodeHost.TypeHost = (LCTypeHost)Enum.Parse(typeof(LCTypeHost), this.comboBoxTypeHost.Text);
                 this.lcTreeNodeHost.Text = this.textBoxNameHost.Text;
                 this.lcTreeNodeHost.Barcode = this.textBoxBarcode.Text;
+                this.lcTreeNodeHost.Login = this.textBoxLogin.Text;
                 this.lcTreeNodeHost.Password = this.textBoxPassword.Text;
                 this.lcTreeNodeHost.Description = this.textBoxDescription.Text;
                 this.lcTreeNodeHost.UpdateLC();

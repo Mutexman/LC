@@ -43,6 +43,8 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelBarcode = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
+            this.labelLogin = new System.Windows.Forms.Label();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelNameHost
@@ -122,11 +124,23 @@
             resources.ApplyResources(this.labelPassword, "labelPassword");
             this.labelPassword.Name = "labelPassword";
             // 
+            // labelLogin
+            // 
+            resources.ApplyResources(this.labelLogin, "labelLogin");
+            this.labelLogin.Name = "labelLogin";
+            // 
+            // textBoxLogin
+            // 
+            resources.ApplyResources(this.textBoxLogin, "textBoxLogin");
+            this.textBoxLogin.Name = "textBoxLogin";
+            // 
             // FormEditHost
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.textBoxLogin);
+            this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelBarcode);
             this.Controls.Add(this.textBoxPassword);
@@ -165,5 +179,7 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label labelBarcode;
         private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.Label labelLogin;
+        private System.Windows.Forms.TextBox textBoxLogin;
     }
 }
