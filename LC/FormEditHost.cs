@@ -30,6 +30,7 @@ namespace LC
             this.textBoxNameHost.Text = this.lcTreeNodeHost.Text;
             this.textBoxIP.Text = this.lcTreeNodeHost.IP;
             this.textBoxBarcode.Text = this.lcTreeNodeHost.Barcode;
+            this.textBoxLogin.Text = this.lcTreeNodeHost.Login;
             this.textBoxPassword.Text = this.lcTreeNodeHost.Password;
             this.textBoxDescription.Text = this.lcTreeNodeHost.Description;
         }
