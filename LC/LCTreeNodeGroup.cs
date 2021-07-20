@@ -71,6 +71,9 @@ namespace LC
             {
                 Text = nameHost,
                 IP = ip,
+                Barcode = "",
+                Login = "",
+                Password = "",
                 Description = description,
                 ContextMenuStrip = LCTreeNode.computerContextMenuStrip,
                 ImageIndex = 3
