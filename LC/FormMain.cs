@@ -260,10 +260,12 @@ namespace LC
         //Открыть список Host'ов
         private void ToolStripMenuItemOpenHosts_Click(object sender, EventArgs e)
         {
-            //this.openFileDialogImport.InitialDirectory = "c:\\";
+            string listsPath = Application.LocalUserAppDataPath + "\\Lists";
+            Directory.CreateDirectory(listsPath);
+            this.openFileDialogImport.InitialDirectory = listsPath;
             this.openFileDialogImport.Filter = "txt files (*.txt)|*.txt";
             //this.openFileDialogImport.Filter = 2;
-            //this.openFileDialogImport.RestoreDirectory = true;
+            this.openFileDialogImport.RestoreDirectory = true;
             if (this.openFileDialogImport.ShowDialog() == DialogResult.OK)
             {
                 System.IO.StreamReader file =
@@ -285,6 +287,9 @@ namespace LC
         //Сохранить список Host,ов
         private void ToolStripMenuItemSaveHosts_Click(object sender, EventArgs e)
         {
+            string listsPath = Application.LocalUserAppDataPath + "\\Lists";
+            Directory.CreateDirectory(listsPath);
+            this.saveFileDialogExport.InitialDirectory = listsPath;
             this.saveFileDialogExport.Filter = "TXT (*.txt)|*.txt";
             this.saveFileDialogExport.FileName = "IPs";
             if (this.saveFileDialogExport.ShowDialog() == DialogResult.OK)
